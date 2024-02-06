@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F21B3B82B7264B400BF67F7 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F21B3B72B7264B400BF67F7 /* SplashView.swift */; };
 		F6E1C0972B722EE500A05703 /* EatCookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0962B722EE500A05703 /* EatCookApp.swift */; };
 		F6E1C0992B722EE500A05703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0982B722EE500A05703 /* ContentView.swift */; };
 		F6E1C09B2B722EE800A05703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6E1C09A2B722EE800A05703 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F21B3B72B7264B400BF67F7 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F6E1C0932B722EE500A05703 /* EatCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6E1C0962B722EE500A05703 /* EatCookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookApp.swift; sourceTree = "<group>"; };
 		F6E1C0982B722EE500A05703 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,14 +95,11 @@
 		F6E1C0952B722EE500A05703 /* EatCook */ = {
 			isa = PBXGroup;
 			children = (
-				F6E1C0B72B73C62900A05703 /* Applications */,
-				F6E1C0B52B73C62000A05703 /* Extensions */,
-				F6E1C0B62B73C62200A05703 /* Utillites */,
-				F6E1C0B42B73C61F00A05703 /* Domain */,
-				F6E1C0B32B73C61E00A05703 /* Data */,
-				F6E1C0B22B73C61D00A05703 /* Presentation */,
-				F6E1C0B12B73C61A00A05703 /* Infrastructure */,
-				F6E1C0B02B73C61600A05703 /* Resources */,
+				F6E1C0962B722EE500A05703 /* EatCookApp.swift */,
+				3F21B3B72B7264B400BF67F7 /* SplashView.swift */,
+				F6E1C0982B722EE500A05703 /* ContentView.swift */,
+				F6E1C09A2B722EE800A05703 /* Assets.xcassets */,
+				F6E1C09C2B722EE800A05703 /* Preview Content */,
 			);
 			path = EatCook;
 			sourceTree = "<group>";
@@ -512,20 +511,7 @@
 				F6E1C0E32B73D25600A05703 /* AuthView.swift in Sources */,
 				F6E1C0DF2B73D23B00A05703 /* LoginViewModel.swift in Sources */,
 				F6E1C0992B722EE500A05703 /* ContentView.swift in Sources */,
-				F6E1C0D32B73D1F800A05703 /* Util.swift in Sources */,
-				F6E1C0CD2B73CF3700A05703 /* FeedView.swift in Sources */,
-				F6E1C0D92B73D21D00A05703 /* EatCookRepository.swift in Sources */,
-				F6E1C0CF2B73CF3D00A05703 /* FeedViewModel.swift in Sources */,
-				F6E1C0D12B73D1E000A05703 /* Ex.swift in Sources */,
-				F6E1C0DD2B73D23300A05703 /* LoginView.swift in Sources */,
-				F6E1C0EF2B73D28200A05703 /* SearchView.swift in Sources */,
-				F6E1C1012B73D2E800A05703 /* ProfileViewModel.swift in Sources */,
-				F6E1C0FB2B73D2C600A05703 /* UserProfileView.swift in Sources */,
-				F6E1C0E52B73D25D00A05703 /* AuthViewModel.swift in Sources */,
-				F6E1C0FD2B73D2CE00A05703 /* UserProfileViewModel.swift in Sources */,
-				F6E1C0F12B73D28800A05703 /* SearchViewModel.swift in Sources */,
-				F6E1C0EB2B73D27600A05703 /* HomeViewModel.swift in Sources */,
-				F6E1C0FF2B73D2E000A05703 /* ProfileView.swift in Sources */,
+				3F21B3B82B7264B400BF67F7 /* SplashView.swift in Sources */,
 				F6E1C0972B722EE500A05703 /* EatCookApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,14 +646,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EatCook/Preview Content\"";
-				DEVELOPMENT_TEAM = FJNF7APGSX;
+				DEVELOPMENT_TEAM = NFCS5T44FS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -693,14 +679,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EatCook/Preview Content\"";
-				DEVELOPMENT_TEAM = FJNF7APGSX;
+				DEVELOPMENT_TEAM = NFCS5T44FS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
