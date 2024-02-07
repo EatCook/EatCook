@@ -11,6 +11,27 @@
 		F6E1C0992B722EE500A05703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0982B722EE500A05703 /* ContentView.swift */; };
 		F6E1C09B2B722EE800A05703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6E1C09A2B722EE800A05703 /* Assets.xcassets */; };
 		F6E1C09E2B722EE800A05703 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6E1C09D2B722EE800A05703 /* Preview Assets.xcassets */; };
+		F6E1C0CD2B73CF3700A05703 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0CC2B73CF3700A05703 /* FeedView.swift */; };
+		F6E1C0CF2B73CF3D00A05703 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0CE2B73CF3D00A05703 /* FeedViewModel.swift */; };
+		F6E1C0D12B73D1E000A05703 /* Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0D02B73D1E000A05703 /* Ex.swift */; };
+		F6E1C0D32B73D1F800A05703 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0D22B73D1F800A05703 /* Util.swift */; };
+		F6E1C0D52B73D20000A05703 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0D42B73D20000A05703 /* Model.swift */; };
+		F6E1C0D72B73D20D00A05703 /* ModelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0D62B73D20D00A05703 /* ModelDTO.swift */; };
+		F6E1C0D92B73D21D00A05703 /* EatCookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0D82B73D21D00A05703 /* EatCookRepository.swift */; };
+		F6E1C0DD2B73D23300A05703 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0DC2B73D23300A05703 /* LoginView.swift */; };
+		F6E1C0DF2B73D23B00A05703 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0DE2B73D23B00A05703 /* LoginViewModel.swift */; };
+		F6E1C0E32B73D25600A05703 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0E22B73D25600A05703 /* AuthView.swift */; };
+		F6E1C0E52B73D25D00A05703 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0E42B73D25D00A05703 /* AuthViewModel.swift */; };
+		F6E1C0E92B73D26E00A05703 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0E82B73D26E00A05703 /* HomeView.swift */; };
+		F6E1C0EB2B73D27600A05703 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0EA2B73D27600A05703 /* HomeViewModel.swift */; };
+		F6E1C0EF2B73D28200A05703 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0EE2B73D28200A05703 /* SearchView.swift */; };
+		F6E1C0F12B73D28800A05703 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0F02B73D28800A05703 /* SearchViewModel.swift */; };
+		F6E1C0F32B73D29400A05703 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0F22B73D29400A05703 /* RecipeView.swift */; };
+		F6E1C0F52B73D29D00A05703 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0F42B73D29D00A05703 /* RecipeViewModel.swift */; };
+		F6E1C0FB2B73D2C600A05703 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0FA2B73D2C600A05703 /* UserProfileView.swift */; };
+		F6E1C0FD2B73D2CE00A05703 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0FC2B73D2CE00A05703 /* UserProfileViewModel.swift */; };
+		F6E1C0FF2B73D2E000A05703 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0FE2B73D2E000A05703 /* ProfileView.swift */; };
+		F6E1C1012B73D2E800A05703 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C1002B73D2E800A05703 /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +40,27 @@
 		F6E1C0982B722EE500A05703 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F6E1C09A2B722EE800A05703 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6E1C09D2B722EE800A05703 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F6E1C0CC2B73CF3700A05703 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		F6E1C0CE2B73CF3D00A05703 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		F6E1C0D02B73D1E000A05703 /* Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ex.swift; sourceTree = "<group>"; };
+		F6E1C0D22B73D1F800A05703 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		F6E1C0D42B73D20000A05703 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F6E1C0D62B73D20D00A05703 /* ModelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDTO.swift; sourceTree = "<group>"; };
+		F6E1C0D82B73D21D00A05703 /* EatCookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookRepository.swift; sourceTree = "<group>"; };
+		F6E1C0DC2B73D23300A05703 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F6E1C0DE2B73D23B00A05703 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		F6E1C0E22B73D25600A05703 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		F6E1C0E42B73D25D00A05703 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		F6E1C0E82B73D26E00A05703 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F6E1C0EA2B73D27600A05703 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F6E1C0EE2B73D28200A05703 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		F6E1C0F02B73D28800A05703 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		F6E1C0F22B73D29400A05703 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		F6E1C0F42B73D29D00A05703 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
+		F6E1C0FA2B73D2C600A05703 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		F6E1C0FC2B73D2CE00A05703 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		F6E1C0FE2B73D2E000A05703 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F6E1C1002B73D2E800A05703 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +166,7 @@
 		F6E1C0B52B73C62000A05703 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0D02B73D1E000A05703 /* Ex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -131,6 +174,7 @@
 		F6E1C0B62B73C62200A05703 /* Utillites */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0D22B73D1F800A05703 /* Util.swift */,
 			);
 			path = Utillites;
 			sourceTree = "<group>";
@@ -146,6 +190,7 @@
 		F6E1C0B82B73C69D00A05703 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0D42B73D20000A05703 /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,6 +198,7 @@
 		F6E1C0B92B73C6B400A05703 /* DataMapping */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0D62B73D20D00A05703 /* ModelDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -160,6 +206,7 @@
 		F6E1C0BA2B73C6B800A05703 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0D82B73D21D00A05703 /* EatCookRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -181,6 +228,8 @@
 		F6E1C0BD2B73C71200A05703 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0F92B73D2AE00A05703 /* View */,
+				F6E1C0F82B73D2AB00A05703 /* ViewModel */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -197,6 +246,8 @@
 		F6E1C0BF2B73C71600A05703 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0ED2B73D27900A05703 /* View */,
+				F6E1C0EC2B73D27800A05703 /* ViewModel */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -204,6 +255,8 @@
 		F6E1C0C02B73C71700A05703 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0E62B73D25F00A05703 /* View */,
+				F6E1C0E72B73D26100A05703 /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -211,6 +264,8 @@
 		F6E1C0C12B73C71800A05703 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0E12B73D23F00A05703 /* View */,
+				F6E1C0E02B73D23E00A05703 /* ViewModel */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -218,6 +273,8 @@
 		F6E1C0C22B73C71900A05703 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0DB2B73D22300A05703 /* View */,
+				F6E1C0DA2B73D22000A05703 /* ViewModel */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -243,6 +300,8 @@
 		F6E1C0C72B73C7FC00A05703 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0F72B73D2A400A05703 /* View */,
+				F6E1C0F62B73D2A200A05703 /* ViewModel */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -250,6 +309,7 @@
 		F6E1C0C82B73C81400A05703 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0CE2B73CF3D00A05703 /* FeedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -257,6 +317,7 @@
 		F6E1C0C92B73C81500A05703 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0CC2B73CF3700A05703 /* FeedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -264,6 +325,7 @@
 		F6E1C0CA2B73C81700A05703 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0F42B73D29D00A05703 /* RecipeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -271,6 +333,103 @@
 		F6E1C0CB2B73C81800A05703 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F6E1C0F22B73D29400A05703 /* RecipeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6E1C0DA2B73D22000A05703 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0DE2B73D23B00A05703 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6E1C0DB2B73D22300A05703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0DC2B73D23300A05703 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6E1C0E02B73D23E00A05703 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0E42B73D25D00A05703 /* AuthViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6E1C0E12B73D23F00A05703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0E22B73D25600A05703 /* AuthView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6E1C0E62B73D25F00A05703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0E82B73D26E00A05703 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6E1C0E72B73D26100A05703 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0EA2B73D27600A05703 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6E1C0EC2B73D27800A05703 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0F02B73D28800A05703 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6E1C0ED2B73D27900A05703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0EE2B73D28200A05703 /* SearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6E1C0F62B73D2A200A05703 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0FC2B73D2CE00A05703 /* UserProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6E1C0F72B73D2A400A05703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0FA2B73D2C600A05703 /* UserProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6E1C0F82B73D2AB00A05703 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C1002B73D2E800A05703 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6E1C0F92B73D2AE00A05703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0FE2B73D2E000A05703 /* ProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,7 +504,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6E1C0F32B73D29400A05703 /* RecipeView.swift in Sources */,
+				F6E1C0F52B73D29D00A05703 /* RecipeViewModel.swift in Sources */,
+				F6E1C0D52B73D20000A05703 /* Model.swift in Sources */,
+				F6E1C0E92B73D26E00A05703 /* HomeView.swift in Sources */,
+				F6E1C0D72B73D20D00A05703 /* ModelDTO.swift in Sources */,
+				F6E1C0E32B73D25600A05703 /* AuthView.swift in Sources */,
+				F6E1C0DF2B73D23B00A05703 /* LoginViewModel.swift in Sources */,
 				F6E1C0992B722EE500A05703 /* ContentView.swift in Sources */,
+				F6E1C0D32B73D1F800A05703 /* Util.swift in Sources */,
+				F6E1C0CD2B73CF3700A05703 /* FeedView.swift in Sources */,
+				F6E1C0D92B73D21D00A05703 /* EatCookRepository.swift in Sources */,
+				F6E1C0CF2B73CF3D00A05703 /* FeedViewModel.swift in Sources */,
+				F6E1C0D12B73D1E000A05703 /* Ex.swift in Sources */,
+				F6E1C0DD2B73D23300A05703 /* LoginView.swift in Sources */,
+				F6E1C0EF2B73D28200A05703 /* SearchView.swift in Sources */,
+				F6E1C1012B73D2E800A05703 /* ProfileViewModel.swift in Sources */,
+				F6E1C0FB2B73D2C600A05703 /* UserProfileView.swift in Sources */,
+				F6E1C0E52B73D25D00A05703 /* AuthViewModel.swift in Sources */,
+				F6E1C0FD2B73D2CE00A05703 /* UserProfileViewModel.swift in Sources */,
+				F6E1C0F12B73D28800A05703 /* SearchViewModel.swift in Sources */,
+				F6E1C0EB2B73D27600A05703 /* HomeViewModel.swift in Sources */,
+				F6E1C0FF2B73D2E000A05703 /* ProfileView.swift in Sources */,
 				F6E1C0972B722EE500A05703 /* EatCookApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
