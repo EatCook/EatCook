@@ -51,10 +51,14 @@
 		F6E1C0952B722EE500A05703 /* EatCook */ = {
 			isa = PBXGroup;
 			children = (
-				F6E1C0962B722EE500A05703 /* EatCookApp.swift */,
-				F6E1C0982B722EE500A05703 /* ContentView.swift */,
-				F6E1C09A2B722EE800A05703 /* Assets.xcassets */,
-				F6E1C09C2B722EE800A05703 /* Preview Content */,
+				F6E1C0B72B73C62900A05703 /* Applications */,
+				F6E1C0B52B73C62000A05703 /* Extensions */,
+				F6E1C0B62B73C62200A05703 /* Utillites */,
+				F6E1C0B42B73C61F00A05703 /* Domain */,
+				F6E1C0B32B73C61E00A05703 /* Data */,
+				F6E1C0B22B73C61D00A05703 /* Presentation */,
+				F6E1C0B12B73C61A00A05703 /* Infrastructure */,
+				F6E1C0B02B73C61600A05703 /* Resources */,
 			);
 			path = EatCook;
 			sourceTree = "<group>";
@@ -65,6 +69,210 @@
 				F6E1C09D2B722EE800A05703 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F6E1C0B02B73C61600A05703 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0BC2B73C70400A05703 /* Font */,
+				F6E1C09A2B722EE800A05703 /* Assets.xcassets */,
+				F6E1C09C2B722EE800A05703 /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F6E1C0B12B73C61A00A05703 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0BB2B73C6DA00A05703 /* Network */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		F6E1C0B22B73C61D00A05703 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0982B722EE500A05703 /* ContentView.swift */,
+				F6E1C0C22B73C71900A05703 /* Login */,
+				F6E1C0C12B73C71800A05703 /* Authentication */,
+				F6E1C0C02B73C71700A05703 /* Home */,
+				F6E1C0BF2B73C71600A05703 /* Search */,
+				F6E1C0BE2B73C71400A05703 /* CookTalk */,
+				F6E1C0C72B73C7FC00A05703 /* User */,
+				F6E1C0BD2B73C71200A05703 /* Profile */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F6E1C0B32B73C61E00A05703 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0BA2B73C6B800A05703 /* Repository */,
+				F6E1C0B92B73C6B400A05703 /* DataMapping */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F6E1C0B42B73C61F00A05703 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0B82B73C69D00A05703 /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F6E1C0B52B73C62000A05703 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F6E1C0B62B73C62200A05703 /* Utillites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utillites;
+			sourceTree = "<group>";
+		};
+		F6E1C0B72B73C62900A05703 /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0962B722EE500A05703 /* EatCookApp.swift */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		F6E1C0B82B73C69D00A05703 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F6E1C0B92B73C6B400A05703 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		F6E1C0BA2B73C6B800A05703 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F6E1C0BB2B73C6DA00A05703 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F6E1C0BC2B73C70400A05703 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		F6E1C0BD2B73C71200A05703 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F6E1C0BE2B73C71400A05703 /* CookTalk */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0C32B73C7BB00A05703 /* Feed */,
+				F6E1C0C42B73C7BE00A05703 /* Recipe */,
+			);
+			path = CookTalk;
+			sourceTree = "<group>";
+		};
+		F6E1C0BF2B73C71600A05703 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F6E1C0C02B73C71700A05703 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F6E1C0C12B73C71800A05703 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		F6E1C0C22B73C71900A05703 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		F6E1C0C32B73C7BB00A05703 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0C92B73C81500A05703 /* View */,
+				F6E1C0C82B73C81400A05703 /* ViewModel */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		F6E1C0C42B73C7BE00A05703 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				F6E1C0CB2B73C81800A05703 /* View */,
+				F6E1C0CA2B73C81700A05703 /* ViewModel */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		F6E1C0C72B73C7FC00A05703 /* User */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		F6E1C0C82B73C81400A05703 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6E1C0C92B73C81500A05703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6E1C0CA2B73C81700A05703 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6E1C0CB2B73C81800A05703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -254,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -278,8 +486,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -287,9 +496,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rOarMJ.EatCook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -307,8 +519,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -316,9 +529,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rOarMJ.EatCook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
