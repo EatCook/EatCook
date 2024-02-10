@@ -20,14 +20,10 @@ struct EmailAuthView: View {
                     .padding(.vertical, 28)
                 
                 HStack {
-                    TextField("이메일", text: $email)
-                        .padding(EdgeInsets(top: 0, leading: 14, bottom: 0, trailing: 14))
-                        .frame(height: 55)
-                        .background()
-                        .cornerRadius(10)
+                    CustomTextField(placeHolder: "이메일", text: $email)
                     
                     Button(action: {
-                        
+
                     }, label: {
                         Text("인증요청")
                             .font(.callout)
@@ -40,11 +36,8 @@ struct EmailAuthView: View {
                 .padding(.horizontal, 24)
                 
                 HStack {
-                    TextField("인증번호", text: $authNumber)
-                        .padding(EdgeInsets(top: 0, leading: 14, bottom: 0, trailing: 14))
-                        .frame(height: 55)
-                        .background()
-                        .cornerRadius(10)
+                    CustomTextField(placeHolder: "인증번호", text: $authNumber)
+
                     Button(action: {
                         
                     }, label: {

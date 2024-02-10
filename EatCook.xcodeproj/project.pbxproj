@@ -34,6 +34,7 @@
 		3F4C10E72B73EA3200D6DA1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10CB2B73EA3200D6DA1B /* LoginViewModel.swift */; };
 		3F4C10E82B73EA3200D6DA1B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10CD2B73EA3200D6DA1B /* LoginView.swift */; };
 		3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10EB2B773DDA00D6DA1B /* EmailAuthView.swift */; };
+		3F4C10EF2B77BEA500D6DA1B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10EE2B77BEA500D6DA1B /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		3F4C10CB2B73EA3200D6DA1B /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3F4C10CD2B73EA3200D6DA1B /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3F4C10EB2B773DDA00D6DA1B /* EmailAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthView.swift; sourceTree = "<group>"; };
+		3F4C10EE2B77BEA500D6DA1B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F6E1C0932B722EE500A05703 /* EatCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 			children = (
 				3F4C10912B73EA3100D6DA1B /* Preview Content */,
 				3F4C108F2B73EA3100D6DA1B /* Resources */,
+				3F4C10ED2B77BE7800D6DA1B /* Component */,
 				3F4C10942B73EA3100D6DA1B /* Utillites */,
 				3F4C10962B73EA3100D6DA1B /* Extensions */,
 				3F4C10992B73EA3100D6DA1B /* Applications */,
@@ -400,6 +403,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3F4C10ED2B77BE7800D6DA1B /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				3F4C10EE2B77BEA500D6DA1B /* CustomTextField.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		F6E1C08A2B722EE500A05703 = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F4C10EF2B77BEA500D6DA1B /* CustomTextField.swift in Sources */,
 				3F4C10E12B73EA3200D6DA1B /* SearchView.swift in Sources */,
 				3F4C10E62B73EA3200D6DA1B /* ContentView.swift in Sources */,
 				3F4C10D62B73EA3200D6DA1B /* ModelDTO.swift in Sources */,
