@@ -33,6 +33,7 @@
 		3F4C10E62B73EA3200D6DA1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10C82B73EA3200D6DA1B /* ContentView.swift */; };
 		3F4C10E72B73EA3200D6DA1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10CB2B73EA3200D6DA1B /* LoginViewModel.swift */; };
 		3F4C10E82B73EA3200D6DA1B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10CD2B73EA3200D6DA1B /* LoginView.swift */; };
+		3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10EB2B773DDA00D6DA1B /* EmailAuthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		3F4C10C82B73EA3200D6DA1B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3F4C10CB2B73EA3200D6DA1B /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3F4C10CD2B73EA3200D6DA1B /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		3F4C10EB2B773DDA00D6DA1B /* EmailAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthView.swift; sourceTree = "<group>"; };
 		F6E1C0932B722EE500A05703 /* EatCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -176,13 +178,13 @@
 			isa = PBXGroup;
 			children = (
 				3F21B3B72B7264B400BF67F7 /* SplashView.swift */,
+				3F4C10C82B73EA3200D6DA1B /* ContentView.swift */,
 				3F4C10A42B73EA3100D6DA1B /* Home */,
 				3F4C10A92B73EA3100D6DA1B /* CookTalk */,
 				3F4C10B42B73EA3100D6DA1B /* User */,
 				3F4C10B92B73EA3100D6DA1B /* Search */,
 				3F4C10BE2B73EA3100D6DA1B /* Profile */,
 				3F4C10C32B73EA3100D6DA1B /* Authentication */,
-				3F4C10C82B73EA3200D6DA1B /* ContentView.swift */,
 				3F4C10C92B73EA3200D6DA1B /* Login */,
 			);
 			path = Presentation;
@@ -367,6 +369,7 @@
 		3F4C10C62B73EA3100D6DA1B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3F4C10EB2B773DDA00D6DA1B /* EmailAuthView.swift */,
 				3F4C10C72B73EA3200D6DA1B /* AuthView.swift */,
 			);
 			path = View;
@@ -493,6 +496,7 @@
 				3F4C10E22B73EA3200D6DA1B /* ProfileViewModel.swift in Sources */,
 				3F4C10E72B73EA3200D6DA1B /* LoginViewModel.swift in Sources */,
 				3F21B3B82B7264B400BF67F7 /* SplashView.swift in Sources */,
+				3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */,
 				3F4C10DC2B73EA3200D6DA1B /* FeedViewModel.swift in Sources */,
 				3F4C10D42B73EA3200D6DA1B /* EatCookApp.swift in Sources */,
 				3F4C10D72B73EA3200D6DA1B /* Model.swift in Sources */,
