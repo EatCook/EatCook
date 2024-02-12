@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PasswordCheckView: View {
+    @State private var isPresented = false
+    
     @State var password = ""
     @State var passwordCheck = ""
     @State var isButtonEnabled = false
@@ -26,18 +28,20 @@ struct PasswordCheckView: View {
                 CustomTextField(placeHolder: "비밀번호 확인", text: $passwordCheck)
                     .padding(.bottom, 14)
                     .padding(.horizontal, 24)
-                
-                Button(action: {
 
+                Button(action: {
+                    isPresented = true
                 }, label: {
                     Text("다음")
-                })
-                .frame(maxWidth: .infinity)
-                .frame(height: 55)
-                .background(isButtonEnabled ? Color.bdActive : Color.bdInactive)
-                .cornerRadius(10)
-                .padding(.horizontal, 24)
-
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 55)
+                        .background(isButtonEnabled ? Color.bdActive : Color.bdInactive)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 24)
+                }).fullScreenCover(isPresented: $isPresented) {
+                    StartPopupView()
+                }
+                
                 Spacer()
             }
             .padding(.top, 30)
