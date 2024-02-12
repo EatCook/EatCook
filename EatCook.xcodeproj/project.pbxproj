@@ -35,6 +35,7 @@
 		3F4C10E82B73EA3200D6DA1B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10CD2B73EA3200D6DA1B /* LoginView.swift */; };
 		3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10EB2B773DDA00D6DA1B /* EmailAuthView.swift */; };
 		3F4C10EF2B77BEA500D6DA1B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10EE2B77BEA500D6DA1B /* CustomTextField.swift */; };
+		3F4C10F12B77C38600D6DA1B /* PasswordCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F02B77C38600D6DA1B /* PasswordCheckView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		3F4C10CD2B73EA3200D6DA1B /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3F4C10EB2B773DDA00D6DA1B /* EmailAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthView.swift; sourceTree = "<group>"; };
 		3F4C10EE2B77BEA500D6DA1B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		3F4C10F02B77C38600D6DA1B /* PasswordCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckView.swift; sourceTree = "<group>"; };
 		F6E1C0932B722EE500A05703 /* EatCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -373,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				3F4C10EB2B773DDA00D6DA1B /* EmailAuthView.swift */,
+				3F4C10F02B77C38600D6DA1B /* PasswordCheckView.swift */,
 				3F4C10C72B73EA3200D6DA1B /* AuthView.swift */,
 			);
 			path = View;
@@ -516,6 +519,7 @@
 				3F4C10E52B73EA3200D6DA1B /* AuthView.swift in Sources */,
 				3F4C10D22B73EA3200D6DA1B /* Ex.swift in Sources */,
 				3F4C10D92B73EA3200D6DA1B /* HomeView.swift in Sources */,
+				3F4C10F12B77C38600D6DA1B /* PasswordCheckView.swift in Sources */,
 				3F4C10DB2B73EA3200D6DA1B /* RecipeView.swift in Sources */,
 				3F4C10E42B73EA3200D6DA1B /* AuthViewModel.swift in Sources */,
 				3F4C10E82B73EA3200D6DA1B /* LoginView.swift in Sources */,

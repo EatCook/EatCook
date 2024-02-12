@@ -49,16 +49,14 @@ struct EmailAuthView: View {
                 }.padding(.bottom, 14)
                 .padding(.horizontal, 24)
                 
-                Button(action: {
-
-                }, label: {
+                NavigationLink(destination: PasswordCheckView().toolbarRole(.editor)) {
                     Text("다음")
-                })
-                .frame(maxWidth: .infinity)
-                .frame(height: 55)
-                .background(isAuthRequest ? Color.bdActive : Color.bdInactive)
-                .cornerRadius(10)
-                .padding(.horizontal, 24)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 55)
+                    .background(isAuthRequest ? Color.bdActive : Color.bdInactive)
+                    .cornerRadius(10)
+                    .padding(.horizontal, 24)
+                }
 
                 Spacer()
             }
