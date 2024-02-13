@@ -17,5 +17,9 @@ struct CustomTextField: View {
             .frame(height: 55)
             .background(Color.white)
             .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.bdBorder, lineWidth:1)
+            )
     }
 }

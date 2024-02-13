@@ -37,6 +37,7 @@ struct CreateProfileView: View {
                 CustomTextField(placeHolder: "2~6자의 한글의 닉네임 (기호 사용 불가)", text: $nickname)
                     .padding(.horizontal, 24)
                     .padding(.top, 36)
+                    .padding(.bottom, 14)
                 
                 NavigationLink(destination: FoodThemeView().toolbarRole(.editor)) {
                     Text("다음")
