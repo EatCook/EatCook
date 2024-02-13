@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F21B3B82B7264B400BF67F7 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F21B3B72B7264B400BF67F7 /* SplashView.swift */; };
+		3F2652FB2B7AF2060065DFA5 /* FoodThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2652FA2B7AF2060065DFA5 /* FoodThemeView.swift */; };
 		3F4C10CE2B73EA3200D6DA1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F4C10902B73EA3100D6DA1B /* Assets.xcassets */; };
 		3F4C10CF2B73EA3200D6DA1B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F4C10922B73EA3100D6DA1B /* Preview Assets.xcassets */; };
 		3F4C10D12B73EA3200D6DA1B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10952B73EA3100D6DA1B /* Util.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		3F21B3B72B7264B400BF67F7 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		3F2652FA2B7AF2060065DFA5 /* FoodThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodThemeView.swift; sourceTree = "<group>"; };
 		3F4C10902B73EA3100D6DA1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F4C10922B73EA3100D6DA1B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3F4C10952B73EA3100D6DA1B /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			children = (
 				3F4C10C22B73EA3100D6DA1B /* ProfileView.swift */,
 				3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */,
+				3F2652FA2B7AF2060065DFA5 /* FoodThemeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				3F4C10E22B73EA3200D6DA1B /* ProfileViewModel.swift in Sources */,
 				3F4C10E72B73EA3200D6DA1B /* LoginViewModel.swift in Sources */,
 				3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */,
+				3F2652FB2B7AF2060065DFA5 /* FoodThemeView.swift in Sources */,
 				3F21B3B82B7264B400BF67F7 /* SplashView.swift in Sources */,
 				3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */,
 				3F4C10DC2B73EA3200D6DA1B /* FeedViewModel.swift in Sources */,

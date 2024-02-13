@@ -12,7 +12,7 @@ struct StartPopupView: View {
         NavigationStack {
             VStack {
                 VStack {
-                    Image(.popupCheck)
+                    Image(.check)
                         .resizable()
                         .frame(width: 50, height: 50)
                         .padding(.top, 40)
