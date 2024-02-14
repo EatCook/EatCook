@@ -1,23 +1,23 @@
 //
-//  FoodThemeView.swift
+//  HouseholdCompositionView.swift
 //  EatCook
 //
-//  Created by 김하은 on 2/13/24.
+//  Created by 김하은 on 2/14/24.
 //
 
 import SwiftUI
 
-struct FoodThemeView: View {
-    let columns = Array(repeating: GridItem(.flexible()), count: 3)
+struct HouseholdCompositionView: View {
+    let columns = [GridItem(.flexible())]
     @State var isButtonEnabled = false
     
     var body: some View {
         NavigationStack {
             VStack {
-                Text("어떤 요리에 관심 있으신가요?")
+                Text("누구와 함께 살고있나요?")
                     .font(.title2)
                 
-                Text("관심있는 요리를 3가지 이상 선택해주세요\n취향에 맞는 레시피를 추천해드려요")
+                Text("나의 거주 형태에 맞는\n레시피를 만들어보아요.")
                     .font(.body)
                     .multilineTextAlignment(.center)
                     .frame(height: 50)
@@ -25,21 +25,16 @@ struct FoodThemeView: View {
                     .padding(.horizontal, 24)
                 
                 LazyVGrid(columns: columns, spacing: 14) {
-                    ForEach(FoodTheme.themes, id: \.id) { data in
+                    ForEach(Household.themes, id: \.id) { data in
                         Button(action: {
                             
                         }, label: {
-                            VStack {
-                                data.image
-                                    .resizable()
-                                    .frame(width: 24, height: 24)
-                                
-                                Text(data.title)
-                                    .font(.callout)
-                                    .foregroundColor(.gray)
-                            }
+                            Text(data.title)
+                                .font(.callout)
+                                .foregroundColor(.gray)
                         })
-                        .frame(width: 90, height: 90)
+                        .frame(height: 70)
+                        .frame(maxWidth: .infinity)
                         .background(Color.white)
                         .cornerRadius(10)
                         .overlay(
@@ -48,11 +43,11 @@ struct FoodThemeView: View {
                         )
                     }
                 }.padding(.horizontal, 40)
-                    .padding(.vertical, 65)
+                .padding(.top, 65)
                 
                 Spacer()
                 
-                NavigationLink(destination: HouseholdCompositionView().toolbarRole(.editor)) {
+                NavigationLink(destination: FoodThemeView().toolbarRole(.editor)) {
                     Text("다음")
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
@@ -72,27 +67,21 @@ struct FoodThemeView: View {
     }
 }
 
-extension FoodThemeView {
-    struct FoodTheme {
+extension HouseholdCompositionView {
+    struct Household {
         let id = UUID()
-        let image: Image
         let title: String
         
-        static let themes: [FoodTheme] = [
-            FoodTheme(image: Image("food"), title: "양식"),
-            FoodTheme(image: Image("food"), title: "한식"),
-            FoodTheme(image: Image("food"), title: "아시아"),
-            FoodTheme(image: Image(.food), title: "일식"),
-            FoodTheme(image: Image(.food), title: "아무거나"),
-            FoodTheme(image: Image(.food), title: "중식"),
-            FoodTheme(image: Image(.food), title: "이유식"),
-            FoodTheme(image: Image(.food), title: "저당식"),
-            FoodTheme(image: Image(.food), title: "간식")
-            
+        static let themes: [Household] = [
+            Household(title: "혼자 살아요"),
+            Household(title: "부모님과 살아요"),
+            Household(title: "친구와 살아요"),
+            Household(title: "아이가 있어요"),
+            Household(title: "남편/아내와 살아요"),
         ]
     }
 }
 
 #Preview {
-    FoodThemeView()
+    HouseholdCompositionView()
 }
