@@ -47,7 +47,7 @@ struct HouseholdCompositionView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: FoodThemeView().toolbarRole(.editor)) {
+                NavigationLink(destination: HomeView().toolbarRole(.editor)) {
                     Text("다음")
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
