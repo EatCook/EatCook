@@ -21,19 +21,24 @@ struct FoodThemeView: View {
                 Text("관심있는 요리를 3가지 이상 선택해주세요\n취향에 맞는 레시피를 추천해드려요")
                     .font(.body)
                     .multilineTextAlignment(.center)
+                    .frame(height: 50)
+                    .lineLimit(2)
+                    .padding(.horizontal, 24)
                 
                 LazyVGrid(columns: columns, spacing: 14) {
                     ForEach(FoodTheme.themes, id: \.id) { data in
                         Button(action: {
                             
                         }, label: {
-                            data.image
-                                .resizable()
-                                .frame(width: 24, height: 24)
-                            
-                            Text(data.title)
-                                .font(.callout)
-                                .foregroundColor(.gray)
+                            VStack {
+                                data.image
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                
+                                Text(data.title)
+                                    .font(.callout)
+                                    .foregroundColor(.gray)
+                            }
                         })
                         .frame(width: 90, height: 90)
                         .background(Color.white)
