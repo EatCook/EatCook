@@ -21,11 +21,11 @@ struct PasswordCheckView: View {
                     .font(.title2)
                     .padding(.vertical, 28)
 
-                CustomTextField(placeHolder: "비밀번호 입력 (영문+숫자 15자 이내) ", text: $password)
+                TextField("비밀번호 입력 (영문+숫자 15자 이내)", text: $password).modifier(CustomTextFieldModifier())
                     .padding(.vertical, 14)
                     .padding(.horizontal, 24)
-
-                CustomTextField(placeHolder: "비밀번호 확인", text: $passwordCheck)
+            
+                TextField("비밀번호 확인", text: $passwordCheck).modifier(CustomTextFieldModifier())
                     .padding(.bottom, 14)
                     .padding(.horizontal, 24)
 

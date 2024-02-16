@@ -36,7 +36,7 @@
 		3F4C10E72B73EA3200D6DA1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10CB2B73EA3200D6DA1B /* LoginViewModel.swift */; };
 		3F4C10E82B73EA3200D6DA1B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10CD2B73EA3200D6DA1B /* LoginView.swift */; };
 		3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10EB2B773DDA00D6DA1B /* EmailAuthView.swift */; };
-		3F4C10EF2B77BEA500D6DA1B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10EE2B77BEA500D6DA1B /* CustomTextField.swift */; };
+		3F4C10EF2B77BEA500D6DA1B /* CustomTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10EE2B77BEA500D6DA1B /* CustomTextFieldModifier.swift */; };
 		3F4C10F12B77C38600D6DA1B /* PasswordCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F02B77C38600D6DA1B /* PasswordCheckView.swift */; };
 		3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */; };
 		3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */; };
@@ -72,7 +72,7 @@
 		3F4C10CB2B73EA3200D6DA1B /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3F4C10CD2B73EA3200D6DA1B /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3F4C10EB2B773DDA00D6DA1B /* EmailAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthView.swift; sourceTree = "<group>"; };
-		3F4C10EE2B77BEA500D6DA1B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		3F4C10EE2B77BEA500D6DA1B /* CustomTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldModifier.swift; sourceTree = "<group>"; };
 		3F4C10F02B77C38600D6DA1B /* PasswordCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckView.swift; sourceTree = "<group>"; };
 		3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPopupView.swift; sourceTree = "<group>"; };
 		3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
@@ -421,7 +421,7 @@
 		3F4C10ED2B77BE7800D6DA1B /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				3F4C10EE2B77BEA500D6DA1B /* CustomTextField.swift */,
+				3F4C10EE2B77BEA500D6DA1B /* CustomTextFieldModifier.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -512,7 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F4C10EF2B77BEA500D6DA1B /* CustomTextField.swift in Sources */,
+				3F4C10EF2B77BEA500D6DA1B /* CustomTextFieldModifier.swift in Sources */,
 				3F4C10E12B73EA3200D6DA1B /* SearchView.swift in Sources */,
 				3F4C10E62B73EA3200D6DA1B /* ContentView.swift in Sources */,
 				3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */,
