@@ -37,7 +37,7 @@ enum CookTalkTabCase: CaseIterable {
 
 struct FeedView: View {
     @State private var activeTab: CookTalkTabCase = .cooktalk
-//    @Namespace private var animation
+    //    @Namespace private var animation
     
     var body: some View {
         NavigationStack {
@@ -47,27 +47,25 @@ struct FeedView: View {
                         Section {
                             TabView(selection: $activeTab) {
                                 ForEach(CookTalkTabCase.allCases, id: \.self) { tabCase in
-                                    NavigationLink(destination: RecipeView()) {
+                                    NavigationLink(destination: RecipeView().toolbarRole(.editor)) {
                                         tabCase.tabCaseContainerView()
                                             .tag(tabCase)
                                     }
                                     .tint(.primary)
                                 }
                             }
-                            .frame(height: 1800)
+                            .frame(height: 2500)
                             .tabViewStyle(.page(indexDisplayMode: .never))
-                            .ignoresSafeArea(.container, edges: .top)
+                            .ignoresSafeArea(.container, edges: .bottom)
                         } header: {
-    //                        tabView()
+                            //                        tabView()
                             FeedTabIndicatorView(activeTab: $activeTab)
                         }
                     }
                     .background(Color("BackGround"))
                 }
                 
-                Button {
-                    
-                } label: {
+                NavigationLink(destination: RecipeCreateView().toolbarRole(.editor)) {
                     Image(systemName: "plus")
                         .resizable()
                         .frame(width: 15, height: 15)
@@ -80,9 +78,9 @@ struct FeedView: View {
                         }
                         .padding(30)
                 }
-                //                .background(.red)
             }
             .navigationTitle("쿡Talk")
+            .navigationBarTitleDisplayMode(.inline)
             
         }
         
@@ -90,30 +88,30 @@ struct FeedView: View {
     }
     
     
-//    @ViewBuilder
-//    func tabView() -> some View {
-//        HStack {
-//            ForEach(CookTalkTabCase.allCases, id: \.rawValue) { tabCase in
-//                Text(tabCase.rawValue)
-//                    .font(.title3)
-//                    .fontWeight(.semibold)
-//                    .background(alignment: .bottom) {
-//                        if activeTab == tabCase {
-//                            Capsule()
-//                                .fill(.black)
-//                                .frame(height: 3)
-//                                .padding(.horizontal, -5)
-//                                .offset(y: 10)
-//                        }
-//                    }
-//                
-//            }
-//        }
-//        .frame(maxWidth: .infinity)
-//        .frame(height: 50)
-//        .background(Color.white)
-//        
-//    }
+    //    @ViewBuilder
+    //    func tabView() -> some View {
+    //        HStack {
+    //            ForEach(CookTalkTabCase.allCases, id: \.rawValue) { tabCase in
+    //                Text(tabCase.rawValue)
+    //                    .font(.title3)
+    //                    .fontWeight(.semibold)
+    //                    .background(alignment: .bottom) {
+    //                        if activeTab == tabCase {
+    //                            Capsule()
+    //                                .fill(.black)
+    //                                .frame(height: 3)
+    //                                .padding(.horizontal, -5)
+    //                                .offset(y: 10)
+    //                        }
+    //                    }
+    //
+    //            }
+    //        }
+    //        .frame(maxWidth: .infinity)
+    //        .frame(height: 50)
+    //        .background(Color.white)
+    //
+    //    }
 }
 
 #Preview {
