@@ -37,8 +37,8 @@ enum RecipeTabCase: CaseIterable {
 
 struct RecipeView: View {
     @State private var activeTab: RecipeTabCase = .recipe
-    @State private var scrollProgress: CGFloat = .zero
-    @State private var tabProgress: CGFloat = 0
+//    @Namespace private var animation
+//    @State private var contentOffset: CGFloat = 0
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -113,11 +113,18 @@ struct RecipeView: View {
                         ForEach(RecipeTabCase.allCases, id: \.self) { tabCase in
                             tabCase.tabCaseContainerView()
                                 .tag(tabCase)
+                            
                         }
                     }
                     .frame(height: 1700)
                     .tabViewStyle(.page(indexDisplayMode: .never))
                     .ignoresSafeArea(.container, edges: .bottom)
+//                    .onChange(of: activeTab) { newActiveTab in
+//                        let tabWidth = UIScreen.main.bounds.width / CGFloat(RecipeTabCase.allCases.count)
+//                        let indicatorOffset = tabWidth * CGFloat(newActiveTab.index)
+//                        contentOffset = indicatorOffset
+//                        print(contentOffset)
+//                    }
                 } header: {
                     TabIndicatorView(activeTab: $activeTab)
                 }
@@ -127,6 +134,7 @@ struct RecipeView: View {
         }
         
     }
+    
     
 }
 

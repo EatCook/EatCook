@@ -1,5 +1,5 @@
 //
-//  TabIndicatorView.swift
+//  FeedTabIndicatorView.swift
 //  EatCook
 //
 //  Created by 이명진 on 2/17/24.
@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-struct TabIndicatorView: View {
-    @Binding var activeTab: RecipeTabCase
+struct FeedTabIndicatorView: View {
+    @Binding var activeTab: CookTalkTabCase
     //    @Binding var contentOffset: CGFloat
     @Namespace private var animation
     
     var body: some View {
         GeometryReader {
             let size = $0.size
-            let tabWidth = size.width / CGFloat(RecipeTabCase.allCases.count)
+            let tabWidth = size.width / CGFloat(CookTalkTabCase.allCases.count)
             
             HStack(spacing: 0) {
-                ForEach(RecipeTabCase.allCases, id: \.self) { tabCase in
+                ForEach(CookTalkTabCase.allCases, id: \.self) { tabCase in
                     Text(tabCase.title)
                         .font(.headline)
                         .fontWeight(activeTab == tabCase ? .bold : .semibold)
@@ -48,7 +48,7 @@ struct TabIndicatorView: View {
                 }
             }
             .padding()
-            .frame(width: CGFloat(RecipeTabCase.allCases.count) * tabWidth)
+            .frame(width: CGFloat(CookTalkTabCase.allCases.count) * tabWidth)
             
         }
         .frame(height: 50)
@@ -57,5 +57,5 @@ struct TabIndicatorView: View {
 }
 
 #Preview {
-    TabIndicatorView(activeTab: .constant(RecipeTabCase.recipe))
+    FeedTabIndicatorView(activeTab: .constant(CookTalkTabCase.cooktalk))
 }
