@@ -86,32 +86,6 @@ struct FeedView: View {
         
         
     }
-    
-    
-    //    @ViewBuilder
-    //    func tabView() -> some View {
-    //        HStack {
-    //            ForEach(CookTalkTabCase.allCases, id: \.rawValue) { tabCase in
-    //                Text(tabCase.rawValue)
-    //                    .font(.title3)
-    //                    .fontWeight(.semibold)
-    //                    .background(alignment: .bottom) {
-    //                        if activeTab == tabCase {
-    //                            Capsule()
-    //                                .fill(.black)
-    //                                .frame(height: 3)
-    //                                .padding(.horizontal, -5)
-    //                                .offset(y: 10)
-    //                        }
-    //                    }
-    //
-    //            }
-    //        }
-    //        .frame(maxWidth: .infinity)
-    //        .frame(height: 50)
-    //        .background(Color.white)
-    //
-    //    }
 }
 
 #Preview {
