@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
+
         NavigationStack {
             NavigationLink(destination: SearchView().toolbarRole(.editor)) {
                 Text("검색")
@@ -21,6 +22,7 @@ struct HomeView: View {
                     .padding(.vertical, 46)
             }
         }
+
     }
 }
 
