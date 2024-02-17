@@ -34,7 +34,7 @@ struct CreateProfileView: View {
                     }).offset(x: 45, y: 45)
                 }
                 
-                CustomTextField(placeHolder: "2~6자의 한글의 닉네임 (기호 사용 불가)", text: $nickname)
+                TextField("2~6자의 한글의 닉네임 (기호 사용 불가)", text: $nickname).modifier(CustomTextFieldModifier())
                     .padding(.horizontal, 24)
                     .padding(.top, 36)
                     .padding(.bottom, 14)

@@ -20,7 +20,7 @@ struct EmailAuthView: View {
                     .padding(.vertical, 28)
                 
                 HStack {
-                    CustomTextField(placeHolder: "이메일", text: $email)
+                    TextField("이메일", text: $email).modifier(CustomTextFieldModifier())
                     
                     Button(action: {
 
@@ -36,8 +36,8 @@ struct EmailAuthView: View {
                 .padding(.horizontal, 24)
                 
                 HStack {
-                    CustomTextField(placeHolder: "인증번호", text: $authNumber)
-
+                    TextField("인증번호", text: $authNumber).modifier(CustomTextFieldModifier())
+                    
                     Button(action: {
                         
                     }, label: {

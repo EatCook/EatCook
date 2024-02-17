@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 enum CookTalkTabCase: CaseIterable {
     case cooktalk
     case follow
@@ -32,17 +33,21 @@ enum CookTalkTabCase: CaseIterable {
         case .cooktalk: FeedContainerView()
         case .follow: Text("팔로우 피드")
         }
+
     }
 }
 
 struct FeedView: View {
     @State private var activeTab: CookTalkTabCase = .cooktalk
+
     //    @Namespace private var animation
+
     
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView(showsIndicators: false) {
+
                     LazyVStack(spacing: 12, pinnedViews: [.sectionHeaders]) {
                         Section {
                             TabView(selection: $activeTab) {
@@ -60,12 +65,14 @@ struct FeedView: View {
                         } header: {
                             //                        tabView()
                             FeedTabIndicatorView(activeTab: $activeTab)
+
                         }
                     }
                     .background(Color("BackGround"))
                 }
                 
                 NavigationLink(destination: RecipeCreateView().toolbarRole(.editor)) {
+
                     Image(systemName: "plus")
                         .resizable()
                         .frame(width: 15, height: 15)
@@ -78,16 +85,20 @@ struct FeedView: View {
                         }
                         .padding(30)
                 }
+
             }
             .navigationTitle("쿡Talk")
             .navigationBarTitleDisplayMode(.inline)
             
         }
         
+
         
     }
 }
 
 #Preview {
-    FeedView()
+    NavigationStack {
+        FeedView()
+    }
 }
