@@ -11,7 +11,9 @@ import SwiftUI
 struct EatCookApp: App {
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            NavigationStack {
+                RecipeView()                
+            }
         }
     }
 }
