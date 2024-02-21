@@ -218,25 +218,25 @@ struct HomeView: View {
                                         RoundedRectangle(cornerRadius: 10)
                                             .stroke(Color.bdBorder, lineWidth:1)
                                     )
-                                    .gesture(
-                                        DragGesture()
-                                            .onEnded { gesture in
-                                                let dragDistance = gesture.translation.width
-                                                print("dragDistance", dragDistance)
-                                                if dragDistance > 0 {
-                                                    //오른쪽으로 스와이프
-                                                    guard selectMenuRecommend > 0 else { return }
-                                                    selectMenuRecommend -= 1
-                                                } else {
-                                                    guard selectMenuRecommend < 3 else { return }
-                                                    selectMenuRecommend += 1
-                                                }
-                                            }
-                                    )
                                 }
                             }
                         }.padding(.horizontal, 22)
                         .frame(maxHeight: .infinity)
+                        .gesture(
+                            DragGesture()
+                                .onEnded { gesture in
+                                    let dragDistance = gesture.translation.width
+                                    print("dragDistance", dragDistance)
+                                    if dragDistance > 0 {
+                                        //오른쪽으로 스와이프
+                                        guard selectMenuRecommend > 0 else { return }
+                                        selectMenuRecommend -= 1
+                                    } else {
+                                        guard selectMenuRecommend < 3 else { return }
+                                        selectMenuRecommend += 1
+                                    }
+                                }
+                        )
                     }.background(Color.white)
                 }
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
