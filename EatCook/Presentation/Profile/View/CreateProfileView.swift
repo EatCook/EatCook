@@ -19,7 +19,7 @@ struct CreateProfileView: View {
                     .padding(.vertical, 20)
                 
                 ZStack {
-                    Image(.food1)
+                    Image(.food)
                         .resizable()
                         .frame(width: 120, height: 120)
                         .cornerRadius(60)
