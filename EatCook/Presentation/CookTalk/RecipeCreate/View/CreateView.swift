@@ -145,6 +145,7 @@ struct CreateView: View {
             .padding(.vertical, 20)
         }
         .padding(24)
+        .background(Color("bdBorder"))
         .navigationTitle("글쓰기")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -164,12 +165,12 @@ struct CustomProgressBarStyle: ProgressViewStyle {
         return ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 8)
                 .frame(height: progressBarThickness)
-                .foregroundColor(.gray)
+                .foregroundColor(Color("bgPrimary"))
             
             RoundedRectangle(cornerRadius: 8)
                 .frame(width: CGFloat(configuration.fractionCompleted ?? 0.0) * UIScreen.main.bounds.width,
                        height: progressBarThickness)
-                .foregroundColor(.blue)
+                .foregroundColor(.orange)
         }
         //        .animation(.linear)
     }
