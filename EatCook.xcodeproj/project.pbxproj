@@ -48,6 +48,7 @@
 		F66E2D3C2B934C1E00524B8B /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D3B2B934C1E00524B8B /* DropdownView.swift */; };
 		F66E2D3E2B93739800524B8B /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D3D2B93739800524B8B /* TimerPickerView.swift */; };
 		F66E2D402B937FEA00524B8B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D3F2B937FEA00524B8B /* ImagePicker.swift */; };
+		F66E2D422B93B61F00524B8B /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D412B93B61F00524B8B /* TestView.swift */; };
 		F69B6DB32B80BFCA00EFB467 /* ScrollOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B6DB22B80BFCA00EFB467 /* ScrollOffset.swift */; };
 		F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B6DB52B80D80500EFB467 /* TabCase.swift */; };
 		F69B6DBA2B80D90400EFB467 /* FeedTabIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B6DB92B80D90400EFB467 /* FeedTabIndicatorView.swift */; };
@@ -102,6 +103,7 @@
 		F66E2D3B2B934C1E00524B8B /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
 		F66E2D3D2B93739800524B8B /* TimerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerView.swift; sourceTree = "<group>"; };
 		F66E2D3F2B937FEA00524B8B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F66E2D412B93B61F00524B8B /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		F69B6DB22B80BFCA00EFB467 /* ScrollOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffset.swift; sourceTree = "<group>"; };
 		F69B6DB52B80D80500EFB467 /* TabCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCase.swift; sourceTree = "<group>"; };
 		F69B6DB92B80D90400EFB467 /* FeedTabIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTabIndicatorView.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 				F66E2CFA2B8CC2DC00524B8B /* RecipeCreateView.swift */,
 				F66E2D372B93491100524B8B /* RecipeTagView.swift */,
 				F66E2D392B93498900524B8B /* RecipeStepView.swift */,
+				F66E2D412B93B61F00524B8B /* TestView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				F69B6DBC2B80D90A00EFB467 /* FeedRowView.swift in Sources */,
 				F66E2CFB2B8CC2DC00524B8B /* RecipeCreateView.swift in Sources */,
 				F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */,
+				F66E2D422B93B61F00524B8B /* TestView.swift in Sources */,
 				3F21B3B82B7264B400BF67F7 /* SplashView.swift in Sources */,
 				3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */,
 				F69B6DB32B80BFCA00EFB467 /* ScrollOffset.swift in Sources */,

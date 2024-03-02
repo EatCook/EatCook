@@ -8,5 +8,17 @@
 import SwiftUI
 
 final class RecipeCreateViewModel: ObservableObject {
+    @Published var recipeStepData: [RecipeStep] = []
     
+    func addStep(_ data: RecipeStep) {
+        recipeStepData.append(data)
+    }
+    
+    func editStep(_ data: RecipeStep, _ index: Int) {
+        recipeStepData[index] = data
+    }
+    
+    func deleteStep() {
+        
+    }
 }
