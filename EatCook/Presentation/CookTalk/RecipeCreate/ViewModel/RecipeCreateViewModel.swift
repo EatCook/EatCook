@@ -14,8 +14,13 @@ final class RecipeCreateViewModel: ObservableObject {
         recipeStepData.append(data)
     }
     
-    func editStep(_ data: RecipeStep, _ index: Int) {
-        recipeStepData[index] = data
+    func updateStep(_ index: Int, _ selectedImage: UIImage?) {
+        if let image = selectedImage {
+            recipeStepData[index].image = image
+            recipeStepData[index].isEditing.toggle()
+        } else {
+            recipeStepData[index].isEditing.toggle()
+        }
     }
     
     func deleteStep() {

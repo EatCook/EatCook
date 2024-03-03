@@ -50,13 +50,18 @@ struct RecipeStepView: View {
                                 }
                             }
                     } else {
-                        StepEditorView(viewModel: viewModel, index: index)
+                        StepEditorView(viewModel: viewModel, showImagePicker: $showImagePicker, selectedImage: $selectedImage, index: index)
                             .listRowBackground(Color.gray1)
                             .listRowSeparator(.hidden)
+//                        StepEditorView(viewModel: viewModel, index: index)
+                            
                     }
                 }
             }
             .listStyle(.plain)
+//            .onTapGesture {
+//                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//            }
             
             CreateChatView(viewModel: viewModel, showImagePicker: $showImagePicker, selectedImage: $selectedImage)
                 .sheet(isPresented: $showImagePicker) {
@@ -64,6 +69,7 @@ struct RecipeStepView: View {
                 }
         }
         .background(.gray1)
+        
     }
 }
 
@@ -102,8 +108,8 @@ struct StepRowView: View {
 
 struct StepEditorView: View {
     @ObservedObject var viewModel: RecipeCreateViewModel
-    @State private var selectedImage: UIImage?
-    @State private var text: String = ""
+    @Binding var showImagePicker: Bool
+    @Binding var selectedImage: UIImage?
     var index: Int
     
     var body: some View {
@@ -121,8 +127,11 @@ struct StepEditorView: View {
                             .foregroundStyle(.white)
                     }
                     .onTapGesture {
-                        
+                        showImagePicker.toggle()
                     }
+//                    .sheet(isPresented: $showImagePicker) {
+//                        ImagePicker(selectedImage: selectedImage)
+//                    }
             }
             
             VStack(alignment: .leading) {
@@ -138,7 +147,9 @@ struct StepEditorView: View {
                     Spacer()
                     
                     Button {
-                        
+                        withAnimation(.easeInOut(duration: 0.4)) {
+                            viewModel.updateStep(index, selectedImage)
+                        }
                     } label: {
                         Text("완료")
                             .font(.caption)
