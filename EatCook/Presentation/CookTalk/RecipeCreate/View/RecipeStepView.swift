@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+/*
+ - 선택된 이미지를 하나의 변수에서 상태관리를 해서 글쓰기랑 편집이 같이 변경됨.
+ - 디바이스에서 실행시 List 배경색 적용이 안됨.
+ - 이미지 등록시 버튼에 맞게 레이아웃 다시 잡아야 됨.
+ */
+
 struct RecipeStep: Identifiable, Hashable {
     let id = UUID().uuidString
     var description: String
@@ -18,6 +24,8 @@ struct RecipeStepView: View {
     @StateObject private var viewModel = RecipeCreateViewModel()
     @State private var showImagePicker: Bool = false
     @State private var selectedImage: UIImage?
+    
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -69,6 +77,26 @@ struct RecipeStepView: View {
                 }
         }
         .background(.gray1)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    naviPathFinder.popToRoot()
+                } label: {
+                    Image(systemName: "xmark")
+                        .imageScale(.large)
+                }
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    naviPathFinder.popToRoot()
+                } label: {
+                    Text("저장")
+                        
+                }
+            }
+        }
         
     }
 }
@@ -238,4 +266,5 @@ struct CreateChatView: View {
 
 #Preview {
     RecipeStepView()
+        .environmentObject(NavigationPathFinder.shared)
 }

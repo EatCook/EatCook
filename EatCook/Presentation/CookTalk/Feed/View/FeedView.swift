@@ -33,21 +33,22 @@ enum CookTalkTabCase: CaseIterable {
         case .cooktalk: FeedContainerView()
         case .follow: Text("팔로우 피드")
         }
-
+        
     }
 }
 
 struct FeedView: View {
     @State private var activeTab: CookTalkTabCase = .cooktalk
-
+    
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     //    @Namespace private var animation
-
+    
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $naviPathFinder.path) {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView(showsIndicators: false) {
-
+                    
                     LazyVStack(spacing: 12, pinnedViews: [.sectionHeaders]) {
                         Section {
                             TabView(selection: $activeTab) {
@@ -65,14 +66,15 @@ struct FeedView: View {
                         } header: {
                             //                        tabView()
                             FeedTabIndicatorView(activeTab: $activeTab)
-
+                            
                         }
                     }
                     .background(Color("BackGround"))
                 }
                 
-                NavigationLink(destination: RecipeCreateView().toolbarRole(.editor)) {
-
+                Button {
+                    naviPathFinder.addPath(.recipeCreate(""))
+                } label: {
                     Image(systemName: "plus")
                         .resizable()
                         .frame(width: 15, height: 15)
@@ -85,20 +87,35 @@ struct FeedView: View {
                         }
                         .padding(30)
                 }
-
+                //                NavigationLink(destination: RecipeCreateView().toolbarRole(.editor)) {
+                //                    Image(systemName: "plus")
+                //                        .resizable()
+                //                        .frame(width: 15, height: 15)
+                //                        .foregroundStyle(.white)
+                //                        .background {
+                //                            Circle()
+                //                                .fill(.black)
+                //                                .frame(width: 45, height: 45)
+                //                                .shadow(color: .black, radius: 7)
+                //                        }
+                //                        .padding(30)
+                //                }
+                
             }
             .navigationTitle("쿡Talk")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(for: ViewOptions.self) { viewCase in
+                viewCase.view()
+            }
             
         }
         
-
+        
         
     }
 }
 
 #Preview {
-    NavigationStack {
-        FeedView()
-    }
+    FeedView()
+        .environmentObject(NavigationPathFinder.shared)
 }

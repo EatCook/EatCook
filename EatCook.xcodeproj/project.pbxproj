@@ -49,6 +49,9 @@
 		F66E2D3E2B93739800524B8B /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D3D2B93739800524B8B /* TimerPickerView.swift */; };
 		F66E2D402B937FEA00524B8B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D3F2B937FEA00524B8B /* ImagePicker.swift */; };
 		F66E2D422B93B61F00524B8B /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D412B93B61F00524B8B /* TestView.swift */; };
+		F66E2D442B947E7500524B8B /* TagField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D432B947E7500524B8B /* TagField.swift */; };
+		F66E2D462B947EE600524B8B /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D452B947EE600524B8B /* TagLayout.swift */; };
+		F66E2D492B948F9200524B8B /* NavigationPathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D482B948F9200524B8B /* NavigationPathFinder.swift */; };
 		F69B6DB32B80BFCA00EFB467 /* ScrollOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B6DB22B80BFCA00EFB467 /* ScrollOffset.swift */; };
 		F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B6DB52B80D80500EFB467 /* TabCase.swift */; };
 		F69B6DBA2B80D90400EFB467 /* FeedTabIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B6DB92B80D90400EFB467 /* FeedTabIndicatorView.swift */; };
@@ -104,6 +107,9 @@
 		F66E2D3D2B93739800524B8B /* TimerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerView.swift; sourceTree = "<group>"; };
 		F66E2D3F2B937FEA00524B8B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F66E2D412B93B61F00524B8B /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		F66E2D432B947E7500524B8B /* TagField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagField.swift; sourceTree = "<group>"; };
+		F66E2D452B947EE600524B8B /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
+		F66E2D482B948F9200524B8B /* NavigationPathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPathFinder.swift; sourceTree = "<group>"; };
 		F69B6DB22B80BFCA00EFB467 /* ScrollOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffset.swift; sourceTree = "<group>"; };
 		F69B6DB52B80D80500EFB467 /* TabCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCase.swift; sourceTree = "<group>"; };
 		F69B6DB92B80D90400EFB467 /* FeedTabIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTabIndicatorView.swift; sourceTree = "<group>"; };
@@ -136,6 +142,7 @@
 				3F4C10ED2B77BE7800D6DA1B /* Component */,
 				3F4C10942B73EA3100D6DA1B /* Utillites */,
 				3F4C10962B73EA3100D6DA1B /* Extensions */,
+				F66E2D472B948F8400524B8B /* Helper */,
 				3F4C10992B73EA3100D6DA1B /* Applications */,
 				3F4C109B2B73EA3100D6DA1B /* Data */,
 				3F4C10A02B73EA3100D6DA1B /* Domain */,
@@ -478,6 +485,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		F66E2D472B948F8400524B8B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D482B948F9200524B8B /* NavigationPathFinder.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		F69B6DB42B80CA8B00EFB467 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +531,8 @@
 				F66E2D3B2B934C1E00524B8B /* DropdownView.swift */,
 				F66E2D3D2B93739800524B8B /* TimerPickerView.swift */,
 				F66E2D3F2B937FEA00524B8B /* ImagePicker.swift */,
+				F66E2D432B947E7500524B8B /* TagField.swift */,
+				F66E2D452B947EE600524B8B /* TagLayout.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -619,6 +636,7 @@
 			files = (
 				F69B6DBA2B80D90400EFB467 /* FeedTabIndicatorView.swift in Sources */,
 				F6C80AE32B80A60100001924 /* TabIndicatorView.swift in Sources */,
+				F66E2D492B948F9200524B8B /* NavigationPathFinder.swift in Sources */,
 				3F4C10EF2B77BEA500D6DA1B /* CustomTextFieldModifier.swift in Sources */,
 				3F4C10E12B73EA3200D6DA1B /* SearchView.swift in Sources */,
 				3F4C10E62B73EA3200D6DA1B /* ContentView.swift in Sources */,
@@ -637,6 +655,7 @@
 				F66E2D402B937FEA00524B8B /* ImagePicker.swift in Sources */,
 				3F4C10E22B73EA3200D6DA1B /* ProfileViewModel.swift in Sources */,
 				3F4C10E72B73EA3200D6DA1B /* LoginViewModel.swift in Sources */,
+				F66E2D462B947EE600524B8B /* TagLayout.swift in Sources */,
 				3F2652FD2B7C3E180065DFA5 /* HouseholdCompositionView.swift in Sources */,
 				3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */,
 				3F2652FB2B7AF2060065DFA5 /* FoodThemeView.swift in Sources */,
@@ -645,6 +664,7 @@
 				F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */,
 				F66E2D422B93B61F00524B8B /* TestView.swift in Sources */,
 				3F21B3B82B7264B400BF67F7 /* SplashView.swift in Sources */,
+				F66E2D442B947E7500524B8B /* TagField.swift in Sources */,
 				3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */,
 				F69B6DB32B80BFCA00EFB467 /* ScrollOffset.swift in Sources */,
 				3F4C10DC2B73EA3200D6DA1B /* FeedViewModel.swift in Sources */,

@@ -22,6 +22,8 @@ struct RecipeCreateView: View {
     @State private var selectedTheme: String = "테마 선택"
     @State private var selectedImage: UIImage?
     
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    
     let characterLimit = 100
     
     var body: some View {
@@ -47,8 +49,8 @@ struct RecipeCreateView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 60, height: 50)
-//                                .padding()
-//                                .foregroundStyle(.gray5)
+                            //                                .padding()
+                            //                                .foregroundStyle(.gray5)
                                 .modifier(CustomBorderModifier())
                         } else {
                             Image(systemName: "camera.fill")
@@ -124,9 +126,9 @@ struct RecipeCreateView: View {
                     .frame(maxWidth: .infinity)
                     .modifier(CustomBorderModifier())
                     
-    //                Divider()
-    //                    .frame(width: 1, height: 30)
-    //                    .background(.gray3)
+                    //                Divider()
+                    //                    .frame(width: 1, height: 30)
+                    //                    .background(.gray3)
                     
                     Button {
                         showDropdownTheme.toggle()
@@ -134,17 +136,17 @@ struct RecipeCreateView: View {
                         DropdownView(showDropDown: $showDropdownTheme, selectedTheme: $selectedTheme)
                             .frame(height: showDropdownTheme ? 260 : 60)
                     }
-//                    .padding()
-//                    .frame(maxWidth: .infinity)
-//                    .modifier(CustomBorderModifier())
+                    //                    .padding()
+                    //                    .frame(maxWidth: .infinity)
+                    //                    .modifier(CustomBorderModifier())
                 }
                 .frame(height: showDropdownTheme ? 260 : 60)
-//                .frame(maxWidth: .infinity)
-    //            .padding()
-    //            .modifier(CustomBorderModifier())
+                //                .frame(maxWidth: .infinity)
+                //            .padding()
+                //            .modifier(CustomBorderModifier())
                 
                 Button {
-                    
+                    naviPathFinder.addPath(.recipeTag(""))
                 } label: {
                     Text("다음")
                         .foregroundStyle(.white)
@@ -158,6 +160,9 @@ struct RecipeCreateView: View {
                 .padding(.vertical, 20)
             }
             .padding(24)
+//            .navigationDestination(for: ViewOptions.self) { viewCase in
+//                viewCase.view()
+//            }
             .onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
@@ -166,6 +171,18 @@ struct RecipeCreateView: View {
         .background(.gray1)
         .navigationTitle("글쓰기")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    naviPathFinder.pop()
+                } label: {
+                    Image(systemName: "xmark")
+                        .imageScale(.large)
+                }
+            }
+        }
+        .toolbar(.hidden, for: .tabBar)
         .sheet(isPresented: $showTimerPicker) {
             TimerPickerView()
                 .presentationDetents([.fraction(0.42)])
@@ -175,26 +192,25 @@ struct RecipeCreateView: View {
 }
 
 #Preview {
-    NavigationStack {
-        RecipeCreateView()
-    }
+    RecipeCreateView()
+        .environmentObject(NavigationPathFinder.shared)
 }
 
-struct CustomProgressBarStyle: ProgressViewStyle {
-    var progressBarThickness: CGFloat = 10.0
-    
-    func makeBody(configuration: Configuration) -> some View {
-        
-        return ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 8)
-                .frame(height: progressBarThickness)
-                .foregroundColor(Color("bgPrimary"))
-            
-            RoundedRectangle(cornerRadius: 8)
-                .frame(width: CGFloat(configuration.fractionCompleted ?? 0.0) * UIScreen.main.bounds.width,
-                       height: progressBarThickness)
-                .foregroundColor(.orange)
-        }
-        //        .animation(.linear)
-    }
-}
+//struct CustomProgressBarStyle: ProgressViewStyle {
+//    var progressBarThickness: CGFloat = 10.0
+//
+//    func makeBody(configuration: Configuration) -> some View {
+//
+//        return ZStack(alignment: .leading) {
+//            RoundedRectangle(cornerRadius: 8)
+//                .frame(height: progressBarThickness)
+//                .foregroundColor(Color("bgPrimary"))
+//
+//            RoundedRectangle(cornerRadius: 8)
+//                .frame(width: CGFloat(configuration.fractionCompleted ?? 0.0) * UIScreen.main.bounds.width,
+//                       height: progressBarThickness)
+//                .foregroundColor(.orange)
+//        }
+//        //        .animation(.linear)
+//    }
+//}
