@@ -16,8 +16,6 @@
 		3F4C10D22B73EA3200D6DA1B /* Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10972B73EA3100D6DA1B /* Ex.swift */; };
 		3F4C10D42B73EA3200D6DA1B /* EatCookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C109A2B73EA3100D6DA1B /* EatCookApp.swift */; };
 		3F4C10D52B73EA3200D6DA1B /* EatCookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C109D2B73EA3100D6DA1B /* EatCookRepository.swift */; };
-		3F4C10D62B73EA3200D6DA1B /* ModelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C109F2B73EA3100D6DA1B /* ModelDTO.swift */; };
-		3F4C10D72B73EA3200D6DA1B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10A22B73EA3100D6DA1B /* Model.swift */; };
 		3F4C10D82B73EA3200D6DA1B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10A62B73EA3100D6DA1B /* HomeViewModel.swift */; };
 		3F4C10D92B73EA3200D6DA1B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10A82B73EA3100D6DA1B /* HomeView.swift */; };
 		3F4C10DA2B73EA3200D6DA1B /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10AC2B73EA3100D6DA1B /* RecipeViewModel.swift */; };
@@ -40,6 +38,7 @@
 		3F4C10F12B77C38600D6DA1B /* PasswordCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F02B77C38600D6DA1B /* PasswordCheckView.swift */; };
 		3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */; };
 		3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */; };
+
 		F66E2CF92B8CC2B800524B8B /* RecipeCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2CF82B8CC2B800524B8B /* RecipeCreateViewModel.swift */; };
 		F66E2CFB2B8CC2DC00524B8B /* RecipeCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2CFA2B8CC2DC00524B8B /* RecipeCreateView.swift */; };
 		F66E2D362B93418300524B8B /* CustomBorderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D352B93418300524B8B /* CustomBorderModifier.swift */; };
@@ -52,6 +51,26 @@
 		F66E2D442B947E7500524B8B /* TagField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D432B947E7500524B8B /* TagField.swift */; };
 		F66E2D462B947EE600524B8B /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D452B947EE600524B8B /* TagLayout.swift */; };
 		F66E2D492B948F9200524B8B /* NavigationPathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D482B948F9200524B8B /* NavigationPathFinder.swift */; };
+		F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */; };
+		F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D062B8CCEFB00524B8B /* HTTPError.swift */; };
+		F66E2D092B8CCF0000524B8B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D082B8CCF0000524B8B /* NetworkError.swift */; };
+		F66E2D0B2B8CCF2A00524B8B /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D0A2B8CCF2A00524B8B /* HTTPMethod.swift */; };
+		F66E2D0D2B8CCF7100524B8B /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D0C2B8CCF7100524B8B /* HTTPTask.swift */; };
+		F66E2D0F2B8CCFC400524B8B /* URLRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D0E2B8CCFC400524B8B /* URLRequestable.swift */; };
+		F66E2D112B8CCFDE00524B8B /* NetworkProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D102B8CCFDE00524B8B /* NetworkProviderImpl.swift */; };
+		F66E2D132B8CCFE400524B8B /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D122B8CCFE400524B8B /* NetworkProvider.swift */; };
+		F66E2D152B8CCFEA00524B8B /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D142B8CCFEA00524B8B /* EndPoint.swift */; };
+		F66E2D182B8CD12200524B8B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D172B8CD12200524B8B /* NetworkManager.swift */; };
+		F66E2D1A2B8CD16100524B8B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D192B8CD16100524B8B /* Environment.swift */; };
+		F66E2D1C2B8CD1F700524B8B /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D1B2B8CD1F700524B8B /* AuthAPI.swift */; };
+		F66E2D1E2B8CD1FD00524B8B /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D1D2B8CD1FD00524B8B /* LoginAPI.swift */; };
+		F66E2D202B8CD20A00524B8B /* CookTalkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D1F2B8CD20A00524B8B /* CookTalkAPI.swift */; };
+		F66E2D292B8CD37300524B8B /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D282B8CD37300524B8B /* RealmModel.swift */; };
+		F66E2D2B2B8CD38D00524B8B /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D2A2B8CD38D00524B8B /* LoginResponse.swift */; };
+		F66E2D2D2B8CD3A000524B8B /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D2C2B8CD3A000524B8B /* LoginRequest.swift */; };
+		F66E2D2F2B8CD41E00524B8B /* LoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D2E2B8CD41E00524B8B /* LoginResponseDTO.swift */; };
+		F66E2D312B8CD4C100524B8B /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D302B8CD4C100524B8B /* HTTPHeaderField.swift */; };
+
 		F69B6DB32B80BFCA00EFB467 /* ScrollOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B6DB22B80BFCA00EFB467 /* ScrollOffset.swift */; };
 		F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B6DB52B80D80500EFB467 /* TabCase.swift */; };
 		F69B6DBA2B80D90400EFB467 /* FeedTabIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B6DB92B80D90400EFB467 /* FeedTabIndicatorView.swift */; };
@@ -74,8 +93,6 @@
 		3F4C10972B73EA3100D6DA1B /* Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ex.swift; sourceTree = "<group>"; };
 		3F4C109A2B73EA3100D6DA1B /* EatCookApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatCookApp.swift; sourceTree = "<group>"; };
 		3F4C109D2B73EA3100D6DA1B /* EatCookRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatCookRepository.swift; sourceTree = "<group>"; };
-		3F4C109F2B73EA3100D6DA1B /* ModelDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDTO.swift; sourceTree = "<group>"; };
-		3F4C10A22B73EA3100D6DA1B /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3F4C10A62B73EA3100D6DA1B /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3F4C10A82B73EA3100D6DA1B /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3F4C10AC2B73EA3100D6DA1B /* RecipeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
@@ -98,6 +115,7 @@
 		3F4C10F02B77C38600D6DA1B /* PasswordCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckView.swift; sourceTree = "<group>"; };
 		3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPopupView.swift; sourceTree = "<group>"; };
 		3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
+
 		F66E2CF82B8CC2B800524B8B /* RecipeCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCreateViewModel.swift; sourceTree = "<group>"; };
 		F66E2CFA2B8CC2DC00524B8B /* RecipeCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCreateView.swift; sourceTree = "<group>"; };
 		F66E2D352B93418300524B8B /* CustomBorderModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBorderModifier.swift; sourceTree = "<group>"; };
@@ -110,6 +128,27 @@
 		F66E2D432B947E7500524B8B /* TagField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagField.swift; sourceTree = "<group>"; };
 		F66E2D452B947EE600524B8B /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
 		F66E2D482B948F9200524B8B /* NavigationPathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPathFinder.swift; sourceTree = "<group>"; };
+
+		F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookRepositoryType.swift; sourceTree = "<group>"; };
+		F66E2D062B8CCEFB00524B8B /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
+		F66E2D082B8CCF0000524B8B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		F66E2D0A2B8CCF2A00524B8B /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		F66E2D0C2B8CCF7100524B8B /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		F66E2D0E2B8CCFC400524B8B /* URLRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestable.swift; sourceTree = "<group>"; };
+		F66E2D102B8CCFDE00524B8B /* NetworkProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProviderImpl.swift; sourceTree = "<group>"; };
+		F66E2D122B8CCFE400524B8B /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		F66E2D142B8CCFEA00524B8B /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		F66E2D172B8CD12200524B8B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F66E2D192B8CD16100524B8B /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		F66E2D1B2B8CD1F700524B8B /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		F66E2D1D2B8CD1FD00524B8B /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		F66E2D1F2B8CD20A00524B8B /* CookTalkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkAPI.swift; sourceTree = "<group>"; };
+		F66E2D282B8CD37300524B8B /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RealmModel.swift; path = EatCook/Network/API/RealmModel.swift; sourceTree = SOURCE_ROOT; };
+		F66E2D2A2B8CD38D00524B8B /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginResponse.swift; path = EatCook/Network/API/LoginResponse.swift; sourceTree = SOURCE_ROOT; };
+		F66E2D2C2B8CD3A000524B8B /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginRequest.swift; path = EatCook/Network/API/LoginRequest.swift; sourceTree = SOURCE_ROOT; };
+		F66E2D2E2B8CD41E00524B8B /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
+		F66E2D302B8CD4C100524B8B /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
+
 		F69B6DB22B80BFCA00EFB467 /* ScrollOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffset.swift; sourceTree = "<group>"; };
 		F69B6DB52B80D80500EFB467 /* TabCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCase.swift; sourceTree = "<group>"; };
 		F69B6DB92B80D90400EFB467 /* FeedTabIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTabIndicatorView.swift; sourceTree = "<group>"; };
@@ -144,8 +183,9 @@
 				3F4C10962B73EA3100D6DA1B /* Extensions */,
 				F66E2D472B948F8400524B8B /* Helper */,
 				3F4C10992B73EA3100D6DA1B /* Applications */,
-				3F4C109B2B73EA3100D6DA1B /* Data */,
 				3F4C10A02B73EA3100D6DA1B /* Domain */,
+				3F4C109B2B73EA3100D6DA1B /* Data */,
+				F66E2CFC2B8CCD3C00524B8B /* Network */,
 				3F4C10A32B73EA3100D6DA1B /* Presentation */,
 			);
 			path = EatCook;
@@ -213,7 +253,9 @@
 		3F4C109E2B73EA3100D6DA1B /* DataMapping */ = {
 			isa = PBXGroup;
 			children = (
-				3F4C109F2B73EA3100D6DA1B /* ModelDTO.swift */,
+				F66E2D212B8CD32200524B8B /* RealmDTO */,
+				F66E2D222B8CD32700524B8B /* RequestDTO */,
+				F66E2D232B8CD32C00524B8B /* ResponseDTO */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -221,17 +263,10 @@
 		3F4C10A02B73EA3100D6DA1B /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				3F4C10A12B73EA3100D6DA1B /* Model */,
+				F66E2D242B8CD35000524B8B /* Model */,
+				F66E2D032B8CCEA300524B8B /* Interfaces */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		3F4C10A12B73EA3100D6DA1B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				3F4C10A22B73EA3100D6DA1B /* Model.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3F4C10A32B73EA3100D6DA1B /* Presentation */ = {
@@ -477,6 +512,7 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+
 		F66E2CF72B8CC28E00524B8B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,6 +527,131 @@
 				F66E2D482B948F9200524B8B /* NavigationPathFinder.swift */,
 			);
 			path = Helper;
+
+		F66E2CFC2B8CCD3C00524B8B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D002B8CCE6300524B8B /* Error */,
+				F66E2CFF2B8CCE5E00524B8B /* Foundation */,
+				F66E2D162B8CD11700524B8B /* NetworkManager */,
+				F66E2D012B8CCE7300524B8B /* NetworkProvider */,
+				F66E2D022B8CCE8000524B8B /* API */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F66E2CFF2B8CCE5E00524B8B /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D142B8CCFEA00524B8B /* EndPoint.swift */,
+				F66E2D302B8CD4C100524B8B /* HTTPHeaderField.swift */,
+				F66E2D0A2B8CCF2A00524B8B /* HTTPMethod.swift */,
+				F66E2D0C2B8CCF7100524B8B /* HTTPTask.swift */,
+				F66E2D0E2B8CCFC400524B8B /* URLRequestable.swift */,
+				F66E2D122B8CCFE400524B8B /* NetworkProvider.swift */,
+				F66E2D192B8CD16100524B8B /* Environment.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		F66E2D002B8CCE6300524B8B /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D062B8CCEFB00524B8B /* HTTPError.swift */,
+				F66E2D082B8CCF0000524B8B /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		F66E2D012B8CCE7300524B8B /* NetworkProvider */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D102B8CCFDE00524B8B /* NetworkProviderImpl.swift */,
+			);
+			path = NetworkProvider;
+			sourceTree = "<group>";
+		};
+		F66E2D022B8CCE8000524B8B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D1D2B8CD1FD00524B8B /* LoginAPI.swift */,
+				F66E2D1B2B8CD1F700524B8B /* AuthAPI.swift */,
+				F66E2D1F2B8CD20A00524B8B /* CookTalkAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		F66E2D032B8CCEA300524B8B /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F66E2D162B8CD11700524B8B /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D172B8CD12200524B8B /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		F66E2D212B8CD32200524B8B /* RealmDTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RealmDTO;
+			sourceTree = "<group>";
+		};
+		F66E2D222B8CD32700524B8B /* RequestDTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RequestDTO;
+			sourceTree = "<group>";
+		};
+		F66E2D232B8CD32C00524B8B /* ResponseDTO */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D2E2B8CD41E00524B8B /* LoginResponseDTO.swift */,
+			);
+			path = ResponseDTO;
+			sourceTree = "<group>";
+		};
+		F66E2D242B8CD35000524B8B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D272B8CD35500524B8B /* Realm */,
+				F66E2D262B8CD35400524B8B /* Request */,
+				F66E2D252B8CD35300524B8B /* Response */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F66E2D252B8CD35300524B8B /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D2A2B8CD38D00524B8B /* LoginResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		F66E2D262B8CD35400524B8B /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D2C2B8CD3A000524B8B /* LoginRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		F66E2D272B8CD35500524B8B /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				F66E2D282B8CD37300524B8B /* RealmModel.swift */,
+			);
+			path = Realm;
+
 			sourceTree = "<group>";
 		};
 		F69B6DB42B80CA8B00EFB467 /* Components */ = {
@@ -641,15 +802,24 @@
 				3F4C10E12B73EA3200D6DA1B /* SearchView.swift in Sources */,
 				3F4C10E62B73EA3200D6DA1B /* ContentView.swift in Sources */,
 				3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */,
+
 				F66E2CF92B8CC2B800524B8B /* RecipeCreateViewModel.swift in Sources */,
 				3F4C10D62B73EA3200D6DA1B /* ModelDTO.swift in Sources */,
 				F66E2D3A2B93498900524B8B /* RecipeStepView.swift in Sources */,
+
 				F6C80AE92B80AB1900001924 /* RecipeContainerRowView.swift in Sources */,
+				F66E2D1E2B8CD1FD00524B8B /* LoginAPI.swift in Sources */,
 				3F4C10DF2B73EA3200D6DA1B /* UserProfileView.swift in Sources */,
 				F6C80AE72B80A63A00001924 /* IngredientsContainerView.swift in Sources */,
 				3F4C10D82B73EA3200D6DA1B /* HomeViewModel.swift in Sources */,
+				F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */,
+				F66E2D202B8CD20A00524B8B /* CookTalkAPI.swift in Sources */,
 				3F4C10D52B73EA3200D6DA1B /* EatCookRepository.swift in Sources */,
+				F66E2D0D2B8CCF7100524B8B /* HTTPTask.swift in Sources */,
 				F69B6DBE2B80DC5C00EFB467 /* FeedContainerView.swift in Sources */,
+				F66E2D1C2B8CD1F700524B8B /* AuthAPI.swift in Sources */,
+				F66E2D182B8CD12200524B8B /* NetworkManager.swift in Sources */,
+				F66E2D1A2B8CD16100524B8B /* Environment.swift in Sources */,
 				3F4C10E02B73EA3200D6DA1B /* SearchViewModel.swift in Sources */,
 				F66E2D382B93491100524B8B /* RecipeTagView.swift in Sources */,
 				F66E2D402B937FEA00524B8B /* ImagePicker.swift in Sources */,
@@ -657,24 +827,39 @@
 				3F4C10E72B73EA3200D6DA1B /* LoginViewModel.swift in Sources */,
 				F66E2D462B947EE600524B8B /* TagLayout.swift in Sources */,
 				3F2652FD2B7C3E180065DFA5 /* HouseholdCompositionView.swift in Sources */,
+				F66E2D2D2B8CD3A000524B8B /* LoginRequest.swift in Sources */,
+				F66E2D0B2B8CCF2A00524B8B /* HTTPMethod.swift in Sources */,
 				3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */,
 				3F2652FB2B7AF2060065DFA5 /* FoodThemeView.swift in Sources */,
 				F69B6DBC2B80D90A00EFB467 /* FeedRowView.swift in Sources */,
+
 				F66E2CFB2B8CC2DC00524B8B /* RecipeCreateView.swift in Sources */,
 				F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */,
 				F66E2D422B93B61F00524B8B /* TestView.swift in Sources */,
+
+				F66E2D292B8CD37300524B8B /* RealmModel.swift in Sources */,
+				F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */,
+				F66E2D112B8CCFDE00524B8B /* NetworkProviderImpl.swift in Sources */,
+				F66E2D092B8CCF0000524B8B /* NetworkError.swift in Sources */,
+
 				3F21B3B82B7264B400BF67F7 /* SplashView.swift in Sources */,
 				F66E2D442B947E7500524B8B /* TagField.swift in Sources */,
 				3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */,
 				F69B6DB32B80BFCA00EFB467 /* ScrollOffset.swift in Sources */,
+				F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */,
+				F66E2D0F2B8CCFC400524B8B /* URLRequestable.swift in Sources */,
 				3F4C10DC2B73EA3200D6DA1B /* FeedViewModel.swift in Sources */,
 				F66E2D3C2B934C1E00524B8B /* DropdownView.swift in Sources */,
 				3F4C10D42B73EA3200D6DA1B /* EatCookApp.swift in Sources */,
-				3F4C10D72B73EA3200D6DA1B /* Model.swift in Sources */,
 				3F4C10DD2B73EA3200D6DA1B /* FeedView.swift in Sources */,
 				3F4C10E52B73EA3200D6DA1B /* AuthView.swift in Sources */,
+				F66E2D312B8CD4C100524B8B /* HTTPHeaderField.swift in Sources */,
+				F66E2D2F2B8CD41E00524B8B /* LoginResponseDTO.swift in Sources */,
 				3F4C10D22B73EA3200D6DA1B /* Ex.swift in Sources */,
 				F6C80AE52B80A62C00001924 /* RecipeContainerView.swift in Sources */,
+				F66E2D2B2B8CD38D00524B8B /* LoginResponse.swift in Sources */,
+				F66E2D152B8CCFEA00524B8B /* EndPoint.swift in Sources */,
+				F66E2D132B8CCFE400524B8B /* NetworkProvider.swift in Sources */,
 				3F4C10D92B73EA3200D6DA1B /* HomeView.swift in Sources */,
 				3F4C10F12B77C38600D6DA1B /* PasswordCheckView.swift in Sources */,
 				3F4C10DB2B73EA3200D6DA1B /* RecipeView.swift in Sources */,
