@@ -17,3 +17,7 @@ extension LoginResponseDTO {
         return .init()
     }
 }
+
+struct LoginResponse: Codable {
+    
+}

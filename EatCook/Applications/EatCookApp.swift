@@ -11,9 +11,8 @@ import SwiftUI
 struct EatCookApp: App {
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                ContentView()
-            }
+            ContentView()
+                .environmentObject(NavigationPathFinder.shared)
         }
     }
 }
