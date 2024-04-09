@@ -15,7 +15,7 @@ struct LoginView: View {
         NavigationStack {
             ZStack(alignment: .bottom) {
                 HStack(spacing: 10) {
-                    Image(.food1)
+                    Image(.food)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: width / 2 - 24, height: height)
@@ -23,14 +23,14 @@ struct LoginView: View {
                         .cornerRadius(10)
                     
                     VStack(spacing: 10) {
-                        Image(.food2)
+                        Image(.food)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: width / 2 - 24, height: (height - 10) * 0.6)
                             .clipped()
                             .cornerRadius(10)
                         
-                        Image(.food3)
+                        Image(.food)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: width / 2 - 24, height: (height - 10) * 0.4)

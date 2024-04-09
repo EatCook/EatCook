@@ -28,223 +28,284 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView(.vertical, showsIndicators: false) {
-                ZStack {
-                    Image(.bgHome)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .opacity(0.4)
-                        .frame(height: 250)
-                    
-                    VStack {
-                        HStack {
-                            Image(.logo)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 45)
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                
-                            }) {
-                                Image(.bell)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 24, height: 24)
-                            }
-                        }.padding(.horizontal, 24)
-                        .padding(.vertical, 11)
+            ZStack(alignment : .top) {
+                Color.primary7.edgesIgnoringSafeArea(.top)
+                ScrollView(.vertical, showsIndicators: false) {
+
+                    HomeMenuTopView()
+ 
+                    VStack(spacing: 200) {
+                        HomeInterestingView()
                         
+  
                         VStack {
-                            Spacer()
-                            
-                            NavigationLink(destination: SearchView().toolbarRole(.editor)) {
-                                ZStack {
-                                    Text("재료 또는 레시피를 검색해 보세요")
-                                        .font(.callout)
+                            VStack {
+                                HStack {
+                                    Text("오늘의 추천메뉴")
+                                        .bold()
                                     
-                                    HStack {
-                                        Spacer()
-                                        
-                                        Image(.search)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 20)
-                                    }.padding()
-                                }.frame(height: 50)
-                                    .frame(maxWidth: .infinity)
-                                    .foregroundColor(.gray)
-                                    .background(Color.white)
-                                    .cornerRadius(10)
-                                    .border(.bdBorder, width: 1)
-                                    .padding(.horizontal, 22)
-                            }
-                        }.padding(.vertical, 26)
-                    }
-                }
-                
-                VStack(spacing: 15) {
-                    VStack {
-                        VStack {
-                            HStack {
-                                Text("OOO님이 관심있는 요리")
-                                    .bold()
-                                
-                                Spacer()
-                                
-                                Button(action: {
-                                    
-                                }, label: {
-                                    Text("편집")
-                                        .font(.caption)
-                                        .foregroundColor(.gray)
-                                })
-                            }.padding(.top, 25)
-                                .padding(.bottom, 8)
-                            
-                            Picker("selectFoodTheme", selection: $selectFoodTheme) {
-                                ForEach(0..<HomeView.testFoodThemeData.count, id: \.self) { index in
-                                    Text(HomeView.testFoodThemeData[index]).tag(index)
+                                    Spacer()
                                 }
-                            }.pickerStyle(.segmented)
-                                .padding(.bottom, 22)
-                        }.padding(.horizontal, 26)
-                        
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHGrid(rows: foodThemecolumns, spacing: 12) {
-                                ForEach(HomeView.cookTalk.testFoodData, id: \.id) { data in
-                                    VStack {
-                                        ZStack {
+                                .padding(.bottom, 8)
+                                
+                                Picker("menuRecommend", selection: $selectMenuRecommend) {
+                                    ForEach(0..<HomeView.menuRecommend.count, id: \.self) { index in
+                                        Text(HomeView.menuRecommend[index]).tag(index)
+                                    }
+                                }.pickerStyle(.segmented)
+                                    .padding(.bottom, 22)
+                            }.padding(.top, 25)
+                                .padding(.horizontal, 26)
+                            
+                            ScrollView(.vertical, showsIndicators: false) {
+                                LazyVGrid(columns: menuRecommendcolumns, spacing: 12) {
+                                    ForEach(HomeView.cookTalk.testFoodData, id: \.id) { data in
+                                        HStack {
                                             data.image
                                                 .resizable()
-                                                .frame(width: 200, height: 165)
+                                                .frame(width: 100, height: 100)
                                                 .cornerRadius(10)
                                             
-                                            HStack {
-                                                Spacer()
+                                            VStack {
+                                                HStack {
+                                                    Image(.food)
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 18, height: 18)
+                                                        .cornerRadius(9)
+                                                    
+                                                    Text(data.user)
+                                                        .font(.caption2)
+                                                    
+                                                    Spacer()
+                                                }
                                                 
-                                                Text(data.time)
-                                                    .font(.caption)
-                                                    .foregroundColor(.white)
-                                                    .background(Color.gray)
-                                                    .frame(width: 44, height: 22)
+                                                HStack {
+                                                    Text(data.title)
+                                                        .font(.callout)
+                                                        .bold()
+                                                    
+                                                    Spacer()
+                                                }
+                                                Text(data.description)
+                                                    .font(.body)
+                                                    .lineLimit(nil)
                                             }
-                                        }
-                                        
-                                        HStack {
-                                            Text(data.title)
-                                                .font(.caption)
-                                                .bold()
-                                            
-                                            Spacer()
-                                        }
-                                        
-                                        HStack {
-                                            Image(.userProfile)
-                                                .resizable()
-                                                .frame(width: 18, height: 18)
-                                                .cornerRadius(9)
-                                            
-                                            Text(data.user)
-                                                .font(.caption2)
-                                            
-                                            Spacer()
-                                        }
+                                        }.frame(height: 120)
+                                        .padding(.horizontal, 10)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(Color.bdBorder, lineWidth:1)
+                                        )
                                     }
                                 }
-                            }
-                        }.padding(.leading, 26)
-                        .frame(maxHeight: .infinity)
-                    }.padding(.bottom, 22)
-                    .background(Color.white)
-                    
-                    VStack {
-                        VStack {
-                            HStack {
-                                Text("오늘의 추천메뉴")
-                                    .bold()
-                                
-                                Spacer()
-                            }
-                            .padding(.bottom, 8)
-                            
-                            Picker("menuRecommend", selection: $selectMenuRecommend) {
-                                ForEach(0..<HomeView.menuRecommend.count, id: \.self) { index in
-                                    Text(HomeView.menuRecommend[index]).tag(index)
-                                }
-                            }.pickerStyle(.segmented)
-                                .padding(.bottom, 22)
-                        }.padding(.top, 25)
-                            .padding(.horizontal, 26)
-                        
-                        ScrollView(.vertical, showsIndicators: false) {
-                            LazyVGrid(columns: menuRecommendcolumns, spacing: 12) {
-                                ForEach(HomeView.cookTalk.testFoodData, id: \.id) { data in
-                                    HStack {
-                                        data.image
-                                            .resizable()
-                                            .frame(width: 100, height: 100)
-                                            .cornerRadius(10)
-                                        
-                                        VStack {
-                                            HStack {
-                                                Image(.userProfile)
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 18, height: 18)
-                                                    .cornerRadius(9)
-                                                
-                                                Text(data.user)
-                                                    .font(.caption2)
-                                                
-                                                Spacer()
-                                            }
-                                            
-                                            HStack {
-                                                Text(data.title)
-                                                    .font(.callout)
-                                                    .bold()
-                                                
-                                                Spacer()
-                                            }
-                                            Text(data.description)
-                                                .font(.body)
-                                                .lineLimit(nil)
+                            }.padding(.horizontal, 22)
+                            .frame(maxHeight: .infinity)
+                            .gesture(
+                                DragGesture()
+                                    .onEnded { gesture in
+                                        let dragDistance = gesture.translation.width
+                                        print("dragDistance", dragDistance)
+                                        if dragDistance > 0 {
+                                            //오른쪽으로 스와이프
+                                            guard selectMenuRecommend > 0 else { return }
+                                            selectMenuRecommend -= 1
+                                        } else {
+                                            guard selectMenuRecommend < 3 else { return }
+                                            selectMenuRecommend += 1
                                         }
-                                    }.frame(height: 120)
-                                    .padding(.horizontal, 10)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.bdBorder, lineWidth:1)
-                                    )
-                                }
-                            }
-                        }.padding(.horizontal, 22)
-                        .frame(maxHeight: .infinity)
-                        .gesture(
-                            DragGesture()
-                                .onEnded { gesture in
-                                    let dragDistance = gesture.translation.width
-                                    print("dragDistance", dragDistance)
-                                    if dragDistance > 0 {
-                                        //오른쪽으로 스와이프
-                                        guard selectMenuRecommend > 0 else { return }
-                                        selectMenuRecommend -= 1
-                                    } else {
-                                        guard selectMenuRecommend < 3 else { return }
-                                        selectMenuRecommend += 1
                                     }
-                                }
-                        )
-                    }.background(Color.white)
+                            )
+                        }.background(Color.white)
+                    }
                 }
-            }.frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.bgPrimary)
-            .padding(.vertical)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.bgPrimary)
+                .padding(.top)
+            }
         }
     }
 }
+
+struct HomeMenuTopView : View {
+    var body: some View {
+        
+            ZStack {
+                VStack {
+                    HStack {
+                        Image(.logoWhite)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 45)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            
+                        }) {
+                            Image(.bellWhite)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 24, height: 24)
+                        }
+                    }.padding(.horizontal, 24)
+                    .padding(.top, 15)
+                    
+                    VStack {
+                        Spacer()
+                        
+                        NavigationLink(destination: SearchView().toolbarRole(.editor)) {
+                            HStack {
+                                Text("재료 또는 레시피를 검색해 보세요")
+                                    .font(.callout)
+                                    .padding(.leading, 12)
+                                    
+                                Spacer()
+                                HStack {
+                                 
+                    
+                                    Image(.searchPrimary)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 24)
+                                }.padding()
+                            }.frame(height: 55)
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(.gray)
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .padding(.horizontal, 22)
+                        }
+                    }.padding(.bottom, 24)
+                    .padding(.top, 12)
+                }.background{
+                    Color.primary7
+                }
+            }
+            
+
+            
+        }
+    
+}
+
+
+struct HomeInterestingView : View {
+    
+    //TODO : 서버값 연결
+    var interestingTabs = ["한식", "일식" , "야식"]
+    @State var currentTab = "한식"
+    
+    
+    
+    var body: some View {
+        VStack {
+            VStack {
+                VStack {
+                    HStack {
+                        Text("김잇쿡님의 관심 요리")
+                            .bold()
+                            .font(.system(size: 24))
+                        
+                        Spacer()
+                        
+                        
+                    }.padding(.top, 25)
+                        .padding(.bottom, 8)
+                    
+                    HStack {
+                        ForEach(interestingTabs, id : \.self) { tab in
+                            Button(action: {}) {
+                                Text(tab)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(currentTab == tab ? .primary7 : .gray)
+                            }
+                            
+                        }
+                        Spacer()
+                        
+                    }.padding(.top , 20)
+                        .padding(.leading , 12)
+                    
+                }.padding(.horizontal, 12)
+                
+//                ScrollView(.horizontal, showsIndicators: false) {
+//                    LazyHGrid(rows: foodThemecolumns, spacing: 12) {
+//                        ForEach(HomeView.cookTalk.testFoodData, id: \.id) { data in
+//                            VStack {
+//                                ZStack {
+//                                    data.image
+//                                        .resizable()
+//                                        .frame(width: 200, height: 165)
+//                                        .cornerRadius(10)
+//                                    
+//                                    HStack {
+//                                        Spacer()
+//                                        
+//                                        Text(data.time)
+//                                            .font(.caption)
+//                                            .foregroundColor(.white)
+//                                            .background(Color.gray)
+//                                            .frame(width: 44, height: 22)
+//                                    }
+//                                }
+//                                
+//                                HStack {
+//                                    Text(data.title)
+//                                        .font(.caption)
+//                                        .bold()
+//                                    
+//                                    Spacer()
+//                                }
+//                                
+//                                HStack {
+//                                    Image(.food)
+//                                        .resizable()
+//                                        .frame(width: 18, height: 18)
+//                                        .cornerRadius(9)
+//                                    
+//                                    Text(data.user)
+//                                        .font(.caption2)
+//                                    
+//                                    Spacer()
+//                                }
+//                            }
+//                        }
+//                    }
+//                }.padding(.leading, 26)
+//                .frame(maxHeight: .infinity)
+            }.padding(.bottom, 22)
+            .background(Color.white)
+            
+            
+            
+        }
+
+            
+    }
+    
+}
+
+struct HomeRecommendView : View {
+    var body: some View {
+        VStack {
+            
+            
+        }
+
+            
+    }
+    
+}
+
+
+
+
+
+
+
+
+
 
 extension HomeView {
     static let testFoodThemeData = ["한식", "일식", "중식", "양식", "안주"]
@@ -254,18 +315,18 @@ extension HomeView {
         var id = UUID()
         var title: String
         var user: String
-        var userImage = Image(.userProfile)
+        var userImage = Image(.food)
         var image: Image
         var time = "15분"
         var description = "오늘 냉장고 재료로 만든 요리. 치킨과 바질의 어마어마한 조합이 만들어진다. 너무 맛있어서 소분해놓았다! 이렇게 저렇게 글이 길어지면 잘리나 보자. 배고프다 배고파. 오늘 저녁은 카레다!"
         
         static let testFoodData: [cookTalk] = [
-            cookTalk(title: "까르보나라 파스타", user: "꽁꽁꽁", image: Image(.food1)),
-            cookTalk(title: "마라샹궈", user: "손시려", image: Image(.food2)),
-            cookTalk(title: "계란볶음밥", user: "발시려", image: Image(.food3)),
-            cookTalk(title: "토마토 파스타", user: "당근당근", image: Image(.food1)),
-            cookTalk(title: "마라탕", user: "문고리", image: Image(.food2)),
-            cookTalk(title: "짜장볶음밥", user: "김치냉장고", image: Image(.food3))
+            cookTalk(title: "까르보나라 파스타", user: "꽁꽁꽁", image: Image(.food)),
+            cookTalk(title: "마라샹궈", user: "손시려", image: Image(.food)),
+            cookTalk(title: "계란볶음밥", user: "발시려", image: Image(.food)),
+            cookTalk(title: "토마토 파스타", user: "당근당근", image: Image(.food)),
+            cookTalk(title: "마라탕", user: "문고리", image: Image(.food)),
+            cookTalk(title: "짜장볶음밥", user: "김치냉장고", image: Image(.food))
         ]
     }
 }
