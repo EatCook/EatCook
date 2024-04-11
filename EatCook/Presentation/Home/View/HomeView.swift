@@ -13,6 +13,14 @@ struct HomeView: View {
     @State private var selectFoodTheme = 0
     @State private var selectMenuRecommend = 0
     
+//  TODO : 한식 일식 야식 별로 서버 데이터 세팅
+    @State private var interestingFoods : [interestingFoods] = [
+                    interestingFoods(title: "간장 마늘 치킨", user: "나는쉐프다", image: Image(.testFood1)),
+                    interestingFoods(title: "아보카도 샐러드", user: "하루집밥살이", image: Image(.testFood1)),
+                    interestingFoods(title: "소고기 미트볼", user: "헝그리맨", image: Image(.testFood1)),
+                    interestingFoods(title: "깍두기 소고기 비빕밥", user: "배고팡팡", image: Image(.testFood1))
+    ]
+    
     let foodThemecolumns = [GridItem(.flexible())]
     let menuRecommendcolumns = [GridItem(.flexible())]
     
@@ -34,8 +42,8 @@ struct HomeView: View {
 
                     HomeMenuTopView()
  
-                    VStack(spacing: 200) {
-                        HomeInterestingView()
+                    VStack(spacing: 20) {
+                        HomeInterestingView(interestingFoods: $interestingFoods)
                         
   
                         VStack {
@@ -196,7 +204,8 @@ struct HomeInterestingView : View {
     var interestingTabs = ["한식", "일식" , "야식"]
     @State var currentTab = "한식"
     
-    
+    @Binding var interestingFoods : [HomeView.interestingFoods]
+//    var foodThemecolumns : [cook]
     
     var body: some View {
         VStack {
@@ -215,65 +224,33 @@ struct HomeInterestingView : View {
                     
                     HStack {
                         ForEach(interestingTabs, id : \.self) { tab in
-                            Button(action: {}) {
+                            Button(action: {
+                                currentTab = tab
+                            }) {
                                 Text(tab)
                                     .fontWeight(.bold)
-                                    .foregroundColor(currentTab == tab ? .primary7 : .gray)
-                            }
+                                    .foregroundColor(currentTab == tab ? .white : .gray)
+                            }.buttonStyle(.borderedProminent)
+                                .tint(currentTab == tab ? .primary7 : .gray2)
                             
                         }
                         Spacer()
-                        
-                    }.padding(.top , 20)
-                        .padding(.leading , 12)
-                    
+                    }.padding(.top , 12)
+                        .padding(.leading , 0)
                 }.padding(.horizontal, 12)
                 
-//                ScrollView(.horizontal, showsIndicators: false) {
-//                    LazyHGrid(rows: foodThemecolumns, spacing: 12) {
-//                        ForEach(HomeView.cookTalk.testFoodData, id: \.id) { data in
-//                            VStack {
-//                                ZStack {
-//                                    data.image
-//                                        .resizable()
-//                                        .frame(width: 200, height: 165)
-//                                        .cornerRadius(10)
-//                                    
-//                                    HStack {
-//                                        Spacer()
-//                                        
-//                                        Text(data.time)
-//                                            .font(.caption)
-//                                            .foregroundColor(.white)
-//                                            .background(Color.gray)
-//                                            .frame(width: 44, height: 22)
-//                                    }
-//                                }
-//                                
-//                                HStack {
-//                                    Text(data.title)
-//                                        .font(.caption)
-//                                        .bold()
-//                                    
-//                                    Spacer()
-//                                }
-//                                
-//                                HStack {
-//                                    Image(.food)
-//                                        .resizable()
-//                                        .frame(width: 18, height: 18)
-//                                        .cornerRadius(9)
-//                                    
-//                                    Text(data.user)
-//                                        .font(.caption2)
-//                                    
-//                                    Spacer()
-//                                }
-//                            }
-//                        }
-//                    }
-//                }.padding(.leading, 26)
-//                .frame(maxHeight: .infinity)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    
+                    LazyHStack(alignment : .top){
+                        //TODO : ForEach 데이터 세팅
+                        interestingRowView()
+                        interestingRowView()
+                        interestingRowView()
+                        interestingRowView()
+                    }
+                    
+                }
+                
             }.padding(.bottom, 22)
             .background(Color.white)
             
@@ -286,6 +263,29 @@ struct HomeInterestingView : View {
     
 }
 
+struct interestingRowView : View {
+    var body: some View {
+        VStack(alignment : .leading) {
+            ZStack(alignment: .topLeading) {
+                Image(.testFood1).resizable().frame(width : 220, height : 165)
+                Image(.bellWhite).resizable().frame(width : 30, height: 30)
+            }
+            HStack {
+                Text("음식이름").foregroundColor(.black)
+                Spacer()
+                Text("시간")
+            }
+            HStack {
+                Text("이미지")
+//                Spacer()
+                Text("유저 이름").foregroundColor(.black)
+            }
+          
+        }.padding(.horizontal, 6)
+    }
+}
+
+
 struct HomeRecommendView : View {
     var body: some View {
         VStack {
@@ -297,10 +297,6 @@ struct HomeRecommendView : View {
     }
     
 }
-
-
-
-
 
 
 
@@ -329,6 +325,20 @@ extension HomeView {
             cookTalk(title: "짜장볶음밥", user: "김치냉장고", image: Image(.food))
         ]
     }
+    
+    struct interestingFoods {
+        var id = UUID()
+        var title: String
+        var user: String
+        var userImage = Image(.food)
+        var image = Image(.testFood1)
+        var time = "15분"
+        var bookMark : Bool = false
+
+    }
+    
+    
+    
 }
 
 #Preview {
