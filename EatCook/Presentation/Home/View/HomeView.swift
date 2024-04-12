@@ -243,12 +243,25 @@ struct HomeInterestingView : View {
                     
                     LazyHStack(alignment : .top){
                         //TODO : ForEach 데이터 세팅
-                        interestingRowView()
-                        interestingRowView()
-                        interestingRowView()
-                        interestingRowView()
+//                        List($interestingFoods, id : \.self) { interestingFood in
+//
+//                            interestingRowView(foodName: interestingFood.title, time:interestingFood.time, userImage: interestingFood.userImage, foodImage: interestingFood.image, userName: interestingFood.user)
+//             
+//                            
+//                        }
+//                        
+//                        ForEach($interestingFoods, id: \.self) { interestingFood in
+//                            interestingRowView(foodName: interestingFood.title, time:interestingFood.time, userImage: interestingFood.userImage, foodImage: interestingFood.image, userName: interestingFood.user)
+//                        }
+                        
+                        ForEach(1..<4) { _ in
+                            interestingRowView(foodName: "음식이름", time: "시간", userImage: Image(.testUserImage1), foodImage: Image(.testFood1), userName: "유저이름")
+                        }
+                        
+                        
+                        
                     }
-                    
+                       
                 }
                 
             }.padding(.bottom, 22)
@@ -264,19 +277,47 @@ struct HomeInterestingView : View {
 }
 
 struct interestingRowView : View {
+    
+//    @Binding var foodName : String
+//    @Binding var time : String
+//    @Binding var userImage : Image
+//    @Binding var foodImage : Image
+//    @Binding var userName : String
+    
+    var foodName : String
+    var time : String
+    var userImage : Image
+    var foodImage : Image
+    var userName : String
+    
+    
     var body: some View {
         VStack(alignment : .leading) {
+   
             ZStack(alignment: .topLeading) {
-                Image(.testFood1).resizable().frame(width : 220, height : 165)
+                foodImage.resizable().frame(width : 220, height : 165)
+      
                 Image(.bellWhite).resizable().frame(width : 30, height: 30)
+//                ZStack(alignment: .bottomTrailing) {
+//                    Image(.bookMark).resizable().frame(width : 30, height: 30)
+//                }
+                
             }
+    
             HStack {
-                Text("음식이름").foregroundColor(.black)
+                Text(foodName)
+                    .font(.system(size : 18))
+                    .font(.callout)
+                    .bold()
                 Spacer()
-                Text("시간")
+                HStack {
+                    Image(.stopWatch).resizable().frame(width : 20, height: 20)
+                    Text(time).font(.system(size : 14)).font(.callout).foregroundColor(.gray5)
+                }
+     
             }
             HStack {
-                Text("이미지")
+                userImage.resizable().frame(width : 20, height: 20)
 //                Spacer()
                 Text("유저 이름").foregroundColor(.black)
             }
@@ -326,7 +367,7 @@ extension HomeView {
         ]
     }
     
-    struct interestingFoods {
+    struct interestingFoods : Identifiable, Hashable  {
         var id = UUID()
         var title: String
         var user: String
@@ -334,12 +375,25 @@ extension HomeView {
         var image = Image(.testFood1)
         var time = "15분"
         var bookMark : Bool = false
-
+        
+        static func ==(lhs: interestingFoods, rhs: interestingFoods) -> Bool {
+           return lhs.title == rhs.title && lhs.user == rhs.user
+         }
+         func hash(into hasher: inout Hasher) {
+           hasher.combine(title)
+           hasher.combine(user)
+         }
+       
+        
     }
+
+
     
     
     
 }
+
+
 
 #Preview {
     HomeView()
