@@ -161,7 +161,6 @@ struct HomeMenuTopView : View {
                     
                     VStack {
                         Spacer()
-                        
                         NavigationLink(destination: SearchView().toolbarRole(.editor)) {
                             HStack {
                                 Text("재료 또는 레시피를 검색해 보세요")
@@ -170,8 +169,6 @@ struct HomeMenuTopView : View {
                                     
                                 Spacer()
                                 HStack {
-                                 
-                    
                                     Image(.searchPrimary)
                                         .resizable()
                                         .scaledToFit()
@@ -190,9 +187,6 @@ struct HomeMenuTopView : View {
                     Color.primary7
                 }
             }
-            
-
-            
         }
     
 }
@@ -222,7 +216,6 @@ struct HomeInterestingView : View {
                     }.padding(.top, 25)
                         .padding(.bottom, 8)
                     
-                    
                     HStack {
                         ForEach(interestingTabs, id : \.self) { tab in
                             Button(action: {
@@ -243,24 +236,10 @@ struct HomeInterestingView : View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     
                     LazyHStack(alignment : .top){
-                        //TODO : ForEach 데이터 세팅
-//                        List($interestingFoods, id : \.self) { interestingFood in
-//
-//                            interestingRowView(foodName: interestingFood.title, time:interestingFood.time, userImage: interestingFood.userImage, foodImage: interestingFood.image, userName: interestingFood.user)
-//             
-//                            
-//                        }
-//                        
-//                        ForEach($interestingFoods, id: \.self) { interestingFood in
-//                            interestingRowView(foodName: interestingFood.title, time:interestingFood.time, userImage: interestingFood.userImage, foodImage: interestingFood.image, userName: interestingFood.user)
-//                        }
-                        
-                        ForEach(1..<4) { _ in
-                            interestingRowView(foodName: "음식이름", time: "시간", userImage: Image(.testUserImage1), foodImage: Image(.testFood1), userName: "유저이름")
+                        ForEach($interestingFoods, id: \.self) { interestingFood in
+                            interestingRowView(foodName: interestingFood.title, time:interestingFood.time, userImage: interestingFood.userImage, foodImage: interestingFood.image, userName: interestingFood.user)
                         }
-                        
-                        
-                        
+                   
                     }
                        
                 }
@@ -279,18 +258,11 @@ struct HomeInterestingView : View {
 
 struct interestingRowView : View {
     
-//    @Binding var foodName : String
-//    @Binding var time : String
-//    @Binding var userImage : Image
-//    @Binding var foodImage : Image
-//    @Binding var userName : String
-    
-    var foodName : String
-    var time : String
-    var userImage : Image
-    var foodImage : Image
-    var userName : String
-    
+    @Binding var foodName : String
+    @Binding var time : String
+    @Binding var userImage : Image
+    @Binding var foodImage : Image
+    @Binding var userName : String
     
     var body: some View {
         VStack(alignment : .leading) {
@@ -301,7 +273,6 @@ struct interestingRowView : View {
                     Image(.bookMark).resizable().frame(width: 20 , height:  24).padding()
                 }
                
-      
                 HStack {
                     Image(.whiteHeart).resizable().frame(width: 20 , height: 20)
                     Text("120").font(.callout).foregroundColor(.white)
@@ -311,10 +282,6 @@ struct interestingRowView : View {
                 .background(Color.black.opacity(0.2))
                     .cornerRadius(5)
                     .padding(12)
-//                ZStack(alignment: .bottomTrailing) {
-//                    Image(.bookMark).resizable().frame(width : 30, height: 30)
-//                }
-                
             }
     
             HStack {
@@ -331,7 +298,6 @@ struct interestingRowView : View {
             }
             HStack {
                 userImage.resizable().frame(width : 20, height: 20)
-//                Spacer()
                 Text("유저 이름").foregroundColor(.black)
             }
           
@@ -392,7 +358,7 @@ struct HomeRecommendView : View {
                             let dragDistance = gesture.translation.width
                             print("dragDistance", dragDistance)
                             if dragDistance > 0 {
-                                //오른쪽으로 스와이프x 
+                                //오른쪽으로 스와이프x
 //                                guard selectMenuRecommend > 0 else { return }
 //                                selectMenuRecommend -= 1
                             } else {
@@ -493,17 +459,16 @@ extension HomeView {
         var id = UUID()
         var title: String
         var user: String
-        var userImage = Image(.food)
+        var userImage = Image(.testUserImage1)
         var image = Image(.testFood1)
         var time = "15분"
         var bookMark : Bool = false
         
         static func ==(lhs: interestingFoods, rhs: interestingFoods) -> Bool {
-           return lhs.title == rhs.title && lhs.user == rhs.user
+           return lhs.id == rhs.id
          }
          func hash(into hasher: inout Hasher) {
-           hasher.combine(title)
-           hasher.combine(user)
+           hasher.combine(id)
          }
        
         
