@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bookMark.png",
+      "filename" : "DealImage(1_1.8).png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bookMark 1.png",
+      "filename" : "DealImage(1_1.8) 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bookMark 2.png",
+      "filename" : "DealImage(1_1.8) 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

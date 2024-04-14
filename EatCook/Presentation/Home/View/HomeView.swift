@@ -45,7 +45,7 @@ struct HomeView: View {
                     VStack(spacing: 20) {
                         HomeInterestingView(interestingFoods: $interestingFoods)
                         
-  
+                        HomeRecommendView()
                         VStack {
                             VStack {
                                 HStack {
@@ -222,6 +222,7 @@ struct HomeInterestingView : View {
                     }.padding(.top, 25)
                         .padding(.bottom, 8)
                     
+                    
                     HStack {
                         ForEach(interestingTabs, id : \.self) { tab in
                             Button(action: {
@@ -295,9 +296,21 @@ struct interestingRowView : View {
         VStack(alignment : .leading) {
    
             ZStack(alignment: .topLeading) {
-                foodImage.resizable().frame(width : 220, height : 165)
+                ZStack(alignment : .bottomTrailing) {
+                    foodImage.resizable().frame(width : 220, height : 165)
+                    Image(.bookMark).resizable().frame(width: 20 , height:  24).padding()
+                }
+               
       
-                Image(.bellWhite).resizable().frame(width : 30, height: 30)
+                HStack {
+                    Image(.whiteHeart).resizable().frame(width: 20 , height: 20)
+                    Text("120").font(.callout).foregroundColor(.white)
+                }
+                .padding(.vertical, 3)
+                .padding(.horizontal, 5)
+                .background(Color.black.opacity(0.2))
+                    .cornerRadius(5)
+                    .padding(12)
 //                ZStack(alignment: .bottomTrailing) {
 //                    Image(.bookMark).resizable().frame(width : 30, height: 30)
 //                }
@@ -328,13 +341,122 @@ struct interestingRowView : View {
 
 
 struct HomeRecommendView : View {
+    
+    
+    //TODO : 서버값 연결
+    var recommendTabs = ["건강 요리", "다이어트 요리" , "배달음식 요리", "편의점 요리", "밀키트 요리"]
+    @State var currentTab = "건강 요리"
+    
+    
     var body: some View {
         VStack {
+            VStack{
+                
+                HStack {
+                    Text("김잇쿡님의 관심 요리")
+                        .bold()
+                        .font(.system(size: 24))
+                    Spacer()
+                }
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack{
+                        ForEach(recommendTabs, id : \.self) { tab in
+                            Button(action: {
+                                currentTab = tab
+                            }) {
+                                Text(tab)
+                                    .padding(.vertical, 4)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(currentTab == tab ? .white : .gray)
+                                    
+                            }.buttonStyle(.borderedProminent)
+                                .tint(currentTab == tab ? .primary7 : .gray2)
+                            
+                        }
+                    }
+                }
+                
+                ScrollView(.vertical, showsIndicators : false){
+                    LazyVStack {
+//                        TODO : ForEach or List 연결
+                        ForEach(1..<4) { _ in
+                            RecommendColView()
+                        }
+                       
+                    }
+                    
+                }.gesture(
+                    DragGesture()
+                        .onEnded { gesture in
+                            let dragDistance = gesture.translation.width
+                            print("dragDistance", dragDistance)
+                            if dragDistance > 0 {
+                                //오른쪽으로 스와이프x 
+//                                guard selectMenuRecommend > 0 else { return }
+//                                selectMenuRecommend -= 1
+                            } else {
+//                                guard selectMenuRecommend < 3 else { return }
+//                                selectMenuRecommend += 1
+                            }
+                        }
+                )
+                         
+            }.padding(.horizontal, 10)
+    
+
             
             
+        }.background{
+            Color.white
         }
 
             
+    }
+    
+}
+
+struct RecommendColView : View {
+    
+    var body: some View {
+        VStack(alignment : .leading) {
+//            이미지
+            ZStack(alignment: .topLeading){
+                ZStack(alignment : .bottomTrailing){
+                    Image(.testFood2).resizable().frame(width: .infinity , height:  160)
+                    Image(.bookMark).resizable().frame(width: 20 , height:  24).padding()
+                }
+               
+                HStack {
+                    Image(.whiteHeart).resizable().frame(width: 20 , height: 20)
+                    Text("120").font(.callout).foregroundColor(.white)
+                }
+                .padding(.vertical, 3)
+                .padding(.horizontal, 5)
+                .background(Color.black.opacity(0.2))
+                    .cornerRadius(5)
+                    .padding(12)
+                    
+            }
+            
+//            타이틀 시간
+            HStack {
+                Text("음식 이름")
+                    .bold()
+                    .font(.system(size: 24))
+                
+                Image(.stopWatch).resizable().frame(width : 20, height: 20)
+                Text("시간").font(.system(size : 14)).font(.callout).foregroundColor(.gray5)
+                
+                Spacer()
+            }
+//            설명
+            VStack{
+                Text("간장을 끓이지않고 냉동새우로 간장 새우장 만드는 법을 알려줄게요 :)").font(.system(size : 14)).font(.callout).foregroundColor(.gray8)
+            }
+            
+        }
+
     }
     
 }
