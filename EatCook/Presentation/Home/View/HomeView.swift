@@ -26,7 +26,7 @@ struct HomeView: View {
     
     init() {
         //기본
-        //UISegmentedControl.appearance().backgroundColor = .clear
+        UISegmentedControl.appearance().backgroundColor = .clear
         UISegmentedControl.appearance().setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
         
         //선택
@@ -35,6 +35,7 @@ struct HomeView: View {
     }
     
     var body: some View {
+
         NavigationStack {
             ZStack(alignment : .top) {
                 Color.primary7.edgesIgnoringSafeArea(.top)
@@ -44,93 +45,17 @@ struct HomeView: View {
  
                     VStack(spacing: 20) {
                         HomeInterestingView(interestingFoods: $interestingFoods)
-                        
                         HomeRecommendView()
-                        VStack {
-                            VStack {
-                                HStack {
-                                    Text("오늘의 추천메뉴")
-                                        .bold()
-                                    
-                                    Spacer()
-                                }
-                                .padding(.bottom, 8)
-                                
-                                Picker("menuRecommend", selection: $selectMenuRecommend) {
-                                    ForEach(0..<HomeView.menuRecommend.count, id: \.self) { index in
-                                        Text(HomeView.menuRecommend[index]).tag(index)
-                                    }
-                                }.pickerStyle(.segmented)
-                                    .padding(.bottom, 22)
-                            }.padding(.top, 25)
-                                .padding(.horizontal, 26)
-                            
-                            ScrollView(.vertical, showsIndicators: false) {
-                                LazyVGrid(columns: menuRecommendcolumns, spacing: 12) {
-                                    ForEach(HomeView.cookTalk.testFoodData, id: \.id) { data in
-                                        HStack {
-                                            data.image
-                                                .resizable()
-                                                .frame(width: 100, height: 100)
-                                                .cornerRadius(10)
-                                            
-                                            VStack {
-                                                HStack {
-                                                    Image(.food)
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .frame(width: 18, height: 18)
-                                                        .cornerRadius(9)
-                                                    
-                                                    Text(data.user)
-                                                        .font(.caption2)
-                                                    
-                                                    Spacer()
-                                                }
-                                                
-                                                HStack {
-                                                    Text(data.title)
-                                                        .font(.callout)
-                                                        .bold()
-                                                    
-                                                    Spacer()
-                                                }
-                                                Text(data.description)
-                                                    .font(.body)
-                                                    .lineLimit(nil)
-                                            }
-                                        }.frame(height: 120)
-                                        .padding(.horizontal, 10)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .stroke(Color.bdBorder, lineWidth:1)
-                                        )
-                                    }
-                                }
-                            }.padding(.horizontal, 22)
-                            .frame(maxHeight: .infinity)
-                            .gesture(
-                                DragGesture()
-                                    .onEnded { gesture in
-                                        let dragDistance = gesture.translation.width
-                                        print("dragDistance", dragDistance)
-                                        if dragDistance > 0 {
-                                            //오른쪽으로 스와이프
-                                            guard selectMenuRecommend > 0 else { return }
-                                            selectMenuRecommend -= 1
-                                        } else {
-                                            guard selectMenuRecommend < 3 else { return }
-                                            selectMenuRecommend += 1
-                                        }
-                                    }
-                            )
-                        }.background(Color.white)
+                       
+                        
+
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.bgPrimary)
                 .padding(.top)
             }
+
         }
     }
 }
@@ -312,7 +237,18 @@ struct HomeRecommendView : View {
     //TODO : 서버값 연결
     var recommendTabs = ["건강 요리", "다이어트 요리" , "배달음식 요리", "편의점 요리", "밀키트 요리"]
     @State var currentTab = "건강 요리"
-    
+    @State var selectedIndex = 0
+    @State var viewArray : [VStack] = [VStack {
+        Text("건강 요리 view")
+             } , VStack{
+            Text("다이어트 요리 view")
+        } , VStack{
+            Text("배달음식 요리 view")
+        } , VStack{
+            Text("편의점 요리 view")
+        } , VStack{
+            Text("밀키트 요리 view")
+        }]
     
     var body: some View {
         VStack {
@@ -327,21 +263,38 @@ struct HomeRecommendView : View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack{
-                        ForEach(recommendTabs, id : \.self) { tab in
+                        ForEach(Array(zip(recommendTabs.indices, recommendTabs)), id : \.0) { (index , tab) in
                             Button(action: {
-                                currentTab = tab
+                                withAnimation(.easeInOut){
+                                    currentTab = tab
+                                    selectedIndex = index
+                                    print(selectedIndex)
+                                }
                             }) {
                                 Text(tab)
                                     .padding(.vertical, 4)
                                     .fontWeight(.bold)
-                                    .foregroundColor(currentTab == tab ? .white : .gray)
+                                    .foregroundColor(selectedIndex == index ? .white : .gray)
                                     
                             }.buttonStyle(.borderedProminent)
-                                .tint(currentTab == tab ? .primary7 : .gray2)
+                                .tint(selectedIndex == index ? .primary7 : .gray2)
                             
                         }
                     }
                 }
+                
+            
+          
+                TabView(selection : $selectedIndex) {
+                        ForEach(0..<viewArray.count , id : \.self){ index in
+                            viewArray[index]
+                        }
+                    }.frame(minHeight : 350, maxHeight : .infinity)
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                
+
+                
+                
                 
                 ScrollView(.vertical, showsIndicators : false){
                     LazyVStack {
