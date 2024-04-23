@@ -63,7 +63,7 @@ struct RecipeCreateView: View {
                         }
                     }
                     .sheet(isPresented: $showImagePicker) {
-                        ImagePicker(selectedImage: $selectedImage)
+                        ImagePicker(image: $selectedImage, isPresented: $showImagePicker)
                     }
                 }
                 

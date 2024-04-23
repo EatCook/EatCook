@@ -24,7 +24,7 @@ struct ContentView: View {
                     Text("쿡Talk")
                 }
             
-            Text("마이페이지")
+            UserProfileView()
                 .tabItem {
                     Image(systemName: "person")
                     

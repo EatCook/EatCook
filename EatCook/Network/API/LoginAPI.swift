@@ -27,7 +27,7 @@ enum LoginAPI: EndPoint {
     var httpTask: HTTPTask {
         switch self {
         case .login:
-            return .requestWithParameters(parameters: <#T##[String : Any]#>, encoding: <#T##ParameterEncoding#>)
+            return .requestWithParameters(parameters: [:], encoding: .urlEncoding)
         }
     }
     

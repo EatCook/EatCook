@@ -38,6 +38,7 @@
 		3F4C10F12B77C38600D6DA1B /* PasswordCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F02B77C38600D6DA1B /* PasswordCheckView.swift */; };
 		3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */; };
 		3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */; };
+		F63E7AE92BC27E7B00934AF1 /* UserProfileTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63E7AE82BC27E7B00934AF1 /* UserProfileTopView.swift */; };
 		F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */; };
 		F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D062B8CCEFB00524B8B /* HTTPError.swift */; };
 		F66E2D092B8CCF0000524B8B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D082B8CCF0000524B8B /* NetworkError.swift */; };
@@ -75,6 +76,13 @@
 		F6F9FB662BA1AA1000AEF22E /* RecipeTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F9FB632BA1AA1000AEF22E /* RecipeTagView.swift */; };
 		F6F9FB672BA1AA1000AEF22E /* RecipeStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F9FB642BA1AA1000AEF22E /* RecipeStepView.swift */; };
 		F6F9FB682BA1AA1000AEF22E /* RecipeCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F9FB652BA1AA1000AEF22E /* RecipeCreateView.swift */; };
+		F6FA1EBC2BD7DAE200198FEB /* UserProfileRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1EBB2BD7DAE200198FEB /* UserProfileRowView.swift */; };
+		F6FA1EBE2BD7DD5C00198FEB /* CustomImageTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1EBD2BD7DD5C00198FEB /* CustomImageTitleButton.swift */; };
+		F6FA1EC62BD7E32900198FEB /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1EC52BD7E32900198FEB /* AlarmViewModel.swift */; };
+		F6FA1EC82BD7E33100198FEB /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1EC72BD7E33100198FEB /* AlarmView.swift */; };
+		F6FA1ECA2BD7E33800198FEB /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1EC92BD7E33800198FEB /* SettingView.swift */; };
+		F6FA1ECC2BD7E33E00198FEB /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1ECB2BD7E33E00198FEB /* SettingViewModel.swift */; };
+		F6FA1ECE2BD7E86100198FEB /* UserProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1ECD2BD7E86100198FEB /* UserProfileEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +117,7 @@
 		3F4C10F02B77C38600D6DA1B /* PasswordCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckView.swift; sourceTree = "<group>"; };
 		3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPopupView.swift; sourceTree = "<group>"; };
 		3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
+		F63E7AE82BC27E7B00934AF1 /* UserProfileTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTopView.swift; sourceTree = "<group>"; };
 		F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookRepositoryType.swift; sourceTree = "<group>"; };
 		F66E2D062B8CCEFB00524B8B /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		F66E2D082B8CCF0000524B8B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -147,6 +156,13 @@
 		F6F9FB632BA1AA1000AEF22E /* RecipeTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTagView.swift; sourceTree = "<group>"; };
 		F6F9FB642BA1AA1000AEF22E /* RecipeStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeStepView.swift; sourceTree = "<group>"; };
 		F6F9FB652BA1AA1000AEF22E /* RecipeCreateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCreateView.swift; sourceTree = "<group>"; };
+		F6FA1EBB2BD7DAE200198FEB /* UserProfileRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRowView.swift; sourceTree = "<group>"; };
+		F6FA1EBD2BD7DD5C00198FEB /* CustomImageTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageTitleButton.swift; sourceTree = "<group>"; };
+		F6FA1EC52BD7E32900198FEB /* AlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
+		F6FA1EC72BD7E33100198FEB /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
+		F6FA1EC92BD7E33800198FEB /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		F6FA1ECB2BD7E33E00198FEB /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		F6FA1ECD2BD7E86100198FEB /* UserProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +279,8 @@
 				3F4C10B42B73EA3100D6DA1B /* User */,
 				3F4C10B92B73EA3100D6DA1B /* Search */,
 				3F4C10BE2B73EA3100D6DA1B /* Profile */,
+				F6FA1EC02BD7E2DB00198FEB /* Alarm */,
+				F6FA1EBF2BD7E2D700198FEB /* Setting */,
 				3F4C10C32B73EA3100D6DA1B /* Authentication */,
 				3F4C10C92B73EA3200D6DA1B /* Login */,
 			);
@@ -377,6 +395,9 @@
 			isa = PBXGroup;
 			children = (
 				3F4C10B82B73EA3100D6DA1B /* UserProfileView.swift */,
+				F6FA1ECD2BD7E86100198FEB /* UserProfileEditView.swift */,
+				F6FA1EBB2BD7DAE200198FEB /* UserProfileRowView.swift */,
+				F63E7AE82BC27E7B00934AF1 /* UserProfileTopView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -492,6 +513,7 @@
 			children = (
 				3F4C10EE2B77BEA500D6DA1B /* CustomTextFieldModifier.swift */,
 				F6F9FB512BA1A82600AEF22E /* CustomBorderModifier.swift */,
+				F6FA1EBD2BD7DD5C00198FEB /* CustomImageTitleButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -659,6 +681,56 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		F6FA1EBF2BD7E2D700198FEB /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F6FA1EC42BD7E30C00198FEB /* ViewModel */,
+				F6FA1EC32BD7E30B00198FEB /* View */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		F6FA1EC02BD7E2DB00198FEB /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				F6FA1EC22BD7E30400198FEB /* ViewModel */,
+				F6FA1EC12BD7E30300198FEB /* View */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		F6FA1EC12BD7E30300198FEB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6FA1EC72BD7E33100198FEB /* AlarmView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6FA1EC22BD7E30400198FEB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6FA1EC52BD7E32900198FEB /* AlarmViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6FA1EC32BD7E30B00198FEB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6FA1EC92BD7E33800198FEB /* SettingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6FA1EC42BD7E30C00198FEB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6FA1ECB2BD7E33E00198FEB /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -736,6 +808,7 @@
 				3F4C10E62B73EA3200D6DA1B /* ContentView.swift in Sources */,
 				F6F9FB622BA1AA0100AEF22E /* DropdownView.swift in Sources */,
 				3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */,
+				F63E7AE92BC27E7B00934AF1 /* UserProfileTopView.swift in Sources */,
 				F6F9FB612BA1AA0100AEF22E /* TimerPickerView.swift in Sources */,
 				F6C80AE92B80AB1900001924 /* RecipeContainerRowView.swift in Sources */,
 				F66E2D1E2B8CD1FD00524B8B /* LoginAPI.swift in Sources */,
@@ -747,13 +820,17 @@
 				3F4C10D52B73EA3200D6DA1B /* EatCookRepository.swift in Sources */,
 				F66E2D0D2B8CCF7100524B8B /* HTTPTask.swift in Sources */,
 				F69B6DBE2B80DC5C00EFB467 /* FeedContainerView.swift in Sources */,
+				F6FA1EBE2BD7DD5C00198FEB /* CustomImageTitleButton.swift in Sources */,
 				F66E2D1C2B8CD1F700524B8B /* AuthAPI.swift in Sources */,
+				F6FA1ECA2BD7E33800198FEB /* SettingView.swift in Sources */,
 				F66E2D182B8CD12200524B8B /* NetworkManager.swift in Sources */,
 				F66E2D1A2B8CD16100524B8B /* Environment.swift in Sources */,
+				F6FA1EBC2BD7DAE200198FEB /* UserProfileRowView.swift in Sources */,
 				3F4C10E02B73EA3200D6DA1B /* SearchViewModel.swift in Sources */,
 				3F4C10E22B73EA3200D6DA1B /* ProfileViewModel.swift in Sources */,
 				3F4C10E72B73EA3200D6DA1B /* LoginViewModel.swift in Sources */,
 				3F2652FD2B7C3E180065DFA5 /* HouseholdCompositionView.swift in Sources */,
+				F6FA1ECE2BD7E86100198FEB /* UserProfileEditView.swift in Sources */,
 				F66E2D0B2B8CCF2A00524B8B /* HTTPMethod.swift in Sources */,
 				3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */,
 				3F2652FB2B7AF2060065DFA5 /* FoodThemeView.swift in Sources */,
@@ -769,8 +846,10 @@
 				F6F9FB672BA1AA1000AEF22E /* RecipeStepView.swift in Sources */,
 				F6F9FB582BA1A9CE00AEF22E /* RecipeCreateViewModel.swift in Sources */,
 				3F4C10DC2B73EA3200D6DA1B /* FeedViewModel.swift in Sources */,
+				F6FA1ECC2BD7E33E00198FEB /* SettingViewModel.swift in Sources */,
 				3F4C10D42B73EA3200D6DA1B /* EatCookApp.swift in Sources */,
 				F6F9FB522BA1A82600AEF22E /* CustomBorderModifier.swift in Sources */,
+				F6FA1EC82BD7E33100198FEB /* AlarmView.swift in Sources */,
 				3F4C10DD2B73EA3200D6DA1B /* FeedView.swift in Sources */,
 				F6F9FB5F2BA1AA0100AEF22E /* TagLayout.swift in Sources */,
 				3F4C10E52B73EA3200D6DA1B /* AuthView.swift in Sources */,
@@ -790,6 +869,7 @@
 				3F4C10E42B73EA3200D6DA1B /* AuthViewModel.swift in Sources */,
 				3F4C10E82B73EA3200D6DA1B /* LoginView.swift in Sources */,
 				3F4C10D12B73EA3200D6DA1B /* Util.swift in Sources */,
+				F6FA1EC62BD7E32900198FEB /* AlarmViewModel.swift in Sources */,
 				F69B6DC62B80EDD600EFB467 /* EmptyImageView.swift in Sources */,
 				3F4C10DE2B73EA3200D6DA1B /* UserProfileViewModel.swift in Sources */,
 				F6F9FB662BA1AA1000AEF22E /* RecipeTagView.swift in Sources */,

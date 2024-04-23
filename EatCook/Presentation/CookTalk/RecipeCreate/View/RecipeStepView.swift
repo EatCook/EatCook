@@ -73,7 +73,7 @@ struct RecipeStepView: View {
             
             CreateChatView(viewModel: viewModel, showImagePicker: $showImagePicker, selectedImage: $selectedImage)
                 .sheet(isPresented: $showImagePicker) {
-                    ImagePicker(selectedImage: $selectedImage)
+                    ImagePicker(image: $selectedImage, isPresented: $showImagePicker)
                 }
         }
         .background(.gray1)
