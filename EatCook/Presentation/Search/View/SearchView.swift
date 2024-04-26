@@ -15,6 +15,10 @@ struct SearchView: View {
     @State var searchText = ""
     @State var isSearching = false
     
+    @State var topRankData : [String] = []
+    
+    
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -108,14 +112,14 @@ struct SearchView: View {
                         }
                     }.padding(.horizontal, 16)
 
-                    
+                    Spacer()
                     
                     
                 }.padding(.bottom, 30)
                 .background(Color.white)
                 
-                Spacer()
             }.padding(.top, 15)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.bgPrimary)

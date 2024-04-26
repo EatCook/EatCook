@@ -238,16 +238,16 @@ struct HomeRecommendView : View {
     var recommendTabs = ["건강 요리", "다이어트 요리" , "배달음식 요리", "편의점 요리", "밀키트 요리"]
     @State var currentTab = "건강 요리"
     @State var selectedIndex = 0
-    @State var viewArray : [VStack] = [VStack {
-        Text("건강 요리 view")
-             } , VStack{
-            Text("다이어트 요리 view")
-        } , VStack{
-            Text("배달음식 요리 view")
-        } , VStack{
-            Text("편의점 요리 view")
-        } , VStack{
-            Text("밀키트 요리 view")
+    @State var viewArray : [ScrollView] = [ScrollView {
+        RecommendColArrView(count: 2)
+    }, ScrollView{
+        RecommendColArrView(count: 3)
+        } , ScrollView{
+            RecommendColArrView(count: 4)
+        } , ScrollView{
+            RecommendColArrView(count: 2)
+        } , ScrollView{
+            RecommendColArrView(count: 1)
         }]
     
     var body: some View {
@@ -277,50 +277,19 @@ struct HomeRecommendView : View {
                                     .foregroundColor(selectedIndex == index ? .white : .gray)
                                     
                             }.buttonStyle(.borderedProminent)
-                                .tint(selectedIndex == index ? .primary7 : .gray2)
+                                .tint(selectedIndex == index ? .primary7 : .gray2).animation(.easeInOut)
                             
                         }
                     }
                 }
                 
-            
-          
                 TabView(selection : $selectedIndex) {
                         ForEach(0..<viewArray.count , id : \.self){ index in
                             viewArray[index]
                         }
-                    }.frame(minHeight : 350, maxHeight : .infinity)
+                    }.frame(minHeight : 500, maxHeight : .infinity)
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                
-
-                
-                
-                
-                ScrollView(.vertical, showsIndicators : false){
-                    LazyVStack {
-//                        TODO : ForEach or List 연결
-                        ForEach(1..<4) { _ in
-                            RecommendColView()
-                        }
-                       
-                    }
-                    
-                }.gesture(
-                    DragGesture()
-                        .onEnded { gesture in
-                            let dragDistance = gesture.translation.width
-                            print("dragDistance", dragDistance)
-                            if dragDistance > 0 {
-                                //오른쪽으로 스와이프x
-//                                guard selectMenuRecommend > 0 else { return }
-//                                selectMenuRecommend -= 1
-                            } else {
-//                                guard selectMenuRecommend < 3 else { return }
-//                                selectMenuRecommend += 1
-                            }
-                        }
-                )
-                         
+                                         
             }.padding(.horizontal, 10)
     
 
@@ -334,6 +303,24 @@ struct HomeRecommendView : View {
     }
     
 }
+
+struct RecommendColArrView : View {
+    
+    var count : Int
+    
+    var body: some View {
+        VStack{
+            ForEach(0..<count , id : \.self){ _ in
+                RecommendColView()
+            }
+        }
+   
+    }
+    
+}
+
+
+
 
 struct RecommendColView : View {
     
