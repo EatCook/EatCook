@@ -15,17 +15,17 @@ struct CheckImageTitleButton: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Button(action: action) {
-                HStack(spacing: 12) {
+            HStack {
+                Button(action: action) {
                     Image(systemName: buttonImage)
                         .resizable()
                         .frame(width: 16.5, height: 13.5)
                         .foregroundStyle(isSelected ? .primary6 : .gray4)
-                    
-                    Text(buttonTitle)
-                        .font(.system(size: 14, weight: .regular))
-                        .foregroundStyle(.gray6)
                 }
+                
+                Text(buttonTitle)
+                    .font(.system(size: 14, weight: .regular))
+                    .foregroundStyle(.gray6)
             }
             .padding(.vertical, 14)
             

@@ -17,6 +17,8 @@ struct UserWithDrawView: View {
     
     var body: some View {
         VStack(spacing: 36) {
+            Spacer()
+            
             VStack(spacing: 8) {
                 Text("정말 탈퇴하실건가요?")
                     .font(.system(size: 24, weight: .semibold))
@@ -72,22 +74,39 @@ struct UserWithDrawView: View {
                     .foregroundStyle(.gray6)
             }
             
+            Spacer()
+            
             HStack(spacing: 15) {
                 Button {
                     
                 } label: {
                     Text("더 써볼래요")
-                        .padding()
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundStyle(.primary6)
+                        .frame(height: 56)
+                        .frame(maxWidth: .infinity)
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.primary1)
+                        }
                 }
                 
                 Button {
                     
                 } label: {
                     Text("떠날래요")
-                        .padding()
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .frame(height: 56)
+                        .frame(maxWidth: .infinity)
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.primary7)
+                        }
                 }
             }
             .padding(.horizontal, 16)
+            .padding(.bottom, 32)
         }
         
         
