@@ -19,6 +19,7 @@ struct CustomImageTitleButton: View {
                     .font(.system(size: 12))
                 
                 Image(systemName: buttonImage)
+                    .resizable()
                     .frame(width: 14, height: 13)
             }
             .foregroundStyle(Color.gray4)

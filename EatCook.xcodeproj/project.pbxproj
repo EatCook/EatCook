@@ -83,6 +83,9 @@
 		F6FA1ECA2BD7E33800198FEB /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1EC92BD7E33800198FEB /* SettingView.swift */; };
 		F6FA1ECC2BD7E33E00198FEB /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1ECB2BD7E33E00198FEB /* SettingViewModel.swift */; };
 		F6FA1ECE2BD7E86100198FEB /* UserProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1ECD2BD7E86100198FEB /* UserProfileEditView.swift */; };
+		F6FA1ED02BDCBB5800198FEB /* UserFavoriteTagEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1ECF2BDCBB5800198FEB /* UserFavoriteTagEditView.swift */; };
+		F6FA1ED32BDCD39500198FEB /* UserWithDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1ED22BDCD39500198FEB /* UserWithDrawView.swift */; };
+		F6FA1ED52BDCD4A300198FEB /* CheckImageTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA1ED42BDCD4A300198FEB /* CheckImageTitleButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,6 +166,9 @@
 		F6FA1EC92BD7E33800198FEB /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		F6FA1ECB2BD7E33E00198FEB /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F6FA1ECD2BD7E86100198FEB /* UserProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEditView.swift; sourceTree = "<group>"; };
+		F6FA1ECF2BDCBB5800198FEB /* UserFavoriteTagEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavoriteTagEditView.swift; sourceTree = "<group>"; };
+		F6FA1ED22BDCD39500198FEB /* UserWithDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWithDrawView.swift; sourceTree = "<group>"; };
+		F6FA1ED42BDCD4A300198FEB /* CheckImageTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckImageTitleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,10 +400,11 @@
 		3F4C10B72B73EA3100D6DA1B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F6FA1ED12BDCD20D00198FEB /* Components */,
 				3F4C10B82B73EA3100D6DA1B /* UserProfileView.swift */,
 				F6FA1ECD2BD7E86100198FEB /* UserProfileEditView.swift */,
-				F6FA1EBB2BD7DAE200198FEB /* UserProfileRowView.swift */,
-				F63E7AE82BC27E7B00934AF1 /* UserProfileTopView.swift */,
+				F6FA1ECF2BDCBB5800198FEB /* UserFavoriteTagEditView.swift */,
+				F6FA1ED22BDCD39500198FEB /* UserWithDrawView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -514,6 +521,7 @@
 				3F4C10EE2B77BEA500D6DA1B /* CustomTextFieldModifier.swift */,
 				F6F9FB512BA1A82600AEF22E /* CustomBorderModifier.swift */,
 				F6FA1EBD2BD7DD5C00198FEB /* CustomImageTitleButton.swift */,
+				F6FA1ED42BDCD4A300198FEB /* CheckImageTitleButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -731,6 +739,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		F6FA1ED12BDCD20D00198FEB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F6FA1EBB2BD7DAE200198FEB /* UserProfileRowView.swift */,
+				F63E7AE82BC27E7B00934AF1 /* UserProfileTopView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -810,6 +827,7 @@
 				3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */,
 				F63E7AE92BC27E7B00934AF1 /* UserProfileTopView.swift in Sources */,
 				F6F9FB612BA1AA0100AEF22E /* TimerPickerView.swift in Sources */,
+				F6FA1ED32BDCD39500198FEB /* UserWithDrawView.swift in Sources */,
 				F6C80AE92B80AB1900001924 /* RecipeContainerRowView.swift in Sources */,
 				F66E2D1E2B8CD1FD00524B8B /* LoginAPI.swift in Sources */,
 				3F4C10DF2B73EA3200D6DA1B /* UserProfileView.swift in Sources */,
@@ -817,6 +835,7 @@
 				3F4C10D82B73EA3200D6DA1B /* HomeViewModel.swift in Sources */,
 				F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */,
 				F66E2D202B8CD20A00524B8B /* CookTalkAPI.swift in Sources */,
+				F6FA1ED52BDCD4A300198FEB /* CheckImageTitleButton.swift in Sources */,
 				3F4C10D52B73EA3200D6DA1B /* EatCookRepository.swift in Sources */,
 				F66E2D0D2B8CCF7100524B8B /* HTTPTask.swift in Sources */,
 				F69B6DBE2B80DC5C00EFB467 /* FeedContainerView.swift in Sources */,
@@ -826,6 +845,7 @@
 				F66E2D182B8CD12200524B8B /* NetworkManager.swift in Sources */,
 				F66E2D1A2B8CD16100524B8B /* Environment.swift in Sources */,
 				F6FA1EBC2BD7DAE200198FEB /* UserProfileRowView.swift in Sources */,
+				F6FA1ED02BDCBB5800198FEB /* UserFavoriteTagEditView.swift in Sources */,
 				3F4C10E02B73EA3200D6DA1B /* SearchViewModel.swift in Sources */,
 				3F4C10E22B73EA3200D6DA1B /* ProfileViewModel.swift in Sources */,
 				3F4C10E72B73EA3200D6DA1B /* LoginViewModel.swift in Sources */,

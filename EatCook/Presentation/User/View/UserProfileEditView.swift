@@ -14,89 +14,11 @@ struct UserProfileEditView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            Rectangle()
-                .frame(height: 160)
-                .foregroundStyle(.white)
-            
-            ZStack(alignment: .top) {
-                VStack(alignment: .leading) {
-                    Spacer()
-                        .frame(height: 140)
-                    
-                    Text("닉네임")
-                        .font(.system(size: 14))
-                        .foregroundStyle(Color.gray8)
-                        .padding(.bottom, 8)
-                    
-                    TextField("닉네임", text: $nickNameText)
-                        .padding()
-                        .modifier(CustomBorderModifier(cornerRadius: 10,
-                                                       lineWidth: 1,
-                                                       background: .white))
-                    
-                    Text("이메일")
-                        .font(.system(size: 14))
-                        .foregroundStyle(Color.gray8)
-                        .padding(.bottom, 8)
-                    
-                    TextField("닉네임", text: $emailText)
-                        .padding()
-                        .modifier(CustomBorderModifier(cornerRadius: 10,
-                                                       lineWidth: 1,
-                                                       background: .white))
-                    
-                    Text("비밀번호")
-                        .font(.system(size: 14))
-                        .foregroundStyle(Color.gray8)
-                        .padding(.bottom, 8)
-                    
-                    SecureField("닉네임", text: $passwordText)
-                        .padding()
-                        .modifier(CustomBorderModifier(cornerRadius: 10,
-                                                       lineWidth: 1,
-                                                       background: .white))
-                    
-                    HStack {
-                        Spacer()
-                        
-                        Text("회원탈퇴")
-                            .font(.system(size: 14))
-                            .foregroundStyle(Color.gray5)
-                        
-                        Divider()
-                        
-                        Text("로그아웃")
-                            .font(.system(size: 14))
-                            .foregroundStyle(Color.gray5)
-                        
-                        Spacer()
-                    }
-                    .padding(24)
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("업데이트")
-                            .font(.system(size: 16))
-                            .foregroundStyle(.white)
-                            .frame(maxWidth: .infinity)
-                            
-                    }
-                    .frame(height: 56)
-                    .background {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.primary7)
-                    }
-                    .padding(.top, 24)
-                    
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal, 16)
-                
-                
+            VStack {
                 ZStack(alignment: .bottomTrailing) {
                     Circle()
                         .frame(width: 130, height: 130)
+                        .padding(.top, 24)
                         .foregroundStyle(Color.gray3)
                     
                     Button {
@@ -110,15 +32,115 @@ struct UserProfileEditView: View {
                     .frame(width: 42, height: 42)
                     .background(.red)
                 }
-                .offset(y: -65)
                 
+                VStack(alignment: .leading) {
+                    
+                    Text("닉네임")
+                        .font(.system(size: 14))
+                        .foregroundStyle(Color.gray6)
+                        .padding(.bottom, 8)
+                    
+                    TextField("닉네임", text: $nickNameText)
+                        .padding()
+                        .modifier(CustomBorderModifier(cornerRadius: 10,
+                                                       lineWidth: 1,
+                                                       background: .white))
+                        .padding(.bottom, 24)
+                    
+                    Text("이메일")
+                        .font(.system(size: 14))
+                        .foregroundStyle(Color.gray6)
+                        .padding(.bottom, 8)
+                    
+                    TextField("이메일", text: $emailText)
+                        .padding()
+                        .foregroundStyle(.gray5)
+                        .modifier(CustomBorderModifier(cornerRadius: 10,
+                                                       lineWidth: 1,
+                                                       background: .gray3))
+                        .disabled(true)
+                    
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 16)
+                .padding(.top, 41)
+                
+                Rectangle()
+                    .fill(.gray1)
+                    .padding(.top, 48)
+                
+                Button {
+                    
+                } label: {
+                    HStack {
+                        Text("비밀번호 변경")
+                            .font(.system(size: 16))
+                            .foregroundStyle(.gray6)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 9, height: 16)
+                            .foregroundStyle(.gray4)
+                    }
+                    .padding(.vertical, 19)
+                    .padding(.horizontal, 16)
+                }
+                
+                Button {
+                    
+                } label: {
+                    HStack {
+                        Text("회원탈퇴")
+                            .font(.system(size: 16))
+                            .foregroundStyle(.gray6)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 9, height: 16)
+                            .foregroundStyle(.gray4)
+                    }
+                    .padding(.vertical, 19)
+                    .padding(.horizontal, 16)
+                }
+                
+                Button {
+                    
+                } label: {
+                    HStack {
+                        Text("로그아웃")
+                            .font(.system(size: 16))
+                            .foregroundStyle(.gray6)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 9, height: 16)
+                            .foregroundStyle(.gray4)
+                    }
+                    .padding(.vertical, 19)
+                    .padding(.horizontal, 16)
+                }
                 
                 
             }
-            
         }
-        .background(Color.gray1)
-        .ignoresSafeArea()
+        
+//        .navigationBarItems(trailing:
+//                            Button(action: {
+//                                print("Right Button Tapped!")
+//                            }) {
+//                                Image(systemName: "plus")
+//                            }
+//                        )
+        
     }
 }
 
