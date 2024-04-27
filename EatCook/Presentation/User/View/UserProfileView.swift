@@ -11,7 +11,7 @@ struct UserProfileView: View {
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
     var body: some View {
-        NavigationStack(path: $naviPathFinder.path) {
+//        NavigationStack(path: $naviPathFinder.path) {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 0) {
                     UserProfileTopView {
@@ -106,12 +106,14 @@ struct UserProfileView: View {
                 }
                 
             }
-            .navigationDestination(for: ViewOptions.self) { viewCase in
-                viewCase.view()
-            }
-            .ignoresSafeArea()
-        }
-        .toolbar(.hidden, for: .navigationBar)
+            .navigationTitle("마이페이지")
+            .navigationBarTitleDisplayMode(.inline)
+//            .navigationDestination(for: ViewOptions.self) { viewCase in
+//                viewCase.view()
+//            }
+//            .ignoresSafeArea()
+//        }
+//        .toolbar(.hidden, for: .navigationBar)
         
     }
 }

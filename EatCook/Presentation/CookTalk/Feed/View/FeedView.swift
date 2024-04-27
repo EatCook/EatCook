@@ -46,7 +46,7 @@ struct FeedView: View {
 
     
     var body: some View {
-        NavigationStack(path: $naviPathFinder.path) {
+//        NavigationStack(path: $naviPathFinder.path) {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView(showsIndicators: false) {
 
@@ -72,6 +72,8 @@ struct FeedView: View {
                     }
                     .background(Color("BackGround"))
                 }
+                .navigationTitle("쿡Talk")
+                .navigationBarTitleDisplayMode(.inline)
                 
 //                NavigationLink(destination: RecipeCreateView().toolbarRole(.editor)) {
 //
@@ -106,12 +108,12 @@ struct FeedView: View {
                 
 
             }
-            .navigationTitle("쿡Talk")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(for: ViewOptions.self) { viewCase in
-                viewCase.view()
-            }
-        }
+            
+//            .navigationBarTitleDisplayMode(.inline)
+//            .navigationDestination(for: ViewOptions.self) { viewCase in
+//                viewCase.view()
+//            }
+//        }
         
 
         
