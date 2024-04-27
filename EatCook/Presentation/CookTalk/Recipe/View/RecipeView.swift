@@ -180,7 +180,7 @@ struct RecipeView: View {
 }
 
 #Preview {
-    NavigationStack {
+//    NavigationStack {
         RecipeView()
-    }
+//    }
 }

@@ -16,7 +16,7 @@ struct SearchView: View {
     @State var isSearching = false
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack {
                 VStack {
                     HStack {
@@ -112,7 +112,7 @@ struct SearchView: View {
                     }
                 }
             }
-        }
+//        }
     }
 }
 

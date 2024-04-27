@@ -40,12 +40,13 @@ enum CookTalkTabCase: CaseIterable {
 
 struct FeedView: View {
     @State private var activeTab: CookTalkTabCase = .cooktalk
-
+    
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     //    @Namespace private var animation
 
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $naviPathFinder.path) {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView(showsIndicators: false) {
 
@@ -72,8 +73,24 @@ struct FeedView: View {
                     .background(Color("BackGround"))
                 }
                 
-                NavigationLink(destination: RecipeCreateView().toolbarRole(.editor)) {
-
+//                NavigationLink(destination: RecipeCreateView().toolbarRole(.editor)) {
+//
+//                    Image(systemName: "plus")
+//                        .resizable()
+//                        .frame(width: 15, height: 15)
+//                        .foregroundStyle(.white)
+//                        .background {
+//                            Circle()
+//                                .fill(.black)
+//                                .frame(width: 45, height: 45)
+//                                .shadow(color: .black, radius: 7)
+//                        }
+//                        .padding(30)
+//                }
+                
+                Button {
+                    naviPathFinder.addPath(.recipeCreate(""))
+                } label: {
                     Image(systemName: "plus")
                         .resizable()
                         .frame(width: 15, height: 15)
@@ -86,11 +103,14 @@ struct FeedView: View {
                         }
                         .padding(30)
                 }
+                
 
             }
             .navigationTitle("쿡Talk")
             .navigationBarTitleDisplayMode(.inline)
-            
+            .navigationDestination(for: ViewOptions.self) { viewCase in
+                viewCase.view()
+            }
         }
         
 
@@ -101,5 +121,6 @@ struct FeedView: View {
 #Preview {
     NavigationStack {
         FeedView()
+            .environmentObject(NavigationPathFinder.shared)
     }
 }

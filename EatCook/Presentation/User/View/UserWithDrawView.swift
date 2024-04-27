@@ -29,25 +29,25 @@ struct UserWithDrawView: View {
             }
             
             VStack {
-                CheckImageTitleButton(isSelected: $button1,
+                CheckImageTitleButton(isSelected: $allCheckButton,
                                       buttonTitle: "계정정보",
                                       buttonImage: "checkmark") {
-                    button1.toggle()
+//                    button1.toggle()
                 }
-                CheckImageTitleButton(isSelected: $button2,
+                CheckImageTitleButton(isSelected: $allCheckButton,
                                       buttonTitle: "작성한 모든 피드 및 게시물",
                                       buttonImage: "checkmark") {
-                    button2.toggle()
+//                    button2.toggle()
                 }
-                CheckImageTitleButton(isSelected: $button3,
+                CheckImageTitleButton(isSelected: $allCheckButton,
                                       buttonTitle: "개인 소식, 알림 내역",
                                       buttonImage: "checkmark") {
-                    button3.toggle()
+//                    button3.toggle()
                 }
-                CheckImageTitleButton(isSelected: $button4,
+                CheckImageTitleButton(isSelected: $allCheckButton,
                                       buttonTitle: "레시피 북마크 및 팔로우 내역",
                                       buttonImage: "checkmark") {
-                    button4.toggle()
+//                    button4.toggle()
                 }
             }
             .padding(.vertical, 16)
@@ -96,23 +96,30 @@ struct UserWithDrawView: View {
                 } label: {
                     Text("떠날래요")
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(allCheckButton ? .white : .gray4)
                         .frame(height: 56)
                         .frame(maxWidth: .infinity)
                         .background {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(.primary7)
+                                .fill(allCheckButton ? .primary7 : .gray2)
                         }
                 }
+                .disabled(!allCheckButton)
+                
             }
             .padding(.horizontal, 16)
             .padding(.bottom, 32)
         }
+        .navigationTitle("회원탈퇴")
+        .navigationBarTitleDisplayMode(.inline)
+        
         
         
     }
 }
 
 #Preview {
-    UserWithDrawView()
+//    NavigationStack {
+        UserWithDrawView()
+//    }
 }

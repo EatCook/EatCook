@@ -77,6 +77,8 @@ struct RecipeStepView: View {
                 }
         }
         .background(.gray1)
+        .navigationTitle("글쓰기")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -265,6 +267,8 @@ struct CreateChatView: View {
 }
 
 #Preview {
-    RecipeStepView()
-        .environmentObject(NavigationPathFinder.shared)
+    NavigationStack {
+        RecipeStepView()
+            .environmentObject(NavigationPathFinder.shared)
+    }
 }

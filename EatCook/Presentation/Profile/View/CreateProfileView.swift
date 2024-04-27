@@ -12,7 +12,7 @@ struct CreateProfileView: View {
     @State var isButtonEnabled = false
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack {
                 Text("프로필을 설정해 주세요")
                     .font(.title2)
@@ -56,7 +56,7 @@ struct CreateProfileView: View {
             .background(.bgPrimary)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("회원가입")
-        }
+//        }
     }
 }
 

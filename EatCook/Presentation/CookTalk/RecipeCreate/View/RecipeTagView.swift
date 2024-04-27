@@ -71,6 +71,8 @@ struct RecipeTagView: View {
 }
 
 #Preview {
-    RecipeTagView()
-        .environmentObject(NavigationPathFinder.shared)
+    NavigationStack {
+        RecipeTagView()
+            .environmentObject(NavigationPathFinder.shared)        
+    }
 }

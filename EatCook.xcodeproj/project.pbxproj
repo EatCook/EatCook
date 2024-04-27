@@ -627,8 +627,8 @@
 			children = (
 				F69B6DC22B80ED6400EFB467 /* Components */,
 				F6F9FB652BA1AA1000AEF22E /* RecipeCreateView.swift */,
-				F6F9FB642BA1AA1000AEF22E /* RecipeStepView.swift */,
 				F6F9FB632BA1AA1000AEF22E /* RecipeTagView.swift */,
+				F6F9FB642BA1AA1000AEF22E /* RecipeStepView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -742,8 +742,8 @@
 		F6FA1ED12BDCD20D00198FEB /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				F6FA1EBB2BD7DAE200198FEB /* UserProfileRowView.swift */,
 				F63E7AE82BC27E7B00934AF1 /* UserProfileTopView.swift */,
+				F6FA1EBB2BD7DAE200198FEB /* UserProfileRowView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1028,7 +1028,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EatCook/Preview Content\"";
-				DEVELOPMENT_TEAM = NFCS5T44FS;
+				DEVELOPMENT_TEAM = FJNF7APGSX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1061,7 +1061,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EatCook/Preview Content\"";
-				DEVELOPMENT_TEAM = NFCS5T44FS;
+				DEVELOPMENT_TEAM = FJNF7APGSX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

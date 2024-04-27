@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
         TabView {
             HomeView()
@@ -31,9 +32,12 @@ struct ContentView: View {
                     Text("마이페이지")
                 }
         }
+        
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(NavigationPathFinder.shared)
+    
 }

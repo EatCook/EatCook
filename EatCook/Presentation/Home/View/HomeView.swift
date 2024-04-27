@@ -27,7 +27,7 @@ struct HomeView: View {
     }
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 ZStack {
                     Image(.bgHome)
@@ -242,7 +242,7 @@ struct HomeView: View {
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.bgPrimary)
             .padding(.vertical)
-        }
+//        }
     }
 }
 

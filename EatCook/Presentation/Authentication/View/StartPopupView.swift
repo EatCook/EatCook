@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StartPopupView: View {
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack {
                 VStack {
                     Image(.check)
@@ -47,7 +47,7 @@ struct StartPopupView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.black.opacity(0.3))
-        }
+//        }
     }
 }
 

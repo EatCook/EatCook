@@ -150,19 +150,16 @@ struct RecipeCreateView: View {
                 } label: {
                     Text("다음")
                         .foregroundStyle(.white)
-                }
-                .frame(maxWidth: .infinity)
-                .background {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(.primary7)
-                        .frame(height: 56)
+                        .frame(maxWidth: .infinity)
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.primary7)
+                                .frame(height: 56)
+                        }
                 }
                 .padding(.vertical, 20)
             }
             .padding(24)
-//            .navigationDestination(for: ViewOptions.self) { viewCase in
-//                viewCase.view()
-//            }
             .onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
@@ -187,13 +184,18 @@ struct RecipeCreateView: View {
             TimerPickerView()
                 .presentationDetents([.fraction(0.42)])
         }
+//        .navigationDestination(for: ViewOptions.self) { viewCase in
+//            viewCase.view()
+//        }
     }
     
 }
 
 #Preview {
-    RecipeCreateView()
-        .environmentObject(NavigationPathFinder.shared)
+    NavigationStack {
+        RecipeCreateView()
+            .environmentObject(NavigationPathFinder.shared)        
+    }
 }
 
 //struct CustomProgressBarStyle: ProgressViewStyle {

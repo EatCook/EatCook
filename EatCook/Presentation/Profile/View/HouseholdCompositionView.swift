@@ -12,7 +12,7 @@ struct HouseholdCompositionView: View {
     @State var isButtonEnabled = false
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack {
                 Text("누구와 함께 살고있나요?")
                     .font(.title2)
@@ -63,7 +63,7 @@ struct HouseholdCompositionView: View {
             .background(.bgPrimary)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("회원가입")
-        }
+//        }
     }
 }
 

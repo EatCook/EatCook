@@ -12,7 +12,7 @@ struct LoginView: View {
     let height = UIScreen.main.bounds.height / 2 - 80
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ZStack(alignment: .bottom) {
                 HStack(spacing: 10) {
                     Image(.food1)
@@ -106,7 +106,7 @@ struct LoginView: View {
                         .foregroundStyle(.gray)
                 })
             }.padding(.vertical, 30)
-        }
+//        }
     }
 }
 

@@ -100,7 +100,7 @@ struct UserFavoriteTagEditView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text("관심요리")
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundStyle(.gray8)
@@ -135,7 +135,7 @@ struct UserFavoriteTagEditView: View {
                 //                .border(.black)
             }
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text("나의 식생활 테마")
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundStyle(.gray8)
@@ -211,11 +211,15 @@ struct UserFavoriteTagEditView: View {
                 ]
             }
         }
+        .navigationTitle("관심 요리 편집")
+        .navigationBarTitleDisplayMode(.inline)
         
     }
     
 }
 
 #Preview {
-    UserFavoriteTagEditView()
+//    NavigationStack {
+        UserFavoriteTagEditView()
+//    }
 }
