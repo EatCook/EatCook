@@ -11,6 +11,7 @@ enum ViewOptions: Hashable {
     case recipeCreate(_ data: String)
     case recipeTag(_ data: String)
     case recipeStep(_ data: String)
+    case recipeDetail
     
     case setting
     case userProfileEdit
@@ -20,6 +21,7 @@ enum ViewOptions: Hashable {
     @ViewBuilder
     func view() -> some View {
         switch self {
+        case .recipeDetail: RecipeView()
         case .recipeCreate: RecipeCreateView()
         case .recipeTag: RecipeTagView()
         case .recipeStep: RecipeStepView()

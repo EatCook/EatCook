@@ -88,12 +88,10 @@ struct FeedView: View {
                     TabView(selection: $activeTab) {
                         ForEach(CookTalkTabCase.allCases, id: \.self) { tabCase in
                             ScrollView(.vertical) {
-                                //                            VStack {
                                 tabCase.tabCaseContainerView()
                                     .tag(tabCase)
                                     .padding(.horizontal, 16)
                                     .padding(.vertical, 24)
-                                //                            }
                             }
                             .scrollIndicators(.never)
                             
@@ -120,9 +118,10 @@ struct FeedView: View {
                     //                )
                 }
                 .navigationTitle("쿡Talk")
+//                .navigationBarTitleDisplayMode(.large)
                 
                 Button {
-                    
+                    naviPathFinder.addPath(.recipeCreate(""))
                 } label: {
                     Image("plusbutton")
                         .resizable()

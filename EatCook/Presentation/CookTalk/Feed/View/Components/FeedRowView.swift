@@ -10,6 +10,7 @@ import SwiftUI
 struct FeedRowView: View {
     //    @Binding var isExpended: Bool
     @State private var isExpended: Bool = false
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -62,6 +63,9 @@ struct FeedRowView: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(.white)
                 .shadow(color: .black.opacity(0.05), radius: 10, y: 5)
+        }
+        .onTapGesture {
+            naviPathFinder.addPath(.recipeDetail)
         }
     }
 }

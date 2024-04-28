@@ -9,53 +9,58 @@ import SwiftUI
 
 struct TabIndicatorView: View {
     @Binding var activeTab: RecipeTabCase
-    //    @Binding var contentOffset: CGFloat
     @Namespace private var animation
+    @State private var animationProgress: CGFloat = 0
+    
+    var scrollViewProxy: ScrollViewProxy
     
     var body: some View {
-        GeometryReader {
-            let size = $0.size
-            let tabWidth = size.width / CGFloat(RecipeTabCase.allCases.count)
-            
-            HStack(spacing: 0) {
-                ForEach(RecipeTabCase.allCases, id: \.self) { tabCase in
-                    Text(tabCase.title)
-                        .font(.headline)
-                        .fontWeight(activeTab == tabCase ? .bold : .semibold)
-                        .foregroundStyle(activeTab == tabCase ? Color.black : Color.gray)
-                        .frame(width: tabWidth)
-                        .overlay(alignment: .bottom) {
-                            if activeTab == tabCase {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill()
-                                    .frame(height: 3)
-                                    .padding(.horizontal, 40)
-                                    .offset(y: 15)
-                                //                                    .offset(x: contentOffset)
-                                    .matchedGeometryEffect(id: "ACTIVETAB", in: animation)
-                            }
-                            
-                            Divider()
-                                .offset(y: 15)
-                            
+        HStack {
+            ForEach(RecipeTabCase.allCases, id: \.self) { tabCase in
+                Text(tabCase.title)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(.gray8)
+                    .padding(.vertical, 12)
+                    .background(alignment: .bottom) {
+                        if activeTab == tabCase {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill()
+                                .frame(height: 3)
+                                .padding(.horizontal, -10)
+//                                .offset(y: 15)
+                                .matchedGeometryEffect(id: "ACTIVETAB", in: animation)
                         }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            withAnimation {
-                                activeTab = tabCase
-                            }
+                    }
+                    .padding(.horizontal, 25)
+                    .contentShape(Rectangle())
+                    .id(tabCase.tabID)
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            activeTab = tabCase
+                            animationProgress = 1.0
+                            scrollViewProxy.scrollTo(tabCase, anchor: .topLeading)
                         }
-                }
+                    }
+                
             }
-            .padding()
-            .frame(width: CGFloat(RecipeTabCase.allCases.count) * tabWidth)
-            
         }
-        .frame(height: 50)
-        .background(.white)
+        .onChange(of: activeTab) { newValue in
+            withAnimation(.easeInOut(duration: 0.3)) {
+                scrollViewProxy.scrollTo(newValue.tabID, anchor: .center)
+            }
+        }
+        .checkAnimationEnd(for: animationProgress) {
+            animationProgress = 0.0
+        }
+        .frame(maxWidth: .infinity)
+        .background(alignment: .bottom) {
+            Rectangle()
+                .fill(.gray2)
+                .frame(height: 1)
+        }
     }
 }
 
 #Preview {
-    TabIndicatorView(activeTab: .constant(RecipeTabCase.recipe))
+    RecipeView()
 }
