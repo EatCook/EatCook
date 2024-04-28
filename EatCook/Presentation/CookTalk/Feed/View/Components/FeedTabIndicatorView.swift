@@ -24,7 +24,15 @@ struct FeedTabIndicatorView: View {
                         .fontWeight(activeTab == tabCase ? .bold : .semibold)
                         .foregroundStyle(activeTab == tabCase ? Color.black : Color.gray)
                         .frame(width: tabWidth)
+                        .background {
+                            Rectangle()
+                                .fill(.gray2)
+                                .frame(height: 1)
+                                .offset(y: 25)
+                        }
                         .overlay(alignment: .bottom) {
+                            
+                            
                             if activeTab == tabCase {
                                 RoundedRectangle(cornerRadius: 8)
                                     .fill()
@@ -35,8 +43,8 @@ struct FeedTabIndicatorView: View {
                                     .matchedGeometryEffect(id: "ACTIVETAB", in: animation)
                             }
                             
-                            Divider()
-                                .offset(y: 15)
+//                            Divider()
+//                                .offset(y: 15)
                             
                         }
                         .contentShape(Rectangle())
