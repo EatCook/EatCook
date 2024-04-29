@@ -12,6 +12,7 @@ struct HomeView: View {
     @State var search = ""
     @State private var selectFoodTheme = 0
     @State private var selectMenuRecommend = 0
+    @State private var scrollOffset: CGFloat = 0
     
 //  TODO : 한식 일식 야식 별로 서버 데이터 세팅
     @State private var interestingFoods : [interestingFoods] = [
@@ -38,22 +39,41 @@ struct HomeView: View {
 
         NavigationStack {
             ZStack(alignment : .top) {
-                Color.primary7.edgesIgnoringSafeArea(.top)
-                ScrollView(.vertical, showsIndicators: false) {
+                GeometryReader { geometry in
+                    
+                    Color.primary7.opacity(scrollOffset > 50 ? 1 : 0).edgesIgnoringSafeArea(.top).animation(.easeInOut)
 
-                    HomeMenuTopView()
- 
-                    VStack(spacing: 20) {
-                        HomeInterestingView(interestingFoods: $interestingFoods)
-                        HomeRecommendView()
-                       
+                    ScrollView(.vertical, showsIndicators: false) {
                         
+                 
 
+                        HomeMenuTopView()
+                        GeometryReader { scrollViewGeometry in
+                               Color.clear.onAppear {
+                                   scrollOffset = scrollViewGeometry.frame(in: .global).minY
+                               }
+                               .onChange(of: scrollViewGeometry.frame(in: .global).minY) { newValue in
+                                   withAnimation {
+                                       scrollOffset = newValue
+                                   }
+                               }
+                           }
+   
+                        VStack(spacing: 20) {
+                            HomeInterestingView(interestingFoods: $interestingFoods)
+                            HomeRecommendView()
+                           
+                            
+
+                        }
+                        
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(.bgPrimary)
+                    .padding(.top)
+                    
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(.bgPrimary)
-                .padding(.top)
+
             }
 
         }
@@ -238,17 +258,31 @@ struct HomeRecommendView : View {
     var recommendTabs = ["건강 요리", "다이어트 요리" , "배달음식 요리", "편의점 요리", "밀키트 요리"]
     @State var currentTab = "건강 요리"
     @State var selectedIndex = 0
-    @State var viewArray : [ScrollView] = [ScrollView {
-        RecommendColArrView(count: 2)
-    }, ScrollView{
-        RecommendColArrView(count: 3)
-        } , ScrollView{
-            RecommendColArrView(count: 4)
-        } , ScrollView{
-            RecommendColArrView(count: 2)
-        } , ScrollView{
-            RecommendColArrView(count: 1)
+    
+    @State private var tabHeight: CGFloat = 1
+    
+    
+    @State var viewArray : [VStack] = [VStack {
+        RecommendColArrView(count: 5)
+    }, VStack{
+        RecommendColArrView(count: 10)
+        } , VStack{
+            RecommendColArrView(count: 3)
+        } , VStack{
+            RecommendColArrView(count: 15)
+        } , VStack{
+            RecommendColArrView(count: 20)
         }]
+    var viewHeight : [Int] = [5,10,3,15,20]
+    
+    // 배열의 길이에 따라 동적으로 계산된 높이 반환하는 함수
+    func dynamicHeight() -> CGFloat {
+        let itemCount = CGFloat(viewHeight[selectedIndex])
+        let minHeight: CGFloat = 250 // 최소 높이
+        let totalHeight = itemCount * minHeight
+        return totalHeight
+    }
+    
     
     var body: some View {
         VStack {
@@ -261,34 +295,48 @@ struct HomeRecommendView : View {
                     Spacer()
                 }
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack{
-                        ForEach(Array(zip(recommendTabs.indices, recommendTabs)), id : \.0) { (index , tab) in
-                            Button(action: {
-                                withAnimation(.easeInOut){
-                                    currentTab = tab
-                                    selectedIndex = index
-                                    print(selectedIndex)
+                LazyVStack(spacing: 12, pinnedViews: [.sectionHeaders]) {
+                    Section {
+                        
+                            VStack{
+                                TabView(selection : $selectedIndex) {
+                                    ForEach(0..<viewArray.count , id : \.self){ index in
+                                        viewArray[index]
+                                    }
                                 }
-                            }) {
-                                Text(tab)
-                                    .padding(.vertical, 4)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(selectedIndex == index ? .white : .gray)
+                                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                                
+                            }.frame(height: withAnimation(.spring){
+                                tabHeight * self.dynamicHeight()
+                            })
+                        
+                    }
+                header: {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack{
+                                ForEach(Array(zip(recommendTabs.indices, recommendTabs)), id : \.0) { (index , tab) in
+                                    Button(action: {
+                                        withAnimation(.easeInOut){
+                                            currentTab = tab
+                                            selectedIndex = index
+                                            print(selectedIndex)
+                                        }
+                                    }) {
+                                        Text(tab)
+                                            .padding(.vertical, 4)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(selectedIndex == index ? .white : .gray)
+                                        
+                                    }.buttonStyle(.borderedProminent)
+                                        .tint(selectedIndex == index ? .primary7 : .gray2).animation(.easeInOut)
                                     
-                            }.buttonStyle(.borderedProminent)
-                                .tint(selectedIndex == index ? .primary7 : .gray2).animation(.easeInOut)
-                            
+                                }
+                            }
                         }
                     }
+                    
                 }
-                
-                TabView(selection : $selectedIndex) {
-                        ForEach(0..<viewArray.count , id : \.self){ index in
-                            viewArray[index]
-                        }
-                    }.frame(minHeight : 500, maxHeight : .infinity)
-                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+
                                          
             }.padding(.horizontal, 10)
     
@@ -329,7 +377,7 @@ struct RecommendColView : View {
 //            이미지
             ZStack(alignment: .topLeading){
                 ZStack(alignment : .bottomTrailing){
-                    Image(.testFood2).resizable().frame(width: .infinity , height:  160)
+                    Image(.testFood2).resizable().frame(height:  160)
                     Image(.bookMark).resizable().frame(width: 20 , height:  24).padding()
                 }
                
