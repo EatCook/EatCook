@@ -259,7 +259,9 @@ struct HomeRecommendView : View {
     @State var currentTab = "건강 요리"
     @State var selectedIndex = 0
     
-    @State private var tabHeight: CGFloat = 1
+    @State private var tabHeight: CGFloat = 1000
+    @State var initialHeight: CGFloat = 0
+    @State var sizeArray: [CGSize] = [.zero, .zero, .zero, .zero, .zero]
     
     
     @State var viewArray : [VStack] = [VStack {
@@ -297,29 +299,45 @@ struct HomeRecommendView : View {
                 
                 LazyVStack(spacing: 12, pinnedViews: [.sectionHeaders]) {
                     Section {
-                        
                             VStack{
                                 TabView(selection : $selectedIndex) {
                                     ForEach(0..<viewArray.count , id : \.self){ index in
-                                        viewArray[index]
+                                        viewArray[index].fixedSize().readSize { size in
+                                            print("size ::::", size)
+                                            sizeArray[index] = size
+                                            if initialHeight == 0 {
+                                                initialHeight = size.height
+                                            }
+                                        }
+                                    }
+                
+                                }
+                                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                                .frame(height: tabHeight)
+                                .onChange(of: selectedIndex) { newValue in
+                                    print(sizeArray)
+                                    print("selectedIndex ::", selectedIndex)
+                                    print("newValue ::" , newValue)
+                                    withAnimation {
+                                        tabHeight = sizeArray[newValue].height
                                     }
                                 }
-                                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                                
-                            }.frame(height: withAnimation(.spring){
-                                tabHeight * self.dynamicHeight()
-                            })
+                                .onChange(of: initialHeight) { newValue in
+                                    tabHeight = newValue
+                                }
+                            }
                         
                     }
                 header: {
                         ScrollView(.horizontal, showsIndicators: false) {
+                            
                             HStack{
                                 ForEach(Array(zip(recommendTabs.indices, recommendTabs)), id : \.0) { (index , tab) in
                                     Button(action: {
                                         withAnimation(.easeInOut){
                                             currentTab = tab
                                             selectedIndex = index
-                                            print(selectedIndex)
+//                                            print(selectedIndex)
                                         }
                                     }) {
                                         Text(tab)
@@ -466,6 +484,23 @@ extension HomeView {
     
     
     
+}
+
+struct SizePreferenceKey: PreferenceKey {
+  static var defaultValue: CGSize = .zero
+  static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
+}
+
+extension View {
+    func readSize(onChange: @escaping (CGSize) -> Void) -> some View {
+        background(
+            GeometryReader { geometryProxy in
+                Color.clear
+                    .preference(key: SizePreferenceKey.self, value: geometryProxy.size)
+            }
+        )
+            .onPreferenceChange(SizePreferenceKey.self, perform: onChange)
+    }
 }
 
 
