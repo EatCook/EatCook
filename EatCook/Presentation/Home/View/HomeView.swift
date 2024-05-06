@@ -255,13 +255,12 @@ struct HomeRecommendView : View {
     
     
     //TODO : 서버값 연결
-    var recommendTabs = ["건강 요리", "다이어트 요리" , "배달음식 요리", "편의점 요리", "밀키트 요리"]
-    @State var currentTab = "건강 요리"
+    @State var recommendTabs = ["건강 요리", "다이어트 요리" , "배달음식 요리", "편의점 요리", "밀키트 요리"]
     @State var selectedIndex = 0
     
-    @State private var tabHeight: CGFloat = 1000
+    @State private var tabHeight: CGFloat = 1
     @State var initialHeight: CGFloat = 0
-    @State var sizeArray: [CGSize] = [.zero, .zero, .zero, .zero, .zero]
+    @State var sizeArray: [CGSize] = [CGSize(width: 300, height: 5 * 230), CGSize(width: 300, height: 10 * 230), CGSize(width: 300, height: 3 * 230), CGSize(width: 300, height: 15 * 230), CGSize(width: 300, height: 20 * 230)]
     
     
     @State var viewArray : [VStack] = [VStack {
@@ -275,15 +274,15 @@ struct HomeRecommendView : View {
         } , VStack{
             RecommendColArrView(count: 20)
         }]
-    var viewHeight : [Int] = [5,10,3,15,20]
-    
-    // 배열의 길이에 따라 동적으로 계산된 높이 반환하는 함수
-    func dynamicHeight() -> CGFloat {
-        let itemCount = CGFloat(viewHeight[selectedIndex])
-        let minHeight: CGFloat = 250 // 최소 높이
-        let totalHeight = itemCount * minHeight
-        return totalHeight
-    }
+//    var viewHeight : [Int] = [5,10,3,15,20]
+//
+//    // 배열의 길이에 따라 동적으로 계산된 높이 반환하는 함수
+//    func dynamicHeight() -> CGFloat {
+//        let itemCount = CGFloat(viewHeight[selectedIndex])
+//        let minHeight: CGFloat = 250 // 최소 높이
+//        let totalHeight = itemCount * minHeight
+//        return totalHeight
+//    }
     
     
     var body: some View {
@@ -299,7 +298,7 @@ struct HomeRecommendView : View {
                 
                 LazyVStack(spacing: 12, pinnedViews: [.sectionHeaders]) {
                     Section {
-                            VStack{
+                        VStack {
                                 TabView(selection : $selectedIndex) {
                                     ForEach(0..<viewArray.count , id : \.self){ index in
                                         viewArray[index].fixedSize().readSize { size in
@@ -316,39 +315,39 @@ struct HomeRecommendView : View {
                                 .frame(height: tabHeight)
                                 .onChange(of: selectedIndex) { newValue in
                                     print(sizeArray)
-                                    print("selectedIndex ::", selectedIndex)
-                                    print("newValue ::" , newValue)
+                                    print("selectedIndex :::", selectedIndex)
+                                    print("newValue :::" , newValue)
                                     withAnimation {
                                         tabHeight = sizeArray[newValue].height
                                     }
                                 }
                                 .onChange(of: initialHeight) { newValue in
+                                    print("newValue" , newValue)
                                     tabHeight = newValue
                                 }
-                            }
+                        }
                         
                     }
                 header: {
                         ScrollView(.horizontal, showsIndicators: false) {
-                            
                             HStack{
-                                ForEach(Array(zip(recommendTabs.indices, recommendTabs)), id : \.0) { (index , tab) in
+                                ForEach(Array(recommendTabs.enumerated()), id: \.offset) { index, element in
+                                  // ...
                                     Button(action: {
                                         withAnimation(.easeInOut){
-                                            currentTab = tab
                                             selectedIndex = index
 //                                            print(selectedIndex)
                                         }
                                     }) {
-                                        Text(tab)
+                                        Text(element)
                                             .padding(.vertical, 4)
                                             .fontWeight(.bold)
                                             .foregroundColor(selectedIndex == index ? .white : .gray)
                                         
                                     }.buttonStyle(.borderedProminent)
                                         .tint(selectedIndex == index ? .primary7 : .gray2).animation(.easeInOut)
-                                    
                                 }
+                                
                             }
                         }
                     }
