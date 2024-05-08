@@ -19,114 +19,114 @@ struct SearchView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-//                최근 검색어 VIEW
-                ZStack(alignment : .top) {
-                    VStack {
-                        HStack(alignment: .bottom) {
-                            Text("지금 많이 검색하고 있어요")
-                                .font(.title3).bold()
-                            Text("2024.03.13")
-                                .foregroundColor(.gray5)
-                                .font(.system(size: 12))
-                            
-                            Spacer()
-                        }.padding(.vertical, 20)
-                        .padding(.horizontal, 16)
-                        
-                        LazyVStack(alignment: .trailing){
-                            ForEach(SearchView.testDataRank.indices, id : \.self) { index in
-                                Button(action: {
-                                    
-                                }, label: {
-                                    HStack {
-                                        
-                                        index+1 > 3 ?
-                                        HStack(spacing : 24) {
-                                            Text("\(index + 1)").foregroundColor(.secondary).bold()
-                                            Text(SearchView.testDataRank[index]).font(.system(size: 18))
-
-                                        }.padding(.vertical, 12)
-                                        :
-                                        HStack(spacing : 24) {
-                                            Text("\(index + 1)").foregroundColor(.primary6)
-                                                .bold()
-                                            Text(SearchView.testDataRank[index]).font(.system(size: 18)).bold()
-
-                                            
-                                        }.padding(.vertical, 12)
-                                        
-
-                                        Spacer()
-                                        Image(.upPrimary)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 18)
-                                    }
-                                })
-                            }
-                        }.padding(.horizontal, 16)
-
-                        Spacer()
-                        
-                        
-                    }.padding(.bottom, 30)
-                    .background(Color.white)
-                    
-                    if isSearching {
-                        VStack(alignment : .leading, spacing: 0){
-                           
-                            RecentSearchView(recentSearchData : $recentSearchData)
+            ScrollView(showsIndicators: false) {
+                VStack {
+    //                최근 검색어 VIEW
+                    ZStack(alignment : .top) {
+                        VStack {
+                            HStack(alignment: .bottom) {
+                                Text("지금 많이 검색하고 있어요")
+                                    .font(.title3).bold()
+                                Text("2024.03.13")
+                                    .foregroundColor(.gray5)
+                                    .font(.system(size: 12))
                                 
-                            Rectangle().fill(Color.black.opacity(0.6))
-                            .onTapGesture {
-                                withAnimation {
-                                    isSearching = false
+                                Spacer()
+                            }.padding(.vertical, 20)
+                            .padding(.horizontal, 16)
+                            
+                            LazyVStack(alignment: .trailing){
+                                ForEach(SearchView.testDataRank.indices, id : \.self) { index in
+                                    Button(action: {
+                                        
+                                    }, label: {
+                                        HStack {
+                                            
+                                            index+1 > 3 ?
+                                            HStack(spacing : 24) {
+                                                Text("\(index + 1)").foregroundColor(.secondary).bold()
+                                                Text(SearchView.testDataRank[index]).font(.system(size: 18))
+
+                                            }.padding(.vertical, 12)
+                                            :
+                                            HStack(spacing : 24) {
+                                                Text("\(index + 1)").foregroundColor(.primary6)
+                                                    .bold()
+                                                Text(SearchView.testDataRank[index]).font(.system(size: 18)).bold()
+
+                                                
+                                            }.padding(.vertical, 12)
+                                            
+
+                                            Spacer()
+                                            Image(.upPrimary)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 18)
+                                        }
+                                    })
+                                }
+                            }.padding(.horizontal, 16)
+
+                            Spacer()
+                            
+                            
+                        }.padding(.bottom, 30)
+                        .background(Color.white)
+                        
+                        if isSearching {
+                            VStack(alignment : .leading, spacing: 0){
+                               
+                                RecentSearchView(recentSearchData : $recentSearchData)
+                                    
+                                Rectangle().fill(Color.black.opacity(0.6))
+                                .onTapGesture {
+                                    withAnimation {
+                                        isSearching = false
+                                    }
                                 }
                             }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        
+                 
                     }
-             
-                }
-                
+                    
 
 
 
-                
-            }.padding(.top, 15)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.white)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    HStack {
-                        TextField("재료 또는 레시피를 검색해 보세요                       ", text: $searchText)
-                            .frame(maxWidth: .infinity)
-                            .padding(.trailing, 4)
-                            .focused($isFocused)
-                            .onTapGesture {
+                    
+                }.padding(.top, 15)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.white)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        HStack {
+                            TextField("재료 또는 레시피를 검색해 보세요                       ", text: $searchText)
+                                .frame(maxWidth: .infinity)
+                                .padding(.trailing, 4)
+                                .onTapGesture {
+                                    withAnimation {
+                                        isSearching = true
+                                    }
+                                }
+                            Spacer()
+                            Button(action: {
                                 withAnimation {
                                     isSearching = true
-                                    isFocused = true
                                 }
+                            }) {
+                                Image(systemName: "magnifyingglass")
+                                    .tint(.gray)
                             }
-                            
-
-                        Spacer()
-                        Button(action: {
-                            withAnimation {
-                                isSearching = true
-                            }
-                        }) {
-                            Image(systemName: "magnifyingglass")
-                                .tint(.gray)
                         }
+                       
+                        
                     }
-                   
-                    
                 }
+                
             }
+
         }
     }
 }
@@ -145,7 +145,7 @@ struct RecentSearchView: View {
                                 Spacer()
         
                                 Button(action: {
-        
+                                    recentSearchData = []
                                 }, label: {
                                     Text("전체 삭제")
                                         .font(.body)
