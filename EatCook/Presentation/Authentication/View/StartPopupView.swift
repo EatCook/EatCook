@@ -18,7 +18,7 @@ struct StartPopupView: View {
                         .padding(.top, 40)
                         .padding(.bottom, 25)
                     
-                    Text("회원가입 완료")
+                    Text("회원가입 완료 ")
                         .font(.title2).bold()
                         .padding(.bottom, 2)
                     
