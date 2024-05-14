@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "email.png",
+      "filename" : "whiteHeart.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "email 1.png",
+      "filename" : "whiteHeart 2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "email 2.png",
+      "filename" : "whiteHeart 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

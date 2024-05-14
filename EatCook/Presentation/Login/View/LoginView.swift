@@ -15,7 +15,7 @@ struct LoginView: View {
         NavigationStack {
             ZStack(alignment: .bottom) {
                 HStack(spacing: 10) {
-                    Image(.food1)
+                    Image(.food)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: width / 2 - 24, height: height)
@@ -23,14 +23,14 @@ struct LoginView: View {
                         .cornerRadius(10)
                     
                     VStack(spacing: 10) {
-                        Image(.food2)
+                        Image(.food)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: width / 2 - 24, height: (height - 10) * 0.6)
                             .clipped()
                             .cornerRadius(10)
                         
-                        Image(.food3)
+                        Image(.food)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: width / 2 - 24, height: (height - 10) * 0.4)
@@ -46,16 +46,27 @@ struct LoginView: View {
                     .offset(y: 35)
                 
                 VStack {
-                    Text("우리집 냉장고 파먹기")
+                    Text("혼밥 레시피 SNS")
                         .font(.title2)
-                    Text("잇쿡")
-                        .font(.largeTitle.bold())
+                        .bold()
+                    
+                    
+                    Image(.title)
+                        .resizable()
+                        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/ , height: 50)
+                    
+
+                    
+                    
+                    
                 }.offset(y: 40)
             }.padding(.top, 40)
             
             Spacer()
             
-            VStack(spacing: 12) {
+            VStack(spacing: 10) {
+                
+                
                 Button(action: {
 
                 }, label: {
@@ -64,7 +75,7 @@ struct LoginView: View {
                         .aspectRatio(contentMode: .fit)
                 })
                 .padding(.horizontal, 24)
-                .frame(height: 55)
+                
                 
                 Button(action: {
 
@@ -74,7 +85,7 @@ struct LoginView: View {
                         .aspectRatio(contentMode: .fit)
                 })
                 .padding(.horizontal, 24)
-                .frame(height: 55)
+
                 
                 NavigationLink(destination: EmailAuthView().toolbarRole(.editor)) {
                     Image(.email)
@@ -82,7 +93,7 @@ struct LoginView: View {
                         .aspectRatio(contentMode: .fit)
                 }
                 .padding(.horizontal, 24)
-                .frame(height: 55)
+
             }.padding(.top)
             
             HStack(spacing: 10) {
@@ -97,14 +108,13 @@ struct LoginView: View {
                 Divider()
                     .background(Color.gray)
                     .frame(height: 10)
-                
-                Button(action: {
-                    
-                }, label: {
+                NavigationLink(destination: EmailAuthView().toolbarRole(.editor)) {
                     Text("회원가입")
                         .font(.body)
                         .foregroundStyle(.gray)
-                })
+                }
+                
+ 
             }.padding(.vertical, 30)
         }
     }

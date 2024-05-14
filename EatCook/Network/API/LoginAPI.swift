@@ -8,6 +8,7 @@
 import Foundation
 
 enum LoginAPI: EndPoint {
+    
     case login
     
     var path: String {
@@ -27,7 +28,7 @@ enum LoginAPI: EndPoint {
     var httpTask: HTTPTask {
         switch self {
         case .login:
-            return .requestWithParameters(parameters: <#T##[String : Any]#>, encoding: <#T##ParameterEncoding#>)
+            return .requestWithParameters(parameters: ["temp": "temp"], encoding: .jsonEncoding)
         }
     }
     

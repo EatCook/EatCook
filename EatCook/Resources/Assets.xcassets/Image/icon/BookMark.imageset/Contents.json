@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "email.png",
+      "filename" : "bookMark.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "email 1.png",
+      "filename" : "bookMark 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "email 2.png",
+      "filename" : "bookMark 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
