@@ -235,10 +235,10 @@ struct interestingRowView : View {
                     .font(.callout)
                     .bold()
                 Spacer()
-                HStack {
-                    Image(.stopWatch).resizable().frame(width : 20, height: 20)
-                    Text(time).font(.system(size : 14)).font(.callout).foregroundColor(.gray5)
-                }
+//                HStack {
+//                    Image(.stopWatch).resizable().frame(width : 20, height: 20)
+//                    Text(time).font(.system(size : 14)).font(.callout).foregroundColor(.gray5)
+//                }
      
             }
             HStack {
