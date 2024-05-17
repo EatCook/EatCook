@@ -416,7 +416,7 @@ struct RecommendColView : View {
                     .bold()
                     .font(.system(size: 24))
                 
-                Image(.stopWatch).resizable().frame(width : 20, height: 20)
+                Image(.stopwatch).resizable().frame(width : 20, height: 20)
                 Text("시간").font(.system(size : 14)).font(.callout).foregroundColor(.gray5)
                 
                 Spacer()

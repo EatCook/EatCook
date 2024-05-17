@@ -39,6 +39,11 @@
 		3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */; };
 		3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */; };
 		E52261312BEB63F300ECC939 /* EmailValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */; };
+		E5AEE8962BF739EA00A4EF40 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE8952BF739EA00A4EF40 /* UserService.swift */; };
+		E5AEE89A2BF73B6500A4EF40 /* EmailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE8992BF73B6500A4EF40 /* EmailRequest.swift */; };
+		E5AEE89C2BF73B7C00A4EF40 /* EmailVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */; };
+		E5AEE89F2BF73CC500A4EF40 /* BaseStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE89E2BF73CC500A4EF40 /* BaseStruct.swift */; };
+		E5AEE8A12BF73D6900A4EF40 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE8A02BF73D6900A4EF40 /* APIClient.swift */; };
 		E5F520152BCFB89400CEA96B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F520142BCFB89400CEA96B /* CustomTabView.swift */; };
 		F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */; };
 		F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D062B8CCEFB00524B8B /* HTTPError.swift */; };
@@ -112,6 +117,11 @@
 		3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPopupView.swift; sourceTree = "<group>"; };
 		3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
 		E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationViewModel.swift; sourceTree = "<group>"; };
+		E5AEE8952BF739EA00A4EF40 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		E5AEE8992BF73B6500A4EF40 /* EmailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequest.swift; sourceTree = "<group>"; };
+		E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerify.swift; sourceTree = "<group>"; };
+		E5AEE89E2BF73CC500A4EF40 /* BaseStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStruct.swift; sourceTree = "<group>"; };
+		E5AEE8A02BF73D6900A4EF40 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		E5F520142BCFB89400CEA96B /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookRepositoryType.swift; sourceTree = "<group>"; };
 		F66E2D062B8CCEFB00524B8B /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
@@ -167,6 +177,8 @@
 		3F4C108E2B73EA3100D6DA1B /* EatCook */ = {
 			isa = PBXGroup;
 			children = (
+				E5AEE89D2BF73CB800A4EF40 /* Base */,
+				E5AEE8932BF739C500A4EF40 /* Model */,
 				3F4C10912B73EA3100D6DA1B /* Preview Content */,
 				3F4C108F2B73EA3100D6DA1B /* Resources */,
 				3F4C10992B73EA3100D6DA1B /* Applications */,
@@ -502,6 +514,48 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		E5AEE8932BF739C500A4EF40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E5AEE8972BF73AD200A4EF40 /* Entity */,
+				E5AEE8942BF739D000A4EF40 /* Service */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E5AEE8942BF739D000A4EF40 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E5AEE8952BF739EA00A4EF40 /* UserService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		E5AEE8972BF73AD200A4EF40 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				E5AEE8982BF73AF900A4EF40 /* Auth */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		E5AEE8982BF73AF900A4EF40 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E5AEE8992BF73B6500A4EF40 /* EmailRequest.swift */,
+				E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		E5AEE89D2BF73CB800A4EF40 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E5AEE89E2BF73CC500A4EF40 /* BaseStruct.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		F66E2CFC2B8CCD3C00524B8B /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				F66E2D172B8CD12200524B8B /* NetworkManager.swift */,
+				E5AEE8A02BF73D6900A4EF40 /* APIClient.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -739,6 +794,7 @@
 				F6C80AE32B80A60100001924 /* TabIndicatorView.swift in Sources */,
 				3F4C10EF2B77BEA500D6DA1B /* CustomTextFieldModifier.swift in Sources */,
 				3F4C10E12B73EA3200D6DA1B /* SearchView.swift in Sources */,
+				E5AEE89A2BF73B6500A4EF40 /* EmailRequest.swift in Sources */,
 				3F4C10E62B73EA3200D6DA1B /* ContentView.swift in Sources */,
 				F6F9FB622BA1AA0100AEF22E /* DropdownView.swift in Sources */,
 				3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */,
@@ -777,6 +833,8 @@
 				3F4C10DC2B73EA3200D6DA1B /* FeedViewModel.swift in Sources */,
 				E52261312BEB63F300ECC939 /* EmailValidationViewModel.swift in Sources */,
 				3F4C10D42B73EA3200D6DA1B /* EatCookApp.swift in Sources */,
+				E5AEE8A12BF73D6900A4EF40 /* APIClient.swift in Sources */,
+				E5AEE89F2BF73CC500A4EF40 /* BaseStruct.swift in Sources */,
 				F6F9FB522BA1A82600AEF22E /* CustomBorderModifier.swift in Sources */,
 				3F4C10DD2B73EA3200D6DA1B /* FeedView.swift in Sources */,
 				F6F9FB5F2BA1AA0100AEF22E /* TagLayout.swift in Sources */,
@@ -788,8 +846,10 @@
 				F6F9FB552BA1A8B500AEF22E /* NavigationPathFinder.swift in Sources */,
 				F6F9FB602BA1AA0100AEF22E /* ImagePicker.swift in Sources */,
 				F6C80AE52B80A62C00001924 /* RecipeContainerView.swift in Sources */,
+				E5AEE8962BF739EA00A4EF40 /* UserService.swift in Sources */,
 				F66E2D152B8CCFEA00524B8B /* EndPoint.swift in Sources */,
 				F66E2D132B8CCFE400524B8B /* NetworkProvider.swift in Sources */,
+				E5AEE89C2BF73B7C00A4EF40 /* EmailVerify.swift in Sources */,
 				3F4C10D92B73EA3200D6DA1B /* HomeView.swift in Sources */,
 				3F4C10F12B77C38600D6DA1B /* PasswordCheckView.swift in Sources */,
 				E5F520152BCFB89400CEA96B /* CustomTabView.swift in Sources */,

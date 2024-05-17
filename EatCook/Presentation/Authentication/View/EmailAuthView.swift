@@ -39,7 +39,7 @@ struct EmailAuthView: View {
     }
     
     func startTimer() {
-        self.counter = 180
+        self.counter = 20
         self.isTimerRunning = true
     }
 
@@ -59,22 +59,15 @@ struct EmailAuthView: View {
                         
                         print("fetchStart")
                         
-                        networkManager.fetchData { result in
+                        UserService.shared.requestEmail(parameters: ["email" : emailValViewModel.email], success: { (data) in
+
+                            print(data)
                             
-                            print("result::", result)
-                            
-                            switch result {
-                            case .success(let receivedData):
-                                // 데이터를 원하는 형식으로 처리합니다.
-                                print("receivedData:", receivedData)
-                                self.startTimer()
-                                
-                                
-                                
-                            case .failure(let error):
-                                print("Error: \(error.localizedDescription)")
-                            }
-                        }
+                        }, failure: { (error) in
+
+                        })
+                        
+                        
                             
                         
                     }, label: {
