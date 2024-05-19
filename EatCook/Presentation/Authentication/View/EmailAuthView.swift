@@ -13,9 +13,7 @@ struct EmailAuthView: View {
 //    @State private var isEmailValid: Bool = false
   
     @StateObject private var emailValViewModel = EmailValidationViewModel()
-    private var networkManager = TestNetworkManager()
-    
-    
+
     @State var authNumber = ""
     @State var isAuthRequest = false
     
@@ -26,6 +24,9 @@ struct EmailAuthView: View {
     @State var emailText : String = "인증요청"
     @State var emailAuthError : Bool = false
     
+    
+    @State private var isActive = true
+    @State var tag:Int? = nil
     
     func counterToMinutesAndSeconds(_ count: Int) -> String {
         let minutes = count / 60
@@ -39,7 +40,7 @@ struct EmailAuthView: View {
     }
     
     func startTimer() {
-        self.counter = 20
+        self.counter = 180
         self.isTimerRunning = true
     }
 
@@ -60,8 +61,9 @@ struct EmailAuthView: View {
                         print("fetchStart")
                         
                         UserService.shared.requestEmail(parameters: ["email" : emailValViewModel.email], success: { (data) in
+                            self.startTimer()
 
-                            print(data)
+                            print("data : " , data)
                             
                         }, failure: { (error) in
 
@@ -121,31 +123,19 @@ struct EmailAuthView: View {
                 
                 
                 Button(action: {
-                    networkManager.fetchEmailData(completion: { result in
+                    
+                    UserService.shared.requestEmail(parameters: ["email": emailValViewModel.email, "authCode" : emailValViewModel.authCode], success: { (data) in
+                       
+                        print("data : " , data)
+                        // Hidden NavigationLink that becomes active based on the state
+                        self.tag = 1
+         
                         
-                        print("result::", result)
+                       
                         
-                        switch result {
-                        case .success(let receivedData):
-                            // 데이터를 원하는 형식으로 처리합니다.
-                            print("receivedData:", receivedData)
-                            
-                            if receivedData.success == true {
-//                                이메일 인증 성공
-                                print(receivedData.message)
-                                
-                            }else if receivedData.success == false {
-                                print("인증번호 불일치 처리")
-                                emailAuthError = true
-                                
-                            }
-                            
-                            
-                        case .failure(let error):
-                            print("Error: \(error.localizedDescription)")
-                        }
-                        
-                    }, authCode: emailValViewModel.authCode)
+                    }, failure: { (error) in
+
+                    })
                     
                 }, label: {
                     Text("다음")
@@ -158,14 +148,9 @@ struct EmailAuthView: View {
                 })
                 .disabled(!emailValViewModel.authCodeValidation)
                 
-//                NavigationLink(destination: PasswordCheckView().toolbarRole(.editor)) {
-//                    Text("다음")
-//                    .frame(maxWidth: .infinity)
-//                    .frame(height: 55)
-//                    .background(isAuthRequest ? Color.bdActive : Color.bdInactive)
-//                    .cornerRadius(10)
-//                    .padding(.horizontal, 24)
-//                }
+                NavigationLink(destination:  PasswordCheckView(email: emailValViewModel.email).toolbarRole(.editor), tag: 1, selection: self.$tag) {
+                    EmptyView()
+                }
 
                 Spacer()
             }

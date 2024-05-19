@@ -39,6 +39,8 @@
 		3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */; };
 		3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */; };
 		E52261312BEB63F300ECC939 /* EmailValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */; };
+		E58512C52BF9FDB000E1D877 /* PasswordCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */; };
+		E58512C72BFA00DE00E1D877 /* PasswordCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */; };
 		E5AEE8962BF739EA00A4EF40 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE8952BF739EA00A4EF40 /* UserService.swift */; };
 		E5AEE89A2BF73B6500A4EF40 /* EmailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE8992BF73B6500A4EF40 /* EmailRequest.swift */; };
 		E5AEE89C2BF73B7C00A4EF40 /* EmailVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */; };
@@ -117,6 +119,8 @@
 		3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPopupView.swift; sourceTree = "<group>"; };
 		3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
 		E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationViewModel.swift; sourceTree = "<group>"; };
+		E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckViewModel.swift; sourceTree = "<group>"; };
+		E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheck.swift; sourceTree = "<group>"; };
 		E5AEE8952BF739EA00A4EF40 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		E5AEE8992BF73B6500A4EF40 /* EmailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequest.swift; sourceTree = "<group>"; };
 		E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerify.swift; sourceTree = "<group>"; };
@@ -465,6 +469,7 @@
 			children = (
 				3F4C10C52B73EA3100D6DA1B /* AuthViewModel.swift */,
 				E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */,
+				E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -544,6 +549,7 @@
 			children = (
 				E5AEE8992BF73B6500A4EF40 /* EmailRequest.swift */,
 				E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */,
+				E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -793,6 +799,7 @@
 				F69B6DBA2B80D90400EFB467 /* FeedTabIndicatorView.swift in Sources */,
 				F6C80AE32B80A60100001924 /* TabIndicatorView.swift in Sources */,
 				3F4C10EF2B77BEA500D6DA1B /* CustomTextFieldModifier.swift in Sources */,
+				E58512C72BFA00DE00E1D877 /* PasswordCheck.swift in Sources */,
 				3F4C10E12B73EA3200D6DA1B /* SearchView.swift in Sources */,
 				E5AEE89A2BF73B6500A4EF40 /* EmailRequest.swift in Sources */,
 				3F4C10E62B73EA3200D6DA1B /* ContentView.swift in Sources */,
@@ -851,6 +858,7 @@
 				F66E2D132B8CCFE400524B8B /* NetworkProvider.swift in Sources */,
 				E5AEE89C2BF73B7C00A4EF40 /* EmailVerify.swift in Sources */,
 				3F4C10D92B73EA3200D6DA1B /* HomeView.swift in Sources */,
+				E58512C52BF9FDB000E1D877 /* PasswordCheckViewModel.swift in Sources */,
 				3F4C10F12B77C38600D6DA1B /* PasswordCheckView.swift in Sources */,
 				E5F520152BCFB89400CEA96B /* CustomTabView.swift in Sources */,
 				F6F9FB682BA1AA1000AEF22E /* RecipeCreateView.swift in Sources */,
