@@ -51,7 +51,7 @@ class APIClient {
         self.baseUrl = URL(string: baseUrl)
     }
     
-    func request<T : Decodable>(_ url : String , method : HTTPMethod = .get , parameters : [String : Any]? = nil , responseType : T.Type, successHandler : @escaping (BaseStruct<T>) -> Void , failureHandler : @escaping (BaseError) -> ()) {
+    func request<T : Decodable>(_ url : String , method : HTTPMethod = .get , parameters : [String : Any]? = nil , responseType : T.Type, successHandler : @escaping (BaseStruct<T>) -> Void , failureHandler : @escaping (BaseStruct<T>) -> ()) {
         
         guard let url = URL(string: url, relativeTo: self.baseUrl) else {
             print("URL ERROR")
@@ -95,8 +95,8 @@ class APIClient {
                     guard let data = data,
                           let decode = try? JSONDecoder().decode(BaseStruct<T>.self, from: data) else {
                         DispatchQueue.main.async {
-                            failureHandler(BaseError(code: "\(response.statusCode)",
-                                                 message: "통신중 오류가 발생하였습니다."))
+//                            failureHandler(BaseError(code: "\(response.statusCode)",
+//                                                 message: "통신중 오류가 발생하였습니다."))
                         }
                         return
                     }
@@ -131,9 +131,9 @@ class APIClient {
                         successHandler(decode)
                     }
                 } else {
-//                    DispatchQueue.main.async {
-//                        failureHandler(decode.error)
-//                    }
+                    DispatchQueue.main.async {
+                        failureHandler(decode)
+                    }
                 }
             }
         }
@@ -160,13 +160,15 @@ class APIClient {
 //   TODO : JWT TOKEN SETTING
     private func receiveHeader(response: HTTPURLResponse) {
         
-//        if let refreshToken = response.allHeaderFields[DataStorageKey.JWT_REFRESH_TOKEN] as? String {
-//            DataStorage.shared.setString(refreshToken, forKey: DataStorageKey.JWT_REFRESH_TOKEN)
-//        }
-//        
-//        if let accessToken = response.allHeaderFields[DataStorageKey.JWT_ACCESS_TOKEN] as? String {
-//            DataStorage.shared.setString(accessToken, forKey: DataStorageKey.JWT_ACCESS_TOKEN)
-//        }
+        print("Header Check :",response.allHeaderFields )
+        if let refreshToken = response.allHeaderFields[DataStorageKey.JWT_REFRESH_TOKEN] as? String {
+            DataStorage.shared.setString(refreshToken, forKey: DataStorageKey.JWT_REFRESH_TOKEN)
+        }
+        
+        if let accessToken = response.allHeaderFields[DataStorageKey.JWT_ACCESS_TOKEN] as? String {
+            DataStorage.shared.setString(accessToken, forKey: DataStorageKey.JWT_ACCESS_TOKEN)
+        }
+        
     }
     
     

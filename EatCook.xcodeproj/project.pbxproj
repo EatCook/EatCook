@@ -39,6 +39,9 @@
 		3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */; };
 		3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */; };
 		E52261312BEB63F300ECC939 /* EmailValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */; };
+		E56146492C01D01700CA1991 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56146482C01D01700CA1991 /* EmailLoginView.swift */; };
+		E561464B2C01D02800CA1991 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */; };
+		E561464D2C01E94200CA1991 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464C2C01E94200CA1991 /* DataStorage.swift */; };
 		E58512C52BF9FDB000E1D877 /* PasswordCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */; };
 		E58512C72BFA00DE00E1D877 /* PasswordCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */; };
 		E5AEE8962BF739EA00A4EF40 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE8952BF739EA00A4EF40 /* UserService.swift */; };
@@ -119,6 +122,9 @@
 		3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPopupView.swift; sourceTree = "<group>"; };
 		3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
 		E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationViewModel.swift; sourceTree = "<group>"; };
+		E56146482C01D01700CA1991 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
+		E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
+		E561464C2C01E94200CA1991 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckViewModel.swift; sourceTree = "<group>"; };
 		E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheck.swift; sourceTree = "<group>"; };
 		E5AEE8952BF739EA00A4EF40 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -470,6 +476,7 @@
 				3F4C10C52B73EA3100D6DA1B /* AuthViewModel.swift */,
 				E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */,
 				E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */,
+				E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -481,6 +488,7 @@
 				3F4C10EB2B773DDA00D6DA1B /* EmailAuthView.swift */,
 				3F4C10F02B77C38600D6DA1B /* PasswordCheckView.swift */,
 				3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */,
+				E56146482C01D01700CA1991 /* EmailLoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -714,6 +722,7 @@
 			isa = PBXGroup;
 			children = (
 				F6F9FB542BA1A8B500AEF22E /* NavigationPathFinder.swift */,
+				E561464C2C01E94200CA1991 /* DataStorage.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -805,8 +814,10 @@
 				3F4C10E62B73EA3200D6DA1B /* ContentView.swift in Sources */,
 				F6F9FB622BA1AA0100AEF22E /* DropdownView.swift in Sources */,
 				3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */,
+				E561464D2C01E94200CA1991 /* DataStorage.swift in Sources */,
 				F6F9FB612BA1AA0100AEF22E /* TimerPickerView.swift in Sources */,
 				F6C80AE92B80AB1900001924 /* RecipeContainerRowView.swift in Sources */,
+				E56146492C01D01700CA1991 /* EmailLoginView.swift in Sources */,
 				F66E2D1E2B8CD1FD00524B8B /* LoginAPI.swift in Sources */,
 				3F4C10DF2B73EA3200D6DA1B /* UserProfileView.swift in Sources */,
 				F6C80AE72B80A63A00001924 /* IngredientsContainerView.swift in Sources */,
@@ -833,6 +844,7 @@
 				3F21B3B82B7264B400BF67F7 /* SplashView.swift in Sources */,
 				3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */,
 				F69B6DB32B80BFCA00EFB467 /* ScrollOffset.swift in Sources */,
+				E561464B2C01D02800CA1991 /* EmailLoginViewModel.swift in Sources */,
 				F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */,
 				F66E2D0F2B8CCFC400524B8B /* URLRequestable.swift in Sources */,
 				F6F9FB672BA1AA1000AEF22E /* RecipeStepView.swift in Sources */,

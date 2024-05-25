@@ -11,6 +11,7 @@ struct PasswordCheckView: View {
     @State private var isPresented = false
     let email : String
     @State var isPasswordError = false
+    @State private var isSecure = false
     
     @StateObject private var passwordCheckViewModel = PasswordChcekViewModel()
     
@@ -23,10 +24,41 @@ struct PasswordCheckView: View {
                 Text("비밀번호를 입력해 주세요")
                     .font(.title2)
                     .padding(.vertical, 28)
+                
+                if isSecure {
+                    ZStack(alignment : .trailing) {
+                        SecureField("비밀번호 입력 (영문+숫자 15자 이내)", text: $passwordCheckViewModel.password)
+                            .modifier(CustomTextFieldModifier())
+                                .padding(.vertical, 14)
+                                .padding(.horizontal, 24)
+                        Button {
+                            isSecure.toggle()
+                        } label: {
+                            Image(.eyeClose).resizable().frame(width: 25, height: 25).padding(.horizontal, 40)
+                            
+                        }
+                    }
+                 
+                } else {
+                    ZStack(alignment : .trailing){
+                        TextField("비밀번호 입력 (영문+숫자 15자 이내)", text: $passwordCheckViewModel.password).modifier(CustomTextFieldModifier())
+                            .padding(.vertical, 14)
+                            .padding(.horizontal, 24)
+                        Button {
+                            isSecure.toggle()
+                        } label: {
+                            Image(.eyeOpen).resizable().frame(width: 25, height: 25)
+                                .padding(.horizontal, 40)
+                            
+                        }
+                    }
+                   
+                }
+                
+             
 
-                TextField("비밀번호 입력 (영문+숫자 15자 이내)", text: $passwordCheckViewModel.password).modifier(CustomTextFieldModifier())
-                    .padding(.vertical, 14)
-                    .padding(.horizontal, 24)
+
+               
                 
                 HStack(spacing : 10) {
                     HStack {
@@ -87,7 +119,7 @@ struct PasswordCheckView: View {
                         print("data : " , data)
                         
                         //    성공시
-                        //    isPresented = true
+                        isPresented = true
                         
          
                         

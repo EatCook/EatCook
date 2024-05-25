@@ -27,6 +27,7 @@ struct EmailAuthView: View {
     
     @State private var isActive = true
     @State var tag:Int? = nil
+    @State var errorText : String = ""
     
     func counterToMinutesAndSeconds(_ count: Int) -> String {
         let minutes = count / 60
@@ -66,9 +67,8 @@ struct EmailAuthView: View {
                             print("data : " , data)
                             
                         }, failure: { (error) in
-
+                            
                         })
-                        
                         
                             
                         
@@ -87,8 +87,6 @@ struct EmailAuthView: View {
                 ZStack(alignment : .trailing) {
                     HStack {
                         TextField("인증번호 6자리 입력", text: $emailValViewModel.authCode).modifier(CustomTextFieldModifier())
-                        
-                        
                     }
                     
                     if isTimerRunning {
@@ -124,17 +122,15 @@ struct EmailAuthView: View {
                 
                 Button(action: {
                     
-                    UserService.shared.requestEmail(parameters: ["email": emailValViewModel.email, "authCode" : emailValViewModel.authCode], success: { (data) in
+                    UserService.shared.requestEmailVerify(parameters: ["email": emailValViewModel.email, "authCode" : emailValViewModel.authCode], success: { (data) in
                        
                         print("data : " , data)
                         // Hidden NavigationLink that becomes active based on the state
                         self.tag = 1
          
                         
-                       
-                        
                     }, failure: { (error) in
-
+                        print(error)
                     })
                     
                 }, label: {
