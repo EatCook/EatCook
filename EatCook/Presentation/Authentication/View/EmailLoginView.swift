@@ -11,7 +11,7 @@ struct EmailLoginView: View {
     
     @StateObject private var emailLoginViewModel = EmailLoginViewModel()
     @State private var isSecure = true
-    
+    @StateObject private var toastManager = ToastManager()
     
     var body: some View {
         NavigationStack {
@@ -20,7 +20,6 @@ struct EmailLoginView: View {
                 TextField("아이디 입력", text: $emailLoginViewModel.email).modifier(CustomTextFieldModifier())
                     .padding(.horizontal, 24)
                     .padding(.top , 12)
-   
                 
                 if isSecure {
                     ZStack(alignment : .trailing) {
@@ -53,6 +52,7 @@ struct EmailLoginView: View {
                 }
                 
                 Button(action: {
+        
                     
                     UserService.shared.login(parameters: ["email": emailLoginViewModel.email, "password" : emailLoginViewModel.password], success: { (data) in
                        
@@ -61,11 +61,18 @@ struct EmailLoginView: View {
          
                         
                     }, failure: { (error) in
+                        withAnimation {
+                            toastManager.displayToast(
+                                message: error.message,
+                                duration: 3.0
+                            )
+                        }
+                        
                         print(error)
                     })
                     
                 }, label: {
-                    Text("다음")
+                    Text("로그인")
                     .frame(maxWidth: .infinity)
                     .frame(height: 55)
                     .background {
@@ -75,21 +82,35 @@ struct EmailLoginView: View {
                     .background()
                     .cornerRadius(10)
                     .padding(.horizontal, 24)
+                    .bold()
                     
                 })
 //                .disabled(!emailValViewModel.authCodeValidation)
                 
                 Spacer()
-            }.padding(.top, 24)
+                
+                // Toast
+                if toastManager.isShowing {
+                    toastManager.showToast()
+                    .padding(.bottom, 50) // Toast의 위치 조정
+                    .zIndex(1) // Toast를 최상위에 위치하도록 설정
+                }
+            }
+            .environmentObject(toastManager)
+            .padding(.top, 24)
 
-            
-            
         }
         
         
     }
 }
 
+
+
 #Preview {
     EmailLoginView()
 }
+
+
+
+

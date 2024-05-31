@@ -87,7 +87,7 @@ struct LoginView: View {
                 .padding(.horizontal, 24)
 
                 
-                NavigationLink(destination: EmailAuthView().toolbarRole(.editor)) {
+                NavigationLink(destination: EmailLoginView().toolbarRole(.editor)) {
                     Image(.email)
                         .resizable()
                         .aspectRatio(contentMode: .fit)

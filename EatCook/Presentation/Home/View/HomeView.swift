@@ -62,7 +62,7 @@ struct HomeView: View {
                         VStack(spacing: 20) {
                             HomeInterestingView(interestingFoods: $interestingFoods)
                             HomeRecommendView()
-                           
+                            AppleSigninButton()
                             
 
                         }

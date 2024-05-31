@@ -71,14 +71,14 @@ class APIClient {
         
         let task = URLSession.shared.dataTask(with: request) { [self] (data, response, error) in
             
-            if let responseBody = String(data: data!, encoding: .utf8) {
+            if let responseBody = String(data: data ?? Data(), encoding: .utf8) {
                 print("Response body: \(responseBody)")
             } else {
                 print("Failed to convert data to string")
             }
             
             if let error = error {
-                
+               
 //                DispatchQueue.main.async {
 //                    failureHandler(BaseError(code: "500",
 //                                             message: error.localizedDescription))
@@ -89,30 +89,22 @@ class APIClient {
             if let response = response as? HTTPURLResponse {
                 self.receiveHeader(response: response)
                 
-                // HTTPStatus 200 OK
-                guard response.statusCode == HTTPStatus.Ok.rawValue else {
-                    
-                    guard let data = data,
-                          let decode = try? JSONDecoder().decode(BaseStruct<T>.self, from: data) else {
-                        DispatchQueue.main.async {
-//                            failureHandler(BaseError(code: "\(response.statusCode)",
-//                                                 message: "통신중 오류가 발생하였습니다."))
-                        }
-                        return
-                    }
-                    
-//                    DispatchQueue.main.async {
-//                        failureHandler(BaseError(code: "\(response.statusCode)",
-//                                                 message: decode.error.message))
-//                    }
-                    return
-                }
+                // HTTPStatus 200 OK 서버 세팅
+//                guard response.statusCode == HTTPStatus.Ok.rawValue else {
+//
+////                    DispatchQueue.main.async {
+////                        failureHandler(BaseError(code: "\(response.statusCode)",
+////                                                 message: decode.error.message))
+////                    }
+//                    return
+//                }
                 
                 guard let data = data else {
 //                    DispatchQueue.main.async {
 //                        failureHandler(BaseError(code: "\(response.statusCode)",
 //                                             message: "Data Error"))
 //                    }
+                   
                     return
                 }
                 
@@ -121,9 +113,9 @@ class APIClient {
 //                        failureHandler(BaseError(code: "\(response.statusCode)",
 //                                             message: "Decode Error"))
 //                    }
+                    
                     return
                 }
-                
                 
                 // OK, Failed
                 if decode.success {
@@ -160,7 +152,7 @@ class APIClient {
 //   TODO : JWT TOKEN SETTING
     private func receiveHeader(response: HTTPURLResponse) {
         
-        print("Header Check :",response.allHeaderFields )
+//        print("Header Check :",response.allHeaderFields )
         if let refreshToken = response.allHeaderFields[DataStorageKey.JWT_REFRESH_TOKEN] as? String {
             DataStorage.shared.setString(refreshToken, forKey: DataStorageKey.JWT_REFRESH_TOKEN)
         }

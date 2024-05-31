@@ -39,6 +39,8 @@
 		3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */; };
 		3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */; };
 		E52261312BEB63F300ECC939 /* EmailValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */; };
+		E535A31B2C04604200E767EC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E535A31A2C04604200E767EC /* ToastView.swift */; };
+		E55965342C059C38002B3E75 /* AppleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55965332C059C38002B3E75 /* AppleLoginButtonView.swift */; };
 		E56146492C01D01700CA1991 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56146482C01D01700CA1991 /* EmailLoginView.swift */; };
 		E561464B2C01D02800CA1991 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */; };
 		E561464D2C01E94200CA1991 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464C2C01E94200CA1991 /* DataStorage.swift */; };
@@ -122,6 +124,9 @@
 		3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPopupView.swift; sourceTree = "<group>"; };
 		3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
 		E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationViewModel.swift; sourceTree = "<group>"; };
+		E535A3182C044BF100E767EC /* EatCook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EatCook.entitlements; sourceTree = "<group>"; };
+		E535A31A2C04604200E767EC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		E55965332C059C38002B3E75 /* AppleLoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButtonView.swift; sourceTree = "<group>"; };
 		E56146482C01D01700CA1991 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
 		E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
 		E561464C2C01E94200CA1991 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
@@ -187,6 +192,7 @@
 		3F4C108E2B73EA3100D6DA1B /* EatCook */ = {
 			isa = PBXGroup;
 			children = (
+				E535A3182C044BF100E767EC /* EatCook.entitlements */,
 				E5AEE89D2BF73CB800A4EF40 /* Base */,
 				E5AEE8932BF739C500A4EF40 /* Model */,
 				3F4C10912B73EA3100D6DA1B /* Preview Content */,
@@ -223,6 +229,7 @@
 		3F4C10942B73EA3100D6DA1B /* Utillites */ = {
 			isa = PBXGroup;
 			children = (
+				E535A3192C04600900E767EC /* Toast */,
 				3F4C10952B73EA3100D6DA1B /* Util.swift */,
 				F69B6DB52B80D80500EFB467 /* TabCase.swift */,
 			);
@@ -489,6 +496,7 @@
 				3F4C10F02B77C38600D6DA1B /* PasswordCheckView.swift */,
 				3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */,
 				E56146482C01D01700CA1991 /* EmailLoginView.swift */,
+				E55965332C059C38002B3E75 /* AppleLoginButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -525,6 +533,14 @@
 				F6F9FB512BA1A82600AEF22E /* CustomBorderModifier.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		E535A3192C04600900E767EC /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				E535A31A2C04604200E767EC /* ToastView.swift */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 		E5AEE8932BF739C500A4EF40 /* Model */ = {
@@ -806,6 +822,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F69B6DBA2B80D90400EFB467 /* FeedTabIndicatorView.swift in Sources */,
+				E535A31B2C04604200E767EC /* ToastView.swift in Sources */,
 				F6C80AE32B80A60100001924 /* TabIndicatorView.swift in Sources */,
 				3F4C10EF2B77BEA500D6DA1B /* CustomTextFieldModifier.swift in Sources */,
 				E58512C72BFA00DE00E1D877 /* PasswordCheck.swift in Sources */,
@@ -841,6 +858,7 @@
 				F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */,
 				F66E2D112B8CCFDE00524B8B /* NetworkProviderImpl.swift in Sources */,
 				F66E2D092B8CCF0000524B8B /* NetworkError.swift in Sources */,
+				E55965342C059C38002B3E75 /* AppleLoginButtonView.swift in Sources */,
 				3F21B3B82B7264B400BF67F7 /* SplashView.swift in Sources */,
 				3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */,
 				F69B6DB32B80BFCA00EFB467 /* ScrollOffset.swift in Sources */,
@@ -1013,10 +1031,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = EatCook/EatCook.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EatCook/Preview Content\"";
-				DEVELOPMENT_TEAM = 8J3W3QHQC7;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FJNF7APGSX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EatCook/Info.plist;
@@ -1033,6 +1055,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rOarMJ.EatCook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DebugProvisioning;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1047,10 +1071,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = EatCook/EatCook.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EatCook/Preview Content\"";
-				DEVELOPMENT_TEAM = 8J3W3QHQC7;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FJNF7APGSX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EatCook/Info.plist;
@@ -1067,6 +1095,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rOarMJ.EatCook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DebugProvisioning;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
