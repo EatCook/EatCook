@@ -1,0 +1,10 @@
+//
+//  Config.xcconfig
+//  EatCook
+//
+//  Created by 강신규 on 5/31/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+KakaoApiKey = f6e57755979be3cac29156b4ca677fcb

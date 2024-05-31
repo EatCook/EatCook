@@ -41,6 +41,7 @@
 		E52261312BEB63F300ECC939 /* EmailValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */; };
 		E535A31B2C04604200E767EC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E535A31A2C04604200E767EC /* ToastView.swift */; };
 		E55965342C059C38002B3E75 /* AppleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55965332C059C38002B3E75 /* AppleLoginButtonView.swift */; };
+		E55965372C0986FB002B3E75 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = E55965362C0986FB002B3E75 /* KakaoSDK */; };
 		E56146492C01D01700CA1991 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56146482C01D01700CA1991 /* EmailLoginView.swift */; };
 		E561464B2C01D02800CA1991 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */; };
 		E561464D2C01E94200CA1991 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464C2C01E94200CA1991 /* DataStorage.swift */; };
@@ -132,6 +133,7 @@
 		E561464C2C01E94200CA1991 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckViewModel.swift; sourceTree = "<group>"; };
 		E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheck.swift; sourceTree = "<group>"; };
+		E5ACB6A62C099BC800C9E94F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E5AEE8952BF739EA00A4EF40 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		E5AEE8992BF73B6500A4EF40 /* EmailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequest.swift; sourceTree = "<group>"; };
 		E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerify.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55965372C0986FB002B3E75 /* KakaoSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,6 +724,7 @@
 		F6E1C08A2B722EE500A05703 = {
 			isa = PBXGroup;
 			children = (
+				E5ACB6A62C099BC800C9E94F /* Config.xcconfig */,
 				3F4C108E2B73EA3100D6DA1B /* EatCook */,
 				F6E1C0942B722EE500A05703 /* Products */,
 			);
@@ -767,6 +771,9 @@
 			dependencies = (
 			);
 			name = EatCook;
+			packageProductDependencies = (
+				E55965362C0986FB002B3E75 /* KakaoSDK */,
+			);
 			productName = EatCook;
 			productReference = F6E1C0932B722EE500A05703 /* EatCook.app */;
 			productType = "com.apple.product-type.application";
@@ -795,6 +802,9 @@
 				Base,
 			);
 			mainGroup = F6E1C08A2B722EE500A05703;
+			packageReferences = (
+				E55965352C0986FB002B3E75 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+			);
 			productRefGroup = F6E1C0942B722EE500A05703 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -909,6 +919,7 @@
 /* Begin XCBuildConfiguration section */
 		F6E1C09F2B722EE800A05703 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5ACB6A62C099BC800C9E94F /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -972,6 +983,7 @@
 		};
 		F6E1C0A02B722EE800A05703 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5ACB6A62C099BC800C9E94F /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1128,6 +1140,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E55965352C0986FB002B3E75 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E55965362C0986FB002B3E75 /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E55965352C0986FB002B3E75 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F6E1C08B2B722EE500A05703 /* Project object */;
 }

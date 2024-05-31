@@ -6,10 +6,56 @@
 //
 
 import SwiftUI
+import KakaoSDKAuth
+import KakaoSDKUser
 
 struct LoginView: View {
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height / 2 - 80
+    
+    func handleKakaLogin() {
+        print("KakaoAuthVM - handleKakaoLogin() called")
+        
+        // 카카오톡 실행 가능 여부 확인
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            // 카카오 앱으로 로그인
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    // 카카오 계정으로 로그인
+                    print("loginWithKakaoTalk() success.")
+
+                    //do something
+                    _ = oauthToken
+                }
+            }
+        }else {// 카카오톡 미설치 상태 -> 웹으로 이동해 로그인
+            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                    if let error = error {
+                        print(error)
+                    }
+                    else {
+                        print("loginWithKakaoAccount() success.")
+
+                        //do something
+                        _ = oauthToken
+                    }
+                }
+        }
+    }
+    
+    func kakaoLogOut() {
+           UserApi.shared.logout {(error) in
+               if let error = error {
+                   print(error)
+               }
+               else {
+                   print("logout() success.")
+               }
+           }
+       }
     
     var body: some View {
         NavigationStack {
@@ -68,6 +114,8 @@ struct LoginView: View {
                 
                 
                 Button(action: {
+                    // 카카오톡 실행 가능 여부 확인
+                    handleKakaLogin()
 
                 }, label: {
                     Image(.kakao)
@@ -77,14 +125,7 @@ struct LoginView: View {
                 .padding(.horizontal, 24)
                 
                 
-                Button(action: {
-
-                }, label: {
-                    Image(.apple)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                })
-                .padding(.horizontal, 24)
+                AppleSigninButton()
 
                 
                 NavigationLink(destination: EmailLoginView().toolbarRole(.editor)) {
