@@ -58,6 +58,8 @@ class APIClient {
             return
         }
         
+        print(url)
+        
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = addHeader()
         request.httpMethod = method.rawValue

@@ -16,6 +16,7 @@ class UserService {
     private let API_USER_EMAIL_VERIFY = "/api/v1/emails/verify"
     private let API_USER_PASSWORD_CHECK = "/api/v1/users"
     private let API_USER_EMAIL_LOGIN = "/login"
+    private let API_USER_OAUTH_LOGIN = "/oauth2/login"
     
     
     // 이메일 신청
@@ -75,6 +76,24 @@ class UserService {
     // 로그인
     func login(parameters:[String:String], success: @escaping (BaseStruct<PasswordCheck>) -> (), failure: @escaping (BaseStruct<PasswordCheck>) -> ()) {
         APIClient.shared.request(API_USER_EMAIL_LOGIN, method: .post, parameters: parameters, responseType: PasswordCheck.self, successHandler: { (result) in
+            
+            print("result :" ,result)
+            
+//            guard let data = result else {
+//                print("Result Data Error")
+//                return
+//            }
+            success(result)
+            
+        }, failureHandler: { (error) in
+            failure(error)
+            print("ERROR")
+        })
+    }
+    
+    // oAUTH로그인
+    func oAuthlogin(parameters:[String:String], success: @escaping (BaseStruct<PasswordCheck>) -> (), failure: @escaping (BaseStruct<PasswordCheck>) -> ()) {
+        APIClient.shared.request(API_USER_OAUTH_LOGIN, method: .post, parameters: parameters, responseType: PasswordCheck.self, successHandler: { (result) in
             
             print("result :" ,result)
             

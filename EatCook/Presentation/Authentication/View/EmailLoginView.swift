@@ -16,7 +16,7 @@ struct EmailLoginView: View {
     var body: some View {
         NavigationStack {
             VStack{
-                Image(.splash).resizable().frame(width : 340 ,height: 200)
+                Image(.food).resizable().frame(width : 340 ,height: 200)
                 TextField("아이디 입력", text: $emailLoginViewModel.email).modifier(CustomTextFieldModifier())
                     .padding(.horizontal, 24)
                     .padding(.top , 12)

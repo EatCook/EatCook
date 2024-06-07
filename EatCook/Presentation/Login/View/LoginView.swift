@@ -8,6 +8,7 @@
 import SwiftUI
 import KakaoSDKAuth
 import KakaoSDKUser
+import AuthenticationServices
 
 struct LoginView: View {
     let width = UIScreen.main.bounds.width
@@ -15,7 +16,6 @@ struct LoginView: View {
     
     func handleKakaLogin() {
         print("KakaoAuthVM - handleKakaoLogin() called")
-        
         // 카카오톡 실행 가능 여부 확인
         if (UserApi.isKakaoTalkLoginAvailable()) {
             // 카카오 앱으로 로그인
@@ -26,12 +26,37 @@ struct LoginView: View {
                 else {
                     // 카카오 계정으로 로그인
                     print("loginWithKakaoTalk() success.")
+                    print("oauthToken :" ,oauthToken)
+                    
+                    UserApi.shared.me { user, error in
+                        
+                        
+                        guard let user = user , let id = user.id else {
+                            print("KAKAO USER 정보 에러")
+                            return
+                        }
+                        
+                        guard let email = user.kakaoAccount?.email else {
+                            print("KAKAO 계정 이메일 오류")
+                            return
+                        }
 
-                    //do something
+                        UserService.shared.oAuthlogin(parameters: ["email": email , "providerType" : "KAKAO"], success: { (data) in
+                            
+                            print("data : " , data)
+                            
+                        }, failure: { (error) in
+                            
+                            print(error)
+                        })
+                    }
                     _ = oauthToken
+
+                    
                 }
             }
         }else {// 카카오톡 미설치 상태 -> 웹으로 이동해 로그인
+
             UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
                     if let error = error {
                         print(error)
@@ -43,6 +68,7 @@ struct LoginView: View {
                         _ = oauthToken
                     }
                 }
+            
         }
     }
     
@@ -56,6 +82,9 @@ struct LoginView: View {
                }
            }
        }
+    
+
+    
     
     var body: some View {
         NavigationStack {
@@ -118,20 +147,88 @@ struct LoginView: View {
                     handleKakaLogin()
 
                 }, label: {
-                    Image(.kakao)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                    ZStack {
+                        Image(.kakao1).resizable() .frame(width: 20, height: 20).offset(x: -125,y: 0)
+                        Text("카카오 로그인").offset(x : 10 , y : 0)
+                    }  .frame(width : 300, height : 52)
+                        .background{
+                            Color.kakaoBackground
+                        }.cornerRadius(10)
                 })
+                .frame(width : 300, height : 52)
                 .padding(.horizontal, 24)
                 
-                
-                AppleSigninButton()
+                Button(action: {
 
+                }, label: {
+                    ZStack {
+                        Image(.apple1).resizable() .frame(width: 20, height: 20).offset(x: -125,y: 0)
+                        Text("Apple 로그인").foregroundColor(.white).offset(x : 10 , y : 0)
+                    }  .frame(width : 300, height : 52)
+                        .background{
+                            Color.black
+                        }.cornerRadius(10)
+                })
+                .frame(width : 300, height : 52)
+                .padding(.horizontal, 24)
+                .overlay {
+                    SignInWithAppleButton(
+                        onRequest: { request in
+                            request.requestedScopes = [.fullName, .email]
+                        },
+                        onCompletion: { result in
+                            switch result {
+                            case .success(let authResults):
+                                print("Apple Login Successful")
+                                print("authResults : " , authResults)
+                                switch authResults.credential{
+                                case let appleIDCredential as ASAuthorizationAppleIDCredential:
+                                    // 계정 정보 가져오기
+                                    
+                                    var email = appleIDCredential.email ?? ""
+                                    let user = appleIDCredential.user
+
+                                    if email.isEmpty { /// 2번째 애플 로그인부터는 email이 identityToken에 들어있음.
+                                        if let tokenString = String(data: appleIDCredential.identityToken ?? Data(), encoding: .utf8) {
+                                            email = decode(jwtToken: tokenString)["email"] as? String ?? ""
+                                        }
+                                    }
+                                    
+                                    
+                                    
+                                    print("email : " , email)
+                                    
+                                    UserService.shared.oAuthlogin(parameters: ["email": email ?? "" , "providerType" : "APPLE"], success: { (data) in
+                                        
+                                        print("data : " , data)
+                                        
+                                    }, failure: { (error) in
+                                        
+                                        print(error)
+                                    })
+
+                                default:
+                                    break
+                                }
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                                print("error")
+                            }
+                        }
+                    ).blendMode(.overlay)
+                }
+                
+                
+               
                 
                 NavigationLink(destination: EmailLoginView().toolbarRole(.editor)) {
-                    Image(.email)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                    ZStack {
+                        Image(.email1).resizable() .frame(width: 20, height: 20).offset(x: -125,y: 0)
+                        Text("이메일 로그인").offset(x : 10 , y : 0)
+                    }  .frame(width : 300, height : 52)
+                        .background{
+                            Color.bgPrimary
+                        }.cornerRadius(10)
                 }
                 .padding(.horizontal, 24)
 
@@ -139,7 +236,7 @@ struct LoginView: View {
             
             HStack(spacing: 10) {
                 Button(action: {
-                    
+                
                 }, label: {
                     Text("계정찾기")
                         .font(.body)
@@ -163,4 +260,35 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
+}
+
+/// JWTToken -> dictionary
+private func decode(jwtToken jwt: String) -> [String: Any] {
+    
+    func base64UrlDecode(_ value: String) -> Data? {
+        var base64 = value
+            .replacingOccurrences(of: "-", with: "+")
+            .replacingOccurrences(of: "_", with: "/")
+
+        let length = Double(base64.lengthOfBytes(using: String.Encoding.utf8))
+        let requiredLength = 4 * ceil(length / 4.0)
+        let paddingLength = requiredLength - length
+        if paddingLength > 0 {
+            let padding = "".padding(toLength: Int(paddingLength), withPad: "=", startingAt: 0)
+            base64 = base64 + padding
+        }
+        return Data(base64Encoded: base64, options: .ignoreUnknownCharacters)
+    }
+
+    func decodeJWTPart(_ value: String) -> [String: Any]? {
+        guard let bodyData = base64UrlDecode(value),
+              let json = try? JSONSerialization.jsonObject(with: bodyData, options: []), let payload = json as? [String: Any] else {
+            return nil
+        }
+
+        return payload
+    }
+    
+    let segments = jwt.components(separatedBy: ".")
+    return decodeJWTPart(segments[1]) ?? [:]
 }

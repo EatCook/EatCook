@@ -47,6 +47,7 @@
 		E561464D2C01E94200CA1991 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464C2C01E94200CA1991 /* DataStorage.swift */; };
 		E58512C52BF9FDB000E1D877 /* PasswordCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */; };
 		E58512C72BFA00DE00E1D877 /* PasswordCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */; };
+		E5A015B72C12E4D600D9AB1F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A015B62C12E4D600D9AB1F /* Color.swift */; };
 		E5AEE8962BF739EA00A4EF40 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE8952BF739EA00A4EF40 /* UserService.swift */; };
 		E5AEE89A2BF73B6500A4EF40 /* EmailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE8992BF73B6500A4EF40 /* EmailRequest.swift */; };
 		E5AEE89C2BF73B7C00A4EF40 /* EmailVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */; };
@@ -133,6 +134,7 @@
 		E561464C2C01E94200CA1991 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckViewModel.swift; sourceTree = "<group>"; };
 		E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheck.swift; sourceTree = "<group>"; };
+		E5A015B62C12E4D600D9AB1F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E5ACB6A62C099BC800C9E94F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E5AEE8952BF739EA00A4EF40 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		E5AEE8992BF73B6500A4EF40 /* EmailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequest.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				3F4C10972B73EA3100D6DA1B /* Ex.swift */,
 				F69B6DB22B80BFCA00EFB467 /* ScrollOffset.swift */,
+				E5A015B62C12E4D600D9AB1F /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 				F66E2D1E2B8CD1FD00524B8B /* LoginAPI.swift in Sources */,
 				3F4C10DF2B73EA3200D6DA1B /* UserProfileView.swift in Sources */,
 				F6C80AE72B80A63A00001924 /* IngredientsContainerView.swift in Sources */,
+				E5A015B72C12E4D600D9AB1F /* Color.swift in Sources */,
 				3F4C10D82B73EA3200D6DA1B /* HomeViewModel.swift in Sources */,
 				F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */,
 				F66E2D202B8CD20A00524B8B /* CookTalkAPI.swift in Sources */,
