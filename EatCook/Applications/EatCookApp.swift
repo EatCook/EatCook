@@ -21,16 +21,12 @@ struct EatCookApp: App {
         }else{
             print("API KEY ERROR")
         }
-        
-        
 
-        
-       
     }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
                 .environmentObject(NavigationPathFinder.shared)
                 .onOpenURL(perform: { url in
                     if (AuthApi.isKakaoTalkLoginUrl(url)) {

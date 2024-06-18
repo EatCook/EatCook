@@ -53,6 +53,7 @@
 		E5AEE89C2BF73B7C00A4EF40 /* EmailVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */; };
 		E5AEE89F2BF73CC500A4EF40 /* BaseStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE89E2BF73CC500A4EF40 /* BaseStruct.swift */; };
 		E5AEE8A12BF73D6900A4EF40 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE8A02BF73D6900A4EF40 /* APIClient.swift */; };
+		E5DE18342C2172610026E756 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DE18332C2172610026E756 /* SearchService.swift */; };
 		E5F520152BCFB89400CEA96B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F520142BCFB89400CEA96B /* CustomTabView.swift */; };
 		F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */; };
 		F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D062B8CCEFB00524B8B /* HTTPError.swift */; };
@@ -141,6 +142,7 @@
 		E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerify.swift; sourceTree = "<group>"; };
 		E5AEE89E2BF73CC500A4EF40 /* BaseStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStruct.swift; sourceTree = "<group>"; };
 		E5AEE8A02BF73D6900A4EF40 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		E5DE18332C2172610026E756 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		E5F520142BCFB89400CEA96B /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookRepositoryType.swift; sourceTree = "<group>"; };
 		F66E2D062B8CCEFB00524B8B /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 			isa = PBXGroup;
 			children = (
 				E5AEE8952BF739EA00A4EF40 /* UserService.swift */,
+				E5DE18332C2172610026E756 /* SearchService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -901,6 +904,7 @@
 				F66E2D152B8CCFEA00524B8B /* EndPoint.swift in Sources */,
 				F66E2D132B8CCFE400524B8B /* NetworkProvider.swift in Sources */,
 				E5AEE89C2BF73B7C00A4EF40 /* EmailVerify.swift in Sources */,
+				E5DE18342C2172610026E756 /* SearchService.swift in Sources */,
 				3F4C10D92B73EA3200D6DA1B /* HomeView.swift in Sources */,
 				E58512C52BF9FDB000E1D877 /* PasswordCheckViewModel.swift in Sources */,
 				3F4C10F12B77C38600D6DA1B /* PasswordCheckView.swift in Sources */,

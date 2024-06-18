@@ -22,7 +22,6 @@ class EmailValidationViewModel: ObservableObject {
     private var verificationSubscriber: AnyCancellable?
     private var authCodeValidationSubscriber : AnyCancellable?
     
-    
     let emailValidationPublisher = PassthroughSubject<String, Never>()
     
 
@@ -53,8 +52,6 @@ class EmailValidationViewModel: ObservableObject {
                 self?.authCodeValidation = false
             }
         }
-        
-        
     }
 
     // 이메일 유효성 검사 함수

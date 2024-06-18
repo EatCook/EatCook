@@ -14,6 +14,8 @@ struct LoginView: View {
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height / 2 - 80
     
+    @State var navigate = false
+    
     func handleKakaLogin() {
         print("KakaoAuthVM - handleKakaoLogin() called")
         // 카카오톡 실행 가능 여부 확인
@@ -44,6 +46,7 @@ struct LoginView: View {
                         UserService.shared.oAuthlogin(parameters: ["email": email , "providerType" : "KAKAO"], success: { (data) in
                             
                             print("data : " , data)
+                            self.navigate = true
                             
                         }, failure: { (error) in
                             
@@ -142,21 +145,24 @@ struct LoginView: View {
             VStack(spacing: 10) {
                 
                 
-                Button(action: {
-                    // 카카오톡 실행 가능 여부 확인
-                    handleKakaLogin()
+                NavigationLink(destination: ContentView() , isActive: $navigate) {
+                    Button(action: {
+                        // 카카오톡 실행 가능 여부 확인
+                        handleKakaLogin()
 
-                }, label: {
-                    ZStack {
-                        Image(.kakao1).resizable() .frame(width: 20, height: 20).offset(x: -125,y: 0)
-                        Text("카카오 로그인").offset(x : 10 , y : 0)
-                    }  .frame(width : 300, height : 52)
-                        .background{
-                            Color.kakaoBackground
-                        }.cornerRadius(10)
-                })
-                .frame(width : 300, height : 52)
-                .padding(.horizontal, 24)
+                    }, label: {
+                        ZStack {
+                            Image(.kakao1).resizable() .frame(width: 20, height: 20).offset(x: -125,y: 0)
+                            Text("카카오 로그인").offset(x : 10 , y : 0)
+                        }  .frame(width : 300, height : 52)
+                            .background{
+                                Color.kakaoBackground
+                            }.cornerRadius(10)
+                    })
+                    .frame(width : 300, height : 52)
+                    .padding(.horizontal, 24)
+                }
+                
                 
                 Button(action: {
 
@@ -195,12 +201,13 @@ struct LoginView: View {
                                     }
                                     
                                     
-                                    
+
                                     print("email : " , email)
                                     
-                                    UserService.shared.oAuthlogin(parameters: ["email": email ?? "" , "providerType" : "APPLE"], success: { (data) in
+                                    UserService.shared.oAuthlogin(parameters: ["email": email ?? ""  , "providerType" : "APPLE"], success: { (data) in
                                         
                                         print("data : " , data)
+                                        self.navigate = true
                                         
                                     }, failure: { (error) in
                                         
@@ -217,9 +224,10 @@ struct LoginView: View {
                         }
                     ).blendMode(.overlay)
                 }
-                
-                
-               
+    
+
+ 
+
                 
                 NavigationLink(destination: EmailLoginView().toolbarRole(.editor)) {
                     ZStack {
@@ -254,6 +262,11 @@ struct LoginView: View {
                 
  
             }.padding(.vertical, 30)
+            
+            NavigationLink(destination: ContentView() , isActive: $navigate) {
+                EmptyView()
+            }
+            
         }
     }
 }

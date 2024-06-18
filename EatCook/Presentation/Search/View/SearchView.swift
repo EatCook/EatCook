@@ -17,6 +17,9 @@ struct SearchView: View {
     
     @State var recentSearchData : [[String]] = [["홍고추"],["계란덮밥", "덮밥"], ["감바스","마늘","고추"],["감바스","마늘","고추", "양배추"],["감바스","마늘","고추", "양배추", "닭갈비"]]
     
+    @StateObject private var searchViewModel = SearchViewModel()
+    
+    
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {

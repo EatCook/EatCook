@@ -64,6 +64,9 @@ class APIClient {
         request.allHTTPHeaderFields = addHeader()
         request.httpMethod = method.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let token = DataStorage.shared.getString(forKey: DataStorageKey.Authorization)
+        print("token ::::" , token)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         if let parameters = parameters {
             let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
@@ -154,13 +157,13 @@ class APIClient {
 //   TODO : JWT TOKEN SETTING
     private func receiveHeader(response: HTTPURLResponse) {
         
-//        print("Header Check :",response.allHeaderFields )
+        print("Header Check :",response.allHeaderFields )
         if let refreshToken = response.allHeaderFields[DataStorageKey.JWT_REFRESH_TOKEN] as? String {
             DataStorage.shared.setString(refreshToken, forKey: DataStorageKey.JWT_REFRESH_TOKEN)
         }
         
-        if let accessToken = response.allHeaderFields[DataStorageKey.JWT_ACCESS_TOKEN] as? String {
-            DataStorage.shared.setString(accessToken, forKey: DataStorageKey.JWT_ACCESS_TOKEN)
+        if let accessToken = response.allHeaderFields[DataStorageKey.Authorization] as? String {
+            DataStorage.shared.setString(accessToken, forKey: DataStorageKey.Authorization)
         }
         
     }

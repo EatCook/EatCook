@@ -6,3 +6,24 @@
 //
 
 import Foundation
+import SwiftUI
+
+class SearchViewModel : ObservableObject {
+    
+    
+    @State var topRankData : [String] = []
+    
+    
+    init() {
+        SearchService.shard.getSearchRanking(success: { result in
+            print("TopRankresult" ,result)
+        }, failure: { error in
+            print(error)
+        })
+        
+    }
+    
+    
+    
+    
+}

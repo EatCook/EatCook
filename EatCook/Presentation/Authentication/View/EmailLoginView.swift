@@ -12,6 +12,7 @@ struct EmailLoginView: View {
     @StateObject private var emailLoginViewModel = EmailLoginViewModel()
     @State private var isSecure = true
     @StateObject private var toastManager = ToastManager()
+    @State private var navigate = false
     
     var body: some View {
         NavigationStack {
@@ -51,41 +52,44 @@ struct EmailLoginView: View {
                    
                 }
                 
-                Button(action: {
-        
-                    
-                    UserService.shared.login(parameters: ["email": emailLoginViewModel.email, "password" : emailLoginViewModel.password], success: { (data) in
-                       
-                        print("data : " , data)
-                        // Hidden NavigationLink that becomes active based on the state
-         
+                
+                
+                NavigationLink(destination: ContentView() , isActive: $navigate) {
+                    Button(action: {
+                        UserService.shared.login(parameters: ["email": emailLoginViewModel.email, "password" : emailLoginViewModel.password], success: { (data) in
+                           
+                            print("data : " , data)
+                            // Hidden NavigationLink that becomes active based on the state
+                           
+                            // NavigationLink activated by the state variable
+                            self.navigate = true
+                            
+                        }, failure: { (error) in
+                            withAnimation {
+                                toastManager.displayToast(
+                                    message: error.message,
+                                    duration: 3.0
+                                )
+                            }
+                        })
                         
-                    }, failure: { (error) in
-                        withAnimation {
-                            toastManager.displayToast(
-                                message: error.message,
-                                duration: 3.0
-                            )
+                    }, label: {
+                        Text("로그인")
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 55)
+                        .background {
+                            Color.primary7
                         }
+                        .foregroundColor(.white)
+                        .background()
+                        .cornerRadius(10)
+                        .padding(.horizontal, 24)
+                        .bold()
                         
-                        print(error)
                     })
-                    
-                }, label: {
-                    Text("로그인")
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 55)
-                    .background {
-                        Color.primary7
-                    }
-                    .foregroundColor(.white)
-                    .background()
-                    .cornerRadius(10)
-                    .padding(.horizontal, 24)
-                    .bold()
-                    
-                })
-//                .disabled(!emailValViewModel.authCodeValidation)
+                }
+                
+
                 
                 Spacer()
                 
@@ -98,6 +102,7 @@ struct EmailLoginView: View {
             }
             .environmentObject(toastManager)
             .padding(.top, 24)
+            
 
         }
         

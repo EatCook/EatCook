@@ -84,6 +84,9 @@ class DataStorageKey {
     static let USER_TOKEN = "usertoken"
     static let IS_MARKETING = "isMarketing"
     static let IS_NOTIFICATION = "isNotification"
+    static let Authorization = "Authorization"
+    
+    
 }
 
 enum ObjectSavableError: String, LocalizedError {
