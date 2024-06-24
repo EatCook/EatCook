@@ -24,6 +24,7 @@ extension Color {
     
     
     static let kakaoBackground = Color(hex: "FEE500")
+    static let gray10 = Color(hex : "#F6F8FC")
 
     
 }

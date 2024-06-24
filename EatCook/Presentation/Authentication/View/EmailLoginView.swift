@@ -14,6 +14,8 @@ struct EmailLoginView: View {
     @StateObject private var toastManager = ToastManager()
     @State private var navigate = false
     
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    
     var body: some View {
         NavigationStack {
             VStack{
@@ -63,6 +65,7 @@ struct EmailLoginView: View {
                            
                             // NavigationLink activated by the state variable
                             self.navigate = true
+                            
                             
                         }, failure: { (error) in
                             withAnimation {

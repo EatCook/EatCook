@@ -15,6 +15,8 @@ struct LoginView: View {
     let height = UIScreen.main.bounds.height / 2 - 80
     
     @State var navigate = false
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    
     
     func handleKakaLogin() {
         print("KakaoAuthVM - handleKakaoLogin() called")
@@ -47,6 +49,7 @@ struct LoginView: View {
                             
                             print("data : " , data)
                             self.navigate = true
+                            naviPathFinder.addPath(.main(""))
                             
                         }, failure: { (error) in
                             

@@ -22,7 +22,18 @@ class SearchViewModel : ObservableObject {
         })
         
     }
-    
+
+}
+
+struct Recipe: Identifiable , Decodable {
+    var id = UUID()
+    let postId: String
+    let recipeName: String
+    let introduction: String
+    let imageFilePath: String
+    let likeCount:  Int
+    let foodIngredients : [String]
+    let userNickName : String
     
     
     
