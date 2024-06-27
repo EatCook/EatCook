@@ -20,7 +20,7 @@ class UserService {
     
     
     // 이메일 신청
-    func requestEmail(parameters:[String:String], success: @escaping (BaseStruct<EmailRequestData>) -> (), failure: @escaping (BaseStruct<EmailRequestData>) -> ()) {
+    func requestEmail(parameters:[String:String], success: @escaping (EmailRequestData) -> (), failure: @escaping (EmailRequestData) -> ()) {
         APIClient.shared.request(API_USER_EMAIL_REQUEST, method: .post, parameters: parameters, responseType: EmailRequestData.self, successHandler: { (result) in
             
             print("result :" ,result)
@@ -38,7 +38,7 @@ class UserService {
     }
     
     // 이메일 신청 코드 검증
-    func requestEmailVerify(parameters:[String:String], success: @escaping (BaseStruct<EmailVerifyData>) -> (), failure: @escaping (BaseStruct<EmailVerifyData>) -> ()) {
+    func requestEmailVerify(parameters:[String:String], success: @escaping (EmailVerifyData) -> (), failure: @escaping (EmailVerifyData) -> ()) {
         APIClient.shared.request(API_USER_EMAIL_VERIFY, method: .post, parameters: parameters, responseType: EmailVerifyData.self, successHandler: { (result) in
             
             print("result :" ,result)
@@ -56,7 +56,7 @@ class UserService {
     }
     
     // 회원가입 신청
-    func passwordCheck(parameters:[String:String], success: @escaping (BaseStruct<PasswordCheck>) -> (), failure: @escaping (BaseStruct<PasswordCheck>) -> ()) {
+    func passwordCheck(parameters:[String:String], success: @escaping (PasswordCheck) -> (), failure: @escaping (PasswordCheck) -> ()) {
         APIClient.shared.request(API_USER_PASSWORD_CHECK, method: .post, parameters: parameters, responseType: PasswordCheck.self, successHandler: { (result) in
             
             print("result :" ,result)
@@ -74,7 +74,7 @@ class UserService {
     }
     
     // 로그인
-    func login(parameters:[String:String], success: @escaping (BaseStruct<PasswordCheck>) -> (), failure: @escaping (BaseStruct<PasswordCheck>) -> ()) {
+    func login(parameters:[String:String], success: @escaping (PasswordCheck) -> (), failure: @escaping (PasswordCheck) -> ()) {
         APIClient.shared.request(API_USER_EMAIL_LOGIN, method: .post, parameters: parameters, responseType: PasswordCheck.self, successHandler: { (result) in
             
             print("result :" ,result)
@@ -92,7 +92,7 @@ class UserService {
     }
     
     // oAUTH로그인
-    func oAuthlogin(parameters:[String:String], success: @escaping (BaseStruct<PasswordCheck>) -> (), failure: @escaping (BaseStruct<PasswordCheck>) -> ()) {
+    func oAuthlogin(parameters:[String:String], success: @escaping (PasswordCheck) -> (), failure: @escaping (PasswordCheck) -> ()) {
         APIClient.shared.request(API_USER_OAUTH_LOGIN, method: .post, parameters: parameters, responseType: PasswordCheck.self, successHandler: { (result) in
             
             print("result :" ,result)

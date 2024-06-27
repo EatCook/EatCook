@@ -15,6 +15,12 @@ struct SearchMenu: Codable {
 }
 
 struct SearchMenuData : Codable {
-    let searchWord: String
-    let searchCount: Int
+    
+    let postId: Int
+    let recipeName: String
+    let introduction : String
+    let imageFilePath : String
+    let likeCount : Int
+    let foodIngredients : [String]
+    let userNickName : String?
 }

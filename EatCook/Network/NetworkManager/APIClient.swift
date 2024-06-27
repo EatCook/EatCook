@@ -51,7 +51,7 @@ class APIClient {
         self.baseUrl = URL(string: baseUrl)
     }
     
-    func request<T : Decodable>(_ url : String , method : HTTPMethod = .get , parameters : [String : Any]? = nil , responseType : T.Type, successHandler : @escaping (BaseStruct<T>) -> Void , failureHandler : @escaping (BaseStruct<T>) -> ()) {
+    func request<T : Decodable>(_ url : String , method : HTTPMethod = .get , parameters : [String : Any]? = nil , responseType : T.Type, successHandler : @escaping (T) -> Void , failureHandler : @escaping (T) -> ()) {
         
         guard let url = URL(string: url, relativeTo: self.baseUrl) else {
             print("URL ERROR")
@@ -113,25 +113,27 @@ class APIClient {
                     return
                 }
                 
-                guard let decode = try? JSONDecoder().decode(BaseStruct<T>.self, from: data) else {
+                guard let decode = try? JSONDecoder().decode(T.self, from: data) else {
 //                    DispatchQueue.main.async {
 //                        failureHandler(BaseError(code: "\(response.statusCode)",
 //                                             message: "Decode Error"))
 //                    }
+                    print("DECODE ERROR")
                     
                     return
                 }
                 
                 // OK, Failed
-                if decode.success {
-                    DispatchQueue.main.async {
-                        successHandler(decode)
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        failureHandler(decode)
-                    }
-                }
+                successHandler(decode)
+//                if decode.success {
+//                    DispatchQueue.main.async {
+//                        successHandler(decode)
+//                    }
+//                } else {
+//                    DispatchQueue.main.async {
+//                        failureHandler(decode)
+//                    }
+//                }
             }
         }
         task.resume()

@@ -21,6 +21,7 @@ struct SearchView: View {
     @State var recipes = [Recipe]()
     @State var ingredients = [Recipe]()
     @State private var selectedTab = 0
+   
     
     private func removeTag(tag: String) {
         tags.removeAll { $0.value == tag }
@@ -45,11 +46,18 @@ struct SearchView: View {
                             })
                             
                             Button(action: {
-//                                SearchService.shard.getSearchMenu(parameters: ["lastId" : "" , "recipeNames" : [] , "ingredients" : tags.map { String($0.value) } , "size" : "10"]) { result in
-//                                    print("SearchView ::" , result.data)
-//                                } failure: { failResult in
-//                                    print("SearchView failResult :", failResult)
-//                                }
+                                SearchService.shard.getSearch(parameters: ["lastId" : "" , "recipeNames" : [] , "ingredients" : tags.map { String($0.value) } , "size" : "10"]) { result in
+                                    print("check result ::" , result)
+                                    recipes = result.data.map { Recipe(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
+                                    
+                                    ingredients = result.data.map { Recipe(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
+                                    
+                                    
+                                } failure: { error in
+                                    print(error)
+                                }
+
+                            
 
                                 
                                 
@@ -73,7 +81,7 @@ struct SearchView: View {
                     }.background(Color.gray10)
                         .padding(.bottom)
                     
-                    if !recipes.isEmpty {
+                    if recipes.isEmpty {
                         VStack {
                             ZStack(alignment: .top) {
                                 VStack {
@@ -162,54 +170,122 @@ struct SearchView: View {
     }
 }
 
-struct IngredientsView: View {
-    @Binding var ingredients : [Recipe]
+
+
+struct SearchViewCustomTabView: View {
+    @Binding var selectedTab: Int
+    
     var body: some View {
-        NavigationView {
-            List(ingredients) { recipe in
-                IngredientView(ingredient:  recipe)
+        VStack {
+            HStack {
+                Button(action: {
+                    selectedTab = 0
+                }) {
+                    VStack {
+                        Text("재료")
+                            .foregroundColor(selectedTab == 0 ? .primary6 : .gray5)
+                            .padding(.bottom, 8)
+                        
+                        if selectedTab == 0 {
+                            Rectangle()
+                                .fill(Color.orange)
+                                .frame(height: 2)
+                                .transition(.opacity)
+                        } else {
+                            Rectangle()
+                                .fill(Color.clear)
+                                .frame(height: 2)
+                        }
+                    }
+                }
+                Spacer()
+                Button(action: {
+                    selectedTab = 1
+                }) {
+                    VStack {
+                        Text("레시피")
+                            .foregroundColor(selectedTab == 1 ? .primary6 : .gray5)
+                            .padding(.bottom, 8)
+                        
+                        if selectedTab == 1 {
+                            Rectangle()
+                                .fill(Color.orange)
+                                .frame(height: 2)
+                                .transition(.opacity)
+                        } else {
+                            Rectangle()
+                                .fill(Color.clear)
+                                .frame(height: 2)
+                        }
+                    }
+                }
             }
-            .navigationTitle("Ingredients")
+            .padding()
+            .background(Color.white)
+            .shadow(radius: 2)
+            
+            Spacer()
         }
     }
 }
 
-struct SearchViewCustomTabView: View {
-    @Binding var selectedTab: Int
 
+struct IngredientsView: View {
+    @Binding var ingredients : [Recipe]
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     var body: some View {
-        HStack {
-            Button(action: {
-                selectedTab = 0
-            }) {
-                Text("재료")
-                    .foregroundColor(selectedTab == 0 ? .orange : .gray)
-                    .padding()
-            }
-            Spacer()
-            Button(action: {
-                selectedTab = 1
-            }) {
-                Text("레시피")
-                    .foregroundColor(selectedTab == 1 ? .orange : .gray)
-                    .padding()
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(ingredients) { recipe in
+                        IngredientView(ingredient:  recipe)
+                    }
+                }
+                .padding()
+                
             }
         }
-        .background(Color.white)
-        .shadow(radius: 2)
     }
 }
 
 struct IngredientView: View {
     let ingredient: Recipe
+    @StateObject private var loader = ImageLoader()
 
     var body: some View {
-        Text(ingredient.recipeName)
-            .font(.headline)
-            .padding()
-            .background(Color.white)
-            .cornerRadius(10)
-            .shadow(radius: 5)
+        VStack {
+            Group {
+                if let uiImage = loader.image {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 100)
+                } else {
+                    Text("Loading image...")
+                }
+            }
+            .onAppear {
+                loader.loadImage(from: "\(Environment.AwsBaseURL)/\(ingredient.imageFilePath)")
+               }
+            
+            Text(ingredient.recipeName)
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .padding(.vertical, 5)
+            HStack {
+                Image(systemName: "heart.fill")
+                    .foregroundColor(.red)
+                Text("\(ingredient.likeCount)")
+                    .font(.subheadline)
+            }
+        }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(radius: 5)
     }
 }
 
@@ -231,12 +307,13 @@ struct RecipesView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Recipes")
+           
         }
     }
 }
 struct SearchRecipeView: View {
     let recipe: Recipe
+    @StateObject private var loader = ImageLoader()
 
     var body: some View {
         VStack {
@@ -244,6 +321,21 @@ struct SearchRecipeView: View {
 //                .resizable()
 //                .scaledToFit()
 //                .frame(height: 100)
+            
+            Group {
+                   if let uiImage = loader.image {
+                       Image(uiImage: uiImage)
+                                       .resizable()
+                                       .scaledToFit()
+                                       .frame(height: 100)
+                   } else {
+                       Text("Loading image...")
+                   }
+               }
+               .onAppear {
+                   loader.loadImage(from: "\(Environment.AwsBaseURL)/\(recipe.imageFilePath)")
+               }
+            
             Text(recipe.recipeName)
                 .font(.headline)
                 .multilineTextAlignment(.center)
