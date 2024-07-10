@@ -196,6 +196,7 @@ struct LoginView: View {
                                     
                                     var email = appleIDCredential.email ?? ""
                                     let user = appleIDCredential.user
+                                    
 
                                     if email.isEmpty { /// 2번째 애플 로그인부터는 email이 identityToken에 들어있음.
                                         if let tokenString = String(data: appleIDCredential.identityToken ?? Data(), encoding: .utf8) {
@@ -203,8 +204,6 @@ struct LoginView: View {
                                         }
                                     }
                                     
-                                    
-
                                     print("email : " , email)
                                     
                                     UserService.shared.oAuthlogin(parameters: ["email": email ?? ""  , "providerType" : "APPLE"], success: { (data) in

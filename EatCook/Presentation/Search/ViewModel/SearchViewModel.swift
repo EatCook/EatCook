@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 class SearchViewModel : ObservableObject {
     
     
@@ -34,5 +35,23 @@ struct Recipe: Identifiable , Decodable {
     let likeCount:  Int
     let foodIngredients : [String]
     let userNickName : String?
+    
+    // Computed property to get UIImage from the URL
+    var image: UIImage? {
+        var loader = ImageLoader()
+        
+        guard let url = URL(string: "\(Environment.AwsBaseURL)/\(imageFilePath)") else {
+            return nil
+        }
+        loader.loadImage(from: "\(Environment.AwsBaseURL)/\(imageFilePath)")
+        
+        
+        return loader.image
+                         
+        
+        
+    }
+    
+    
     
 }

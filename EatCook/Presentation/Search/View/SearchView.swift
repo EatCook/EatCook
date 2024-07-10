@@ -85,6 +85,9 @@ struct SearchView: View {
                         VStack {
                             ZStack(alignment: .top) {
                                 VStack {
+                     
+                                    
+                                    
                                     HStack(alignment: .bottom) {
                                         Text("지금 많이 검색하고 있어요")
                                             .font(.title3).bold()
@@ -148,6 +151,7 @@ struct SearchView: View {
                         .navigationBarHidden(true)
                         .background(Color.white)
                     }else{
+                        
                         VStack {
                             SearchViewCustomTabView(selectedTab: $selectedTab)
                             if selectedTab == 0 {
@@ -156,13 +160,10 @@ struct SearchView: View {
                                 RecipesView(recipes: $recipes)
                             }
                             Spacer()
-                        }
-                        
+                        }.navigationBarTitle("", displayMode: .inline)
+                        .navigationBarHidden(true)
+                        .background(Color.white)
                     }
-                    
-
-                    
-         
                 }
 
             }
@@ -174,7 +175,7 @@ struct SearchView: View {
 
 struct SearchViewCustomTabView: View {
     @Binding var selectedTab: Int
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -258,19 +259,14 @@ struct IngredientView: View {
     var body: some View {
         VStack {
             Group {
-                if let uiImage = loader.image {
+                if let uiImage = ingredient.image {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 100)
-                } else {
-                    Text("Loading image...")
                 }
             }
-            .onAppear {
-                loader.loadImage(from: "\(Environment.AwsBaseURL)/\(ingredient.imageFilePath)")
-               }
-            
+   
             Text(ingredient.recipeName)
                 .font(.headline)
                 .multilineTextAlignment(.center)
@@ -302,6 +298,7 @@ struct RecipesView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(recipes) { recipe in
+                        
                         SearchRecipeView(recipe: recipe)
                     }
                 }
@@ -311,46 +308,77 @@ struct RecipesView: View {
         }
     }
 }
+
 struct SearchRecipeView: View {
     let recipe: Recipe
     @StateObject private var loader = ImageLoader()
 
     var body: some View {
         VStack {
-//            Image(recipe.imageName)
-//                .resizable()
-//                .scaledToFit()
-//                .frame(height: 100)
             
-            Group {
-                   if let uiImage = loader.image {
-                       Image(uiImage: uiImage)
-                                       .resizable()
-                                       .scaledToFit()
-                                       .frame(height: 100)
-                   } else {
-                       Text("Loading image...")
-                   }
-               }
-               .onAppear {
-                   loader.loadImage(from: "\(Environment.AwsBaseURL)/\(recipe.imageFilePath)")
-               }
-            
-            Text(recipe.recipeName)
-                .font(.headline)
-                .multilineTextAlignment(.center)
-                .padding(.vertical, 5)
-            HStack {
-                Image(systemName: "heart.fill")
-                    .foregroundColor(.red)
-                Text("\(recipe.likeCount)")
-                    .font(.subheadline)
+            ZStack(alignment: .topLeading) {
+                ZStack(alignment : .bottomTrailing) {
+                    if let uiImage = loader.image {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 120, height: 100)
+                    } else {
+                        ProgressView().frame(width: 130, height: 110)
+                    }
+                }
+               
+                HStack {
+                    Image(.whiteHeart).resizable().frame(width: 20 , height: 20)
+                    Text(String(recipe.likeCount)).font(.callout).foregroundColor(.white)
+                }
+                .padding(.vertical, 3)
+                .padding(.horizontal, 5)
+                .background(Color.black.opacity(0.2))
+                    .cornerRadius(5)
+            }.onAppear {
+                loader.loadImage(from: "\(Environment.AwsBaseURL)/\(recipe.imageFilePath)")
             }
+            
+            VStack(alignment : .leading) {
+                Text(recipe.recipeName) .font(.system(size: 15)).font(.title3).bold()
+                Text(recipe.introduction) .font(.system(size: 15)).padding(.top, 2)
+            }
+            VStack(alignment : .leading) {
+                HStack {
+                    ForEach(recipe.foodIngredients.indices , id : \.self) { index in
+                        VStack {
+                            Text(recipe.foodIngredients[index])
+                                .font(.system(size: 8))
+                                .padding(.horizontal, 4)
+                                .padding(.vertical, 2)
+                                .foregroundColor(.gray6)
+                        }
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Color.gray1)
+                        .cornerRadius(10)
+                        
+                    }
+                    
+                }
+                
+                
+            }
+           
+            
+       
+            
+            
+            
+            
+            
         }
         .padding()
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 5)
+        .shadow(radius: 1)
+        
     }
 }
 
