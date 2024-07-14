@@ -26,6 +26,14 @@ struct SearchView: View {
     private func removeTag(tag: String) {
         tags.removeAll { $0.value == tag }
     }
+    
+    private func getCurrentDateString() -> String {
+        let date = Date()
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "yyyy.MM.dd"
+        return formatter.string(from: date)
+    }
 
     var body: some View {
         NavigationStack {
@@ -46,10 +54,12 @@ struct SearchView: View {
                             })
                             
                             Button(action: {
+                                
                                 SearchService.shard.getSearch(parameters: ["lastId" : "" , "recipeNames" : [] , "ingredients" : tags.map { String($0.value) } , "size" : "10"]) { result in
                                     print("check result ::" , result)
                                     recipes = result.data.map { Recipe(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
                                     
+                                   
                                     ingredients = result.data.map { Recipe(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
                                     
                                     
@@ -57,9 +67,7 @@ struct SearchView: View {
                                     print(error)
                                 }
 
-                            
-
-                                
+                                 
                                 
                             }) {
                                 Image(systemName: "magnifyingglass")
@@ -85,13 +93,10 @@ struct SearchView: View {
                         VStack {
                             ZStack(alignment: .top) {
                                 VStack {
-                     
-                                    
-                                    
                                     HStack(alignment: .bottom) {
                                         Text("지금 많이 검색하고 있어요")
                                             .font(.title3).bold()
-                                        Text("2024.03.13")
+                                        Text(getCurrentDateString())
                                             .foregroundColor(.gray5)
                                             .font(.system(size: 12))
                                         Spacer()
@@ -151,7 +156,6 @@ struct SearchView: View {
                         .navigationBarHidden(true)
                         .background(Color.white)
                     }else{
-                        
                         VStack {
                             SearchViewCustomTabView(selectedTab: $selectedTab)
                             if selectedTab == 0 {
@@ -185,17 +189,16 @@ struct SearchViewCustomTabView: View {
                     VStack {
                         Text("재료")
                             .foregroundColor(selectedTab == 0 ? .primary6 : .gray5)
-                            .padding(.bottom, 8)
                         
                         if selectedTab == 0 {
                             Rectangle()
                                 .fill(Color.orange)
-                                .frame(height: 2)
+                                .frame(height: 3)
                                 .transition(.opacity)
                         } else {
                             Rectangle()
                                 .fill(Color.clear)
-                                .frame(height: 2)
+                                .frame(height: 3)
                         }
                     }
                 }
@@ -211,19 +214,18 @@ struct SearchViewCustomTabView: View {
                         if selectedTab == 1 {
                             Rectangle()
                                 .fill(Color.orange)
-                                .frame(height: 2)
+                                .frame(height: 3)
                                 .transition(.opacity)
                         } else {
                             Rectangle()
                                 .fill(Color.clear)
-                                .frame(height: 2)
+                                .frame(height: 3)
                         }
                     }
                 }
             }
             .padding()
             .background(Color.white)
-            .shadow(radius: 2)
             
             Spacer()
         }
@@ -238,17 +240,12 @@ struct IngredientsView: View {
         GridItem(.flexible())
     ]
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(ingredients) { recipe in
-                        IngredientView(ingredient:  recipe)
-                    }
-                }
-                .padding()
-                
+        LazyVGrid(columns: columns, spacing: 20) {
+            ForEach(ingredients) { ingredient in
+                IngredientView(ingredient: ingredient)
             }
         }
+        .padding()
     }
 }
 
@@ -258,35 +255,75 @@ struct IngredientView: View {
 
     var body: some View {
         VStack {
-            Group {
-                if let uiImage = ingredient.image {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 100)
+            
+            ZStack(alignment: .topLeading) {
+                ZStack(alignment : .bottomTrailing) {
+                    if let uiImage = loader.image {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 120, height: 100)
+                    } else {
+                        ProgressView().frame(width: 120, height: 100)
+                    }
+                }
+               
+                HStack {
+                    Image(.whiteHeart).resizable().frame(width: 20 , height: 20)
+                    Text(String(ingredient.likeCount)).font(.callout).foregroundColor(.white)
+                }
+                .padding(.vertical, 3)
+                .padding(.horizontal, 5)
+                .background(Color.black.opacity(0.2))
+                    .cornerRadius(5)
+            }.onAppear {
+                loader.loadImage(from: "\(Environment.AwsBaseURL)/\(ingredient.imageFilePath)")
+            }
+            
+            VStack(alignment : .leading) {
+                VStack(alignment : .leading) {
+                    Text(ingredient.recipeName) .font(.system(size: 15))
+                        .lineLimit(1)
+                        .font(.title3).bold()
+                    Text(ingredient.introduction)
+                        .font(.system(size: 15))
+                        .padding(.top, 2)
+                        .lineLimit(2) // Limit to 2 lines
+                        .truncationMode(.tail) // Add truncation mode to indicate overflow
                 }
             }
-   
-            Text(ingredient.recipeName)
-                .font(.headline)
-                .multilineTextAlignment(.center)
-                .padding(.vertical, 5)
-            HStack {
-                Image(systemName: "heart.fill")
-                    .foregroundColor(.red)
-                Text("\(ingredient.likeCount)")
-                    .font(.subheadline)
+            VStack(alignment: .leading) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(ingredient.foodIngredients.indices, id: \.self) { index in
+                            VStack {
+                                Text(ingredient.foodIngredients[index])
+                                    .font(.system(size: 8))
+                                    .padding(.horizontal, 4)
+                                    .padding(.vertical, 2)
+                                    .foregroundColor(Color.gray.opacity(0.6))
+                            }
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(10)
+                        }
+                    }
+                }
             }
+               
         }
         .padding()
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 5)
+        .shadow(radius: 1)
+        
     }
 }
 
+
 struct RecipesView: View {
-    @Binding var recipes : [Recipe]
+    @Binding var recipes: [Recipe]
     
     let columns = [
         GridItem(.flexible()),
@@ -294,18 +331,12 @@ struct RecipesView: View {
     ]
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(recipes) { recipe in
-                        
-                        SearchRecipeView(recipe: recipe)
-                    }
-                }
-                .padding()
+        LazyVGrid(columns: columns, spacing: 20) {
+            ForEach(recipes) { recipe in
+                SearchRecipeView(recipe: recipe)
             }
-           
         }
+        .padding()
     }
 }
 
@@ -341,38 +372,34 @@ struct SearchRecipeView: View {
             }
             
             VStack(alignment : .leading) {
-                Text(recipe.recipeName) .font(.system(size: 15)).font(.title3).bold()
-                Text(recipe.introduction) .font(.system(size: 15)).padding(.top, 2)
+                Text(recipe.recipeName) .font(.system(size: 15))
+                    .lineLimit(1)
+                    .font(.title3).bold()
+                Text(recipe.introduction)
+                    .font(.system(size: 15))
+                    .padding(.top, 2)
+                    .lineLimit(2) // Limit to 2 lines
+                    .truncationMode(.tail) // Add truncation mode to indicate overflow
             }
-            VStack(alignment : .leading) {
-                HStack {
-                    ForEach(recipe.foodIngredients.indices , id : \.self) { index in
-                        VStack {
-                            Text(recipe.foodIngredients[index])
-                                .font(.system(size: 8))
-                                .padding(.horizontal, 4)
-                                .padding(.vertical, 2)
-                                .foregroundColor(.gray6)
+            VStack(alignment: .leading) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(recipe.foodIngredients.indices, id: \.self) { index in
+                            VStack {
+                                Text(recipe.foodIngredients[index])
+                                    .font(.system(size: 8))
+                                    .padding(.horizontal, 4)
+                                    .padding(.vertical, 2)
+                                    .foregroundColor(Color.gray.opacity(0.6))
+                            }
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(10)
                         }
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(Color.gray1)
-                        .cornerRadius(10)
-                        
                     }
-                    
                 }
-                
-                
             }
-           
-            
-       
-            
-            
-            
-            
-            
         }
         .padding()
         .background(Color.white)
