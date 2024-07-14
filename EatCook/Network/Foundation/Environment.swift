@@ -8,5 +8,5 @@
 import Foundation
 
 struct Environment {
-    static let BaseURL = ""
+    static let BaseURL = "http://52.79.243.219:8080/"
 }

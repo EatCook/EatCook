@@ -32,7 +32,8 @@ struct RecipeTagView: View {
                         .foregroundStyle(.gray5)
                 }
             }
-            .padding(16)
+            .padding(.horizontal, 4)
+            .padding(.vertical, 16)
             
             TextField("재료를 입력해주세요", text: $textFieldText, onCommit: {
                 let data = Tag(value: textFieldText)

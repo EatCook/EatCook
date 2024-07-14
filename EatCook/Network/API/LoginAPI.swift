@@ -13,7 +13,7 @@ enum LoginAPI: EndPoint {
     var path: String {
         switch self {
         case .login:
-            return ""
+            return "login"
         }
     }
     
@@ -33,7 +33,7 @@ enum LoginAPI: EndPoint {
     
     var headers: [String : String]? {
         switch self {
-        case .login: return nil
+        case .login: return ["Content-Type" : "application/json"]
         }
     }
     
