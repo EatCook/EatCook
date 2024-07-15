@@ -40,6 +40,11 @@
 		3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */; };
 		F63E7AE92BC27E7B00934AF1 /* UserProfileTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63E7AE82BC27E7B00934AF1 /* UserProfileTopView.swift */; };
 		F64758882BDE1EC5009C21B3 /* ChipLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64758872BDE1EC5009C21B3 /* ChipLayout.swift */; };
+		F66871BF2C4563950063D9ED /* CookTalkFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871BE2C4563950063D9ED /* CookTalkFeedResponse.swift */; };
+		F66871C12C45666B0063D9ED /* CookTalkFeedResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871C02C45666B0063D9ED /* CookTalkFeedResponseDTO.swift */; };
+		F66871C52C4569F30063D9ED /* CookTalkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871C42C4569F30063D9ED /* CookTalkUseCase.swift */; };
+		F66871C72C456E970063D9ED /* CookTalkFollowResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871C62C456E970063D9ED /* CookTalkFollowResponse.swift */; };
+		F66871C92C456EA30063D9ED /* CookTalkFollowResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871C82C456EA30063D9ED /* CookTalkFollowResponseDTO.swift */; };
 		F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */; };
 		F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D062B8CCEFB00524B8B /* HTTPError.swift */; };
 		F66E2D092B8CCF0000524B8B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D082B8CCF0000524B8B /* NetworkError.swift */; };
@@ -54,7 +59,6 @@
 		F66E2D1C2B8CD1F700524B8B /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D1B2B8CD1F700524B8B /* AuthAPI.swift */; };
 		F66E2D1E2B8CD1FD00524B8B /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D1D2B8CD1FD00524B8B /* LoginAPI.swift */; };
 		F66E2D202B8CD20A00524B8B /* CookTalkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D1F2B8CD20A00524B8B /* CookTalkAPI.swift */; };
-		F66E2D2F2B8CD41E00524B8B /* LoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D2E2B8CD41E00524B8B /* LoginResponseDTO.swift */; };
 		F66E2D312B8CD4C100524B8B /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D302B8CD4C100524B8B /* HTTPHeaderField.swift */; };
 		F69B6DB32B80BFCA00EFB467 /* ScrollOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B6DB22B80BFCA00EFB467 /* ScrollOffset.swift */; };
 		F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B6DB52B80D80500EFB467 /* TabCase.swift */; };
@@ -123,6 +127,11 @@
 		3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
 		F63E7AE82BC27E7B00934AF1 /* UserProfileTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTopView.swift; sourceTree = "<group>"; };
 		F64758872BDE1EC5009C21B3 /* ChipLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipLayout.swift; sourceTree = "<group>"; };
+		F66871BE2C4563950063D9ED /* CookTalkFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkFeedResponse.swift; sourceTree = "<group>"; };
+		F66871C02C45666B0063D9ED /* CookTalkFeedResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkFeedResponseDTO.swift; sourceTree = "<group>"; };
+		F66871C42C4569F30063D9ED /* CookTalkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkUseCase.swift; sourceTree = "<group>"; };
+		F66871C62C456E970063D9ED /* CookTalkFollowResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkFollowResponse.swift; sourceTree = "<group>"; };
+		F66871C82C456EA30063D9ED /* CookTalkFollowResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkFollowResponseDTO.swift; sourceTree = "<group>"; };
 		F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookRepositoryType.swift; sourceTree = "<group>"; };
 		F66E2D062B8CCEFB00524B8B /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		F66E2D082B8CCF0000524B8B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -137,7 +146,6 @@
 		F66E2D1B2B8CD1F700524B8B /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		F66E2D1D2B8CD1FD00524B8B /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		F66E2D1F2B8CD20A00524B8B /* CookTalkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkAPI.swift; sourceTree = "<group>"; };
-		F66E2D2E2B8CD41E00524B8B /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
 		F66E2D302B8CD4C100524B8B /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
 		F69B6DB22B80BFCA00EFB467 /* ScrollOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffset.swift; sourceTree = "<group>"; };
 		F69B6DB52B80D80500EFB467 /* TabCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCase.swift; sourceTree = "<group>"; };
@@ -272,6 +280,8 @@
 		3F4C10A02B73EA3100D6DA1B /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F66871C22C4569E00063D9ED /* UseCase */,
+				F66871BB2C4563640063D9ED /* Model */,
 				F66E2D032B8CCEA300524B8B /* Interfaces */,
 			);
 			path = Domain;
@@ -323,9 +333,9 @@
 		3F4C10A92B73EA3100D6DA1B /* CookTalk */ = {
 			isa = PBXGroup;
 			children = (
+				3F4C10AF2B73EA3100D6DA1B /* Feed */,
 				F69B6DBF2B80ED4500EFB467 /* RecipeCreate */,
 				3F4C10AA2B73EA3100D6DA1B /* Recipe */,
-				3F4C10AF2B73EA3100D6DA1B /* Feed */,
 			);
 			path = CookTalk;
 			sourceTree = "<group>";
@@ -529,6 +539,47 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		F66871BB2C4563640063D9ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F66871BD2C4563820063D9ED /* Response */,
+				F66871BC2C45637E0063D9ED /* Request */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F66871BC2C45637E0063D9ED /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		F66871BD2C4563820063D9ED /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				F66871BE2C4563950063D9ED /* CookTalkFeedResponse.swift */,
+				F66871C62C456E970063D9ED /* CookTalkFollowResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		F66871C22C4569E00063D9ED /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				F66871C32C4569E90063D9ED /* CookTalk */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		F66871C32C4569E90063D9ED /* CookTalk */ = {
+			isa = PBXGroup;
+			children = (
+				F66871C42C4569F30063D9ED /* CookTalkUseCase.swift */,
+			);
+			path = CookTalk;
+			sourceTree = "<group>";
+		};
 		F66E2CFC2B8CCD3C00524B8B /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -601,7 +652,8 @@
 		F66E2D232B8CD32C00524B8B /* ResponseDTO */ = {
 			isa = PBXGroup;
 			children = (
-				F66E2D2E2B8CD41E00524B8B /* LoginResponseDTO.swift */,
+				F66871C02C45666B0063D9ED /* CookTalkFeedResponseDTO.swift */,
+				F66871C82C456EA30063D9ED /* CookTalkFollowResponseDTO.swift */,
 			);
 			path = ResponseDTO;
 			sourceTree = "<group>";
@@ -835,10 +887,12 @@
 				F66E2D1E2B8CD1FD00524B8B /* LoginAPI.swift in Sources */,
 				3F4C10DF2B73EA3200D6DA1B /* UserProfileView.swift in Sources */,
 				F6C80AE72B80A63A00001924 /* IngredientsContainerView.swift in Sources */,
+				F66871BF2C4563950063D9ED /* CookTalkFeedResponse.swift in Sources */,
 				3F4C10D82B73EA3200D6DA1B /* HomeViewModel.swift in Sources */,
 				F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */,
 				F66E2D202B8CD20A00524B8B /* CookTalkAPI.swift in Sources */,
 				F6FA1ED52BDCD4A300198FEB /* CheckImageTitleButton.swift in Sources */,
+				F66871C72C456E970063D9ED /* CookTalkFollowResponse.swift in Sources */,
 				3F4C10D52B73EA3200D6DA1B /* EatCookRepository.swift in Sources */,
 				F66E2D0D2B8CCF7100524B8B /* HTTPTask.swift in Sources */,
 				F69B6DBE2B80DC5C00EFB467 /* FeedContainerView.swift in Sources */,
@@ -848,6 +902,7 @@
 				F66E2D182B8CD12200524B8B /* NetworkManager.swift in Sources */,
 				F66E2D1A2B8CD16100524B8B /* Environment.swift in Sources */,
 				F6FA1EBC2BD7DAE200198FEB /* UserProfileRowView.swift in Sources */,
+				F66871C92C456EA30063D9ED /* CookTalkFollowResponseDTO.swift in Sources */,
 				F6FA1ED02BDCBB5800198FEB /* UserFavoriteTagEditView.swift in Sources */,
 				3F4C10E02B73EA3200D6DA1B /* SearchViewModel.swift in Sources */,
 				3F4C10E22B73EA3200D6DA1B /* ProfileViewModel.swift in Sources */,
@@ -869,6 +924,7 @@
 				F66E2D0F2B8CCFC400524B8B /* URLRequestable.swift in Sources */,
 				F6F9FB672BA1AA1000AEF22E /* RecipeStepView.swift in Sources */,
 				F6F9FB582BA1A9CE00AEF22E /* RecipeCreateViewModel.swift in Sources */,
+				F66871C52C4569F30063D9ED /* CookTalkUseCase.swift in Sources */,
 				3F4C10DC2B73EA3200D6DA1B /* FeedViewModel.swift in Sources */,
 				F6FA1ECC2BD7E33E00198FEB /* SettingViewModel.swift in Sources */,
 				3F4C10D42B73EA3200D6DA1B /* EatCookApp.swift in Sources */,
@@ -878,8 +934,8 @@
 				F6F9FB5F2BA1AA0100AEF22E /* TagLayout.swift in Sources */,
 				3F4C10E52B73EA3200D6DA1B /* AuthView.swift in Sources */,
 				F66E2D312B8CD4C100524B8B /* HTTPHeaderField.swift in Sources */,
+				F66871C12C45666B0063D9ED /* CookTalkFeedResponseDTO.swift in Sources */,
 				F6F9FB5E2BA1AA0100AEF22E /* TagField.swift in Sources */,
-				F66E2D2F2B8CD41E00524B8B /* LoginResponseDTO.swift in Sources */,
 				3F4C10D22B73EA3200D6DA1B /* Ex.swift in Sources */,
 				F6F9FB552BA1A8B500AEF22E /* NavigationPathFinder.swift in Sources */,
 				F6F9FB602BA1AA0100AEF22E /* ImagePicker.swift in Sources */,

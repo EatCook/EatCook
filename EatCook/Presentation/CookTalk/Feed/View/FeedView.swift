@@ -44,6 +44,12 @@ struct FeedView: View {
     //    @State private var offsetX: CGFloat = 0
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
+    @StateObject private var viewModel = FeedViewModel(
+        useCase: CookTalkUseCase(
+            eatCookRepository: EatCookRepository(
+                networkProvider: NetworkProviderImpl(
+                    requestManager: NetworkManager()))))
+    
     var body: some View {
         GeometryReader {
             let size = $0.size
@@ -99,6 +105,10 @@ struct FeedView: View {
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .background(.gray1)
+                    .onAppear {
+                        viewModel.responseCookTalkFeed()
+                        viewModel.responseCookTalkFollow()
+                    }
                     //                .gesture(
                     //                    DragGesture().onChanged { gesture in
                     //                        offsetX = gesture.translation.width

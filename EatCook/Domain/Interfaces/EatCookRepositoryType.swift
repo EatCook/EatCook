@@ -6,8 +6,13 @@
 //
 
 import Foundation
+import Combine
 
 protocol EatCookRepositoryType: AnyObject {
-    /// API별로 생성해서 사용.
-    func fetchLoginInfo(of endpoint: EndPoint) async throws -> Result<LoginResponse, NetworkError>
+    /// Feed
+    func responseCookTalkFeed(of endpoint: EndPoint) -> Future<CookTalkFeedResponse, NetworkError>
+    func responseCookTalkFollow(of endpoint: EndPoint) -> Future<CookTalkFollowResponse, NetworkError>
+    
+    ///
+    
 }
