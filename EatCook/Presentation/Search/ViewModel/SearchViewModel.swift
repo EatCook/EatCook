@@ -47,11 +47,9 @@ struct Recipe: Identifiable , Decodable {
         
         
         return loader.image
-                         
-        
+                             
         
     }
-    
     
     
 }

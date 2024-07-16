@@ -14,6 +14,8 @@ struct HomeView: View {
     @State private var selectMenuRecommend = 0
     @State private var scrollOffset: CGFloat = 0
     
+    @StateObject private var homeViewModel = HomeViewModel()
+    
 //  TODO : 한식 일식 야식 별로 서버 데이터 세팅
     @State private var interestingFoods : [interestingFoods] = [
                     interestingFoods(title: "간장 마늘 치킨", user: "나는쉐프다", image: Image(.testFood1)),

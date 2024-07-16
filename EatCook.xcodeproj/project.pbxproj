@@ -56,6 +56,8 @@
 		E5AEE89C2BF73B7C00A4EF40 /* EmailVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */; };
 		E5AEE89F2BF73CC500A4EF40 /* BaseStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE89E2BF73CC500A4EF40 /* BaseStruct.swift */; };
 		E5AEE8A12BF73D6900A4EF40 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE8A02BF73D6900A4EF40 /* APIClient.swift */; };
+		E5BAAF832C44BF040097E83A /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BAAF822C44BF040097E83A /* MainService.swift */; };
+		E5BAAF852C44BFBB0097E83A /* MainUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BAAF842C44BFBB0097E83A /* MainUserInfo.swift */; };
 		E5DE18342C2172610026E756 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DE18332C2172610026E756 /* SearchService.swift */; };
 		E5F520152BCFB89400CEA96B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F520142BCFB89400CEA96B /* CustomTabView.swift */; };
 		F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */; };
@@ -148,6 +150,8 @@
 		E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerify.swift; sourceTree = "<group>"; };
 		E5AEE89E2BF73CC500A4EF40 /* BaseStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStruct.swift; sourceTree = "<group>"; };
 		E5AEE8A02BF73D6900A4EF40 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		E5BAAF822C44BF040097E83A /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
+		E5BAAF842C44BFBB0097E83A /* MainUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserInfo.swift; sourceTree = "<group>"; };
 		E5DE18332C2172610026E756 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		E5F520142BCFB89400CEA96B /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookRepositoryType.swift; sourceTree = "<group>"; };
@@ -581,6 +585,7 @@
 			children = (
 				E5AEE8952BF739EA00A4EF40 /* UserService.swift */,
 				E5DE18332C2172610026E756 /* SearchService.swift */,
+				E5BAAF822C44BF040097E83A /* MainService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -588,6 +593,7 @@
 		E5AEE8972BF73AD200A4EF40 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				E5BAAF812C44BC930097E83A /* Main */,
 				E578D5A82C29694000A91EB8 /* Search */,
 				E5AEE8982BF73AF900A4EF40 /* Auth */,
 			);
@@ -610,6 +616,14 @@
 				E5AEE89E2BF73CC500A4EF40 /* BaseStruct.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		E5BAAF812C44BC930097E83A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E5BAAF842C44BFBB0097E83A /* MainUserInfo.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		F66E2CFC2B8CCD3C00524B8B /* Network */ = {
@@ -888,6 +902,7 @@
 				F66E2D0B2B8CCF2A00524B8B /* HTTPMethod.swift in Sources */,
 				3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */,
 				3F2652FB2B7AF2060065DFA5 /* FoodThemeView.swift in Sources */,
+				E5BAAF832C44BF040097E83A /* MainService.swift in Sources */,
 				F69B6DBC2B80D90A00EFB467 /* FeedRowView.swift in Sources */,
 				F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */,
 				F66E2D112B8CCFDE00524B8B /* NetworkProviderImpl.swift in Sources */,
@@ -897,6 +912,7 @@
 				3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */,
 				F69B6DB32B80BFCA00EFB467 /* ScrollOffset.swift in Sources */,
 				E561464B2C01D02800CA1991 /* EmailLoginViewModel.swift in Sources */,
+				E5BAAF852C44BFBB0097E83A /* MainUserInfo.swift in Sources */,
 				F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */,
 				F66E2D0F2B8CCFC400524B8B /* URLRequestable.swift in Sources */,
 				E578D5AC2C296B1300A91EB8 /* SearchMenu.swift in Sources */,
