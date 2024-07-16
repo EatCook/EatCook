@@ -59,6 +59,18 @@
 		E5BAAF832C44BF040097E83A /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BAAF822C44BF040097E83A /* MainService.swift */; };
 		E5BAAF852C44BFBB0097E83A /* MainUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BAAF842C44BFBB0097E83A /* MainUserInfo.swift */; };
 		E5DE18342C2172610026E756 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DE18332C2172610026E756 /* SearchService.swift */; };
+		E5F2F6E12C46116D000EC91C /* MainUserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6E02C46116D000EC91C /* MainUserInfoResponse.swift */; };
+		E5F2F6E32C46117B000EC91C /* SearchMenuResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6E22C46117B000EC91C /* SearchMenuResponse.swift */; };
+		E5F2F6E52C461188000EC91C /* SearchRankingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6E42C461188000EC91C /* SearchRankingResponse.swift */; };
+		E5F2F6E72C461196000EC91C /* EmailRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6E62C461196000EC91C /* EmailRequestResponse.swift */; };
+		E5F2F6E92C4611A3000EC91C /* EmailVerifyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6E82C4611A3000EC91C /* EmailVerifyResponse.swift */; };
+		E5F2F6EB2C4611B2000EC91C /* PasswordCheckResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6EA2C4611B2000EC91C /* PasswordCheckResponse.swift */; };
+		E5F2F6F02C461334000EC91C /* MainUserInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6EF2C461334000EC91C /* MainUserInfoResponseDTO.swift */; };
+		E5F2F6F22C461343000EC91C /* SearchMenuResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6F12C461343000EC91C /* SearchMenuResponseDTO.swift */; };
+		E5F2F6F42C461354000EC91C /* SearchRankingResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6F32C461354000EC91C /* SearchRankingResponseDTO.swift */; };
+		E5F2F6F62C461364000EC91C /* EmailRequestResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6F52C461364000EC91C /* EmailRequestResponseDTO.swift */; };
+		E5F2F6F82C461371000EC91C /* EmailVerifyResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6F72C461371000EC91C /* EmailVerifyResponseDTO.swift */; };
+		E5F2F6FA2C46137D000EC91C /* PasswordCheckResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6F92C46137D000EC91C /* PasswordCheckResponseDTO.swift */; };
 		E5F520152BCFB89400CEA96B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F520142BCFB89400CEA96B /* CustomTabView.swift */; };
 		F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */; };
 		F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D062B8CCEFB00524B8B /* HTTPError.swift */; };
@@ -153,6 +165,18 @@
 		E5BAAF822C44BF040097E83A /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
 		E5BAAF842C44BFBB0097E83A /* MainUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserInfo.swift; sourceTree = "<group>"; };
 		E5DE18332C2172610026E756 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		E5F2F6E02C46116D000EC91C /* MainUserInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserInfoResponse.swift; sourceTree = "<group>"; };
+		E5F2F6E22C46117B000EC91C /* SearchMenuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMenuResponse.swift; sourceTree = "<group>"; };
+		E5F2F6E42C461188000EC91C /* SearchRankingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankingResponse.swift; sourceTree = "<group>"; };
+		E5F2F6E62C461196000EC91C /* EmailRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequestResponse.swift; sourceTree = "<group>"; };
+		E5F2F6E82C4611A3000EC91C /* EmailVerifyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerifyResponse.swift; sourceTree = "<group>"; };
+		E5F2F6EA2C4611B2000EC91C /* PasswordCheckResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckResponse.swift; sourceTree = "<group>"; };
+		E5F2F6EF2C461334000EC91C /* MainUserInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserInfoResponseDTO.swift; sourceTree = "<group>"; };
+		E5F2F6F12C461343000EC91C /* SearchMenuResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMenuResponseDTO.swift; sourceTree = "<group>"; };
+		E5F2F6F32C461354000EC91C /* SearchRankingResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankingResponseDTO.swift; sourceTree = "<group>"; };
+		E5F2F6F52C461364000EC91C /* EmailRequestResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequestResponseDTO.swift; sourceTree = "<group>"; };
+		E5F2F6F72C461371000EC91C /* EmailVerifyResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerifyResponseDTO.swift; sourceTree = "<group>"; };
+		E5F2F6F92C46137D000EC91C /* PasswordCheckResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckResponseDTO.swift; sourceTree = "<group>"; };
 		E5F520142BCFB89400CEA96B /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookRepositoryType.swift; sourceTree = "<group>"; };
 		F66E2D062B8CCEFB00524B8B /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
@@ -574,6 +598,8 @@
 		E5AEE8932BF739C500A4EF40 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E5F2F6EC2C46128A000EC91C /* Data */,
+				E5F2F6DF2C46115E000EC91C /* Response */,
 				E5AEE8972BF73AD200A4EF40 /* Entity */,
 				E5AEE8942BF739D000A4EF40 /* Service */,
 			);
@@ -624,6 +650,48 @@
 				E5BAAF842C44BFBB0097E83A /* MainUserInfo.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		E5F2F6DF2C46115E000EC91C /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				E5F2F6E02C46116D000EC91C /* MainUserInfoResponse.swift */,
+				E5F2F6E22C46117B000EC91C /* SearchMenuResponse.swift */,
+				E5F2F6E42C461188000EC91C /* SearchRankingResponse.swift */,
+				E5F2F6E62C461196000EC91C /* EmailRequestResponse.swift */,
+				E5F2F6E82C4611A3000EC91C /* EmailVerifyResponse.swift */,
+				E5F2F6EA2C4611B2000EC91C /* PasswordCheckResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		E5F2F6EC2C46128A000EC91C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E5F2F6ED2C46129F000EC91C /* DataMapping */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		E5F2F6ED2C46129F000EC91C /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				E5F2F6EE2C4612A8000EC91C /* ResponseDTO */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		E5F2F6EE2C4612A8000EC91C /* ResponseDTO */ = {
+			isa = PBXGroup;
+			children = (
+				E5F2F6EF2C461334000EC91C /* MainUserInfoResponseDTO.swift */,
+				E5F2F6F12C461343000EC91C /* SearchMenuResponseDTO.swift */,
+				E5F2F6F32C461354000EC91C /* SearchRankingResponseDTO.swift */,
+				E5F2F6F52C461364000EC91C /* EmailRequestResponseDTO.swift */,
+				E5F2F6F72C461371000EC91C /* EmailVerifyResponseDTO.swift */,
+				E5F2F6F92C46137D000EC91C /* PasswordCheckResponseDTO.swift */,
+			);
+			path = ResponseDTO;
 			sourceTree = "<group>";
 		};
 		F66E2CFC2B8CCD3C00524B8B /* Network */ = {
@@ -873,8 +941,11 @@
 				F6C80AE32B80A60100001924 /* TabIndicatorView.swift in Sources */,
 				3F4C10EF2B77BEA500D6DA1B /* CustomTextFieldModifier.swift in Sources */,
 				E58512C72BFA00DE00E1D877 /* PasswordCheck.swift in Sources */,
+				E5F2F6E52C461188000EC91C /* SearchRankingResponse.swift in Sources */,
 				3F4C10E12B73EA3200D6DA1B /* SearchView.swift in Sources */,
 				E5AEE89A2BF73B6500A4EF40 /* EmailRequest.swift in Sources */,
+				E5F2F6E92C4611A3000EC91C /* EmailVerifyResponse.swift in Sources */,
+				E5F2F6E32C46117B000EC91C /* SearchMenuResponse.swift in Sources */,
 				3F4C10E62B73EA3200D6DA1B /* ContentView.swift in Sources */,
 				F6F9FB622BA1AA0100AEF22E /* DropdownView.swift in Sources */,
 				3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */,
@@ -886,6 +957,7 @@
 				3F4C10DF2B73EA3200D6DA1B /* UserProfileView.swift in Sources */,
 				F6C80AE72B80A63A00001924 /* IngredientsContainerView.swift in Sources */,
 				E5A015B72C12E4D600D9AB1F /* Color.swift in Sources */,
+				E5F2F6EB2C4611B2000EC91C /* PasswordCheckResponse.swift in Sources */,
 				3F4C10D82B73EA3200D6DA1B /* HomeViewModel.swift in Sources */,
 				F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */,
 				F66E2D202B8CD20A00524B8B /* CookTalkAPI.swift in Sources */,
@@ -897,6 +969,7 @@
 				F66E2D1A2B8CD16100524B8B /* Environment.swift in Sources */,
 				3F4C10E02B73EA3200D6DA1B /* SearchViewModel.swift in Sources */,
 				3F4C10E22B73EA3200D6DA1B /* ProfileViewModel.swift in Sources */,
+				E5F2F6F22C461343000EC91C /* SearchMenuResponseDTO.swift in Sources */,
 				3F4C10E72B73EA3200D6DA1B /* LoginViewModel.swift in Sources */,
 				3F2652FD2B7C3E180065DFA5 /* HouseholdCompositionView.swift in Sources */,
 				F66E2D0B2B8CCF2A00524B8B /* HTTPMethod.swift in Sources */,
@@ -905,6 +978,7 @@
 				E5BAAF832C44BF040097E83A /* MainService.swift in Sources */,
 				F69B6DBC2B80D90A00EFB467 /* FeedRowView.swift in Sources */,
 				F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */,
+				E5F2F6F82C461371000EC91C /* EmailVerifyResponseDTO.swift in Sources */,
 				F66E2D112B8CCFDE00524B8B /* NetworkProviderImpl.swift in Sources */,
 				F66E2D092B8CCF0000524B8B /* NetworkError.swift in Sources */,
 				E55965342C059C38002B3E75 /* AppleLoginButtonView.swift in Sources */,
@@ -920,6 +994,8 @@
 				F6F9FB582BA1A9CE00AEF22E /* RecipeCreateViewModel.swift in Sources */,
 				3F4C10DC2B73EA3200D6DA1B /* FeedViewModel.swift in Sources */,
 				E52261312BEB63F300ECC939 /* EmailValidationViewModel.swift in Sources */,
+				E5F2F6F62C461364000EC91C /* EmailRequestResponseDTO.swift in Sources */,
+				E5F2F6E12C46116D000EC91C /* MainUserInfoResponse.swift in Sources */,
 				E595A61A2C2D2F2D00EFB873 /* SearchRanking.swift in Sources */,
 				3F4C10D42B73EA3200D6DA1B /* EatCookApp.swift in Sources */,
 				E5AEE8A12BF73D6900A4EF40 /* APIClient.swift in Sources */,
@@ -937,10 +1013,14 @@
 				F6F9FB602BA1AA0100AEF22E /* ImagePicker.swift in Sources */,
 				F6C80AE52B80A62C00001924 /* RecipeContainerView.swift in Sources */,
 				E5AEE8962BF739EA00A4EF40 /* UserService.swift in Sources */,
+				E5F2F6F02C461334000EC91C /* MainUserInfoResponseDTO.swift in Sources */,
+				E5F2F6E72C461196000EC91C /* EmailRequestResponse.swift in Sources */,
 				F66E2D152B8CCFEA00524B8B /* EndPoint.swift in Sources */,
 				F66E2D132B8CCFE400524B8B /* NetworkProvider.swift in Sources */,
+				E5F2F6F42C461354000EC91C /* SearchRankingResponseDTO.swift in Sources */,
 				E5AEE89C2BF73B7C00A4EF40 /* EmailVerify.swift in Sources */,
 				E5DE18342C2172610026E756 /* SearchService.swift in Sources */,
+				E5F2F6FA2C46137D000EC91C /* PasswordCheckResponseDTO.swift in Sources */,
 				3F4C10D92B73EA3200D6DA1B /* HomeView.swift in Sources */,
 				E58512C52BF9FDB000E1D877 /* PasswordCheckViewModel.swift in Sources */,
 				3F4C10F12B77C38600D6DA1B /* PasswordCheckView.swift in Sources */,
