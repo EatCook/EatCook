@@ -9,10 +9,11 @@ import Foundation
 import Combine
 
 protocol EatCookRepositoryType: AnyObject {
-    /// Feed
+    /// CookTalk
     func responseCookTalkFeed(of endpoint: EndPoint) -> Future<CookTalkFeedResponse, NetworkError>
     func responseCookTalkFollow(of endpoint: EndPoint) -> Future<CookTalkFollowResponse, NetworkError>
     
-    ///
+    /// Recipe
+    func responseRecipeRead(of endpoint: EndPoint) -> Future<RecipeReadResponse, NetworkError>
     
 }

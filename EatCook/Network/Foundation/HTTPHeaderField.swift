@@ -16,7 +16,7 @@ enum HTTPHeaderField: String {
 enum ContentType: String {
     case urlEncoded = "application/x-www-form-urlencoded"
     case json = "application/json"
-    case jwtToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJlYXRjb29rIiwic3ViIjoiYWNjZXNzLXRva2VuIiwiaWF0IjoxNzIxMDU5NjU1LCJ1c2VybmFtZSI6Iml0Y29va0BnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzIxMDYxNDU1fQ.yyR7QZTxH_6c7XfjFmtKNatHQQFwS-bbF1E7FzPxa0Zb3NdQz83V53j3GsUB9ANWmTb6YIZ9uG7PQd06460KMQ"
+    case jwtToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJlYXRjb29rIiwic3ViIjoiYWNjZXNzLXRva2VuIiwiaWF0IjoxNzIxMTMzODUyLCJ1c2VybmFtZSI6Iml0Y29vazFAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImV4cCI6MTcyMTEzNTY1Mn0.hW_4imV_djEXJiKz7k4CNF0W3MmCMVMNUBbFDkv2_lvWK0L6xrz6HILLRxcJlNcPkmBEyQAXFWW1qFdm9CmHZw"
     case multipart = "multipart/form-data"
 }
 

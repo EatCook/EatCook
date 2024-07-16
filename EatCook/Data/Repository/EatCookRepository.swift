@@ -21,6 +21,7 @@ final class EatCookRepository: EatCookRepositoryType {
 
 extension EatCookRepository {
     
+    /// CookTalk API
     func responseCookTalkFeed(of endpoint: EndPoint) -> Future<CookTalkFeedResponse, NetworkError> {
         return Future { promise in
             Task {
@@ -56,4 +57,27 @@ extension EatCookRepository {
             }
         }
     }
+    
+    /// Recipe API
+    func responseRecipeRead(of endpoint: EndPoint) -> Future<RecipeReadResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(RecipeReadResponseDTO.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data.toDomain()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
+    
+    
+    
 }

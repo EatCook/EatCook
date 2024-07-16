@@ -23,7 +23,7 @@ struct CookTalkFollowResponseListDTO: Codable {
     let postID: Int
     let introduction, postImagePath, createdAt, lastModifiedAt: String
     let userID: Int
-    let nickName, profile: String
+    let nickName, profile: String?
     let likeCount: Int
     let likedCheck, followCheck: Bool
 
