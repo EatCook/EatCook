@@ -97,10 +97,6 @@ class UserService {
             
             print("result :" ,result)
             
-//            guard let data = result else {
-//                print("Result Data Error")
-//                return
-//            }
             success(result)
             
         }, failureHandler: { (error) in

@@ -44,12 +44,24 @@ struct LoginView: View {
                             print("KAKAO 계정 이메일 오류")
                             return
                         }
+                        
+                        guard let token = oauthToken?.accessToken else {
+                            print("카카오 oAuth Token 오류")
+                            return
+                        }
+                        
+                        print("email :", email)
+                        print("token :", "Bearer \(token)")
 
-                        UserService.shared.oAuthlogin(parameters: ["email": email , "providerType" : "KAKAO"], success: { (data) in
+                        UserService.shared.oAuthlogin(parameters: ["email": email , "providerType" : "KAKAO", "token" : "Bearer \(token)"], success: { (data) in
                             
                             print("data : " , data)
-                            self.navigate = true
-                            naviPathFinder.addPath(.main(""))
+                            
+                            if data.success {
+                                self.navigate = true
+                                naviPathFinder.addPath(.main(""))
+                            }
+                        
                             
                         }, failure: { (error) in
                             

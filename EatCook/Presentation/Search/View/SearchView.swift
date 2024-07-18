@@ -55,7 +55,7 @@ struct SearchView: View {
                             
                             Button(action: {
                                 
-                                SearchService.shard.getSearch(parameters: ["lastId" : "" , "recipeNames" : [] , "ingredients" : tags.map { String($0.value) } , "size" : "10"]) { result in
+                                SearchService.shard.getSearch(parameters: ["lastId" : "" , "recipeNames" : tags.map { String($0.value) } , "ingredients" : tags.map { String($0.value) } , "size" : "10"]) { result in
                                     print("check result ::" , result)
                                     recipes = result.data.map { Recipe(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
                                     
