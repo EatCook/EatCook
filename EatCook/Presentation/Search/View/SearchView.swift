@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
+    @StateObject private var searchViewModel = SearchViewModel()
     @State var searchText = ""
     @State private var isSearching = false
     @FocusState private var isFocused: Bool
@@ -17,23 +18,16 @@ struct SearchView: View {
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     @State private var navigationPath = NavigationPath()
     @SwiftUI.Environment(\.dismiss) private var dismiss
-    @StateObject private var searchViewModel = SearchViewModel()
+
     @State var recipes = [Recipe]()
-    @State var ingredients = [Recipe]()
+    @State var ingredients = [Ingredient]()
     @State private var selectedTab = 0
    
     
     private func removeTag(tag: String) {
         tags.removeAll { $0.value == tag }
     }
-    
-    private func getCurrentDateString() -> String {
-        let date = Date()
-        let formatter = DateFormatter()
-        
-        formatter.dateFormat = "yyyy.MM.dd"
-        return formatter.string(from: date)
-    }
+
 
     var body: some View {
         NavigationStack {
@@ -54,18 +48,18 @@ struct SearchView: View {
                             })
                             
                             Button(action: {
-                                
                                 SearchService.shard.getSearch(parameters: ["lastId" : "" , "recipeNames" : tags.map { String($0.value) } , "ingredients" : tags.map { String($0.value) } , "size" : "10"]) { result in
                                     print("check result ::" , result)
                                     recipes = result.data.map { Recipe(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
                                     
                                    
-                                    ingredients = result.data.map { Recipe(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
+                                    ingredients = result.data.map { Ingredient(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
                                     
                                     
                                 } failure: { error in
                                     print(error)
                                 }
+                                
 
                                  
                                 
@@ -96,7 +90,7 @@ struct SearchView: View {
                                     HStack(alignment: .bottom) {
                                         Text("지금 많이 검색하고 있어요")
                                             .font(.title3).bold()
-                                        Text(getCurrentDateString())
+                                        Text(searchViewModel.getCurrentDateString())
                                             .foregroundColor(.gray5)
                                             .font(.system(size: 12))
                                         Spacer()
@@ -104,20 +98,22 @@ struct SearchView: View {
                                     .padding(.vertical, 20)
                                     .padding(.horizontal, 16)
                                     
-                                    LazyVStack(alignment: .trailing) {
-                                        ForEach(SearchView.testDataRank.indices, id: \.self) { index in
-                                            Button(action: {}) {
+                                    LazyVStack(alignment: .leading) {
+                                        ForEach(searchViewModel.topRankData) { data in
+                                            Button(action: {
+                                                print("index ::" , data)
+                                            }) {
                                                 HStack {
-                                                    if index + 1 > 3 {
+                                                    if data.rank > 3 {
                                                         HStack(spacing: 24) {
-                                                            Text("\(index + 1)").foregroundColor(.secondary).bold()
-                                                            Text(SearchView.testDataRank[index]).font(.system(size: 18))
+                                                            Text("\(data.rank + 1)").foregroundColor(.secondary).bold()
+                                                            Text(data.searchWord).font(.system(size: 18))
                                                         }
                                                         .padding(.vertical, 12)
                                                     } else {
                                                         HStack(spacing: 24) {
-                                                            Text("\(index + 1)").foregroundColor(.primary6).bold()
-                                                            Text(SearchView.testDataRank[index]).font(.system(size: 18)).bold()
+                                                            Text("\(data.rank)").foregroundColor(.primary6).bold()
+                                                            Text(data.searchWord).font(.system(size: 18)).bold()
                                                         }
                                                         .padding(.vertical, 12)
                                                     }
@@ -234,7 +230,7 @@ struct SearchViewCustomTabView: View {
 
 
 struct IngredientsView: View {
-    @Binding var ingredients : [Recipe]
+    @Binding var ingredients : [Ingredient]
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -250,7 +246,7 @@ struct IngredientsView: View {
 }
 
 struct IngredientView: View {
-    let ingredient: Recipe
+    let ingredient: Ingredient
     @StateObject private var loader = ImageLoader()
 
     var body: some View {

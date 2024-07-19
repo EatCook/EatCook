@@ -11,10 +11,19 @@ struct SearchRanking: Codable {
     let success: Bool
     let code: String
     let message: String
-    let data: [SearchRankingData] // 데이터의 타입에 따라 적절히 수정 가능
+    let data : DataClass
 }
 
-struct SearchRankingData : Codable {
+struct DataClass : Codable {
+    let lastUpdateTime : String
+    let rankings : [SearchRankingData]
+}
+
+struct SearchRankingData : Codable, Identifiable {
+    let id = UUID()
     let searchWord: String
     let searchCount: Int
+    let rank : Int
+    let rankChange : Int
 }
+
