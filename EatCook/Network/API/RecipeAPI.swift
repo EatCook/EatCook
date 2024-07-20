@@ -8,7 +8,7 @@
 import Foundation
 
 enum RecipeAPI: EndPoint {
-    case recipeCreate
+    case recipeCreate(_ query: RecipeCreateRequestDTO)
     case recipeDelete
     case recipeRead(_ postId: Int)
     
@@ -34,7 +34,10 @@ enum RecipeAPI: EndPoint {
     
     var httpTask: HTTPTask {
         switch self {
-        case .recipeCreate, .recipeDelete:
+        case .recipeCreate(let query):
+            return .requestWithParameters(parameters: query.toDictionary,
+                                          encoding: .urlEncoding)
+        case .recipeDelete:
             return .requestWithParameters(parameters: [:], encoding: .urlEncoding)
         case .recipeRead(let postId):
             return .requestWithParameters(

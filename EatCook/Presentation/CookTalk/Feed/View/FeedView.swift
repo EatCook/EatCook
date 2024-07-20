@@ -29,10 +29,10 @@ enum CookTalkTabCase: CaseIterable {
     }
     
     @ViewBuilder
-    func tabCaseContainerView() -> some View {
+    func tabCaseContainerView(_ viewModel: FeedViewModel) -> some View {
         switch self {
-        case .cooktalk: FeedContainerView()
-        case .follow: FeedContainerView()
+        case .cooktalk: FeedContainerView(viewModel: viewModel, feedType: .cooktalk)
+        case .follow: FeedContainerView(viewModel: viewModel, feedType: .follow)
         }
         
     }
@@ -54,10 +54,11 @@ struct FeedView: View {
         GeometryReader {
             let size = $0.size
             let tabWidth = size.width / CGFloat(CookTalkTabCase.allCases.count)
+            
             ZStack(alignment: .bottomTrailing) {
                 VStack(spacing: 0) {
                     /// TabIndicator
-                    HStack(spacing: 0) {
+                    HStack(alignment: .center, spacing: 0) {
                         ForEach(CookTalkTabCase.allCases, id: \.self) { tabCase in
                             Button {
                                 withAnimation(.easeInOut(duration: 0.3)) {
@@ -68,7 +69,7 @@ struct FeedView: View {
                                     .font(.headline)
                                     .fontWeight(activeTab == tabCase ? .bold : .semibold)
                                     .foregroundStyle(activeTab == tabCase ? .black : .gray)
-                                    .frame(width: tabWidth)
+                                    .frame(width: tabWidth - 80)
                                     .padding(.vertical, 12)
                             }
                             .overlay(alignment: .bottom) {
@@ -76,13 +77,14 @@ struct FeedView: View {
                                     RoundedRectangle(cornerRadius: 8)
                                         .fill()
                                         .frame(height: 3)
-                                        .padding(.horizontal, 40)
+                                        .padding(.horizontal, 20)
                                         .matchedGeometryEffect(id: "ACTIVETAB", in: animation)
                                     //                                    .animation(.easeInOut(duration: 0.3), value: activeTab)
                                 }
                             }
                         }
                     }
+                    .frame(maxWidth: .infinity)
                     .background {
                         Rectangle()
                             .fill(.gray)
@@ -94,7 +96,7 @@ struct FeedView: View {
                     TabView(selection: $activeTab) {
                         ForEach(CookTalkTabCase.allCases, id: \.self) { tabCase in
                             ScrollView(.vertical) {
-                                tabCase.tabCaseContainerView()
+                                tabCase.tabCaseContainerView(viewModel)
                                     .tag(tabCase)
                                     .padding(.horizontal, 16)
                                     .padding(.vertical, 24)

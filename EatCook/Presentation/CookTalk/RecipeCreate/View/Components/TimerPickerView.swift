@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct TimerPickerView: View {
-    @State private var selectedHours = 0
-    @State private var selectedMinutes = 0
+    @Binding var selectedHours: Int
+    @Binding var selectedMinutes: Int
+    var doneButtonAction: (Int) -> ()
+    var cancelButtonAction: () -> ()
     
     var body: some View {
         VStack {
@@ -57,7 +59,7 @@ struct TimerPickerView: View {
             
             HStack {
                 Button {
-                    
+                    cancelButtonAction()
                 } label: {
                     Text("취소")
                         .foregroundStyle(.gray5)
@@ -67,7 +69,8 @@ struct TimerPickerView: View {
                 .modifier(CustomBorderModifier())
                 
                 Button {
-                    
+                    let selectTime = (selectedHours * 60) + selectedMinutes
+                    doneButtonAction(selectTime)
                 } label: {
                     Text("선택")
                         .foregroundStyle(.white)
@@ -84,6 +87,11 @@ struct TimerPickerView: View {
 }
 
 #Preview {
-    TimerPickerView()
+    TimerPickerView(selectedHours: .constant(0), selectedMinutes: .constant(0)) { time in
+        print("확인 \(time)")
+    } cancelButtonAction: {
+        print("취소")
+    }
+
 }
 

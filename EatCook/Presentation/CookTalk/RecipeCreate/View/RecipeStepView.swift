@@ -21,9 +21,11 @@ struct RecipeStep: Identifiable, Hashable {
 }
 
 struct RecipeStepView: View {
-    @StateObject private var viewModel = RecipeCreateViewModel()
+    @ObservedObject var viewModel: RecipeCreateViewModel
+    
     @State private var showImagePicker: Bool = false
     @State private var selectedImage: UIImage?
+    @State private var imageExtension: String?
     
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
@@ -73,7 +75,9 @@ struct RecipeStepView: View {
             
             CreateChatView(viewModel: viewModel, showImagePicker: $showImagePicker, selectedImage: $selectedImage)
                 .sheet(isPresented: $showImagePicker) {
-                    ImagePicker(image: $selectedImage, isPresented: $showImagePicker)
+                    ImagePicker(image: $selectedImage,
+                                imageExtension: $imageExtension,
+                                isPresented: $showImagePicker)
                 }
         }
         .background(.gray1)
@@ -92,10 +96,14 @@ struct RecipeStepView: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    naviPathFinder.popToRoot()
+                    viewModel.requestRecipeCreate()
+                    if viewModel.isUpLoading {
+                        
+                    } else {
+                        naviPathFinder.popToRoot()
+                    }
                 } label: {
                     Text("저장")
-                        
                 }
             }
         }
@@ -266,9 +274,9 @@ struct CreateChatView: View {
     
 }
 
-#Preview {
-    NavigationStack {
-        RecipeStepView()
-            .environmentObject(NavigationPathFinder.shared)
-    }
-}
+//#Preview {
+//    NavigationStack {
+//        RecipeStepView()
+//            .environmentObject(NavigationPathFinder.shared)
+//    }
+//}

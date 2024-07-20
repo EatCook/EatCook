@@ -15,5 +15,5 @@ protocol EatCookRepositoryType: AnyObject {
     
     /// Recipe
     func responseRecipeRead(of endpoint: EndPoint) -> Future<RecipeReadResponse, NetworkError>
-    
+    func requestRecipeCreate(of endpoint: EndPoint) -> Future<RecipeCreateResponse, NetworkError>
 }

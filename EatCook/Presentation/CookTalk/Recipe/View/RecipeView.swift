@@ -39,6 +39,8 @@ struct RecipeView: View {
     @State private var contentOffset: CGFloat = 0
     @State private var isAnimating: Bool = false
     
+    var postId: Int
+    
     @StateObject private var viewModel = RecipeViewModel(
         recipeUseCase: RecipeUseCase(
             eatCookRepository: EatCookRepository(
@@ -151,7 +153,7 @@ struct RecipeView: View {
 //                    .padding(.bottom, 80)
                     .coordinateSpace(name: "CONTENTVIEW")
                     .onAppear {
-                        viewModel.responseRecipeRead(6)
+                        viewModel.responseRecipeRead(postId)
                     }
                     .background(
                         GeometryReader { proxy in
@@ -358,5 +360,5 @@ struct ViewOffsetKey: PreferenceKey {
 }
 
 #Preview {
-    RecipeView()
+    RecipeView(postId: 22)
 }

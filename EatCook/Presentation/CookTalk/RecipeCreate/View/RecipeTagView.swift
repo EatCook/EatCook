@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct RecipeTagView: View {
-    @State private var tags: [Tag] = []
-//    @State private var tags: [String] = []
-    @State private var textFieldText: String = ""
+//    @State private var tags: [Tag] = []
+//    @State private var textFieldText: String = ""
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    @ObservedObject var viewModel: RecipeCreateViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -24,7 +24,7 @@ struct RecipeTagView: View {
                 
                 Button {
                     withAnimation(.easeInOut(duration: 0.2)) {
-                        tags.removeAll()
+                        viewModel.ingredientsTags.removeAll()
                     }
                 } label: {
                     Text("전체삭제")
@@ -35,30 +35,23 @@ struct RecipeTagView: View {
             .padding(.horizontal, 4)
             .padding(.vertical, 16)
             
-            TextField("재료를 입력해주세요", text: $textFieldText, onCommit: {
-                let data = Tag(value: textFieldText)
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    tags.append(data)
-                    self.textFieldText = ""
+            TextField("재료를 입력해주세요", text: $viewModel.ingredientsInputText)
+                .onSubmit {
+                    addTag()
                 }
-            })
                 .padding()
                 .modifier(CustomBorderModifier())
                 
-//                .onChange(of: <#T##Equatable#>, <#T##action: (Equatable, Equatable) -> Void##(Equatable, Equatable) -> Void##(_ oldValue: Equatable, _ newValue: Equatable) -> Void#>)
-//            TagField(tags: $tags)
-//                .modifier(CustomBorderModifier())
-//                .padding(.horizontal)
             ChipLayout(verticalSpacing: 8, horizontalSpacing: 8) {
-                ForEach(tags.indices, id: \.self) { index in
-                    let data = tags[index]
+                ForEach(viewModel.ingredientsTags.indices, id: \.self) { index in
+                    let data = viewModel.ingredientsTags[index]
                     HStack(spacing: 8) {
                         Text(data.value)
                             .font(.system(size: 14, weight: .regular))
                             .foregroundStyle(.gray6)
                         
                         Button {
-                            tags.remove(at: index)
+                            viewModel.ingredientsTags.remove(at: index)
                         } label: {
                             Image(systemName: "xmark")
                                 .resizable()
@@ -92,7 +85,7 @@ struct RecipeTagView: View {
                 }
                 
                 Button {
-                    naviPathFinder.addPath(.recipeStep(""))
+                    naviPathFinder.addPath(.recipeStep(viewModel))
                 } label: {
                     Text("다음")
                         .padding()
@@ -119,11 +112,21 @@ struct RecipeTagView: View {
         }
         
     }
-}
-
-#Preview {
-    NavigationStack {
-        RecipeTagView()
-            .environmentObject(NavigationPathFinder.shared)        
+    
+    private func addTag() {
+        guard !viewModel.ingredientsInputText.isEmpty else { return }
+        
+        let data = Tag(value: viewModel.ingredientsInputText)
+        withAnimation(.easeIn(duration: 0.2)) {
+            viewModel.ingredientsTags.append(data)
+            viewModel.ingredientsInputText = ""
+        }
     }
 }
+
+//#Preview {
+//    NavigationStack {
+//        RecipeTagView()
+//            .environmentObject(NavigationPathFinder.shared)
+//    }
+//}

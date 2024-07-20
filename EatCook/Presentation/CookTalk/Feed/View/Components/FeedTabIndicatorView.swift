@@ -15,9 +15,9 @@ struct FeedTabIndicatorView: View {
     var body: some View {
         GeometryReader {
             let size = $0.size
-            let tabWidth = size.width / CGFloat(CookTalkTabCase.allCases.count)
+            let tabWidth = (size.width - 60) / CGFloat(CookTalkTabCase.allCases.count)
             
-            HStack(spacing: 0) {
+            HStack(alignment: .center, spacing: 0) {
                 ForEach(CookTalkTabCase.allCases, id: \.self) { tabCase in
                     Text(tabCase.title)
                         .font(.headline)
@@ -31,8 +31,6 @@ struct FeedTabIndicatorView: View {
                                 .offset(y: 25)
                         }
                         .overlay(alignment: .bottom) {
-                            
-                            
                             if activeTab == tabCase {
                                 RoundedRectangle(cornerRadius: 8)
                                     .fill()
@@ -56,7 +54,8 @@ struct FeedTabIndicatorView: View {
                 }
             }
             .padding()
-            .frame(width: CGFloat(CookTalkTabCase.allCases.count) * tabWidth)
+            .frame(maxWidth: .infinity)
+//            .frame(width: CGFloat(CookTalkTabCase.allCases.count) * tabWidth)
             
         }
         .frame(height: 50)

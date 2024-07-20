@@ -17,8 +17,10 @@ final class FeedViewModel: ObservableObject {
     @Published var feedData: CookTalkFeedResponseData?
     @Published var followData: CookTalkFollowResponseData?
     
-    @Published var isLoading: Bool = false
-    @Published var error: String? = nil
+    @Published var feedDataIsLoading: Bool = false
+    @Published var feedError: String? = nil
+    @Published var followDataIsLoading: Bool = false
+    @Published var followError: String? = nil
     
     init(useCase: CookTalkUseCase) {
         self.cookTalkUseCase = useCase
@@ -29,18 +31,18 @@ final class FeedViewModel: ObservableObject {
 
 extension FeedViewModel {
     func responseCookTalkFeed() {
-        isLoading = true
-        error = nil
+        feedDataIsLoading = true
+        feedError = nil
         
         cookTalkUseCase.responseCookTalkFeed()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
                 case .finished:
-                    self.isLoading = false
+                    self.feedDataIsLoading = false
                 case .failure(let error):
-                    self.isLoading = false
-                    self.error = error.localizedDescription
+                    self.feedDataIsLoading = false
+                    self.feedError = error.localizedDescription
                 }
             } receiveValue: { response in
                 self.feedData = response.data
@@ -49,14 +51,19 @@ extension FeedViewModel {
     }
     
     func responseCookTalkFollow() {
+        followDataIsLoading = true
+        followError = nil
+        
         cookTalkUseCase.responseCookTalkFollow()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
                 case .finished:
                     print("CookTalkFollow Response Finished")
+                    self.followDataIsLoading = false
                 case .failure(let error):
-//                    self.error = error.localizedDescription
+                    self.followDataIsLoading = false
+                    self.followError = error.localizedDescription
                     print("CookTalkFollow Response Error: \(error)")
                 }
             } receiveValue: { response in

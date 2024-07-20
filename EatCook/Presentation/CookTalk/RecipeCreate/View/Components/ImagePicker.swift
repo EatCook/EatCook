@@ -10,6 +10,7 @@ import SwiftUI
 struct ImagePicker: UIViewControllerRepresentable {
     
     @Binding var image: UIImage?
+    @Binding var imageExtension: String?
     @Binding var isPresented: Bool
     
     func makeCoordinator() -> Coordinator {
@@ -36,8 +37,10 @@ extension ImagePicker {
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            guard let image = info[.originalImage] as? UIImage else { return }
+            guard let image = info[.originalImage] as? UIImage,
+                  let url = info[.imageURL] as? URL else { return }
             parent.image = image
+            parent.imageExtension = url.pathExtension
             parent.isPresented = false
         }
     }

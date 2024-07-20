@@ -49,6 +49,9 @@
 		F66871CE2C467C8A0063D9ED /* RecipeReadResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871CD2C467C8A0063D9ED /* RecipeReadResponseDTO.swift */; };
 		F66871D02C467CEA0063D9ED /* RecipeReadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871CF2C467CEA0063D9ED /* RecipeReadResponse.swift */; };
 		F66871D22C467DCE0063D9ED /* RecipeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871D12C467DCE0063D9ED /* RecipeAPI.swift */; };
+		F66871D42C4AAA7A0063D9ED /* FollowRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871D32C4AAA7A0063D9ED /* FollowRowView.swift */; };
+		F66871D62C4AC7680063D9ED /* RecipeCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871D52C4AC7680063D9ED /* RecipeCreateRequest.swift */; };
+		F66871D92C4AC7920063D9ED /* RecipeCreateRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871D82C4AC7920063D9ED /* RecipeCreateRequestDTO.swift */; };
 		F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */; };
 		F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D062B8CCEFB00524B8B /* HTTPError.swift */; };
 		F66E2D092B8CCF0000524B8B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D082B8CCF0000524B8B /* NetworkError.swift */; };
@@ -140,6 +143,9 @@
 		F66871CD2C467C8A0063D9ED /* RecipeReadResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeReadResponseDTO.swift; sourceTree = "<group>"; };
 		F66871CF2C467CEA0063D9ED /* RecipeReadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeReadResponse.swift; sourceTree = "<group>"; };
 		F66871D12C467DCE0063D9ED /* RecipeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAPI.swift; sourceTree = "<group>"; };
+		F66871D32C4AAA7A0063D9ED /* FollowRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRowView.swift; sourceTree = "<group>"; };
+		F66871D52C4AC7680063D9ED /* RecipeCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCreateRequest.swift; sourceTree = "<group>"; };
+		F66871D82C4AC7920063D9ED /* RecipeCreateRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCreateRequestDTO.swift; sourceTree = "<group>"; };
 		F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookRepositoryType.swift; sourceTree = "<group>"; };
 		F66E2D062B8CCEFB00524B8B /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		F66E2D082B8CCF0000524B8B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -281,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				F66E2D232B8CD32C00524B8B /* ResponseDTO */,
+				F66871D72C4AC7760063D9ED /* RequestDTO */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -559,6 +566,7 @@
 		F66871BC2C45637E0063D9ED /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				F66871D52C4AC7680063D9ED /* RecipeCreateRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -596,6 +604,14 @@
 				F66871CB2C467B360063D9ED /* RecipeUseCase.swift */,
 			);
 			path = Recipe;
+			sourceTree = "<group>";
+		};
+		F66871D72C4AC7760063D9ED /* RequestDTO */ = {
+			isa = PBXGroup;
+			children = (
+				F66871D82C4AC7920063D9ED /* RecipeCreateRequestDTO.swift */,
+			);
+			path = RequestDTO;
 			sourceTree = "<group>";
 		};
 		F66E2CFC2B8CCD3C00524B8B /* Network */ = {
@@ -684,6 +700,7 @@
 				F69B6DB92B80D90400EFB467 /* FeedTabIndicatorView.swift */,
 				F69B6DBD2B80DC5C00EFB467 /* FeedContainerView.swift */,
 				F69B6DBB2B80D90A00EFB467 /* FeedRowView.swift */,
+				F66871D32C4AAA7A0063D9ED /* FollowRowView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -916,6 +933,7 @@
 				3F4C10D52B73EA3200D6DA1B /* EatCookRepository.swift in Sources */,
 				F66E2D0D2B8CCF7100524B8B /* HTTPTask.swift in Sources */,
 				F69B6DBE2B80DC5C00EFB467 /* FeedContainerView.swift in Sources */,
+				F66871D42C4AAA7A0063D9ED /* FollowRowView.swift in Sources */,
 				F6FA1EBE2BD7DD5C00198FEB /* CustomImageTitleButton.swift in Sources */,
 				F66E2D1C2B8CD1F700524B8B /* AuthAPI.swift in Sources */,
 				F6FA1ECA2BD7E33800198FEB /* SettingView.swift in Sources */,
@@ -933,6 +951,7 @@
 				F66E2D0B2B8CCF2A00524B8B /* HTTPMethod.swift in Sources */,
 				3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */,
 				3F2652FB2B7AF2060065DFA5 /* FoodThemeView.swift in Sources */,
+				F66871D62C4AC7680063D9ED /* RecipeCreateRequest.swift in Sources */,
 				F66871CE2C467C8A0063D9ED /* RecipeReadResponseDTO.swift in Sources */,
 				F69B6DBC2B80D90A00EFB467 /* FeedRowView.swift in Sources */,
 				F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */,
@@ -948,6 +967,7 @@
 				F6F9FB582BA1A9CE00AEF22E /* RecipeCreateViewModel.swift in Sources */,
 				F66871D02C467CEA0063D9ED /* RecipeReadResponse.swift in Sources */,
 				F66871C52C4569F30063D9ED /* CookTalkUseCase.swift in Sources */,
+				F66871D92C4AC7920063D9ED /* RecipeCreateRequestDTO.swift in Sources */,
 				3F4C10DC2B73EA3200D6DA1B /* FeedViewModel.swift in Sources */,
 				F6FA1ECC2BD7E33E00198FEB /* SettingViewModel.swift in Sources */,
 				3F4C10D42B73EA3200D6DA1B /* EatCookApp.swift in Sources */,

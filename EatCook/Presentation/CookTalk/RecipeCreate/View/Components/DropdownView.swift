@@ -27,7 +27,7 @@ struct DropdownView: View {
                                 } label: {
                                     Text(menu)
                                         .font(.caption)
-                                        .foregroundStyle(.black)
+                                        .foregroundStyle(selectedTheme == menu ? .primary6 : .black)
                                 }
                             }
                             .padding(.horizontal)

@@ -9,9 +9,9 @@ import SwiftUI
 
 enum ViewOptions: Hashable {
     case recipeCreate(_ data: String)
-    case recipeTag(_ data: String)
-    case recipeStep(_ data: String)
-    case recipeDetail
+    case recipeTag(_ data: RecipeCreateViewModel)
+    case recipeStep(_ data: RecipeCreateViewModel)
+    case recipeDetail(_ postId: Int)
     
     case setting
     case userProfileEdit
@@ -21,15 +21,63 @@ enum ViewOptions: Hashable {
     @ViewBuilder
     func view() -> some View {
         switch self {
-        case .recipeDetail: RecipeView()
+        case .recipeDetail(let postId): RecipeView(postId: postId)
         case .recipeCreate: RecipeCreateView()
-        case .recipeTag: RecipeTagView()
-        case .recipeStep: RecipeStepView()
+        case .recipeTag(let viewModel): RecipeTagView(viewModel: viewModel)
+        case .recipeStep(let viewModel): RecipeStepView(viewModel: viewModel)
             
         case .setting: SettingView()
         case .userProfileEdit: UserProfileEditView()
         case .userFavoriteTagEdit: UserFavoriteTagEditView()
         case .userWithDraw: UserWithDrawView()
+        }
+    }
+    
+    static func == (lhs: ViewOptions, rhs: ViewOptions) -> Bool {
+        switch (lhs, rhs) {
+        case (.recipeCreate(let lhsData), .recipeCreate(let rhsData)):
+            return lhsData == rhsData
+        case (.recipeTag(let lhsViewModel), .recipeTag(let rhsViewModel)):
+            return lhsViewModel == rhsViewModel
+        case (.recipeStep(let lhsData), .recipeStep(let rhsData)):
+            return lhsData == rhsData
+        case (.recipeDetail(let lhsPostId), .recipeDetail(let rhsPostId)):
+            return lhsPostId == rhsPostId
+        case (.setting, .setting):
+            return true
+        case (.userProfileEdit, .userProfileEdit):
+            return true
+        case (.userFavoriteTagEdit, .userFavoriteTagEdit):
+            return true
+        case (.userWithDraw, .userWithDraw):
+            return true
+        default:
+            return false
+        }
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        switch self {
+        case .recipeCreate(let data):
+            hasher.combine("recipeCreate")
+            hasher.combine(data)
+        case .recipeTag(let viewModel):
+            hasher.combine("recipeTag")
+            hasher.combine(viewModel)
+        case .recipeStep(let data):
+            hasher.combine("recipeStep")
+            hasher.combine(data)
+        case .recipeDetail(let postId):
+            hasher.combine("recipeDetail")
+            hasher.combine(postId)
+        case .setting:
+            hasher.combine("setting")
+        case .userProfileEdit:
+            hasher.combine("userProfileEdit")
+        case .userFavoriteTagEdit:
+            hasher.combine("userFavoriteTagEdit")
+        case .userWithDraw:
+            hasher.combine("userWithDraw")
         }
     }
 }

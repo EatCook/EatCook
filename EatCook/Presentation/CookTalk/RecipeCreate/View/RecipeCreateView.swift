@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct RecipeCreateView: View {
-    @State private var recipeTitleInput: String = ""
-    @State private var titleTextInput: String = ""
-    @State private var descriptionTextInput: String = ""
+    @StateObject private var viewModel = RecipeCreateViewModel(
+        cookTalkUseCase: RecipeUseCase(
+            eatCookRepository: EatCookRepository(
+                networkProvider: NetworkProviderImpl(
+                    requestManager: NetworkManager()))))
+    
     @State private var progressValue: Float = 0.2
     
     @FocusState private var titleTextFieldFocused: Bool
@@ -19,8 +22,8 @@ struct RecipeCreateView: View {
     @State private var showTimerPicker = false
     @State private var showDropdownTheme = false
     @State private var showImagePicker = false
-    @State private var selectedTheme: String = "테마 선택"
-    @State private var selectedImage: UIImage?
+//    @State private var selectedImage: UIImage?
+//    @State private var imageExtension: String?
     
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
@@ -36,7 +39,7 @@ struct RecipeCreateView: View {
                     .font(.title2.bold())
                 
                 HStack {
-                    TextField("레시피 제목을 적어주세요.", text: $recipeTitleInput)
+                    TextField("레시피 제목을 적어주세요.", text: $viewModel.recipeTitle)
                         .padding()
                         .modifier(CustomBorderModifier(isFocused: titleTextFieldFocused))
                         .focused($titleTextFieldFocused)
@@ -44,7 +47,7 @@ struct RecipeCreateView: View {
                     Button {
                         showImagePicker.toggle()
                     } label: {
-                        if let image = selectedImage {
+                        if let image = viewModel.titleImage {
                             Image(uiImage: image)
                                 .resizable()
                                 .scaledToFill()
@@ -63,21 +66,23 @@ struct RecipeCreateView: View {
                         }
                     }
                     .sheet(isPresented: $showImagePicker) {
-                        ImagePicker(image: $selectedImage, isPresented: $showImagePicker)
+                        ImagePicker(image: $viewModel.titleImage,
+                                    imageExtension: $viewModel.titleImageExtension,
+                                    isPresented: $showImagePicker)
                     }
                 }
                 
                 VStack {
                     ZStack(alignment: .topLeading) {
-                        TextEditor(text: $descriptionTextInput)
+                        TextEditor(text: $viewModel.recipeDescription)
                             .frame(height: 270)
-                            .onChange(of: descriptionTextInput) { newValue in
+                            .onChange(of: viewModel.recipeDescription) { newValue in
                                 if newValue.count > characterLimit {
-                                    descriptionTextInput = String(newValue.prefix(characterLimit))
+                                    viewModel.recipeDescription = String(newValue.prefix(characterLimit))
                                 }
                             }
                         
-                        if descriptionTextInput.isEmpty {
+                        if viewModel.recipeDescription.isEmpty {
                             Text("내 레시피 소개글을 입력해주세요.")
                                 .font(.body)
                                 .foregroundStyle(.gray5)
@@ -90,7 +95,7 @@ struct RecipeCreateView: View {
                     HStack {
                         Spacer()
                         
-                        Text("\(descriptionTextInput.count) / \(characterLimit)")
+                        Text("\(viewModel.recipeDescription.count) / \(characterLimit)")
                             .font(.subheadline)
                             .foregroundStyle(.gray4)
                     }
@@ -112,14 +117,14 @@ struct RecipeCreateView: View {
                             Image(systemName: "timer")
                                 .resizable()
                                 .scaledToFit()
-                                .foregroundStyle(.gray4)
+                                .foregroundStyle(viewModel.selectedTime == 0 ? .gray5 : .primary5)
                                 .fontWeight(.bold)
                                 .frame(width: 13.5)
                             
-                            Text("조리 시간")
+                            Text(viewModel.selectedTime == 0 ? "조리 시간" : "\(viewModel.selectedTime)분")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
-                                .foregroundStyle(.gray5)
+                                .foregroundStyle(viewModel.selectedTime == 0 ? .gray5 : .primary6)
                         }
                     }
                     .padding()
@@ -133,7 +138,7 @@ struct RecipeCreateView: View {
                     Button {
                         showDropdownTheme.toggle()
                     } label: {
-                        DropdownView(showDropDown: $showDropdownTheme, selectedTheme: $selectedTheme)
+                        DropdownView(showDropDown: $showDropdownTheme, selectedTheme: $viewModel.selectedTheme)
                             .frame(height: showDropdownTheme ? 260 : 60)
                     }
                     //                    .padding()
@@ -146,7 +151,7 @@ struct RecipeCreateView: View {
                 //            .modifier(CustomBorderModifier())
                 
                 Button {
-                    naviPathFinder.addPath(.recipeTag(""))
+                    naviPathFinder.addPath(.recipeTag(viewModel))
                 } label: {
                     Text("다음")
                         .foregroundStyle(.white)
@@ -181,8 +186,14 @@ struct RecipeCreateView: View {
         }
         .toolbar(.hidden, for: .tabBar)
         .sheet(isPresented: $showTimerPicker) {
-            TimerPickerView()
-                .presentationDetents([.fraction(0.42)])
+            TimerPickerView(selectedHours: $viewModel.selectHours,
+                            selectedMinutes: $viewModel.selectMinutes) { selectTime in
+                viewModel.selectedTime = selectTime
+                showTimerPicker.toggle()
+            } cancelButtonAction: {
+                showTimerPicker.toggle()
+            }
+            .presentationDetents([.fraction(0.42)])
         }
 //        .navigationDestination(for: ViewOptions.self) { viewCase in
 //            viewCase.view()

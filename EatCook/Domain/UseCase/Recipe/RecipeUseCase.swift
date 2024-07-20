@@ -27,6 +27,10 @@ extension RecipeUseCase {
             .eraseToAnyPublisher()
     }
     
-    
+    func requestRecipeCreate(_ query: RecipeCreateRequestDTO) -> AnyPublisher<RecipeCreateResponse, NetworkError> {
+        return eatCookRepository
+            .requestRecipeCreate(of: RecipeAPI.recipeCreate(query))
+            .eraseToAnyPublisher()
+    }
     
 }
