@@ -16,6 +16,8 @@ class SearchViewModel : ObservableObject {
     @Published var recipes : [Recipe] = []
     @Published var ingredients : [Ingredient] = []
     @Published var tags : [Tag] = []
+    @Published var selectedTab : selectedTabType = .ingredient
+    @Published var searchText = ""
     
     
     
@@ -31,22 +33,63 @@ class SearchViewModel : ObservableObject {
         
     }
     
-    func getSearch() {
-        SearchService.shard.getSearch(parameters: ["lastId" : "" , "recipeNames" : [], "ingredients" : [] , "size" : "10"]) { result in
+    func getRecipes() {
+        SearchService.shard.getSearch(parameters: ["lastId" : "" , "recipeNames" : tags.map { String($0.value) } , "ingredients" : [] , "size" : "10"]) {[self] result in
             print("check result ::" , result)
+            
             DispatchQueue.main.async {
                 self.recipes = result.data.map { Recipe(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
-                self.ingredients = result.data.map { Ingredient(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
+                
             }
         } failure: { error in
             print(error)
         }
     }
     
+    func getIngredients() {
+        SearchService.shard.getSearch(parameters: ["lastId" : "" , "recipeNames" : [] , "ingredients" : tags.map { String($0.value) } , "size" : "10"]) {[self] result in
+            print("check result ::" , result)
+            
+            DispatchQueue.main.async {
+                self.ingredients = result.data.map { Ingredient(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
+            }
+        } failure: { error in
+            print(error)
+        }
+        
+    }
+    
+    func searchCheckValidate(){
+        
+        if tags.count > 0 && searchText.count == 0 {
+            getIngredients()
+            getRecipes()
+        }else if tags.count == 0 && searchText.count > 0 {
+            tags.append(Tag(value: searchText))
+            getIngredients()
+            getRecipes()
+        }else if tags.count > 0 && searchText.count > 0 {
+            if !tags.contains(where: { tag in
+                tag.value == searchText
+            }){
+               tags.append(Tag(value: searchText))
+            }
+            getIngredients()
+            getRecipes()
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     func getCurrentDateString() -> String {
         let date = Date()
         let formatter = DateFormatter()
-        
         formatter.dateFormat = "yyyy.MM.dd"
         return formatter.string(from: date)
     }
@@ -56,7 +99,6 @@ class SearchViewModel : ObservableObject {
         tags.removeAll { $0.value == tag }
     }
 
-    
     
 
 }
@@ -110,4 +152,10 @@ struct Ingredient: Identifiable , Decodable {
         return loader.image
                                 
     }
+}
+
+
+enum selectedTabType : Int {
+    case ingredient
+    case recipe
 }

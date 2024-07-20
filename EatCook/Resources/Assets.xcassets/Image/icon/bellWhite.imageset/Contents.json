@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Frame 48096537.png",
+      "filename" : "alarm.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Frame 48096538.png",
+      "filename" : "alarm@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Frame 48096539.png",
+      "filename" : "alarm@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

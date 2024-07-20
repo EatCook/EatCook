@@ -9,25 +9,12 @@ import SwiftUI
 
 struct SearchView: View {
     @StateObject private var searchViewModel = SearchViewModel()
-    @State var searchText = ""
     @State private var isSearching = false
-    @FocusState private var isFocused: Bool
-    @State var topRankData: [String] = []
-    @State private var tags: [Tag] = []
     @State var recentSearchData: [[String]] = [["홍고추"],["계란덮밥", "덮밥"], ["감바스","마늘","고추"],["감바스","마늘","고추", "양배추"],["감바스","마늘","고추", "양배추", "닭갈비"]]
-    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+ 
     @State private var navigationPath = NavigationPath()
     @SwiftUI.Environment(\.dismiss) private var dismiss
-
-    @State var recipes = [Recipe]()
-    @State var ingredients = [Ingredient]()
-    @State private var selectedTab = 0
-   
-    
-    private func removeTag(tag: String) {
-        tags.removeAll { $0.value == tag }
-    }
-
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
 
     var body: some View {
         NavigationStack {
@@ -40,28 +27,22 @@ struct SearchView: View {
                             Button {
                                 dismiss()
                             } label: {
-                                Image(.backButton).resizable().frame(width: 12, height: 20)
+                                Image(.backButton).resizable()
+                                    .frame(width: 20, height: 20)
                             }.padding(.trailing)
                             
-                            TextField("재료 또는 레시피를 검색해 보세요", text: $searchText, onCommit: {
-                                tags.append(Tag(value: searchText))
+                            TextField("재료 또는 레시피를 검색해 보세요", text: $searchViewModel.searchText, onCommit: {
+                                guard searchViewModel.searchText.count > 0 else {
+//                                    TODO : Alert 창
+                                    return
+                                }
+                                searchViewModel.searchCheckValidate()
+                               
                             })
                             
                             Button(action: {
-                                SearchService.shard.getSearch(parameters: ["lastId" : "" , "recipeNames" : tags.map { String($0.value) } , "ingredients" : tags.map { String($0.value) } , "size" : "10"]) { result in
-                                    print("check result ::" , result)
-                                    recipes = result.data.map { Recipe(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
-                                    
-                                   
-                                    ingredients = result.data.map { Ingredient(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
-                                    
-                                    
-                                } failure: { error in
-                                    print(error)
-                                }
                                 
-
-                                 
+                                searchViewModel.searchCheckValidate()
                                 
                             }) {
                                 Image(systemName: "magnifyingglass")
@@ -72,9 +53,9 @@ struct SearchView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(tags, id: \.self) { tag in
+                                ForEach(searchViewModel.tags, id: \.self) { tag in
                                     SearchTagView(tag: tag.value) {
-                                        removeTag(tag: tag.value)
+                                        searchViewModel.removeTag(tag: tag.value)
                                     }
                                 }
                             }
@@ -83,7 +64,7 @@ struct SearchView: View {
                     }.background(Color.gray10)
                         .padding(.bottom)
                     
-                    if recipes.isEmpty {
+                    if searchViewModel.ingredients.isEmpty && searchViewModel.recipes.isEmpty {
                         VStack {
                             ZStack(alignment: .top) {
                                 VStack {
@@ -106,7 +87,7 @@ struct SearchView: View {
                                                 HStack {
                                                     if data.rank > 3 {
                                                         HStack(spacing: 24) {
-                                                            Text("\(data.rank + 1)").foregroundColor(.secondary).bold()
+                                                            Text("\(data.rank)").foregroundColor(.secondary).bold()
                                                             Text(data.searchWord).font(.system(size: 18))
                                                         }
                                                         .padding(.vertical, 12)
@@ -153,11 +134,11 @@ struct SearchView: View {
                         .background(Color.white)
                     }else{
                         VStack {
-                            SearchViewCustomTabView(selectedTab: $selectedTab)
-                            if selectedTab == 0 {
-                                IngredientsView(ingredients: $ingredients)
+                            SearchViewCustomTabView(selectedTab: $searchViewModel.selectedTab)
+                            if searchViewModel.selectedTab == .ingredient {
+                                IngredientsView(ingredients: $searchViewModel.ingredients)
                             } else {
-                                RecipesView(recipes: $recipes)
+                                RecipesView(recipes: $searchViewModel.recipes)
                             }
                             Spacer()
                         }.navigationBarTitle("", displayMode: .inline)
@@ -166,7 +147,7 @@ struct SearchView: View {
                     }
                 }
 
-            }
+            }.environmentObject(searchViewModel)
         }
     }
 }
@@ -174,19 +155,20 @@ struct SearchView: View {
 
 
 struct SearchViewCustomTabView: View {
-    @Binding var selectedTab: Int
-
+    @EnvironmentObject var searchViewModel: SearchViewModel
+    @Binding var selectedTab: selectedTabType
+   
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
-                    selectedTab = 0
+                    selectedTab = .ingredient
                 }) {
                     VStack {
                         Text("재료")
-                            .foregroundColor(selectedTab == 0 ? .primary6 : .gray5)
+                            .foregroundColor(selectedTab == .ingredient ? .primary6 : .gray5)
                         
-                        if selectedTab == 0 {
+                        if selectedTab == .ingredient {
                             Rectangle()
                                 .fill(Color.orange)
                                 .frame(height: 3)
@@ -200,14 +182,14 @@ struct SearchViewCustomTabView: View {
                 }
                 Spacer()
                 Button(action: {
-                    selectedTab = 1
+                    selectedTab = .recipe
                 }) {
                     VStack {
                         Text("레시피")
-                            .foregroundColor(selectedTab == 1 ? .primary6 : .gray5)
+                            .foregroundColor(selectedTab == .recipe ? .primary6 : .gray5)
                             .padding(.bottom, 8)
                         
-                        if selectedTab == 1 {
+                        if selectedTab == .recipe {
                             Rectangle()
                                 .fill(Color.orange)
                                 .frame(height: 3)
@@ -250,69 +232,83 @@ struct IngredientView: View {
     @StateObject private var loader = ImageLoader()
 
     var body: some View {
-        VStack {
-            
+        VStack(alignment : .center) {
             ZStack(alignment: .topLeading) {
-                ZStack(alignment : .bottomTrailing) {
+                ZStack(alignment : .topLeading) {
                     if let uiImage = loader.image {
                         Image(uiImage: uiImage)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 120, height: 100)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(height: 100) // 원하는 높이 설정
+                            .clipped()
+                            .cornerRadius(10)
                     } else {
                         ProgressView().frame(width: 120, height: 100)
                     }
                 }
-               
+
                 HStack {
-                    Image(.whiteHeart).resizable().frame(width: 20 , height: 20)
-                    Text(String(ingredient.likeCount)).font(.callout).foregroundColor(.white)
+                    Image(.whiteHeart)
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Text(String(ingredient.likeCount))
+                        .font(.callout)
+                        .foregroundColor(.white)
                 }
                 .padding(.vertical, 3)
                 .padding(.horizontal, 5)
                 .background(Color.black.opacity(0.2))
-                    .cornerRadius(5)
-            }.onAppear {
+                .cornerRadius(5)
+                .padding([.top, .leading], 5) // 적절한 위치를 위해 패딩 추가
+            }
+            .onAppear {
                 loader.loadImage(from: "\(Environment.AwsBaseURL)/\(ingredient.imageFilePath)")
             }
             
-            VStack(alignment : .leading) {
+            Spacer()
+
+            
+            VStack {
                 VStack(alignment : .leading) {
-                    Text(ingredient.recipeName) .font(.system(size: 15))
-                        .lineLimit(1)
-                        .font(.title3).bold()
-                    Text(ingredient.introduction)
-                        .font(.system(size: 15))
-                        .padding(.top, 2)
-                        .lineLimit(2) // Limit to 2 lines
-                        .truncationMode(.tail) // Add truncation mode to indicate overflow
+                    VStack(alignment : .leading) {
+                        Text(ingredient.recipeName) .font(.system(size: 15))
+                            .lineLimit(1)
+                            .font(.title3).bold()
+                        Text(ingredient.introduction)
+                            .font(.system(size: 15))
+                            .padding(.top, 2)
+                            .lineLimit(2) // Limit to 2 lines
+                            .truncationMode(.tail) // Add truncation mode to indicate overflow
+                    }.frame(maxWidth: .infinity, alignment: .leading) // 항상 왼쪽 정렬
+
                 }
-            }
-            VStack(alignment: .leading) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(ingredient.foodIngredients.indices, id: \.self) { index in
-                            VStack {
-                                Text(ingredient.foodIngredients[index])
-                                    .font(.system(size: 8))
-                                    .padding(.horizontal, 4)
-                                    .padding(.vertical, 2)
-                                    .foregroundColor(Color.gray.opacity(0.6))
+                VStack(alignment: .leading) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(ingredient.foodIngredients.indices, id: \.self) { index in
+                                VStack {
+                                    Text(ingredient.foodIngredients[index])
+                                        .font(.system(size: 8))
+                                        .padding(.horizontal, 4)
+                                        .padding(.vertical, 2)
+                                        .foregroundColor(Color.gray.opacity(0.6))
+                                }
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color.gray.opacity(0.1))
+                                .cornerRadius(10)
                             }
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Color.gray.opacity(0.1))
-                            .cornerRadius(10)
                         }
                     }
                 }
             }
+        
+
                
         }
-        .padding()
+        .frame(height : 220)
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 1)
         
     }
 }
@@ -344,63 +340,81 @@ struct SearchRecipeView: View {
         VStack {
             
             ZStack(alignment: .topLeading) {
-                ZStack(alignment : .bottomTrailing) {
+                ZStack(alignment : .topLeading) {
                     if let uiImage = loader.image {
                         Image(uiImage: uiImage)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 120, height: 100)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(height: 100) // 원하는 높이 설정
+                            .clipped()
+                            .cornerRadius(10)
                     } else {
-                        ProgressView().frame(width: 130, height: 110)
+                        ProgressView().frame(width: 120, height: 100)
                     }
                 }
-               
+
                 HStack {
-                    Image(.whiteHeart).resizable().frame(width: 20 , height: 20)
-                    Text(String(recipe.likeCount)).font(.callout).foregroundColor(.white)
+                    Image(.whiteHeart)
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Text(String(recipe.likeCount))
+                        .font(.callout)
+                        .foregroundColor(.white)
                 }
                 .padding(.vertical, 3)
                 .padding(.horizontal, 5)
                 .background(Color.black.opacity(0.2))
-                    .cornerRadius(5)
-            }.onAppear {
+                .cornerRadius(5)
+                .padding([.top, .leading], 5) // 적절한 위치를 위해 패딩 추가
+            }
+            .onAppear {
                 loader.loadImage(from: "\(Environment.AwsBaseURL)/\(recipe.imageFilePath)")
             }
             
-            VStack(alignment : .leading) {
-                Text(recipe.recipeName) .font(.system(size: 15))
-                    .lineLimit(1)
-                    .font(.title3).bold()
-                Text(recipe.introduction)
-                    .font(.system(size: 15))
-                    .padding(.top, 2)
-                    .lineLimit(2) // Limit to 2 lines
-                    .truncationMode(.tail) // Add truncation mode to indicate overflow
-            }
-            VStack(alignment: .leading) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(recipe.foodIngredients.indices, id: \.self) { index in
-                            VStack {
-                                Text(recipe.foodIngredients[index])
-                                    .font(.system(size: 8))
-                                    .padding(.horizontal, 4)
-                                    .padding(.vertical, 2)
-                                    .foregroundColor(Color.gray.opacity(0.6))
+            Spacer()
+            
+            VStack {
+                VStack(alignment : .leading) {
+                    VStack(alignment : .leading) {
+                        Text(recipe.recipeName) .font(.system(size: 15))
+                            .lineLimit(1)
+                            .font(.title3).bold()
+                        Text(recipe.introduction)
+                            .font(.system(size: 15))
+                            .padding(.top, 2)
+                            .lineLimit(2) // Limit to 2 lines
+                            .truncationMode(.tail) // Add truncation mode to indicate overflow
+                    }.frame(maxWidth: .infinity, alignment: .leading) // 항상 왼쪽 정렬
+
+                }
+                VStack(alignment: .leading) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(recipe.foodIngredients.indices, id: \.self) { index in
+                                VStack {
+                                    Text(recipe.foodIngredients[index])
+                                        .font(.system(size: 8))
+                                        .padding(.horizontal, 4)
+                                        .padding(.vertical, 2)
+                                        .foregroundColor(Color.gray.opacity(0.6))
+                                }
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color.gray.opacity(0.1))
+                                .cornerRadius(10)
                             }
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Color.gray.opacity(0.1))
-                            .cornerRadius(10)
                         }
                     }
                 }
+                
             }
+            
+            
+           
         }
-        .padding()
+        .frame(height : 220)
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 1)
         
     }
 }
@@ -425,7 +439,7 @@ struct SearchTagView: View {
         .padding(.horizontal, 8)
         .padding(.vertical, 4)
         .background(Color.gray3)
-        .cornerRadius(15)
+        .cornerRadius(5)
     }
 }
 
