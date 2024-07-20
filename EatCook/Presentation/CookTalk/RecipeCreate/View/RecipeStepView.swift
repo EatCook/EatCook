@@ -17,6 +17,7 @@ struct RecipeStep: Identifiable, Hashable {
     let id = UUID().uuidString
     var description: String
     var image: UIImage?
+    var imageURL: URL?
     var isEditing: Bool = false
 }
 
@@ -24,8 +25,7 @@ struct RecipeStepView: View {
     @ObservedObject var viewModel: RecipeCreateViewModel
     
     @State private var showImagePicker: Bool = false
-    @State private var selectedImage: UIImage?
-    @State private var imageExtension: String?
+    @State private var showUploadingAlert: Bool = false
     
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
@@ -60,7 +60,10 @@ struct RecipeStepView: View {
                                 }
                             }
                     } else {
-                        StepEditorView(viewModel: viewModel, showImagePicker: $showImagePicker, selectedImage: $selectedImage, index: index)
+                        StepEditorView(viewModel: viewModel,
+                                       showImagePicker: $showImagePicker,
+                                       selectedImage: $viewModel.recipeStepImage,
+                                       index: index)
                             .listRowBackground(Color.gray1)
                             .listRowSeparator(.hidden)
 //                        StepEditorView(viewModel: viewModel, index: index)
@@ -73,10 +76,13 @@ struct RecipeStepView: View {
 //                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
 //            }
             
-            CreateChatView(viewModel: viewModel, showImagePicker: $showImagePicker, selectedImage: $selectedImage)
+            CreateChatView(viewModel: viewModel,
+                           showImagePicker: $showImagePicker,
+                           selectedImage: $viewModel.recipeStepImage)
                 .sheet(isPresented: $showImagePicker) {
-                    ImagePicker(image: $selectedImage,
-                                imageExtension: $imageExtension,
+                    ImagePicker(image: $viewModel.recipeStepImage,
+                                imageURL: $viewModel.recipeStepImageURL,
+                                imageExtension: $viewModel.recipeStepImageExtension,
                                 isPresented: $showImagePicker)
                 }
         }
@@ -96,16 +102,42 @@ struct RecipeStepView: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    viewModel.requestRecipeCreate()
-                    if viewModel.isUpLoading {
+                    Task {
+                        await viewModel.requestRecipeCreate()
+                        await viewModel.uploadImage()
                         
-                    } else {
-                        naviPathFinder.popToRoot()
+                        if !viewModel.isUpLoading && viewModel.isUpLoadingError == nil  {
+                            naviPathFinder.popToRoot()
+                        } else if let error = viewModel.isUpLoadingError {
+                            print(error)
+                            showUploadingAlert = true
+                        }
+                        
                     }
                 } label: {
                     Text("저장")
                 }
             }
+        }
+        .overlay {
+            if viewModel.isUpLoading {
+                VStack {
+                    ProgressView("업로딩 중...")
+                        .padding()
+                        .background(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .shadow(radius: 10)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.black.opacity(0.4))
+            }
+        }
+        .alert("업로드 실패.", isPresented: $showUploadingAlert) {
+            Button("확인", role: .cancel) {
+                self.showUploadingAlert = false
+            }
+        } message: {
+            Text(viewModel.isUpLoadingError ?? "알 수 없는 오류가 발생했습니다.")
         }
         
     }
@@ -249,10 +281,7 @@ struct CreateChatView: View {
                 //                    .padding(4)
                 
                 Button {
-                    let stepData = RecipeStep(description: textEditorText, image: selectedImage)
-                    withAnimation(.easeInOut(duration: 0.3)) {
-                        viewModel.addStep(stepData)
-                    }
+                    addStep()
                 } label: {
                     Image(systemName: "arrow.up")
                         .resizable()
@@ -270,6 +299,21 @@ struct CreateChatView: View {
             .modifier(CustomBorderModifier())
         }
         .padding()
+    }
+    
+    private func addStep() {
+        guard !textEditorText.isEmpty &&
+                selectedImage != nil &&
+                viewModel.recipeStepImageURL != nil else { return }
+        let stepData = RecipeStep(description: textEditorText,
+                                  image: selectedImage,
+                                  imageURL: viewModel.recipeStepImageURL)
+        withAnimation(.easeInOut(duration: 0.3)) {
+            viewModel.addStep(stepData)
+            textEditorText = ""
+            selectedImage = nil
+            viewModel.recipeStepImageURL = nil
+        }
     }
     
 }

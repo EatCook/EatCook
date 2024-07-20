@@ -10,6 +10,7 @@ import SwiftUI
 struct ImagePicker: UIViewControllerRepresentable {
     
     @Binding var image: UIImage?
+    @Binding var imageURL: URL?
     @Binding var imageExtension: String?
     @Binding var isPresented: Bool
     
@@ -40,6 +41,7 @@ extension ImagePicker {
             guard let image = info[.originalImage] as? UIImage,
                   let url = info[.imageURL] as? URL else { return }
             parent.image = image
+            parent.imageURL = url
             parent.imageExtension = url.pathExtension
             parent.isPresented = false
         }

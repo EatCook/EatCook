@@ -18,7 +18,7 @@ struct RecipeCreateRequestDTO: Codable {
             "mainFileExtension": mainFileExtension,
             "foodIngredients": foodIngredients,
             "cookingType": cookingType,
-            "recipeProcess": recipeProcess
+            "recipeProcess": recipeProcess.map { $0.toDictionary }
         ]
         return dict
     }

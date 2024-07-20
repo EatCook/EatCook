@@ -52,4 +52,6 @@ struct RecipeCreateResponse: Codable {
 }
 
 struct ResponseData: Codable {
+    var mainPresignedUrl: String = ""
+    var recipeProcessPresignedUrl: [String] = []
 }

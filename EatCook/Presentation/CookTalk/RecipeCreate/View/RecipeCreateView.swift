@@ -67,6 +67,7 @@ struct RecipeCreateView: View {
                     }
                     .sheet(isPresented: $showImagePicker) {
                         ImagePicker(image: $viewModel.titleImage,
+                                    imageURL: $viewModel.titleImageURL,
                                     imageExtension: $viewModel.titleImageExtension,
                                     isPresented: $showImagePicker)
                     }

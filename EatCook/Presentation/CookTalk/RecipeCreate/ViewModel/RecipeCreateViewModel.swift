@@ -22,6 +22,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     @Published var selectedTime: Int = 0
     @Published var selectedTheme: String = "테마 선택"
     @Published var titleImage: UIImage?
+    @Published var titleImageURL: URL?
     @Published var titleImageExtension: String?
     
     /// 두번째
@@ -30,11 +31,18 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     
     /// 세번째
     @Published var recipeStepData: [RecipeStep] = []
-        
+    @Published var recipeStepImage: UIImage?
+    @Published var recipeStepImageURL: URL?
+    @Published var recipeStepImageExtension: String?
+    
+    /// 레시피 생성 과정 담긴 모델 -> 요청시 DTO로 변경함.
     @Published var recipeCreateData = RecipeCreateRequest()
     
     @Published var isUpLoading: Bool = false
     @Published var isUpLoadingError: String? = nil
+    
+    /// Response 모델
+    @Published var recipeCreateResponse = ResponseData()
     
     init(cookTalkUseCase: RecipeUseCase) {
         self.cookTalkUseCase = cookTalkUseCase
@@ -114,26 +122,120 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
 }
 
 extension RecipeCreateViewModel {
-    func requestRecipeCreate() {
+    func requestRecipeCreate() async {
         isUpLoading = true
         isUpLoadingError = nil
         
-        let recipeCreateDTO = RecipeCreateRequestDTO(query: recipeCreateData)
-        cookTalkUseCase.requestRecipeCreate(recipeCreateDTO)
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    self.isUpLoading = false
-                case .failure(let error):
-                    self.isUpLoading = false
-                    self.isUpLoadingError = error.localizedDescription
+        let recipeCreateDTO = RecipeCreateRequestDTO(email: recipeCreateData.email,
+                                                     recipeName: recipeCreateData.recipeName,
+                                                     recipeTime: recipeCreateData.recipeTime,
+                                                     introduction: recipeCreateData.introduction,
+                                                     mainFileExtension: recipeCreateData.mainFileExtension,
+                                                     foodIngredients: recipeCreateData.foodIngredients,
+                                                     cookingType: recipeCreateData.cookingType,
+                                                     recipeProcess: recipeCreateData.recipeProcess.map { $0.toData() })
+        
+        return await withCheckedContinuation { continuation in
+            cookTalkUseCase.requestRecipeCreate(recipeCreateDTO)
+                .receive(on: DispatchQueue.main)
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        //                        self.isUpLoading = false
+                        continuation.resume()
+                    case .failure(let error):
+                        self.isUpLoading = false
+                        self.isUpLoadingError = error.localizedDescription
+                        continuation.resume()
+                    }
+                } receiveValue: { response in
+                    print(response.code)
+                    self.recipeCreateResponse = response.data
+//                    Task {
+//                        do {
+//                            try await self.uploadImages(response.data)
+//                        } catch {
+//                            DispatchQueue.main.async {
+//                                self.isUpLoadingError = error.localizedDescription
+//                            }
+//                        }
+//                    }
                 }
-            } receiveValue: { response in
-                print(response.code)
-            }
-            .store(in: &cancellables)
-
+                .store(in: &cancellables)
+        }
         
     }
+    
+    func uploadImage() async {
+        do {
+            try await self.uploadImages(recipeCreateResponse)
+        } catch {
+            self.isUpLoadingError = error.localizedDescription
+        }
+    }
+    
+    private func uploadImages(_ responseData: ResponseData) async throws {
+//        Task {
+            do {
+                guard let mainImageURL = titleImageURL,
+                      let url = URL(string: responseData.mainPresignedUrl) else { throw UploadError.invalidURL }
+                
+                let (data, response) = try await URLSession.shared.upload(to: url, fileURL: mainImageURL)
+                
+                print("메인 이미지 Upload Response: \(response), \(data)")
+                for (index, processURL) in responseData.recipeProcessPresignedUrl.enumerated() {
+                    let processImageURL = recipeStepData[index].imageURL
+                    guard let processURLstr = URL(string: processURL),
+                          let processImageURL = processImageURL else { throw UploadError.invalidURL }
+                    let (data, response) = try await URLSession.shared.upload(to: processURLstr, fileURL: processImageURL)
+                    print("스텝 이미지 Upload Response: \(response), \(data)")
+                }
+                //                DispatchQueue.main.async {
+                self.isUpLoading = false
+                //                }
+            } catch {
+                //                DispatchQueue.main.async {
+                self.isUpLoading = false
+                self.isUpLoadingError = error.localizedDescription
+                //                }
+                throw UploadError.uploadFailed
+            }
+//        }
+    }
+    
+    
+}
+
+extension URLSession {
+    func upload(to url: URL, fileURL: URL, httpMethod: String = "PUT", headers: [String: String] = [:]) async throws -> (Data, URLResponse) {
+        var request = URLRequest(url: url)
+        request.httpMethod = httpMethod
+        for (key, value) in headers {
+            request.setValue(value, forHTTPHeaderField: key)
+        }
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            let task = self.uploadTask(with: request, fromFile: fileURL) { data, response, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else if let data = data, let response = response, let httpResponse = response as? HTTPURLResponse {
+                    if 200..<300 ~= httpResponse.statusCode {
+                        continuation.resume(returning: (data, response))
+                    } else {
+                        let error = NSError(domain: "이미지 업로드 실패.", code: httpResponse.statusCode)
+                        continuation.resume(throwing: error)
+                    }
+                } else {
+                    print("?????????????")
+                }
+            }
+            task.resume()
+        }
+    }
+    
+}
+
+enum UploadError: Error {
+    case invalidURL
+    case uploadFailed
 }

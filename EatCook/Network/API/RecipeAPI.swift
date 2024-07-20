@@ -36,7 +36,7 @@ enum RecipeAPI: EndPoint {
         switch self {
         case .recipeCreate(let query):
             return .requestWithParameters(parameters: query.toDictionary,
-                                          encoding: .urlEncoding)
+                                          encoding: .jsonEncoding)
         case .recipeDelete:
             return .requestWithParameters(parameters: [:], encoding: .urlEncoding)
         case .recipeRead(let postId):
