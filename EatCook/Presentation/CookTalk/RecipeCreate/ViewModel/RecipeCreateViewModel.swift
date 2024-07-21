@@ -141,7 +141,6 @@ extension RecipeCreateViewModel {
                 .sink { completion in
                     switch completion {
                     case .finished:
-                        //                        self.isUpLoading = false
                         continuation.resume()
                     case .failure(let error):
                         self.isUpLoading = false
@@ -151,15 +150,6 @@ extension RecipeCreateViewModel {
                 } receiveValue: { response in
                     print(response.code)
                     self.recipeCreateResponse = response.data
-//                    Task {
-//                        do {
-//                            try await self.uploadImages(response.data)
-//                        } catch {
-//                            DispatchQueue.main.async {
-//                                self.isUpLoadingError = error.localizedDescription
-//                            }
-//                        }
-//                    }
                 }
                 .store(in: &cancellables)
         }
@@ -175,32 +165,28 @@ extension RecipeCreateViewModel {
     }
     
     private func uploadImages(_ responseData: ResponseData) async throws {
-//        Task {
-            do {
-                guard let mainImageURL = titleImageURL,
-                      let url = URL(string: responseData.mainPresignedUrl) else { throw UploadError.invalidURL }
-                
-                let (data, response) = try await URLSession.shared.upload(to: url, fileURL: mainImageURL)
-                
-                print("메인 이미지 Upload Response: \(response), \(data)")
-                for (index, processURL) in responseData.recipeProcessPresignedUrl.enumerated() {
-                    let processImageURL = recipeStepData[index].imageURL
-                    guard let processURLstr = URL(string: processURL),
-                          let processImageURL = processImageURL else { throw UploadError.invalidURL }
-                    let (data, response) = try await URLSession.shared.upload(to: processURLstr, fileURL: processImageURL)
-                    print("스텝 이미지 Upload Response: \(response), \(data)")
-                }
-                //                DispatchQueue.main.async {
-                self.isUpLoading = false
-                //                }
-            } catch {
-                //                DispatchQueue.main.async {
-                self.isUpLoading = false
-                self.isUpLoadingError = error.localizedDescription
-                //                }
-                throw UploadError.uploadFailed
+        do {
+            guard let mainImageURL = titleImageURL,
+                  let url = URL(string: responseData.mainPresignedUrl) else { throw UploadError.invalidURL }
+            
+            let (data, response) = try await URLSession.shared.upload(to: url,
+                                                                      fileURL: mainImageURL)
+            
+            print("메인 이미지 Upload Response: \(response), \(data)")
+            for (index, processURL) in responseData.recipeProcessPresignedUrl.enumerated() {
+                let processImageURL = recipeStepData[index].imageURL
+                guard let processURLstr = URL(string: processURL),
+                      let processImageURL = processImageURL else { throw UploadError.invalidURL }
+                let (data, response) = try await URLSession.shared.upload(to: processURLstr,
+                                                                          fileURL: processImageURL)
+                print("스텝 이미지 Upload Response: \(response), \(data)")
             }
-//        }
+            self.isUpLoading = false
+        } catch {
+            self.isUpLoading = false
+            self.isUpLoadingError = error.localizedDescription
+            throw UploadError.fileExtension
+        }
     }
     
     
@@ -212,6 +198,15 @@ extension URLSession {
         request.httpMethod = httpMethod
         for (key, value) in headers {
             request.setValue(value, forHTTPHeaderField: key)
+        }
+        
+        switch fileURL.pathExtension.lowercased() {
+        case "jpg", "jpeg":
+            request.allHTTPHeaderFields = HTTPHeaderField.jpgImageUpload
+        case "png":
+            request.allHTTPHeaderFields = HTTPHeaderField.pngImageUpload
+        default:
+            throw UploadError.invalidURL
         }
         
         return try await withCheckedThrowingContinuation { continuation in
@@ -238,4 +233,5 @@ extension URLSession {
 enum UploadError: Error {
     case invalidURL
     case uploadFailed
+    case fileExtension
 }
