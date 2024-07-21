@@ -123,27 +123,25 @@ struct UserFavoriteTagEditView: View {
         .padding(.horizontal, 16)
         .padding(.top, 24)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-                sample1 = [
-                    FavoriteFoodTag(title: "반찬", isSelected: true),
-                    FavoriteFoodTag(title: "일식"),
-                    FavoriteFoodTag(title: "중식", isSelected: true),
-                    FavoriteFoodTag(title: "한식", isSelected: true),
-                    FavoriteFoodTag(title: "양식"),
-                    FavoriteFoodTag(title: "디저트"),
-                    FavoriteFoodTag(title: "아시안"),
-                    FavoriteFoodTag(title: "야식"),
-                    FavoriteFoodTag(title: "분식")
-                ]
-                
-                sample2 = [
-                    FoodThemeTag(title: "다이어트만 n년째"),
-                    FoodThemeTag(title: "건강한 식단관리", isSelected: true),
-                    FoodThemeTag(title: "밀키트 lover"),
-                    FoodThemeTag(title: "편의점은 내 구역"),
-                    FoodThemeTag(title: "배달음식 단골고객")
-                ]
-            }
+            sample1 = [
+                FavoriteFoodTag(title: "반찬", isSelected: true),
+                FavoriteFoodTag(title: "일식"),
+                FavoriteFoodTag(title: "중식", isSelected: true),
+                FavoriteFoodTag(title: "한식", isSelected: true),
+                FavoriteFoodTag(title: "양식"),
+                FavoriteFoodTag(title: "디저트"),
+                FavoriteFoodTag(title: "아시안"),
+                FavoriteFoodTag(title: "야식"),
+                FavoriteFoodTag(title: "분식")
+            ]
+            
+            sample2 = [
+                FoodThemeTag(title: "다이어트만 n년째"),
+                FoodThemeTag(title: "건강한 식단관리", isSelected: true),
+                FoodThemeTag(title: "밀키트 lover"),
+                FoodThemeTag(title: "편의점은 내 구역"),
+                FoodThemeTag(title: "배달음식 단골고객")
+            ]
         }
         .navigationTitle("관심 요리 편집")
         .navigationBarTitleDisplayMode(.inline)

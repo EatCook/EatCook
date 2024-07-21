@@ -57,6 +57,16 @@ struct FeedView: View {
             
             ZStack(alignment: .bottomTrailing) {
                 VStack(spacing: 0) {
+                    HStack {
+                        Text("쿡Talk")
+                            .font(.system(size: 24, weight: .semibold))
+                            .padding(.vertical, 14)
+                            .padding(.horizontal, 16)
+                        
+                        Spacer()
+                    }
+                    .frame(height: 44)
+                    
                     /// TabIndicator
                     HStack(alignment: .center, spacing: 0) {
                         ForEach(CookTalkTabCase.allCases, id: \.self) { tabCase in
@@ -129,7 +139,7 @@ struct FeedView: View {
                     //                        }
                     //                )
                 }
-                .navigationTitle("쿡Talk")
+//                .navigationTitle("쿡Talk")
 //                .navigationBarTitleDisplayMode(.large)
                 
                 Button {

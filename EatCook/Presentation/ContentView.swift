@@ -38,7 +38,7 @@ struct ContentView: View {
                     }
                     .tag(2)
             }
-            .navigationTitle(titleForNavigationTitle())
+//            .navigationTitle(titleForNavigationTitle())
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: ViewOptions.self) { viewCase in
                 viewCase.view()
@@ -51,7 +51,7 @@ struct ContentView: View {
         switch selectedTab {
         case 0: return ""
         case 1: return "쿡Talk"
-        case 2: return "마이페이지"
+        case 2: return ""
         default: return ""
         }
     }

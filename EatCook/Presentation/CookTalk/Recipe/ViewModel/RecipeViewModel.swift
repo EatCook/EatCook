@@ -15,11 +15,17 @@ final class RecipeViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     @Published var recipeReadData: RecipeReadResponseData?
-    @Published var recipeProcessData: [[RecipeData]] = []
+    @Published var recipeProcessData: [RecipeData] = []
+    @Published var postId: Int = 0
     @Published var isLoading: Bool = false
     @Published var error: String? = nil
     
-    init(recipeUseCase: RecipeUseCase) {
+    @Published var isFollowed: Bool = false
+    @Published var isArchived: Bool = false
+    
+    init(
+        recipeUseCase: RecipeUseCase
+    ) {
         self.recipeUseCase = recipeUseCase
     }
     
@@ -45,19 +51,40 @@ extension RecipeViewModel {
                 }
             } receiveValue: { response in
                 self.recipeReadData = response.data
+                self.isFollowed = response.data.followCheck
+                self.isArchived = response.data.archiveCheck
+                self.postId = response.data.postID
                 let recipe = response.data.recipeProcess.map { RecipeData(type: .recipe,
                                                                           image: $0.recipeProcessImagePath,
                                                                           step: $0.stepNum,
                                                                           description: $0.recipeWriting)}
                 let ingredients = response.data.foodIngredients.map { RecipeData(type: .ingredients,
                                                                                  description: $0) }
-                self.recipeProcessData.append(recipe)
-                self.recipeProcessData.append(ingredients)
+                self.recipeProcessData.append(contentsOf: recipe)
+                self.recipeProcessData.append(contentsOf: ingredients)
                 
             }
             .store(in: &cancellables)
 
     }
     
+    func requestArchiveAdd(_ postId: Int) {
+        
+        recipeUseCase.requestArchiveAdd(postId)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("추가 완료")
+                    self.isArchived = true
+                case .failure(let error):
+                    print("추가 실패 \(error.localizedDescription)")
+                }
+            } receiveValue: { response in
+                print(response.data)
+            }
+            .store(in: &cancellables)
+
+    }
     
 }

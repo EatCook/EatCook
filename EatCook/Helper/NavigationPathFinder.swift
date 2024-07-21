@@ -18,6 +18,9 @@ enum ViewOptions: Hashable {
     case userFavoriteTagEdit
     case userWithDraw
     
+    case myPage
+    case otherUserProfile
+    
     @ViewBuilder
     func view() -> some View {
         switch self {
@@ -30,6 +33,9 @@ enum ViewOptions: Hashable {
         case .userProfileEdit: UserProfileEditView()
         case .userFavoriteTagEdit: UserFavoriteTagEditView()
         case .userWithDraw: UserWithDrawView()
+            
+        case .myPage: UserProfileView()
+        case .otherUserProfile: OtherUserProfileView()
         }
     }
     
@@ -51,6 +57,12 @@ enum ViewOptions: Hashable {
             return true
         case (.userWithDraw, .userWithDraw):
             return true
+        case (.myPage, .myPage):
+            return true
+        case (.otherUserProfile, .otherUserProfile):
+            return true
+            
+            
         default:
             return false
         }
@@ -78,6 +90,10 @@ enum ViewOptions: Hashable {
             hasher.combine("userFavoriteTagEdit")
         case .userWithDraw:
             hasher.combine("userWithDraw")
+        case .myPage:
+            hasher.combine("myPage")
+        case .otherUserProfile:
+            hasher.combine("otherUserProfile")
         }
     }
 }

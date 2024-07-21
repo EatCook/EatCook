@@ -33,4 +33,10 @@ extension RecipeUseCase {
             .eraseToAnyPublisher()
     }
     
+    func requestArchiveAdd(_ postId: Int) -> AnyPublisher<ArchiveAddRequestResponse, NetworkError> {
+        return eatCookRepository
+            .requestArchiveAdd(of: ArchiveAPI.archiveAdd(postId))
+            .eraseToAnyPublisher()
+    }
+    
 }

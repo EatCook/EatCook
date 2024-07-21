@@ -25,16 +25,11 @@ struct FeedRowView: View {
                         case .success(let image):
                             image
                                 .resizable()
-                                .frame(height: 196)
-//                                .frame(maxWidth: .infinity)
-                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: .infinity)
+                                .aspectRatio(4/3, contentMode: .fit)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                         case .failure:
-                            Image(systemName: "photo")
-                                .resizable()
-                                .frame(height: 196)
-                                .frame(maxWidth: .infinity)
-                                .aspectRatio(contentMode: .fit)
+                            LoadFailImageView()
                         @unknown default:
                             EmptyView()
                         }
