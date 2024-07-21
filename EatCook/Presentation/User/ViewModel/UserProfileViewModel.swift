@@ -40,7 +40,7 @@ extension UserProfileViewModel {
                 }
             } receiveValue: { response in
                 self.myPageData = response.data
-                self.myPageContentsData.append(contentsOf: response.data.posts.content)
+                self.myPageContentsData = response.data.posts.content
                 self.hasNextPage = response.data.posts.hasNextPage
             }
             .store(in: &cancellables)
