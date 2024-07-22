@@ -17,6 +17,7 @@ class UserService {
     private let API_USER_PASSWORD_CHECK = "/api/v1/users"
     private let API_USER_EMAIL_LOGIN = "/login"
     private let API_USER_OAUTH_LOGIN = "/oauth2/login"
+    private let API_USER_ADD_SIGNUP = "/api/v1/users/add-signup"
     
     
     // 이메일 신청
@@ -94,6 +95,20 @@ class UserService {
     // oAUTH로그인
     func oAuthlogin(parameters:[String:String], success: @escaping (PasswordCheck) -> (), failure: @escaping (PasswordCheck) -> ()) {
         APIClient.shared.request(API_USER_OAUTH_LOGIN, method: .post, parameters: parameters, responseType: PasswordCheck.self, successHandler: { (result) in
+            
+            print("result :" ,result)
+            
+            success(result)
+            
+        }, failureHandler: { (error) in
+            failure(error)
+            print("ERROR")
+        })
+    }
+    
+//   회원가입 추가요청
+    func addSignUp(parameters:[String:String], success: @escaping (AddSignUpResponse) -> (), failure: @escaping (AddSignUpResponse) -> ()) {
+        APIClient.shared.request(API_USER_ADD_SIGNUP, method: .post, parameters: parameters, responseType: AddSignUpResponse.self, successHandler: { (result) in
             
             print("result :" ,result)
             

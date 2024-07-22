@@ -46,6 +46,10 @@
 		E561464B2C01D02800CA1991 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */; };
 		E561464D2C01E94200CA1991 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464C2C01E94200CA1991 /* DataStorage.swift */; };
 		E578D5AC2C296B1300A91EB8 /* SearchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578D5AB2C296B1300A91EB8 /* SearchMenu.swift */; };
+		E58300A92C4DF19C005354A8 /* HouseholdCompositionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58300A82C4DF19C005354A8 /* HouseholdCompositionViewModel.swift */; };
+		E58300AB2C4DF69D005354A8 /* AddSignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58300AA2C4DF69D005354A8 /* AddSignUpResponse.swift */; };
+		E58300AD2C4E127E005354A8 /* CreateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58300AC2C4E127E005354A8 /* CreateProfileViewModel.swift */; };
+		E58300AF2C4E2E09005354A8 /* FoodThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58300AE2C4E2E09005354A8 /* FoodThemeViewModel.swift */; };
 		E58512C52BF9FDB000E1D877 /* PasswordCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */; };
 		E58512C72BFA00DE00E1D877 /* PasswordCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */; };
 		E595A61A2C2D2F2D00EFB873 /* SearchRanking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E595A6192C2D2F2D00EFB873 /* SearchRanking.swift */; };
@@ -153,6 +157,10 @@
 		E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
 		E561464C2C01E94200CA1991 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		E578D5AB2C296B1300A91EB8 /* SearchMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMenu.swift; sourceTree = "<group>"; };
+		E58300A82C4DF19C005354A8 /* HouseholdCompositionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseholdCompositionViewModel.swift; sourceTree = "<group>"; };
+		E58300AA2C4DF69D005354A8 /* AddSignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSignUpResponse.swift; sourceTree = "<group>"; };
+		E58300AC2C4E127E005354A8 /* CreateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewModel.swift; sourceTree = "<group>"; };
+		E58300AE2C4E2E09005354A8 /* FoodThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodThemeViewModel.swift; sourceTree = "<group>"; };
 		E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckViewModel.swift; sourceTree = "<group>"; };
 		E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheck.swift; sourceTree = "<group>"; };
 		E595A6192C2D2F2D00EFB873 /* SearchRanking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRanking.swift; sourceTree = "<group>"; };
@@ -501,6 +509,9 @@
 			isa = PBXGroup;
 			children = (
 				3F4C10C02B73EA3100D6DA1B /* ProfileViewModel.swift */,
+				E58300A82C4DF19C005354A8 /* HouseholdCompositionViewModel.swift */,
+				E58300AC2C4E127E005354A8 /* CreateProfileViewModel.swift */,
+				E58300AE2C4E2E09005354A8 /* FoodThemeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -637,6 +648,7 @@
 				E5AEE8992BF73B6500A4EF40 /* EmailRequest.swift */,
 				E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */,
 				E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */,
+				E58300AA2C4DF69D005354A8 /* AddSignUpResponse.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -974,6 +986,7 @@
 				E5F2F6EB2C4611B2000EC91C /* PasswordCheckResponse.swift in Sources */,
 				3F4C10D82B73EA3200D6DA1B /* HomeViewModel.swift in Sources */,
 				F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */,
+				E58300AD2C4E127E005354A8 /* CreateProfileViewModel.swift in Sources */,
 				F66E2D202B8CD20A00524B8B /* CookTalkAPI.swift in Sources */,
 				3F4C10D52B73EA3200D6DA1B /* EatCookRepository.swift in Sources */,
 				F66E2D0D2B8CCF7100524B8B /* HTTPTask.swift in Sources */,
@@ -987,6 +1000,7 @@
 				3F4C10E72B73EA3200D6DA1B /* LoginViewModel.swift in Sources */,
 				3F2652FD2B7C3E180065DFA5 /* HouseholdCompositionView.swift in Sources */,
 				E5CA92EF2C48F39500FB0DF9 /* CustomPopUpView.swift in Sources */,
+				E58300AB2C4DF69D005354A8 /* AddSignUpResponse.swift in Sources */,
 				F66E2D0B2B8CCF2A00524B8B /* HTTPMethod.swift in Sources */,
 				3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */,
 				3F2652FB2B7AF2060065DFA5 /* FoodThemeView.swift in Sources */,
@@ -995,12 +1009,14 @@
 				F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */,
 				E5F2F6F82C461371000EC91C /* EmailVerifyResponseDTO.swift in Sources */,
 				F66E2D112B8CCFDE00524B8B /* NetworkProviderImpl.swift in Sources */,
+				E58300AF2C4E2E09005354A8 /* FoodThemeViewModel.swift in Sources */,
 				F66E2D092B8CCF0000524B8B /* NetworkError.swift in Sources */,
 				E55965342C059C38002B3E75 /* AppleLoginButtonView.swift in Sources */,
 				3F21B3B82B7264B400BF67F7 /* SplashView.swift in Sources */,
 				3F4C10EC2B773DDA00D6DA1B /* EmailAuthView.swift in Sources */,
 				F69B6DB32B80BFCA00EFB467 /* ScrollOffset.swift in Sources */,
 				E561464B2C01D02800CA1991 /* EmailLoginViewModel.swift in Sources */,
+				E58300A92C4DF19C005354A8 /* HouseholdCompositionViewModel.swift in Sources */,
 				E5CA92ED2C48AFDE00FB0DF9 /* CustomAlertView.swift in Sources */,
 				E5BAAF852C44BFBB0097E83A /* MainUserInfo.swift in Sources */,
 				F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */,

@@ -80,13 +80,7 @@ class SearchViewModel : ObservableObject {
         
         
     }
-    
-    
-    
-    
-    
-    
-    
+
     func getCurrentDateString() -> String {
         let date = Date()
         let formatter = DateFormatter()
