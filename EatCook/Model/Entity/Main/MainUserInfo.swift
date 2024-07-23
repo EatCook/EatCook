@@ -11,7 +11,7 @@ struct MainUserInfo: Codable {
     let success: Bool
     let code: String
     let message: String
-    let data: UserInfoData
+    let data: UserInfoData?
 }
 
 struct UserInfoData : Codable {

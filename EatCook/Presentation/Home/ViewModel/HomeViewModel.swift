@@ -14,6 +14,7 @@ class HomeViewModel : ObservableObject {
     init() {
         MainService.shard.getUserInfo(success: { result in
             print("getUserInfo" ,result)
+ 
             
             
             
@@ -29,8 +30,7 @@ class HomeViewModel : ObservableObject {
         }, failure: { error in
             print(error)
         })
-        
-        
+    
         MainService.shard.getUserSpecial(success: { result in
             print("getUserSpecial" ,result)
             

@@ -35,8 +35,23 @@ class CreateProfileViewModel : ObservableObject {
         return regex?.firstMatch(in: nickname, options: [], range: range) != nil
     }
     
-    
-    
-    
-    
+    func checkNickName(completion: @escaping (CheckNickNameResponse) -> Void) {
+        UserService.shared.checkNickName(parameters: ["nickName" : nickname]) { result in
+            print("result :", result)
+            completion(result)
+        } failure: { errorResult in
+            print("Error result")
+            completion(errorResult)
+        }
+    }
+}
+
+struct ShakeEffect: GeometryEffect {
+    var amount: CGFloat = 10
+    var shakesPerUnit = 3
+    var animatableData: CGFloat
+
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        return ProjectionTransform(CGAffineTransform(translationX: amount * sin(animatableData * .pi * CGFloat(shakesPerUnit)), y: 0))
+    }
 }

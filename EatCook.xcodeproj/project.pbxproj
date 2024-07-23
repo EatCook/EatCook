@@ -45,6 +45,7 @@
 		E56146492C01D01700CA1991 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56146482C01D01700CA1991 /* EmailLoginView.swift */; };
 		E561464B2C01D02800CA1991 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */; };
 		E561464D2C01E94200CA1991 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464C2C01E94200CA1991 /* DataStorage.swift */; };
+		E57529BD2C4F755F001A277F /* CheckNickNameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57529BC2C4F755F001A277F /* CheckNickNameResponse.swift */; };
 		E578D5AC2C296B1300A91EB8 /* SearchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578D5AB2C296B1300A91EB8 /* SearchMenu.swift */; };
 		E58300A92C4DF19C005354A8 /* HouseholdCompositionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58300A82C4DF19C005354A8 /* HouseholdCompositionViewModel.swift */; };
 		E58300AB2C4DF69D005354A8 /* AddSignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58300AA2C4DF69D005354A8 /* AddSignUpResponse.swift */; };
@@ -156,6 +157,7 @@
 		E56146482C01D01700CA1991 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
 		E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
 		E561464C2C01E94200CA1991 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		E57529BC2C4F755F001A277F /* CheckNickNameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNickNameResponse.swift; sourceTree = "<group>"; };
 		E578D5AB2C296B1300A91EB8 /* SearchMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMenu.swift; sourceTree = "<group>"; };
 		E58300A82C4DF19C005354A8 /* HouseholdCompositionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseholdCompositionViewModel.swift; sourceTree = "<group>"; };
 		E58300AA2C4DF69D005354A8 /* AddSignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSignUpResponse.swift; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 				E5AEE89B2BF73B7C00A4EF40 /* EmailVerify.swift */,
 				E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */,
 				E58300AA2C4DF69D005354A8 /* AddSignUpResponse.swift */,
+				E57529BC2C4F755F001A277F /* CheckNickNameResponse.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1025,6 +1028,7 @@
 				F6F9FB672BA1AA1000AEF22E /* RecipeStepView.swift in Sources */,
 				F6F9FB582BA1A9CE00AEF22E /* RecipeCreateViewModel.swift in Sources */,
 				3F4C10DC2B73EA3200D6DA1B /* FeedViewModel.swift in Sources */,
+				E57529BD2C4F755F001A277F /* CheckNickNameResponse.swift in Sources */,
 				E52261312BEB63F300ECC939 /* EmailValidationViewModel.swift in Sources */,
 				E5F2F6F62C461364000EC91C /* EmailRequestResponseDTO.swift in Sources */,
 				E5F2F6E12C46116D000EC91C /* MainUserInfoResponse.swift in Sources */,

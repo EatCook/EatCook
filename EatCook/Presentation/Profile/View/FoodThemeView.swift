@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FoodThemeView: View {
     var email: String = ""
+    var nickName : String = ""
     var userImage: UIImage?
     
     @StateObject private var foodThemeViewModel = FoodThemeViewModel()
@@ -34,6 +35,7 @@ struct FoodThemeView: View {
                 LazyVGrid(columns: columns, spacing: 14) {
                     ForEach(FoodTheme.themes, id: \.id) { data in
                         Button(action: {
+                            print(nickName)
                             if !foodThemeViewModel.cookingType.contains(data.title) && foodThemeViewModel.cookingType.count < 3 {
                                 foodThemeViewModel.cookingType.append(data.title)
                             }
@@ -71,8 +73,8 @@ struct FoodThemeView: View {
                     .padding(.vertical, 65)
                 
                 Spacer()
-                
-                NavigationLink(destination: HouseholdCompositionView(email: email , cookingType: foodThemeViewModel.cookingType , userImage: userImage).toolbarRole(.editor)) {
+//                
+                NavigationLink(destination: HouseholdCompositionView(email: email , nickName : nickName ,cookingType: foodThemeViewModel.cookingType , userImage: userImage).toolbarRole(.editor)) {
                     Text("다음")
                         .bold()
                         .foregroundColor(.white)

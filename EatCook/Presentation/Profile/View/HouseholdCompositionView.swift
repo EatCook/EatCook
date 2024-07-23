@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct HouseholdCompositionView: View {
-    var email: String = ""
-    var cookingType: [String] = []
+    var email: String
+    var nickName : String
+    var cookingType: [String]
     var userImage: UIImage?
+
+    @StateObject private var householdCompositionViewModel : HouseholdCompositionViewModel
+    @State private var navigateToHomeView = false
+
+    init(email: String, nickName : String ,cookingType: [String], userImage: UIImage?) {
+        self.email = email
+        self.nickName = nickName
+        self.cookingType = cookingType
+        self.userImage = userImage
+        
+        // Initialize the StateObject with the wrapped value
+        _householdCompositionViewModel = StateObject(wrappedValue: HouseholdCompositionViewModel(email: email,nickName: nickName ,cookingType: cookingType, userImage: userImage))
+    }
     
-    @StateObject private var householdCompositionViewModel = HouseholdCompositionViewModel()
 
     let columns = [GridItem(.flexible())]
     @State var isButtonEnabled = false
@@ -35,7 +48,7 @@ struct HouseholdCompositionView: View {
                 LazyVGrid(columns: columns, spacing: 14) {
                     ForEach(Household.themes, id: \.id) { data in
                         Button(action: {
-                            self.selectedItem = data.title
+                            householdCompositionViewModel.lifeType = data.title
                         }, label: {
                             Text(data.img)
                             Text(data.title)
@@ -49,7 +62,7 @@ struct HouseholdCompositionView: View {
                         .cornerRadius(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(self.selectedItem == data.title ? Color.primary7 : Color.gray1, lineWidth:1)
+                                .stroke(householdCompositionViewModel.lifeType == data.title ? Color.primary7 : Color.gray1, lineWidth:1)
                         )
                     }
                 }.padding(.horizontal, 40)
@@ -57,15 +70,33 @@ struct HouseholdCompositionView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: HomeView().toolbarRole(.editor)) {
+                Button(action: {
+                    householdCompositionViewModel.addSignUp { result in
+                        if result.success {
+                            navigateToHomeView = true
+//                            TODO : 이미지 URL 받아서 전송
+                        }else{
+//                            TODO : Alert 추가
+                        }
+                    }
+
+                }) {
                     Text("다음")
+                        .bold()
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
-                        .background(isButtonEnabled ? Color.bdActive : Color.bdInactive)
+                        .background(Color.primary7) // 활성화 상태에 따라 배경 색상 변경
+                        .foregroundColor(.white)
                         .cornerRadius(10)
                         .padding(.horizontal, 24)
                         .padding(.vertical, 46)
+                }.disabled(householdCompositionViewModel.lifeType == "")
+                
+        
+                NavigationLink(destination: HomeView().toolbarRole(.editor), isActive: $navigateToHomeView) {
+                    EmptyView()
                 }
+                
             }
             .padding(.top, 30)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -92,5 +123,5 @@ extension HouseholdCompositionView {
 }
 
 #Preview {
-    HouseholdCompositionView()
+    HouseholdCompositionView(email: "rkdtlscks123@naver.com", nickName: "신규" ,cookingType: ["일식", "한식"], userImage: .food)
 }

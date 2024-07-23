@@ -18,6 +18,7 @@ class UserService {
     private let API_USER_EMAIL_LOGIN = "/login"
     private let API_USER_OAUTH_LOGIN = "/oauth2/login"
     private let API_USER_ADD_SIGNUP = "/api/v1/users/add-signup"
+    private let API_USER_NICKNAME_CHECK = "/api/v1/users/add-signup/check-nick"
     
     
     // 이메일 신청
@@ -26,10 +27,10 @@ class UserService {
             
             print("result :" ,result)
             
-//            guard let data = result else {
-//                print("Result Data Error")
-//                return
-//            }
+            //            guard let data = result else {
+            //                print("Result Data Error")
+            //                return
+            //            }
             success(result)
             
         }, failureHandler: { (result) in
@@ -44,10 +45,10 @@ class UserService {
             
             print("result :" ,result)
             
-//            guard let data = result else {
-//                print("Result Data Error")
-//                return
-//            }
+            //            guard let data = result else {
+            //                print("Result Data Error")
+            //                return
+            //            }
             success(result)
             
         }, failureHandler: { (error) in
@@ -62,10 +63,10 @@ class UserService {
             
             print("result :" ,result)
             
-//            guard let data = result else {
-//                print("Result Data Error")
-//                return
-//            }
+            //            guard let data = result else {
+            //                print("Result Data Error")
+            //                return
+            //            }
             success(result)
             
         }, failureHandler: { (error) in
@@ -80,10 +81,10 @@ class UserService {
             
             print("result :" ,result)
             
-//            guard let data = result else {
-//                print("Result Data Error")
-//                return
-//            }
+            //            guard let data = result else {
+            //                print("Result Data Error")
+            //                return
+            //            }
             success(result)
             
         }, failureHandler: { (error) in
@@ -106,8 +107,9 @@ class UserService {
         })
     }
     
-//   회원가입 추가요청
-    func addSignUp(parameters:[String:String], success: @escaping (AddSignUpResponse) -> (), failure: @escaping (AddSignUpResponse) -> ()) {
+    //   회원가입 추가요청
+    func addSignUp(parameters:[String:Any], success: @escaping (AddSignUpResponse) -> (), failure: @escaping (AddSignUpResponse) -> ()) {
+        print("parameters :", parameters)
         APIClient.shared.request(API_USER_ADD_SIGNUP, method: .post, parameters: parameters, responseType: AddSignUpResponse.self, successHandler: { (result) in
             
             print("result :" ,result)
@@ -121,7 +123,20 @@ class UserService {
     }
     
     
-    
+    //   회원가입 닉네임 중복 체크
+    func checkNickName(parameters:[String:Any], success: @escaping (CheckNickNameResponse) -> (), failure: @escaping (CheckNickNameResponse) -> ()) {
+        print("parameters :", parameters)
+        APIClient.shared.request(API_USER_NICKNAME_CHECK, method: .post, parameters: parameters, responseType: CheckNickNameResponse.self, successHandler: { (result) in
+            
+            print("result :" ,result)
+            
+            success(result)
+            
+        }, failureHandler: { (error) in
+            failure(error)
+            print("ERROR")
+        })
+    }
     
     
     

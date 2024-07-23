@@ -13,6 +13,9 @@ struct CreateProfileView: View {
     
     @StateObject private var createProfileViewModel = CreateProfileViewModel()
     @State private var showImagePicker = false
+    @State private var navigateToFoodThemeView = false
+    @State private var isNickNameError = false
+    @State private var shake = false
     
     var body: some View {
         NavigationStack {
@@ -22,7 +25,6 @@ struct CreateProfileView: View {
                     .font(.title2)
                     .padding(.vertical, 20)
     
-                
                 
                 if let image = createProfileViewModel.userImage {
                     Button(action: {
@@ -55,7 +57,29 @@ struct CreateProfileView: View {
                     .padding(.top, 36)
                     .padding(.bottom, 14)
                 
-                NavigationLink(destination: FoodThemeView(email: email, userImage: createProfileViewModel.userImage).toolbarRole(.editor)) {
+                if isNickNameError {
+                    HStack() {
+                        Image(.error).resizable().frame(width : 20, height: 20)
+                        Text("이미 존재하는 닉네임입니다").font(.system(size : 14)).font(.callout).foregroundColor(.error4)
+                        Spacer()
+                    }.padding(.horizontal, 24)
+                    .modifier(ShakeEffect(animatableData: CGFloat(shake ? 1 : 0)))
+                }
+
+                Button(action: {
+                    createProfileViewModel.checkNickName { result in
+                        if result.success {
+                            navigateToFoodThemeView = true
+                            isNickNameError = false
+                        }else{
+                            withAnimation {
+                                isNickNameError = true
+                                shake.toggle()
+                            }
+                        }
+                    }
+                    
+                }, label: {
                     Text("다음")
                         .bold()
                         .foregroundColor(.white)
@@ -64,7 +88,12 @@ struct CreateProfileView: View {
                     .background(createProfileViewModel.isNickNameImageValid ? Color.primary6 : Color.bdInactive)
                     .cornerRadius(10)
                     .padding(.horizontal, 24)
-                }.disabled(!createProfileViewModel.isNickNameImageValid)
+                }).disabled(!createProfileViewModel.isNickNameImageValid)
+                
+                
+                NavigationLink(destination:  FoodThemeView(email: email, nickName : createProfileViewModel.nickname, userImage: createProfileViewModel.userImage).toolbarRole(.editor), isActive: $navigateToFoodThemeView) {
+                    EmptyView()
+                }
                 
     
                 
@@ -85,3 +114,5 @@ struct CreateProfileView: View {
 #Preview {
     CreateProfileView()
 }
+
+
