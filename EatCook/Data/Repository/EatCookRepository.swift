@@ -132,6 +132,24 @@ extension EatCookRepository {
         }
     }
     
+    func requestMyPageProfileEdit(of endpoint: EndPoint) -> Future<MyPageProfileEditRequestResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(MyPageProfileEditRequestResponseDTO.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data.toDomain()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
     /// Archive
     func requestArchiveAdd(of endpoint: EndPoint) -> Future<ArchiveAddRequestResponse, NetworkError> {
         return Future { promise in

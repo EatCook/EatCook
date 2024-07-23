@@ -33,4 +33,10 @@ extension MyPageUseCase {
             .eraseToAnyPublisher()
     }
     
+    func requestMyPageProfileEdit(_ nickName: String) -> AnyPublisher<MyPageProfileEditRequestResponse, NetworkError> {
+        return eatCookRepository
+            .requestMyPageProfileEdit(of: MyPageAPI.mypageProfileEdit(nickName))
+            .eraseToAnyPublisher()
+    }
+    
 }

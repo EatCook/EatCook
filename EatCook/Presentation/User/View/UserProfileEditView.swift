@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct UserProfileEditView: View {
-    @State private var nickNameText: String = "요리만렙고수"
-    @State private var emailText: String = "masterchef@gmail.com"
-    @State private var passwordText: String = "12312344"
+    @State private var showAlert: Bool = false
+    
+    @StateObject private var viewModel = UserProfileEditViewModel(
+        myPageUseCase: MyPageUseCase(
+            eatCookRepository: EatCookRepository(
+                networkProvider: NetworkProviderImpl(
+                    requestManager: NetworkManager()
+                )
+            )
+        ),
+        loginUserInfo: LoginUserInfoManager.shared
+    )
     
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
@@ -18,21 +27,25 @@ struct UserProfileEditView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     ZStack(alignment: .bottomTrailing) {
-                        Circle()
-                            .frame(width: 130, height: 130)
-                            .padding(.top, 24)
-                            .foregroundStyle(Color.gray3)
+                        let imageUrl = URL(string: viewModel.userProfileImagePath)
+                        AsyncImage(url: imageUrl) { image in
+                            image
+                                .resizable()
+                                .frame(width: 130, height: 130)
+                                .scaledToFit()
+                                .clipShape(Circle())
+                                .padding(.top, 24)
+                        } placeholder: {
+                            ProgressView()
+                        }
                         
                         Button {
                             
                         } label: {
-                            Image(systemName: "pencil.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundStyle(Color.gray5)
+                            CameraImageView()
                         }
                         .frame(width: 42, height: 42)
-                        .background(.red)
+                        .offset(x: 5, y: 6)
                     }
                     
                     VStack(alignment: .leading) {
@@ -42,7 +55,7 @@ struct UserProfileEditView: View {
                             .foregroundStyle(Color.gray6)
                             .padding(.bottom, 8)
                         
-                        TextField("닉네임", text: $nickNameText)
+                        TextField("닉네임", text: $viewModel.userNickName)
                             .padding()
                             .modifier(CustomBorderModifier(cornerRadius: 10,
                                                            lineWidth: 1,
@@ -54,7 +67,7 @@ struct UserProfileEditView: View {
                             .foregroundStyle(Color.gray6)
                             .padding(.bottom, 8)
                         
-                        TextField("이메일", text: $emailText)
+                        TextField("이메일", text: $viewModel.userEmail)
                             .padding()
                             .foregroundStyle(.gray5)
                             .modifier(CustomBorderModifier(cornerRadius: 10,
@@ -138,25 +151,35 @@ struct UserProfileEditView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Text("저장")
+                    Button {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        Task {
+                            await viewModel.requestUserProfileEdit(viewModel.userNickName)
+                            
+                            if !viewModel.isLoading && viewModel.error == nil {
+                                showAlert.toggle()
+                            } else if let error = viewModel.error {
+                                print("프로필 편집 실패!!!")
+                            }
+                        }
+                    } label: {
+                        Text("저장")
+                    }
                 }
             }
+            .alert("프로필 편집 성공", isPresented: $showAlert) {
+                Button("확인", role: .cancel) {
+                    showAlert.toggle()
+                }
+            } message: {
+                Text("프로필 편집이 완료되었습니다.")
+            }
+
             
-        
-//        .navigationBarItems(trailing:
-//                            Button(action: {
-//                                print("Right Button Tapped!")
-//                            }) {
-//                                Image(systemName: "plus")
-//                            }
-//                        )
-        
     }
 }
 
 #Preview {
-//    NavigationStack {
-        UserProfileEditView()
-            .environmentObject(NavigationPathFinder.shared)
-//    }
+    UserProfileEditView()
+        .environmentObject(NavigationPathFinder.shared)
 }

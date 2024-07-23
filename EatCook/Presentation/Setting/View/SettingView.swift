@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingView: View {
     @State private var serviceAlarmIsOn = true
     @State private var eventAlarmIsOn = true
+    var userNickName: String = ""
     
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     

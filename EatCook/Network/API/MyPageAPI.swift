@@ -10,6 +10,7 @@ import Foundation
 enum MyPageAPI: EndPoint {
     case mypage(_ page: Int?)
     case mypageArchive
+    case mypageProfileEdit(_ nickName: String)
     
     var path: String {
         switch self {
@@ -17,6 +18,8 @@ enum MyPageAPI: EndPoint {
             return "/api/v1/mypage"
         case .mypageArchive:
             return "/api/v1/mypage/archives"
+        case .mypageProfileEdit:
+            return "/api/v1/mypage/profile"
         }
     }
     
@@ -26,6 +29,8 @@ enum MyPageAPI: EndPoint {
             return .get
         case .mypageArchive:
             return .get
+        case .mypageProfileEdit:
+            return .patch
         }
     }
     
@@ -34,15 +39,21 @@ enum MyPageAPI: EndPoint {
         case .mypage(let page):
             return .requestWithParameters(
                 parameters: ["page": page ?? 0],
-                encoding: .urlEncoding)
+                encoding: .urlEncoding
+            )
         case .mypageArchive:
             return .requestWithParameters(parameters: [:], encoding: .urlEncoding)
+        case .mypageProfileEdit(let nickName):
+            return .requestWithParameters(
+                parameters: ["nickName": nickName],
+                encoding: .jsonEncoding
+            )
         }
     }
     
     var headers: [String : String]? {
         switch self {
-        case .mypage, .mypageArchive:
+        case .mypage, .mypageArchive, .mypageProfileEdit:
             return HTTPHeaderField.default
         }
     }

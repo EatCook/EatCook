@@ -69,7 +69,6 @@ struct UserProfileView: View {
                             Text("팔로워")
                         }
                         .frame(width: 110)
-                        //                    .background(.red)
                         
                         Spacer()
                         
@@ -94,9 +93,6 @@ struct UserProfileView: View {
                         Rectangle()
                             .frame(width: 96, height: 96)
                             .foregroundStyle(.gray5)
-                        //                .resizable()
-                        //                .scaledToFill()
-                        //                .frame(width: 96, height: 96)
                             .clipShape(Circle())
                         
                         Text(viewModel.myPageData.nickName)
