@@ -1,30 +1,36 @@
 //
-//  EmailValidationViewModel.swift
+//  FindAccountViewModel.swift
 //  EatCook
 //
-//  Created by 강신규 on 5/8/24.
+//  Created by 강신규 on 7/23/24.
 //
 
 import Foundation
 import Combine
 
-class EmailValidationViewModel: ObservableObject {
+class FindAccountViewModel : ObservableObject {
     @Published var email: String = ""
+    @Published var emailText : String = "인증요청"
+    @Published var authCode : String = ""
+    @Published var counter = 180 // 3분에 해당하는 초
+    @Published var isTimerRunning = false // 시작할 때 타이머 실행 여부
+    @Published var emailAuthError : Bool = false
+    @Published var authCodeValidation : Bool = false
     @Published var isEmailValid: Bool = false
-    
     @Published var isLoading: Bool = false
+    
     @Published var verificationResult: Bool?
     
-    @Published var authCode = ""
-    @Published var authCodeValidation : Bool = false
-
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     private var emailValidationSubscriber: AnyCancellable?
     private var verificationSubscriber: AnyCancellable?
     private var authCodeValidationSubscriber : AnyCancellable?
     
     let emailValidationPublisher = PassthroughSubject<String, Never>()
     
-
+    
     init() {
         emailValidationSubscriber = $email
             .debounce(for: 0.5, scheduler: RunLoop.main) // 입력이 멈출 때마다 발행을 지연시킴
@@ -53,9 +59,26 @@ class EmailValidationViewModel: ObservableObject {
             }
         }
     }
+    
 
+    func counterToMinutesAndSeconds(_ count: Int) -> String {
+        let minutes = count / 60
+        let seconds = count % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    func stopTimer() {
+        timer.upstream.connect().cancel()
+        self.isTimerRunning = false
+    }
+    
+    func startTimer() {
+        self.counter = 180
+        self.isTimerRunning = true
+    }
+    
     // 이메일 유효성 검사 함수
-    private func isValidEmail(_ email: String) -> Bool {
+    func isValidEmail(_ email: String) -> Bool {
         // 간단한 정규식을 사용하여 이메일 형식이 맞는지 확인
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
@@ -68,6 +91,41 @@ class EmailValidationViewModel: ObservableObject {
         return Just(true)
             .eraseToAnyPublisher()
     }
+    
+    func sendEmail(completion: @escaping (FindAccountResponse) -> Void) {
+        
+        UserService.shared.findAccountSendMail(parameters: ["email" : email], success: { (data) in
+         
+            completion(data)
+            print("data : " , data)
+            
+        }, failure: { (errorData) in
+            completion(errorData)
+        })
+        
+        
+    }
+    
+    func verify(completion: @escaping (FindAccountVerifyResponse) -> Void) {
+        
+        UserService.shared.findAccountVerify(parameters: ["email" : email, "authCode" : authCode], success: { (data) in
+      
+
+            completion(data)
+            print("data : " , data)
+            
+        }, failure: { (errorData) in
+            completion(errorData)
+        })
+        
+        
+    }
 
     
+    
+    
+    
+    
+    
 }
+

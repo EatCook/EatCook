@@ -19,6 +19,10 @@ class UserService {
     private let API_USER_OAUTH_LOGIN = "/oauth2/login"
     private let API_USER_ADD_SIGNUP = "/api/v1/users/add-signup"
     private let API_USER_NICKNAME_CHECK = "/api/v1/users/add-signup/check-nick"
+    private let API_USER_FIND = "/api/v1/users/find"
+    private let API_USER_FIND_VERIFY = "/api/v1/users/find/verify"
+    
+   
     
     
     // 이메일 신청
@@ -127,6 +131,37 @@ class UserService {
     func checkNickName(parameters:[String:Any], success: @escaping (CheckNickNameResponse) -> (), failure: @escaping (CheckNickNameResponse) -> ()) {
         print("parameters :", parameters)
         APIClient.shared.request(API_USER_NICKNAME_CHECK, method: .post, parameters: parameters, responseType: CheckNickNameResponse.self, successHandler: { (result) in
+            
+            print("result :" ,result)
+            
+            success(result)
+            
+        }, failureHandler: { (error) in
+            failure(error)
+            print("ERROR")
+        })
+    }
+    
+    //   계정찾기 이메일 인증
+    func findAccountSendMail(parameters:[String:Any], success: @escaping (FindAccountResponse) -> (), failure: @escaping (FindAccountResponse) -> ()) {
+        print("parameters :", parameters)
+        APIClient.shared.request(API_USER_FIND, method: .post, parameters: parameters, responseType: FindAccountResponse.self, successHandler: { (result) in
+            
+            print("result :" ,result)
+            
+            success(result)
+            
+        }, failureHandler: { (error) in
+            failure(error)
+            print("ERROR")
+        })
+    }
+    
+    
+    //   계정찾기 이메일 코드 검증
+    func findAccountVerify(parameters:[String:Any], success: @escaping (FindAccountVerifyResponse) -> (), failure: @escaping (FindAccountVerifyResponse) -> ()) {
+        print("parameters :", parameters)
+        APIClient.shared.request(API_USER_FIND_VERIFY, method: .post, parameters: parameters, responseType: FindAccountVerifyResponse.self, successHandler: { (result) in
             
             print("result :" ,result)
             

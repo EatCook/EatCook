@@ -46,6 +46,8 @@
 		E561464B2C01D02800CA1991 /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */; };
 		E561464D2C01E94200CA1991 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561464C2C01E94200CA1991 /* DataStorage.swift */; };
 		E57529BD2C4F755F001A277F /* CheckNickNameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57529BC2C4F755F001A277F /* CheckNickNameResponse.swift */; };
+		E57529BF2C4F94E8001A277F /* FindAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57529BE2C4F94E8001A277F /* FindAccountView.swift */; };
+		E57529C12C4F9511001A277F /* FindAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57529C02C4F9511001A277F /* FindAccountViewModel.swift */; };
 		E578D5AC2C296B1300A91EB8 /* SearchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578D5AB2C296B1300A91EB8 /* SearchMenu.swift */; };
 		E58300A92C4DF19C005354A8 /* HouseholdCompositionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58300A82C4DF19C005354A8 /* HouseholdCompositionViewModel.swift */; };
 		E58300AB2C4DF69D005354A8 /* AddSignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58300AA2C4DF69D005354A8 /* AddSignUpResponse.swift */; };
@@ -78,6 +80,8 @@
 		E5F2F6F62C461364000EC91C /* EmailRequestResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6F52C461364000EC91C /* EmailRequestResponseDTO.swift */; };
 		E5F2F6F82C461371000EC91C /* EmailVerifyResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6F72C461371000EC91C /* EmailVerifyResponseDTO.swift */; };
 		E5F2F6FA2C46137D000EC91C /* PasswordCheckResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6F92C46137D000EC91C /* PasswordCheckResponseDTO.swift */; };
+		E5F452F42C50A23A0074618B /* FindAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F452F32C50A23A0074618B /* FindAccountResponse.swift */; };
+		E5F452F62C50C12F0074618B /* FindAccountVerifyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F452F52C50C12F0074618B /* FindAccountVerifyResponse.swift */; };
 		E5F520152BCFB89400CEA96B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F520142BCFB89400CEA96B /* CustomTabView.swift */; };
 		F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */; };
 		F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D062B8CCEFB00524B8B /* HTTPError.swift */; };
@@ -158,6 +162,8 @@
 		E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
 		E561464C2C01E94200CA1991 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		E57529BC2C4F755F001A277F /* CheckNickNameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNickNameResponse.swift; sourceTree = "<group>"; };
+		E57529BE2C4F94E8001A277F /* FindAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountView.swift; sourceTree = "<group>"; };
+		E57529C02C4F9511001A277F /* FindAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountViewModel.swift; sourceTree = "<group>"; };
 		E578D5AB2C296B1300A91EB8 /* SearchMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMenu.swift; sourceTree = "<group>"; };
 		E58300A82C4DF19C005354A8 /* HouseholdCompositionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseholdCompositionViewModel.swift; sourceTree = "<group>"; };
 		E58300AA2C4DF69D005354A8 /* AddSignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSignUpResponse.swift; sourceTree = "<group>"; };
@@ -191,6 +197,8 @@
 		E5F2F6F52C461364000EC91C /* EmailRequestResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequestResponseDTO.swift; sourceTree = "<group>"; };
 		E5F2F6F72C461371000EC91C /* EmailVerifyResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerifyResponseDTO.swift; sourceTree = "<group>"; };
 		E5F2F6F92C46137D000EC91C /* PasswordCheckResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckResponseDTO.swift; sourceTree = "<group>"; };
+		E5F452F32C50A23A0074618B /* FindAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountResponse.swift; sourceTree = "<group>"; };
+		E5F452F52C50C12F0074618B /* FindAccountVerifyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountVerifyResponse.swift; sourceTree = "<group>"; };
 		E5F520142BCFB89400CEA96B /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookRepositoryType.swift; sourceTree = "<group>"; };
 		F66E2D062B8CCEFB00524B8B /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
@@ -545,6 +553,7 @@
 				E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */,
 				E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */,
 				E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */,
+				E57529C02C4F9511001A277F /* FindAccountViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -558,6 +567,7 @@
 				3F4C10F22B7A4FCC00D6DA1B /* StartPopupView.swift */,
 				E56146482C01D01700CA1991 /* EmailLoginView.swift */,
 				E55965332C059C38002B3E75 /* AppleLoginButtonView.swift */,
+				E57529BE2C4F94E8001A277F /* FindAccountView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -652,6 +662,8 @@
 				E58512C62BFA00DE00E1D877 /* PasswordCheck.swift */,
 				E58300AA2C4DF69D005354A8 /* AddSignUpResponse.swift */,
 				E57529BC2C4F755F001A277F /* CheckNickNameResponse.swift */,
+				E5F452F32C50A23A0074618B /* FindAccountResponse.swift */,
+				E5F452F52C50C12F0074618B /* FindAccountVerifyResponse.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -979,6 +991,7 @@
 				F6F9FB622BA1AA0100AEF22E /* DropdownView.swift in Sources */,
 				3F4C10F32B7A4FCC00D6DA1B /* StartPopupView.swift in Sources */,
 				E561464D2C01E94200CA1991 /* DataStorage.swift in Sources */,
+				E5F452F42C50A23A0074618B /* FindAccountResponse.swift in Sources */,
 				F6F9FB612BA1AA0100AEF22E /* TimerPickerView.swift in Sources */,
 				F6C80AE92B80AB1900001924 /* RecipeContainerRowView.swift in Sources */,
 				E56146492C01D01700CA1991 /* EmailLoginView.swift in Sources */,
@@ -995,6 +1008,7 @@
 				F66E2D0D2B8CCF7100524B8B /* HTTPTask.swift in Sources */,
 				F69B6DBE2B80DC5C00EFB467 /* FeedContainerView.swift in Sources */,
 				F66E2D1C2B8CD1F700524B8B /* AuthAPI.swift in Sources */,
+				E57529BF2C4F94E8001A277F /* FindAccountView.swift in Sources */,
 				F66E2D182B8CD12200524B8B /* NetworkManager.swift in Sources */,
 				F66E2D1A2B8CD16100524B8B /* Environment.swift in Sources */,
 				3F4C10E02B73EA3200D6DA1B /* SearchViewModel.swift in Sources */,
@@ -1009,6 +1023,7 @@
 				3F2652FB2B7AF2060065DFA5 /* FoodThemeView.swift in Sources */,
 				E5BAAF832C44BF040097E83A /* MainService.swift in Sources */,
 				F69B6DBC2B80D90A00EFB467 /* FeedRowView.swift in Sources */,
+				E5F452F62C50C12F0074618B /* FindAccountVerifyResponse.swift in Sources */,
 				F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */,
 				E5F2F6F82C461371000EC91C /* EmailVerifyResponseDTO.swift in Sources */,
 				F66E2D112B8CCFDE00524B8B /* NetworkProviderImpl.swift in Sources */,
@@ -1067,6 +1082,7 @@
 				3F4C10E82B73EA3200D6DA1B /* LoginView.swift in Sources */,
 				3F4C10D12B73EA3200D6DA1B /* Util.swift in Sources */,
 				F69B6DC62B80EDD600EFB467 /* EmptyImageView.swift in Sources */,
+				E57529C12C4F9511001A277F /* FindAccountViewModel.swift in Sources */,
 				3F4C10DE2B73EA3200D6DA1B /* UserProfileViewModel.swift in Sources */,
 				F6F9FB662BA1AA1000AEF22E /* RecipeTagView.swift in Sources */,
 				3F4C10E32B73EA3200D6DA1B /* ProfileView.swift in Sources */,

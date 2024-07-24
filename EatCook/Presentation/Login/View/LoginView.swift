@@ -277,9 +277,18 @@ struct LoginView: View {
                 Divider().background(Color.gray)
                     .frame(height: 10)
                 
-//               TODO : 테스트 후 제거
+                //               TODO : 테스트 후 제거
                 NavigationLink(destination: CreateProfileView().toolbarRole(.editor)) {
                     Text("계정프로필 등록 테스트")
+                        .font(.body)
+                        .foregroundStyle(.gray)
+                }
+                
+                Divider().background(Color.gray)
+                    .frame(height: 10)
+            
+                NavigationLink(destination: FindAccountView().toolbarRole(.editor)) {
+                    Text("계정찾기")
                         .font(.body)
                         .foregroundStyle(.gray)
                 }
