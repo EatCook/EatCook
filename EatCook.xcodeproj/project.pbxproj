@@ -45,6 +45,7 @@
 		F6645A682C4FF442005833DD /* MyPageProfileEditRequestResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6645A672C4FF442005833DD /* MyPageProfileEditRequestResponseDTO.swift */; };
 		F6645A6A2C4FF4AC005833DD /* MyPageProfileEditRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6645A692C4FF4AC005833DD /* MyPageProfileEditRequestResponse.swift */; };
 		F6645A6E2C4FFA31005833DD /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6645A6D2C4FFA31005833DD /* CameraImageView.swift */; };
+		F6645A722C5152C7005833DD /* MyPageSettingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6645A712C5152C7005833DD /* MyPageSettingAPI.swift */; };
 		F66871BF2C4563950063D9ED /* CookTalkFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871BE2C4563950063D9ED /* CookTalkFeedResponse.swift */; };
 		F66871C12C45666B0063D9ED /* CookTalkFeedResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871C02C45666B0063D9ED /* CookTalkFeedResponseDTO.swift */; };
 		F66871C52C4569F30063D9ED /* CookTalkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871C42C4569F30063D9ED /* CookTalkUseCase.swift */; };
@@ -162,6 +163,7 @@
 		F6645A672C4FF442005833DD /* MyPageProfileEditRequestResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileEditRequestResponseDTO.swift; sourceTree = "<group>"; };
 		F6645A692C4FF4AC005833DD /* MyPageProfileEditRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileEditRequestResponse.swift; sourceTree = "<group>"; };
 		F6645A6D2C4FFA31005833DD /* CameraImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
+		F6645A712C5152C7005833DD /* MyPageSettingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSettingAPI.swift; sourceTree = "<group>"; };
 		F66871BE2C4563950063D9ED /* CookTalkFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkFeedResponse.swift; sourceTree = "<group>"; };
 		F66871C02C45666B0063D9ED /* CookTalkFeedResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkFeedResponseDTO.swift; sourceTree = "<group>"; };
 		F66871C42C4569F30063D9ED /* CookTalkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkUseCase.swift; sourceTree = "<group>"; };
@@ -759,6 +761,7 @@
 				F66E2D1F2B8CD20A00524B8B /* CookTalkAPI.swift */,
 				F66871D12C467DCE0063D9ED /* RecipeAPI.swift */,
 				F66871F12C4D4EEC0063D9ED /* MyPageAPI.swift */,
+				F6645A712C5152C7005833DD /* MyPageSettingAPI.swift */,
 				F66872012C4D64500063D9ED /* ArchiveAPI.swift */,
 			);
 			path = API;
@@ -1091,6 +1094,7 @@
 				F6FA1EC82BD7E33100198FEB /* AlarmView.swift in Sources */,
 				3F4C10DD2B73EA3200D6DA1B /* FeedView.swift in Sources */,
 				F6F9FB5F2BA1AA0100AEF22E /* TagLayout.swift in Sources */,
+				F6645A722C5152C7005833DD /* MyPageSettingAPI.swift in Sources */,
 				3F4C10E52B73EA3200D6DA1B /* AuthView.swift in Sources */,
 				F66E2D312B8CD4C100524B8B /* HTTPHeaderField.swift in Sources */,
 				F66871C12C45666B0063D9ED /* CookTalkFeedResponseDTO.swift in Sources */,
