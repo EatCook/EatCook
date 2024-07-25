@@ -21,7 +21,7 @@ class UserService {
     private let API_USER_NICKNAME_CHECK = "/api/v1/users/add-signup/check-nick"
     private let API_USER_FIND = "/api/v1/users/find"
     private let API_USER_FIND_VERIFY = "/api/v1/users/find/verify"
-    
+    private let API_USER_FIND_NEWPASSWORD = "/api/v1/users/find/new-password"
    
     
     
@@ -162,6 +162,22 @@ class UserService {
     func findAccountVerify(parameters:[String:Any], success: @escaping (FindAccountVerifyResponse) -> (), failure: @escaping (FindAccountVerifyResponse) -> ()) {
         print("parameters :", parameters)
         APIClient.shared.request(API_USER_FIND_VERIFY, method: .post, parameters: parameters, responseType: FindAccountVerifyResponse.self, successHandler: { (result) in
+            
+            print("result :" ,result)
+            
+            success(result)
+            
+        }, failureHandler: { (error) in
+            failure(error)
+            print("ERROR")
+        })
+    }
+    
+    
+    //  비밀번호 변경
+    func findNewPassword(parameters:[String:Any], success: @escaping (FindNewPasswordResponse) -> (), failure: @escaping (FindNewPasswordResponse) -> ()) {
+        print("parameters :", parameters)
+        APIClient.shared.request(API_USER_FIND_NEWPASSWORD, method: .post, parameters: parameters, responseType: FindNewPasswordResponse.self, successHandler: { (result) in
             
             print("result :" ,result)
             

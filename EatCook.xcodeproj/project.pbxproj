@@ -82,6 +82,9 @@
 		E5F2F6FA2C46137D000EC91C /* PasswordCheckResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F6F92C46137D000EC91C /* PasswordCheckResponseDTO.swift */; };
 		E5F452F42C50A23A0074618B /* FindAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F452F32C50A23A0074618B /* FindAccountResponse.swift */; };
 		E5F452F62C50C12F0074618B /* FindAccountVerifyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F452F52C50C12F0074618B /* FindAccountVerifyResponse.swift */; };
+		E5F452FA2C520D560074618B /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F452F92C520D560074618B /* ChangePasswordView.swift */; };
+		E5F452FC2C521A590074618B /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F452FB2C521A590074618B /* ChangePasswordViewModel.swift */; };
+		E5F452FE2C522E690074618B /* FindNewPasswordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F452FD2C522E690074618B /* FindNewPasswordResponse.swift */; };
 		E5F520152BCFB89400CEA96B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F520142BCFB89400CEA96B /* CustomTabView.swift */; };
 		F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */; };
 		F66E2D072B8CCEFB00524B8B /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66E2D062B8CCEFB00524B8B /* HTTPError.swift */; };
@@ -199,6 +202,9 @@
 		E5F2F6F92C46137D000EC91C /* PasswordCheckResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckResponseDTO.swift; sourceTree = "<group>"; };
 		E5F452F32C50A23A0074618B /* FindAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountResponse.swift; sourceTree = "<group>"; };
 		E5F452F52C50C12F0074618B /* FindAccountVerifyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountVerifyResponse.swift; sourceTree = "<group>"; };
+		E5F452F92C520D560074618B /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		E5F452FB2C521A590074618B /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		E5F452FD2C522E690074618B /* FindNewPasswordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindNewPasswordResponse.swift; sourceTree = "<group>"; };
 		E5F520142BCFB89400CEA96B /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		F66E2D042B8CCEB400524B8B /* EatCookRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookRepositoryType.swift; sourceTree = "<group>"; };
 		F66E2D062B8CCEFB00524B8B /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
@@ -554,6 +560,7 @@
 				E58512C42BF9FDB000E1D877 /* PasswordCheckViewModel.swift */,
 				E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */,
 				E57529C02C4F9511001A277F /* FindAccountViewModel.swift */,
+				E5F452FB2C521A590074618B /* ChangePasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -568,6 +575,7 @@
 				E56146482C01D01700CA1991 /* EmailLoginView.swift */,
 				E55965332C059C38002B3E75 /* AppleLoginButtonView.swift */,
 				E57529BE2C4F94E8001A277F /* FindAccountView.swift */,
+				E5F452F92C520D560074618B /* ChangePasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -664,6 +672,7 @@
 				E57529BC2C4F755F001A277F /* CheckNickNameResponse.swift */,
 				E5F452F32C50A23A0074618B /* FindAccountResponse.swift */,
 				E5F452F52C50C12F0074618B /* FindAccountVerifyResponse.swift */,
+				E5F452FD2C522E690074618B /* FindNewPasswordResponse.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -978,6 +987,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F69B6DBA2B80D90400EFB467 /* FeedTabIndicatorView.swift in Sources */,
+				E5F452FA2C520D560074618B /* ChangePasswordView.swift in Sources */,
 				E535A31B2C04604200E767EC /* ToastView.swift in Sources */,
 				F6C80AE32B80A60100001924 /* TabIndicatorView.swift in Sources */,
 				3F4C10EF2B77BEA500D6DA1B /* CustomTextFieldModifier.swift in Sources */,
@@ -1040,6 +1050,7 @@
 				F66E2D052B8CCEB400524B8B /* EatCookRepositoryType.swift in Sources */,
 				F66E2D0F2B8CCFC400524B8B /* URLRequestable.swift in Sources */,
 				E578D5AC2C296B1300A91EB8 /* SearchMenu.swift in Sources */,
+				E5F452FE2C522E690074618B /* FindNewPasswordResponse.swift in Sources */,
 				F6F9FB672BA1AA1000AEF22E /* RecipeStepView.swift in Sources */,
 				F6F9FB582BA1A9CE00AEF22E /* RecipeCreateViewModel.swift in Sources */,
 				3F4C10DC2B73EA3200D6DA1B /* FeedViewModel.swift in Sources */,
@@ -1085,6 +1096,7 @@
 				E57529C12C4F9511001A277F /* FindAccountViewModel.swift in Sources */,
 				3F4C10DE2B73EA3200D6DA1B /* UserProfileViewModel.swift in Sources */,
 				F6F9FB662BA1AA1000AEF22E /* RecipeTagView.swift in Sources */,
+				E5F452FC2C521A590074618B /* ChangePasswordViewModel.swift in Sources */,
 				3F4C10E32B73EA3200D6DA1B /* ProfileView.swift in Sources */,
 				3F4C10DA2B73EA3200D6DA1B /* RecipeViewModel.swift in Sources */,
 			);

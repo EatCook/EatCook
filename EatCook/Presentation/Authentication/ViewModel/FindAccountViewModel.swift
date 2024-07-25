@@ -95,12 +95,15 @@ class FindAccountViewModel : ObservableObject {
     func sendEmail(completion: @escaping (FindAccountResponse) -> Void) {
         
         UserService.shared.findAccountSendMail(parameters: ["email" : email], success: { (data) in
-         
-            completion(data)
-            print("data : " , data)
+            
+            DispatchQueue.main.async {
+                completion(data)
+            }
             
         }, failure: { (errorData) in
-            completion(errorData)
+            DispatchQueue.main.async {
+                completion(errorData)
+            }
         })
         
         
@@ -108,14 +111,15 @@ class FindAccountViewModel : ObservableObject {
     
     func verify(completion: @escaping (FindAccountVerifyResponse) -> Void) {
         
-        UserService.shared.findAccountVerify(parameters: ["email" : email, "authCode" : authCode], success: { (data) in
-      
-
-            completion(data)
-            print("data : " , data)
-            
+        UserService.shared.findAccountVerify(parameters: ["email" : email, "authCode" : authCode], success: { [weak self] (data) in
+            DispatchQueue.main.async {
+                completion(data)
+                print("data : ", data)
+            }
         }, failure: { (errorData) in
-            completion(errorData)
+            DispatchQueue.main.async {
+                completion(errorData)
+            }
         })
         
         

@@ -257,13 +257,11 @@ struct LoginView: View {
             }.padding(.top)
             
             HStack(spacing: 10) {
-                Button(action: {
-                
-                }, label: {
+                NavigationLink(destination: FindAccountView().toolbarRole(.editor)) {
                     Text("계정찾기")
                         .font(.body)
                         .foregroundStyle(.gray)
-                })
+                }
                 
                 Divider()
                     .background(Color.gray)
@@ -287,11 +285,7 @@ struct LoginView: View {
                 Divider().background(Color.gray)
                     .frame(height: 10)
             
-                NavigationLink(destination: FindAccountView().toolbarRole(.editor)) {
-                    Text("계정찾기")
-                        .font(.body)
-                        .foregroundStyle(.gray)
-                }
+                
                 
  
             }.padding(.vertical, 30)

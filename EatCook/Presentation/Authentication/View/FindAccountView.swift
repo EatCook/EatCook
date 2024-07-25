@@ -10,6 +10,8 @@ import SwiftUI
 struct FindAccountView: View {
     
     @StateObject private var findAccountViewModel = FindAccountViewModel()
+    @State private var navigateToChangePasswordView = false
+    @State private var shake = false
 
     
     var body: some View {
@@ -88,10 +90,12 @@ struct FindAccountView: View {
                 
                 if findAccountViewModel.emailAuthError {
                     HStack() {
-                        Image(.error).resizable().frame(width : 20, height: 20)
+                        Image(.error).resizable().frame(width : 15, height: 15)
                         Text("인증번호가 일치하지 않습니다").font(.system(size : 14)).font(.callout).foregroundColor(.error4)
                         Spacer()
-                    }.padding(.horizontal, 24)
+                    }
+                    .modifier(ShakeEffect(animatableData: CGFloat(shake ? 1 : 0)))
+                    .padding(.horizontal, 24)
                 }
                 
                 
@@ -99,12 +103,15 @@ struct FindAccountView: View {
                     findAccountViewModel.verify { result in
                         if result.success {
                             print("SUCCESS")
+                            navigateToChangePasswordView = true
                         }else{
+                            withAnimation {
+                                findAccountViewModel.emailAuthError = true
+                                shake.toggle()
+                            }
                             print("ERROR")
                         }
                     }
-
-                    
                 }, label: {
                     Text("다음")
                     .frame(maxWidth: .infinity)
@@ -116,9 +123,9 @@ struct FindAccountView: View {
                 })
                 .disabled(!findAccountViewModel.authCodeValidation)
                 
-//                NavigationLink(destination:  PasswordCheckView(email: emailValViewModel.email).toolbarRole(.editor), tag: 1, selection: self.$tag) {
-//                    EmptyView()
-//                }
+                NavigationLink(destination: ChangePasswordView(email: findAccountViewModel.email).toolbarRole(.editor), isActive: $navigateToChangePasswordView) {
+                    EmptyView()
+                }
 
                 Spacer()
             }
