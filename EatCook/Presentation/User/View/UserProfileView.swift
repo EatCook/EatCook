@@ -46,7 +46,8 @@ struct UserProfileView: View {
         myPageUseCase: MyPageUseCase(
             eatCookRepository: EatCookRepository(
                 networkProvider: NetworkProviderImpl(
-                    requestManager: NetworkManager()))))
+                    requestManager: NetworkManager()))),
+        loginUserInfo: LoginUserInfoManager.shared)
     
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
@@ -63,7 +64,7 @@ struct UserProfileView: View {
                             .frame(width: 16)
                         
                         VStack(spacing: 12) {
-                            Text("\(viewModel.myPageData.follower)")
+                            Text("\(viewModel.myPageUserInfo.followerCounts)")
                                 .fontWeight(.semibold)
                             
                             Text("팔로워")
@@ -73,7 +74,7 @@ struct UserProfileView: View {
                         Spacer()
                         
                         VStack(spacing: 12) {
-                            Text("\(viewModel.myPageData.following)")
+                            Text("\(viewModel.myPageUserInfo.followingCounts)")
                                 .fontWeight(.semibold)
                             
                             Text("팔로잉")
@@ -95,11 +96,11 @@ struct UserProfileView: View {
                             .foregroundStyle(.gray5)
                             .clipShape(Circle())
                         
-                        Text(viewModel.myPageData.nickName)
+                        Text(viewModel.myPageUserInfo.nickName)
                             .font(.title3)
                             .fontWeight(.bold)
                         
-                        BadgeTitleView(badgeLevel: BadgeTitleView.checkBadgeLevel(viewModel.myPageData.posts.content.count))
+                        BadgeTitleView(badgeLevel: BadgeTitleView.checkBadgeLevel(viewModel.myPageMyRecipeData.count))
                     }
                     .offset(y: -50)
                 }
@@ -139,7 +140,7 @@ struct UserProfileView: View {
                     }
                     
                     if activeTab == .mypage {
-                        ForEach(viewModel.myPageContentsData, id: \.id) { item in
+                        ForEach(viewModel.myPageMyRecipeData, id: \.id) { item in
                             UserProfileRowView(myPageContentData: item)
                         }
                     } else {
@@ -154,7 +155,8 @@ struct UserProfileView: View {
         .ignoresSafeArea()
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            viewModel.responseMyPage(0)
+            viewModel.responseMyPage()
+            viewModel.responseMyPageMyRecipe()
         }
         
     }

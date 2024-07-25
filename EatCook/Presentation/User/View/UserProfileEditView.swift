@@ -27,20 +27,30 @@ struct UserProfileEditView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     ZStack(alignment: .bottomTrailing) {
-                        let imageUrl = URL(string: viewModel.userProfileImagePath)
-                        AsyncImage(url: imageUrl) { image in
-                            image
+                        if let imageUrlString = viewModel.userProfileImagePath {
+                            let imageUrl = URL(string: imageUrlString)
+                            AsyncImage(url: imageUrl) { image in
+                                image
+                                    .resizable()
+                                    .frame(width: 130, height: 130)
+                                    .scaledToFit()
+                                    .clipShape(Circle())
+                                    .padding(.top, 24)
+                            } placeholder: {
+                                ProgressView()
+                            }
+                        } else {
+                            Image(systemName: "person.crop.circle.fill")
                                 .resizable()
                                 .frame(width: 130, height: 130)
                                 .scaledToFit()
                                 .clipShape(Circle())
                                 .padding(.top, 24)
-                        } placeholder: {
-                            ProgressView()
+                                .foregroundStyle(.gray3)
                         }
                         
                         Button {
-                            
+                            viewModel.requestUserProfileImageEdit("jpg")
                         } label: {
                             CameraImageView()
                         }
@@ -173,6 +183,9 @@ struct UserProfileEditView: View {
                 }
             } message: {
                 Text("프로필 편집이 완료되었습니다.")
+            }
+            .onAppear {
+                
             }
 
             

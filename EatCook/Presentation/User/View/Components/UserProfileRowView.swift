@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserProfileRowView: View {
-    var myPageContentData = MyPageContent()
+    var myPageContentData = MyPageMyRecipeContent()
     
     var body: some View {
         HStack(spacing: 16) {

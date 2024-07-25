@@ -15,29 +15,10 @@ struct MyPageResponse: Codable {
 
 struct MyPageDataResponse: Codable {
     var userId: Int = 0
+    var email: String = ""
     var nickName: String = ""
     var badge: String = ""
-    var follower: Int = 0
-    var following: Int = 0
+    var followerCounts: Int = 0
+    var followingCounts: Int = 0
     var providerType: String = ""
-    var posts: MyPagePosts = MyPagePosts()
-}
-
-struct MyPagePosts: Codable {
-    var content: [MyPageContent] = []
-    var page: Int = 0
-    var size: Int = 0
-    var totalElements: Int = 0
-    var totalPages: Int = 0
-    var hasNextPage: Bool = false
-}
-
-struct MyPageContent: Codable, Identifiable {
-    var postId: Int = 0
-    var postImagePath: String = ""
-    var recipeName: String = ""
-    var introduction: String = ""
-    var likeCounts: Int = 0
-    
-    var id: String = UUID().uuidString
 }

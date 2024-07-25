@@ -18,9 +18,12 @@ protocol EatCookRepositoryType: AnyObject {
     func requestRecipeCreate(of endpoint: EndPoint) -> Future<RecipeCreateResponse, NetworkError>
     
     /// MyPage
-    func responseMyPage(of endpoint: EndPoint) -> Future<MyPageResponse, NetworkError>
-    func responseMyPageArchive(of endpoint: EndPoint) -> Future<MyPageArchiveResponse, NetworkError>
+    func responseMyPageUserInfo(of endpoint: EndPoint) -> Future<MyPageResponse, NetworkError>
     func requestMyPageProfileEdit(of endpoint: EndPoint) -> Future<MyPageProfileEditRequestResponse, NetworkError>
+    func requestMyPageProfileImageEdit(of endpoint: EndPoint) -> Future<MyPageProfileImageEditResponse, NetworkError>
+    func responseMyPageMyRecipe(of endpoint: EndPoint) -> Future<MyPageMyRecipeResponse, NetworkError>
+    func responseMyPageArchive(of endpoint: EndPoint) -> Future<MyPageArchiveResponse, NetworkError>
+    
     
     /// Archive
     func requestArchiveAdd(of endpoint: EndPoint) -> Future<ArchiveAddRequestResponse, NetworkError>

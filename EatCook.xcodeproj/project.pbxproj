@@ -46,6 +46,8 @@
 		F6645A6A2C4FF4AC005833DD /* MyPageProfileEditRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6645A692C4FF4AC005833DD /* MyPageProfileEditRequestResponse.swift */; };
 		F6645A6E2C4FFA31005833DD /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6645A6D2C4FFA31005833DD /* CameraImageView.swift */; };
 		F6645A722C5152C7005833DD /* MyPageSettingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6645A712C5152C7005833DD /* MyPageSettingAPI.swift */; };
+		F6645A742C5266DF005833DD /* MyPageMyRecipeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6645A732C5266DF005833DD /* MyPageMyRecipeResponseDTO.swift */; };
+		F6645A762C5266F5005833DD /* MyPageMyRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6645A752C5266F5005833DD /* MyPageMyRecipeResponse.swift */; };
 		F66871BF2C4563950063D9ED /* CookTalkFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871BE2C4563950063D9ED /* CookTalkFeedResponse.swift */; };
 		F66871C12C45666B0063D9ED /* CookTalkFeedResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871C02C45666B0063D9ED /* CookTalkFeedResponseDTO.swift */; };
 		F66871C52C4569F30063D9ED /* CookTalkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66871C42C4569F30063D9ED /* CookTalkUseCase.swift */; };
@@ -164,6 +166,8 @@
 		F6645A692C4FF4AC005833DD /* MyPageProfileEditRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileEditRequestResponse.swift; sourceTree = "<group>"; };
 		F6645A6D2C4FFA31005833DD /* CameraImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
 		F6645A712C5152C7005833DD /* MyPageSettingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSettingAPI.swift; sourceTree = "<group>"; };
+		F6645A732C5266DF005833DD /* MyPageMyRecipeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyRecipeResponseDTO.swift; sourceTree = "<group>"; };
+		F6645A752C5266F5005833DD /* MyPageMyRecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyRecipeResponse.swift; sourceTree = "<group>"; };
 		F66871BE2C4563950063D9ED /* CookTalkFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkFeedResponse.swift; sourceTree = "<group>"; };
 		F66871C02C45666B0063D9ED /* CookTalkFeedResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkFeedResponseDTO.swift; sourceTree = "<group>"; };
 		F66871C42C4569F30063D9ED /* CookTalkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTalkUseCase.swift; sourceTree = "<group>"; };
@@ -643,6 +647,7 @@
 				F66871C62C456E970063D9ED /* CookTalkFollowResponse.swift */,
 				F66871CF2C467CEA0063D9ED /* RecipeReadResponse.swift */,
 				F66871F92C4D52C80063D9ED /* MyPageResponse.swift */,
+				F6645A752C5266F5005833DD /* MyPageMyRecipeResponse.swift */,
 				F66871FB2C4D5DC60063D9ED /* MyPageArchiveResponse.swift */,
 			);
 			path = Response;
@@ -790,6 +795,7 @@
 				F66871C82C456EA30063D9ED /* CookTalkFollowResponseDTO.swift */,
 				F66871CD2C467C8A0063D9ED /* RecipeReadResponseDTO.swift */,
 				F66871ED2C4D4ECD0063D9ED /* MyPageResponseDTO.swift */,
+				F6645A732C5266DF005833DD /* MyPageMyRecipeResponseDTO.swift */,
 				F66871EF2C4D4EE40063D9ED /* MyPageArchiveResponseDTO.swift */,
 			);
 			path = ResponseDTO;
@@ -1093,6 +1099,7 @@
 				F6F9FB522BA1A82600AEF22E /* CustomBorderModifier.swift in Sources */,
 				F6FA1EC82BD7E33100198FEB /* AlarmView.swift in Sources */,
 				3F4C10DD2B73EA3200D6DA1B /* FeedView.swift in Sources */,
+				F6645A742C5266DF005833DD /* MyPageMyRecipeResponseDTO.swift in Sources */,
 				F6F9FB5F2BA1AA0100AEF22E /* TagLayout.swift in Sources */,
 				F6645A722C5152C7005833DD /* MyPageSettingAPI.swift in Sources */,
 				3F4C10E52B73EA3200D6DA1B /* AuthView.swift in Sources */,
@@ -1126,6 +1133,7 @@
 				3F4C10DA2B73EA3200D6DA1B /* RecipeViewModel.swift in Sources */,
 				F66871FE2C4D62E20063D9ED /* ArchiveAddRequestResponse.swift in Sources */,
 				F6645A6A2C4FF4AC005833DD /* MyPageProfileEditRequestResponse.swift in Sources */,
+				F6645A762C5266F5005833DD /* MyPageMyRecipeResponse.swift in Sources */,
 				F66871E12C4CF3040063D9ED /* UserProfileStorageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

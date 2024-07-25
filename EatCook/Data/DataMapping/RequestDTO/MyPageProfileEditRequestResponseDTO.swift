@@ -39,3 +39,31 @@ extension MyPageProfileEditRequestResponseDataDTO {
         return .init()
     }
 }
+
+struct MyPageProfileImageEditResponseDTO: Codable {
+    let success: Bool
+    let code: String
+    let message: String
+    let data: MyPageProfileImageEditResponseDataDTO
+}
+
+struct MyPageProfileImageEditResponseDataDTO: Codable {
+    let presignedUrl: String
+}
+
+extension MyPageProfileImageEditResponseDTO {
+    func toDomain() -> MyPageProfileImageEditResponse {
+        return .init(
+            success: success,
+            code: code,
+            message: message,
+            data: data.toDomain()
+        )
+    }
+}
+
+extension MyPageProfileImageEditResponseDataDTO {
+    func toDomain() -> MyPageProfileImageEditResponseData {
+        return .init(presignedUrl: presignedUrl)
+    }
+}

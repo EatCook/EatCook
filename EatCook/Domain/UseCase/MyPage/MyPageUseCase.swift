@@ -21,9 +21,27 @@ final class MyPageUseCase {
 
 extension MyPageUseCase {
     
-    func responseMyPage(_ page: Int) -> AnyPublisher<MyPageResponse, NetworkError> {
+    func responseMyPage() -> AnyPublisher<MyPageResponse, NetworkError> {
         return eatCookRepository
-            .responseMyPage(of: MyPageAPI.mypage(page))
+            .responseMyPageUserInfo(of: MyPageAPI.mypageUserInfo)
+            .eraseToAnyPublisher()
+    }
+    
+    func requestMyPageProfileEdit(_ nickName: String) -> AnyPublisher<MyPageProfileEditRequestResponse, NetworkError> {
+        return eatCookRepository
+            .requestMyPageProfileEdit(of: MyPageAPI.mypageProfileEdit(nickName))
+            .eraseToAnyPublisher()
+    }
+    
+    func requestMyPageProfileImageEdit(_ fileExtention: String) -> AnyPublisher<MyPageProfileImageEditResponse, NetworkError> {
+        return eatCookRepository
+            .requestMyPageProfileImageEdit(of: MyPageAPI.mypageProfileImageEdit(fileExtention))
+            .eraseToAnyPublisher()
+    }
+    
+    func responseMyPageMyRecipe(_ page: Int?) ->AnyPublisher<MyPageMyRecipeResponse, NetworkError> {
+        return eatCookRepository
+            .responseMyPageMyRecipe(of: MyPageAPI.mypageMyRecipe(page))
             .eraseToAnyPublisher()
     }
     
@@ -33,10 +51,6 @@ extension MyPageUseCase {
             .eraseToAnyPublisher()
     }
     
-    func requestMyPageProfileEdit(_ nickName: String) -> AnyPublisher<MyPageProfileEditRequestResponse, NetworkError> {
-        return eatCookRepository
-            .requestMyPageProfileEdit(of: MyPageAPI.mypageProfileEdit(nickName))
-            .eraseToAnyPublisher()
-    }
+    
     
 }

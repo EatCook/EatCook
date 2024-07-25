@@ -18,7 +18,12 @@ final class LoginUserInfoManager: ObservableObject {
 }
 
 struct UserInfo {
+    var userId: Int
     var email: String
     var nickName: String
+    var badge: String
+    var followerCounts: Int
+    var followingCounts: Int
+    var providerType: String
     var profileImagePath: String?
 }

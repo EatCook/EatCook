@@ -15,22 +15,9 @@ struct MyPageResponseDTO: Codable {
 
 struct MyPageDataResponseDTO: Codable {
     let userId: Int
-    let nickName, badge: String
-    let follower, following: Int
+    let email, nickName, badge: String
+    let followerCounts, followingCounts: Int
     let providerType: String
-    let posts: MyPagePostsDTO
-}
-
-struct MyPagePostsDTO: Codable {
-    let content: [MyPageContentDTO]
-    let page, size, totalElements, totalPages: Int
-    let hasNextPage: Bool
-}
-
-struct MyPageContentDTO: Codable {
-    let postId: Int
-    let postImagePath, recipeName, introduction: String
-    let likeCounts: Int
 }
 
 extension MyPageResponseDTO {
@@ -44,33 +31,14 @@ extension MyPageResponseDTO {
 
 extension MyPageDataResponseDTO {
     func toDomain() -> MyPageDataResponse {
-        return .init(userId: userId,
-                     nickName: nickName,
-                     badge: badge,
-                     follower: follower,
-                     following: following,
-                     providerType: providerType,
-                     posts: posts.toDomain())
-    }
-}
-
-extension MyPagePostsDTO {
-    func toDomain() -> MyPagePosts {
-        return .init(content: content.map { $0.toDomain() },
-                     page: page,
-                     size: size,
-                     totalElements: totalElements,
-                     totalPages: totalPages,
-                     hasNextPage: hasNextPage)
-    }
-}
-
-extension MyPageContentDTO {
-    func toDomain() -> MyPageContent {
-        return .init(postId: postId,
-                     postImagePath: postImagePath,
-                     recipeName: recipeName,
-                     introduction: introduction,
-                     likeCounts: likeCounts)
+        return .init(
+            userId: userId,
+            email: email,
+            nickName: nickName,
+            badge: badge,
+            followerCounts: followerCounts,
+            followingCounts: followingCounts,
+            providerType: providerType
+        )
     }
 }

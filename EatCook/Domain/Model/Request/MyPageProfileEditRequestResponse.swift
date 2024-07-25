@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// 닉네임 업데이트
+
 struct MyPageProfileEditRequestResponse: Codable {
     var success: Bool = false
     var code: String = ""
@@ -16,4 +18,17 @@ struct MyPageProfileEditRequestResponse: Codable {
 
 struct MyPageProfileEditRequestResponseData: Codable {
     
+}
+
+/// 이미지 업데이트
+
+struct MyPageProfileImageEditResponse: Codable {
+    var success: Bool = false
+    var code: String = ""
+    var message: String = ""
+    var data = MyPageProfileImageEditResponseData()
+}
+
+struct MyPageProfileImageEditResponseData: Codable {
+    var presignedUrl: String = ""
 }
