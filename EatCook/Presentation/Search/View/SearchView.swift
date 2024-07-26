@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SearchView: View {
     @StateObject private var searchViewModel = SearchViewModel()
+    @StateObject private var keyboardResponder = KeyboardResponder()
+    
+    
     @State private var isSearching = false
     @State var recentSearchData: [[String]] = [["홍고추"],["계란덮밥", "덮밥"], ["감바스","마늘","고추"],["감바스","마늘","고추", "양배추"],["감바스","마늘","고추", "양배추", "닭갈비"]]
  
@@ -18,56 +21,62 @@ struct SearchView: View {
 
     var body: some View {
         NavigationStack {
+            VStack {
+                HStack {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(.backButton).resizable()
+                            .frame(width: 20, height: 20)
+                    }.padding(.trailing)
+                    
+                    TextField("재료 또는 레시피를 검색해 보세요", text: $searchViewModel.searchText, onCommit: {
+                        guard searchViewModel.searchText.count > 0 else {
+                            //                                    TODO : Alert 창
+                            return
+                        }
+                        searchViewModel.searchCheckValidate()
+                        
+                    })
+                    
+                    Button(action: {
+                        
+                        searchViewModel.searchCheckValidate()
+                        
+                    }) {
+                        Image(systemName: "magnifyingglass")
+                            .tint(.gray)
+                    }
+                }
+                .padding(.horizontal)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(searchViewModel.tags, id: \.self) { tag in
+                            SearchTagView(tag: tag.value) {
+                                searchViewModel.removeTag(tag: tag.value)
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                }.padding(.top)
+                    .padding(.bottom , 12)
+            }
+            .offset(y: keyboardResponder.currentHeight * 0.01)
+            .animation(.easeOut(duration: 0.16), value: keyboardResponder.currentHeight * 0.01)
+            .background(Color.gray10)
+                .padding(.bottom)
+
             ZStack {
                 Color.gray10.edgesIgnoringSafeArea(.all)
                 
-                ScrollView(showsIndicators: false) {
+
+                
+                
+                if searchViewModel.ingredients.isEmpty && searchViewModel.recipes.isEmpty {
                     VStack {
-                        HStack {
-                            Button {
-                                dismiss()
-                            } label: {
-                                Image(.backButton).resizable()
-                                    .frame(width: 20, height: 20)
-                            }.padding(.trailing)
-                            
-                            TextField("재료 또는 레시피를 검색해 보세요", text: $searchViewModel.searchText, onCommit: {
-                                guard searchViewModel.searchText.count > 0 else {
-//                                    TODO : Alert 창
-                                    return
-                                }
-                                searchViewModel.searchCheckValidate()
-                               
-                            })
-                            
-                            Button(action: {
-                                
-                                searchViewModel.searchCheckValidate()
-                                
-                            }) {
-                                Image(systemName: "magnifyingglass")
-                                    .tint(.gray)
-                            }
-                        }
-                        .padding(.horizontal)
-                        
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(searchViewModel.tags, id: \.self) { tag in
-                                    SearchTagView(tag: tag.value) {
-                                        searchViewModel.removeTag(tag: tag.value)
-                                    }
-                                }
-                            }
-                            .padding(.horizontal)
-                        }.padding(.top)
-                    }.background(Color.gray10)
-                        .padding(.bottom)
-                    
-                    if searchViewModel.ingredients.isEmpty && searchViewModel.recipes.isEmpty {
-                        VStack {
-                            ZStack(alignment: .top) {
-                                VStack {
+                        ZStack(alignment: .top) {
+                            VStack {
                                     HStack(alignment: .bottom) {
                                         Text("지금 많이 검색하고 있어요")
                                             .font(.title3).bold()
@@ -99,10 +108,14 @@ struct SearchView: View {
                                                         .padding(.vertical, 12)
                                                     }
                                                     Spacer()
-                                                    Image(.upPrimary)
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .frame(width: 18)
+                                                    
+                                                    
+                                                    if data.rankChange == 0 {
+                                                        Image(.same).resizable().scaledToFit().frame(width: 15, height : 15)
+                                                    }else{
+                                                        Image(data.rankChange > 0 ? .upPrimary : .downGray ).resizable().scaledToFit().frame(width: 15, height : 15)
+                                                    }
+                                                    
                                                 }
                                             }
                                         }
@@ -135,20 +148,24 @@ struct SearchView: View {
                     }else{
                         VStack {
                             SearchViewCustomTabView(selectedTab: $searchViewModel.selectedTab)
-                            if searchViewModel.selectedTab == .ingredient {
+                            TabView(selection: $searchViewModel.selectedTab) {
                                 IngredientsView(ingredients: $searchViewModel.ingredients)
-                            } else {
+                                    .tag(selectedTabType.ingredient)
                                 RecipesView(recipes: $searchViewModel.recipes)
+                                    .tag(selectedTabType.recipe)
                             }
-                            Spacer()
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+
                         }.navigationBarTitle("", displayMode: .inline)
                         .navigationBarHidden(true)
                         .background(Color.white)
                     }
                 }
 
-            }.environmentObject(searchViewModel)
-        }
+            }
+
+        .environmentObject(searchViewModel)
+       
     }
 }
 
@@ -162,7 +179,10 @@ struct SearchViewCustomTabView: View {
         VStack {
             HStack {
                 Button(action: {
-                    selectedTab = .ingredient
+                    withAnimation {
+                        selectedTab = .ingredient
+                    }
+                   
                 }) {
                     VStack {
                         Text("재료")
@@ -182,7 +202,10 @@ struct SearchViewCustomTabView: View {
                 }
                 Spacer()
                 Button(action: {
-                    selectedTab = .recipe
+                    withAnimation {
+                        selectedTab = .recipe
+                    }
+                   
                 }) {
                     VStack {
                         Text("레시피")
@@ -204,8 +227,7 @@ struct SearchViewCustomTabView: View {
             }
             .padding()
             .background(Color.white)
-            
-            Spacer()
+
         }
     }
 }
@@ -218,12 +240,16 @@ struct IngredientsView: View {
         GridItem(.flexible())
     ]
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 20) {
-            ForEach(ingredients) { ingredient in
-                IngredientView(ingredient: ingredient)
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(ingredients) { ingredient in
+                    IngredientView(ingredient: ingredient)
+                }
             }
+            .padding()
+            
         }
-        .padding()
+
     }
 }
 
@@ -243,7 +269,7 @@ struct IngredientView: View {
                             .clipped()
                             .cornerRadius(10)
                     } else {
-                        ProgressView().frame(width: 120, height: 100)
+                        ProgressView().frame(height: 100)
                     }
                 }
 
@@ -265,9 +291,6 @@ struct IngredientView: View {
                 loader.loadImage(from: "\(Environment.AwsBaseURL)/\(ingredient.imageFilePath)")
             }
             
-            Spacer()
-
-            
             VStack {
                 VStack(alignment : .leading) {
                     VStack(alignment : .leading) {
@@ -282,6 +305,7 @@ struct IngredientView: View {
                     }.frame(maxWidth: .infinity, alignment: .leading) // 항상 왼쪽 정렬
 
                 }
+                Spacer()
                 VStack(alignment: .leading) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
@@ -302,11 +326,11 @@ struct IngredientView: View {
                     }
                 }
             }
-        
+           
 
                
         }
-        .frame(height : 220)
+//        .frame(height : 220)
         .background(Color.white)
         .cornerRadius(10)
         
@@ -323,12 +347,16 @@ struct RecipesView: View {
     ]
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 20) {
-            ForEach(recipes) { recipe in
-                SearchRecipeView(recipe: recipe)
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(recipes) { recipe in
+                    SearchRecipeView(recipe: recipe)
+                }
             }
+            .padding()
+            
         }
-        .padding()
+        
     }
 }
 
@@ -349,7 +377,7 @@ struct SearchRecipeView: View {
                             .clipped()
                             .cornerRadius(10)
                     } else {
-                        ProgressView().frame(width: 120, height: 100)
+                        ProgressView().frame(height: 100)
                     }
                 }
 
@@ -371,7 +399,7 @@ struct SearchRecipeView: View {
                 loader.loadImage(from: "\(Environment.AwsBaseURL)/\(recipe.imageFilePath)")
             }
             
-            Spacer()
+            
             
             VStack {
                 VStack(alignment : .leading) {
@@ -387,6 +415,7 @@ struct SearchRecipeView: View {
                     }.frame(maxWidth: .infinity, alignment: .leading) // 항상 왼쪽 정렬
 
                 }
+                Spacer()
                 VStack(alignment: .leading) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
@@ -412,7 +441,7 @@ struct SearchRecipeView: View {
             
            
         }
-        .frame(height : 220)
+//        .frame(height : 220)
         .background(Color.white)
         .cornerRadius(10)
         
