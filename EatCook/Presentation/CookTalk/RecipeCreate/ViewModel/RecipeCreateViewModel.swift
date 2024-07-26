@@ -234,4 +234,5 @@ enum UploadError: Error {
     case invalidURL
     case uploadFailed
     case fileExtension
+    case noImage
 }

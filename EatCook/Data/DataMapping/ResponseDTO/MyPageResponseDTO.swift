@@ -15,7 +15,7 @@ struct MyPageResponseDTO: Codable {
 
 struct MyPageDataResponseDTO: Codable {
     let userId: Int
-    let email, nickName, badge: String
+    let email, userImagePath, nickName, badge: String
     let followerCounts, followingCounts: Int
     let providerType: String
 }
@@ -34,6 +34,7 @@ extension MyPageDataResponseDTO {
         return .init(
             userId: userId,
             email: email,
+            userImagePath: userImagePath,
             nickName: nickName,
             badge: badge,
             followerCounts: followerCounts,

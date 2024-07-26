@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UserProfileEditView: View {
     @State private var showAlert: Bool = false
+    @State private var showImagePicker: Bool = false
     
     @StateObject private var viewModel = UserProfileEditViewModel(
         myPageUseCase: MyPageUseCase(
@@ -27,30 +28,41 @@ struct UserProfileEditView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     ZStack(alignment: .bottomTrailing) {
-                        if let imageUrlString = viewModel.userProfileImagePath {
-                            let imageUrl = URL(string: imageUrlString)
-                            AsyncImage(url: imageUrl) { image in
-                                image
-                                    .resizable()
-                                    .frame(width: 130, height: 130)
-                                    .scaledToFit()
-                                    .clipShape(Circle())
-                                    .padding(.top, 24)
-                            } placeholder: {
-                                ProgressView()
-                            }
-                        } else {
-                            Image(systemName: "person.crop.circle.fill")
+                        if let selectedImage = viewModel.userProfileImage {
+                            Image(uiImage: selectedImage)
                                 .resizable()
                                 .frame(width: 130, height: 130)
                                 .scaledToFit()
                                 .clipShape(Circle())
                                 .padding(.top, 24)
-                                .foregroundStyle(.gray3)
+                        } else {
+                            if let imageUrlString = viewModel.userProfileImagePath {
+                                let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(imageUrlString)")
+                                AsyncImage(url: imageUrl) { image in
+                                    image
+                                        .resizable()
+                                        .frame(width: 130, height: 130)
+                                        .scaledToFit()
+                                        .clipShape(Circle())
+                                        .padding(.top, 24)
+                                } placeholder: {
+                                    ProgressView()
+                                        .frame(width: 130, height: 130)
+                                        .padding(.top, 24)
+                                }
+                            } else {
+                                Image(systemName: "person.crop.circle.fill")
+                                    .resizable()
+                                    .frame(width: 130, height: 130)
+                                    .scaledToFit()
+                                    .clipShape(Circle())
+                                    .padding(.top, 24)
+                                    .foregroundStyle(.gray3)
+                            }
                         }
                         
                         Button {
-                            viewModel.requestUserProfileImageEdit("jpg")
+                            showImagePicker.toggle()
                         } label: {
                             CameraImageView()
                         }
@@ -164,13 +176,16 @@ struct UserProfileEditView: View {
                     Button {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                         Task {
-                            await viewModel.requestUserProfileEdit(viewModel.userNickName)
+                            await viewModel.requestUserProfileEdit()
+                            await viewModel.requestUserProfileImageEdit()
+                            await viewModel.uploadImage()
                             
-                            if !viewModel.isLoading && viewModel.error == nil {
-                                showAlert.toggle()
-                            } else if let error = viewModel.error {
-                                print("프로필 편집 실패!!!")
-                            }
+//                            if !viewModel.isLoading && viewModel.error == nil {
+//                                showAlert.toggle()
+//                            }
+//                            else if let error = viewModel.error && viewModel.isLoading {
+//                                print("프로필 편집 실패!!!")
+//                            }
                         }
                     } label: {
                         Text("저장")
@@ -183,6 +198,14 @@ struct UserProfileEditView: View {
                 }
             } message: {
                 Text("프로필 편집이 완료되었습니다.")
+            }
+            .sheet(isPresented: $showImagePicker) {
+                ImagePicker(
+                    image: $viewModel.userProfileImage,
+                    imageURL: $viewModel.userProfileImageURL,
+                    imageExtension: $viewModel.userProfileImageExtension,
+                    isPresented: $showImagePicker
+                )
             }
             .onAppear {
                 

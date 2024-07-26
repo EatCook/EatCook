@@ -16,6 +16,7 @@ struct MyPageResponse: Codable {
 struct MyPageDataResponse: Codable {
     var userId: Int = 0
     var email: String = ""
+    var userImagePath: String? = ""
     var nickName: String = ""
     var badge: String = ""
     var followerCounts: Int = 0

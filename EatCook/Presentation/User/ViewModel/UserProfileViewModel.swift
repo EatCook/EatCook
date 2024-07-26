@@ -38,7 +38,7 @@ final class UserProfileViewModel: ObservableObject {
             followerCounts: myPageUserInfo.followerCounts,
             followingCounts: myPageUserInfo.followingCounts,
             providerType: myPageUserInfo.providerType,
-            profileImagePath: nil
+            profileImagePath: myPageUserInfo.userImagePath
         )
         
         loginUserInfo.userInfo = userInfo
