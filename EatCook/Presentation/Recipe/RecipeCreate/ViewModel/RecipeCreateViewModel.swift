@@ -126,14 +126,15 @@ extension RecipeCreateViewModel {
         isUpLoading = true
         isUpLoadingError = nil
         
-        let recipeCreateDTO = RecipeCreateRequestDTO(email: recipeCreateData.email,
-                                                     recipeName: recipeCreateData.recipeName,
-                                                     recipeTime: recipeCreateData.recipeTime,
-                                                     introduction: recipeCreateData.introduction,
-                                                     mainFileExtension: recipeCreateData.mainFileExtension,
-                                                     foodIngredients: recipeCreateData.foodIngredients,
-                                                     cookingType: recipeCreateData.cookingType,
-                                                     recipeProcess: recipeCreateData.recipeProcess.map { $0.toData() })
+        let recipeCreateDTO = RecipeCreateRequestDTO(
+            recipeName: recipeCreateData.recipeName,
+            recipeTime: recipeCreateData.recipeTime,
+            introduction: recipeCreateData.introduction,
+            mainFileExtension: recipeCreateData.mainFileExtension,
+            foodIngredients: recipeCreateData.foodIngredients,
+            cookingType: recipeCreateData.cookingType,
+            recipeProcess: recipeCreateData.recipeProcess.map { $0.toData() }
+        )
         
         return await withCheckedContinuation { continuation in
             cookTalkUseCase.requestRecipeCreate(recipeCreateDTO)

@@ -38,19 +38,17 @@ final class UserProfileEditViewModel: ObservableObject {
     }
     
     private func setupProfile() {
-        if let info = loginUserInfo.userInfo {
-            self.userNickName = info.nickName
-            self.userEmail = info.email
-            self.userProfileImagePath = info.profileImagePath
-        }
+        self.userNickName = loginUserInfo.userInfo.nickName
+        self.userEmail = loginUserInfo.userInfo.email
+        self.userProfileImagePath = loginUserInfo.userInfo.profileImagePath
     }
     
 }
 
 extension UserProfileEditViewModel {
     func requestUserProfileEdit() async {
-        guard let info = loginUserInfo.userInfo else { return }
-        if info.nickName == self.userNickName { return }
+//        guard let info = loginUserInfo.userInfo else { return }
+        if loginUserInfo.userInfo.nickName == self.userNickName { return }
         isLoading = true
         error = nil
         
@@ -72,7 +70,7 @@ extension UserProfileEditViewModel {
                 } receiveValue: { [weak self] response in
                     guard let self = self else { return }
                     print(response.data)
-                    loginUserInfo.userInfo?.nickName = self.userNickName
+                    loginUserInfo.userInfo.nickName = self.userNickName
                 }
                 .store(in: &cancellables)
         }

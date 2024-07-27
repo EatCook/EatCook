@@ -1,41 +1,42 @@
 //
-//  ArchiveAPI.swift
+//  LikeCheckAPI.swift
 //  EatCook
 //
-//  Created by 이명진 on 7/22/24.
+//  Created by 이명진 on 7/28/24.
 //
 
 import Foundation
 
-enum ArchiveAPI: EndPoint {
-    case archiveAdd(_ postId: Int)
-    case archiveDelete(_ postId: Int)
+enum LikeCheckAPI: EndPoint {
+    case likeAdd(_ postId: Int)
+    case likeDelete(_ postId: Int)
     
     var path: String {
         switch self {
-        case .archiveAdd:
-            return "/api/v1/archive/add"
-        case .archiveDelete:
-            return "/api/v1/archive/del"
+        case .likeAdd:
+            return "/api/v1/liked/add"
+        case .likeDelete:
+            return "/api/v1/liked/del"
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .archiveAdd:
+        case .likeAdd:
             return .post
-        case .archiveDelete:
+        case .likeDelete:
             return .delete
         }
     }
     
     var httpTask: HTTPTask {
         switch self {
-        case .archiveAdd(let postId):
+        case .likeAdd(let postId):
             return .requestWithParameters(
                 parameters: ["postId": postId],
-                encoding: .jsonEncoding)
-        case .archiveDelete(let postId):
+                encoding: .jsonEncoding
+            )
+        case .likeDelete(let postId):
             return .requestWithParameters(
                 parameters: ["postId": postId],
                 encoding: .jsonEncoding
@@ -45,7 +46,7 @@ enum ArchiveAPI: EndPoint {
     
     var headers: [String : String]? {
         switch self {
-        case .archiveAdd, .archiveDelete:
+        case .likeAdd, .likeDelete:
             return HTTPHeaderField.default
         }
     }

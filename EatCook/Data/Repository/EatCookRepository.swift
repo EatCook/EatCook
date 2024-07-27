@@ -95,6 +95,44 @@ extension EatCookRepository {
         }
     }
     
+    func requestRecipeDelete(of endpoint: EndPoint) -> Future<RecipeDeleteRequestResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(RecipeDeleteRequestResponse.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
+    /// Liked
+    func requestLikeAddOrDelete(of endpoint: EndPoint) -> Future<LikedCheckRequestResponse, NetworkError> {
+        
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(LikedCheckRequestResponse.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
     /// MyPage
     func responseMyPageUserInfo(of endpoint: EndPoint) -> Future<MyPageResponse, NetworkError> {
         return Future { promise in

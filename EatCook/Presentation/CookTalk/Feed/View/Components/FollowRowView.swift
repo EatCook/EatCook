@@ -55,22 +55,28 @@ struct FollowRowView: View {
 //            RoundedRectangle(cornerRadius: 10)
 //                .frame(width: 311, height: 196)
 //                .foregroundStyle(.gray4)
-            
-            HStack(spacing: 8) {
-                Circle()
-                    .frame(width: 25, height: 25)
-                    .foregroundStyle(.gray3)
-                
-                Text(cookTalkFollowData.nickName)
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.gray9)
-                
-                Button {
+            if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(cookTalkFollowData.profile ?? "")") {
+                HStack(spacing: 8) {
+                    AsyncImage(url: imageUrl) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                                .frame(width: 25, height: 25)
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .clipShape(Circle())
+                        case .failure:
+                            EmptyProfileImageView()
+                        @unknown default:
+                            EmptyView()
+                        }
+                    }
                     
-                } label: {
-                    Text("팔로우")
-                        .font(.system(size: 12, weight: .regular))
-                        .foregroundStyle(.info4)
+                    Text(cookTalkFollowData.nickName)
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(.gray9)
                 }
             }
             

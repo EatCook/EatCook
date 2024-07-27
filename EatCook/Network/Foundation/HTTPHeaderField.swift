@@ -16,7 +16,7 @@ enum HTTPHeaderField: String {
 enum ContentType: String {
     case urlEncoded = "application/x-www-form-urlencoded"
     case json = "application/json"
-    case jwtToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJlYXRjb29rIiwic3ViIjoiYWNjZXNzLXRva2VuIiwiaWF0IjoxNzIyMDA1NzQwLCJ1c2VybmFtZSI6Iml0Y29vazFAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImV4cCI6MTcyMjA5MjE0MH0.s2-J4jDqBkUAsfUPPCmU0FHPJ40dljyzE5SgE2Y1fA03NNVHU16N2YkJy7EfKiTIaJvLYOKt-riRIx3UPDp7WQ"
+    case jwtToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJlYXRjb29rIiwic3ViIjoiYWNjZXNzLXRva2VuIiwiaWF0IjoxNzIyMTAzNzA2LCJ1c2VybmFtZSI6Iml0Y29va0BnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzIyMTkwMTA2fQ.wB9B81QxYhaCB4qj-bYyRtYgHnDipIR2DiJgrKaiToDA8TwncbUaRaBsKVUsIkipz3ORo1C4lrj2MWvIdEpmRA"
     case multipart = "multipart/form-data"
     case jpg = "image/jpeg" // jpg, jpeg
     case png = "image/png"

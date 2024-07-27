@@ -48,7 +48,8 @@ struct RecipeView: View {
         recipeUseCase: RecipeUseCase(
             eatCookRepository: EatCookRepository(
                 networkProvider: NetworkProviderImpl(
-                    requestManager: NetworkManager()))))
+                    requestManager: NetworkManager()))),
+        loginUserInfo: LoginUserInfoManager.shared)
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -74,8 +75,10 @@ struct RecipeView: View {
                             
                             Spacer()
                             
-                            FollowButton(isFollowed: $viewModel.isFollowed) {
-                                viewModel.isFollowed.toggle()
+                            if !viewModel.isMyRecipe {
+                                FollowButton(isFollowed: $viewModel.isFollowed) {
+                                    viewModel.isFollowed.toggle()
+                                }
                             }
                         }
                         .padding(.horizontal, 16)
@@ -203,12 +206,57 @@ struct RecipeView: View {
                     }
                 }
             }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
+                            .imageScale(.large)
+                            .foregroundStyle(.black)
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    if viewModel.isMyRecipe {
+                        Menu {
+                            Button {
+                                naviPathFinder.addPath(.recipeCreate(""))
+                            } label: {
+                                Label("편집", systemImage: "pencil")
+                            }
+                            
+                            Button("삭제", systemImage: "trash", role: .destructive) {
+                                Task {
+                                    await viewModel.requestDeleteRecipe(viewModel.postId)
+                                    
+                                    if !viewModel.isDeletedLoading && viewModel.isDeletedError == nil {
+                                        naviPathFinder.pop()
+                                    }
+                                }
+                            }
+                        } label: {
+                            Image("ellipsis")
+                                .imageScale(.large)
+                                .foregroundStyle(.black)
+                        }
+                    } else {
+                        Button {
+                            viewModel.requestLikedAddOrDelete(viewModel.postId)
+                        } label: {
+                            Image(systemName: viewModel.isLiked ? "heart.fill" : "heart")
+                                .imageScale(.large)
+                                .foregroundStyle(viewModel.isLiked ? .red : .black)
+                        }
+                    }
+                }
+            }
             .onAppear {
                 viewModel.responseRecipeRead(postId)
             }
             
             Button {
-                viewModel.requestArchiveAdd(viewModel.postId)
+                viewModel.requestArchiveAddOrDelete(viewModel.postId)
             } label: {
                 Text(viewModel.isArchived ? "이미 담겨있어요" : "내 보관함에 담기")
                     .font(.system(size: 16, weight: .semibold))

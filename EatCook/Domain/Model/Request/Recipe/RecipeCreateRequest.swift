@@ -8,7 +8,6 @@
 import Foundation
 
 struct RecipeCreateRequest: Codable {
-    var email: String = "itcook1@gmail.com"
     var recipeName: String = ""
     var recipeTime: Int = 0
     var introduction: String = ""
@@ -18,6 +17,7 @@ struct RecipeCreateRequest: Codable {
     var recipeProcess: [RecipeProcess] = []
 }
 
+// 레시피 생성, 업데이트 동일
 struct RecipeProcess: Codable {
     var stepNum: Int
     var recipeWriting, fileExtension: String
@@ -25,14 +25,15 @@ struct RecipeProcess: Codable {
 
 extension RecipeCreateRequest {
     func toData() -> RecipeCreateRequestDTO {
-        return .init(email: email,
-                     recipeName: recipeName,
-                     recipeTime: recipeTime,
-                     introduction: introduction,
-                     mainFileExtension: mainFileExtension,
-                     foodIngredients: foodIngredients,
-                     cookingType: cookingType,
-                     recipeProcess: recipeProcess.map { $0.toData()} )
+        return .init(
+            recipeName: recipeName,
+            recipeTime: recipeTime,
+            introduction: introduction,
+            mainFileExtension: mainFileExtension,
+            foodIngredients: foodIngredients,
+            cookingType: cookingType,
+            recipeProcess: recipeProcess.map { $0.toData() }
+        )
     }
 }
 
@@ -45,6 +46,7 @@ extension RecipeProcess {
 }
 
 /// 요청 응답값
+/// 레시피 생성, 업데이트 동일
 struct RecipeCreateResponse: Codable {
     let success: Bool
     let code, message: String
@@ -52,6 +54,7 @@ struct RecipeCreateResponse: Codable {
 }
 
 struct ResponseData: Codable {
+    var postId: Int = 0
     var mainPresignedUrl: String = ""
     var recipeProcessPresignedUrl: [String] = []
 }

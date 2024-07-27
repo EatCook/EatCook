@@ -8,14 +8,17 @@
 import Foundation
 
 enum RecipeAPI: EndPoint {
-    case recipeCreate(_ query: RecipeCreateRequestDTO)
-    case recipeDelete
     case recipeRead(_ postId: Int)
+    case recipeCreate(_ query: RecipeCreateRequestDTO)
+    case recipeUpdate(_ query: RecipeCreateRequestDTO)
+    case recipeDelete(_ postId: Int)
     
     var path: String {
         switch self {
         case .recipeCreate:
             return "/api/v1/recipe/create"
+        case .recipeUpdate:
+            return "/api/v1/recipe/update"
         case .recipeDelete:
             return "/api/v1/recipe/delete"
         case .recipeRead:
@@ -25,7 +28,7 @@ enum RecipeAPI: EndPoint {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .recipeCreate, .recipeDelete:
+        case .recipeCreate, .recipeUpdate, .recipeDelete:
             return .post
         case .recipeRead:
             return .get
@@ -35,10 +38,20 @@ enum RecipeAPI: EndPoint {
     var httpTask: HTTPTask {
         switch self {
         case .recipeCreate(let query):
-            return .requestWithParameters(parameters: query.toDictionary,
-                                          encoding: .jsonEncoding)
-        case .recipeDelete:
-            return .requestWithParameters(parameters: [:], encoding: .urlEncoding)
+            return .requestWithParameters(
+                parameters: query.toDictionary,
+                encoding: .jsonEncoding
+            )
+        case .recipeUpdate(let query):
+            return .requestWithParameters(
+                parameters: query.toDictionary,
+                encoding: .jsonEncoding
+            )
+        case .recipeDelete(let postId):
+            return .requestWithParameters(
+                parameters: ["postId": postId],
+                encoding: .jsonEncoding
+            )
         case .recipeRead(let postId):
             return .requestWithParameters(
                 parameters: ["postId": postId],
@@ -48,7 +61,7 @@ enum RecipeAPI: EndPoint {
     
     var headers: [String : String]? {
         switch self {
-        case .recipeCreate, .recipeDelete, .recipeRead:
+        case .recipeCreate, .recipeUpdate, .recipeDelete, .recipeRead:
             return HTTPHeaderField.default
         }
     }

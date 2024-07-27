@@ -1,21 +1,22 @@
 //
-//  RecipeCreateRequestDTO.swift
+//  RecipeUpdateRequestDTO.swift
 //  EatCook
 //
-//  Created by 이명진 on 7/20/24.
+//  Created by 이명진 on 7/28/24.
 //
 
 import Foundation
 
-struct RecipeCreateRequestDTO: Codable {
+struct RecipeUpdateRequestDTO: Codable {
     
     var toDictionary: [String: Any] {
         let dict: [String: Any] = [
-            "email": email,
+            "postId": postId,
             "recipeName": recipeName,
             "recipeTime": recipeTime,
             "introduction": introduction,
             "mainFileExtension": mainFileExtension,
+            "userId": userId,
             "foodIngredients": foodIngredients,
             "cookingType": cookingType,
             "recipeProcess": recipeProcess.map { $0.toDictionary }
@@ -23,67 +24,45 @@ struct RecipeCreateRequestDTO: Codable {
         return dict
     }
     
-    let email, recipeName: String
+    let postId: Int
+    let recipeName: String
     let recipeTime: Int
     let introduction, mainFileExtension: String
+    let userId: Int
     let foodIngredients, cookingType: [String]
     let recipeProcess: [RecipeProcessDTO]
     
-    init(query: RecipeCreateRequest) {
-        self.email = query.email
+    init(query: RecipeUpdateRequest) {
+        self.postId = query.postId
         self.recipeName = query.recipeName
         self.recipeTime = query.recipeTime
         self.introduction = query.introduction
         self.mainFileExtension = query.mainFileExtension
+        self.userId = query.userId
         self.foodIngredients = query.foodIngredients
         self.cookingType = query.cookingType
         self.recipeProcess = query.recipeProcess.map { $0.toData() }
     }
     
     init(
-        email: String,
+        postId: Int,
         recipeName: String,
         recipeTime: Int,
         introduction: String,
         mainFileExtension: String,
+        userId: Int,
         foodIngredients: [String],
         cookingType: [String],
         recipeProcess: [RecipeProcessDTO]
     ) {
-        self.email = email
+        self.postId = postId
         self.recipeName = recipeName
         self.recipeTime = recipeTime
         self.introduction = introduction
         self.mainFileExtension = mainFileExtension
+        self.userId = userId
         self.foodIngredients = foodIngredients
         self.cookingType = cookingType
         self.recipeProcess = recipeProcess
-    }
-}
-
-struct RecipeProcessDTO: Codable {
-    
-    var toDictionary: [String: Any] {
-        let dict: [String: Any] = [
-            "stepNum": stepNum,
-            "recipeWriting": recipeWriting,
-            "fileExtension": fileExtension
-        ]
-        return dict
-    }
-    
-    let stepNum: Int
-    let recipeWriting, fileExtension: String
-    
-    init(query: RecipeProcess) {
-        self.stepNum = query.stepNum
-        self.recipeWriting = query.recipeWriting
-        self.fileExtension = query.fileExtension
-    }
-    
-    init(stepNum: Int, recipeWriting: String, fileExtension: String) {
-        self.stepNum = stepNum
-        self.recipeWriting = recipeWriting
-        self.fileExtension = fileExtension
     }
 }

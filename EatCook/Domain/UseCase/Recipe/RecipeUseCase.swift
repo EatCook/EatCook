@@ -33,9 +33,23 @@ extension RecipeUseCase {
             .eraseToAnyPublisher()
     }
     
-    func requestArchiveAdd(_ postId: Int) -> AnyPublisher<ArchiveAddRequestResponse, NetworkError> {
+    func requestRecipeDelete(_ postId: Int) -> AnyPublisher<RecipeDeleteRequestResponse, NetworkError> {
         return eatCookRepository
-            .requestArchiveAdd(of: ArchiveAPI.archiveAdd(postId))
+            .requestRecipeDelete(of: RecipeAPI.recipeDelete(postId))
+            .eraseToAnyPublisher()
+    }
+    
+    func requestArchiveAdd(_ postId: Int, _ isArchived: Bool) -> AnyPublisher<ArchiveAddRequestResponse, NetworkError> {
+        let endPoint: EndPoint = isArchived ? ArchiveAPI.archiveDelete(postId) : ArchiveAPI.archiveAdd(postId)
+        return eatCookRepository
+            .requestArchiveAdd(of: endPoint)
+            .eraseToAnyPublisher()
+    }
+    
+    func requestLikeAddOrDelete(_ postId: Int, _ isLiked: Bool) -> AnyPublisher<LikedCheckRequestResponse, NetworkError> {
+        let endPoint: EndPoint = isLiked ? LikeCheckAPI.likeDelete(postId) : LikeCheckAPI.likeAdd(postId)
+        return eatCookRepository
+            .requestLikeAddOrDelete(of: endPoint)
             .eraseToAnyPublisher()
     }
     

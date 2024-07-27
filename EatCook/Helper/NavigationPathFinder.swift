@@ -24,18 +24,18 @@ enum ViewOptions: Hashable {
     @ViewBuilder
     func view() -> some View {
         switch self {
-        case .recipeDetail(let postId): RecipeView(postId: postId)
-        case .recipeCreate: RecipeCreateView()
-        case .recipeTag(let viewModel): RecipeTagView(viewModel: viewModel)
-        case .recipeStep(let viewModel): RecipeStepView(viewModel: viewModel)
+        case .recipeDetail(let postId): RecipeView(postId: postId).toolbarRole(.editor)
+        case .recipeCreate: RecipeCreateView().toolbarRole(.editor)
+        case .recipeTag(let viewModel): RecipeTagView(viewModel: viewModel).toolbarRole(.editor)
+        case .recipeStep(let viewModel): RecipeStepView(viewModel: viewModel).toolbarRole(.editor)
             
-        case .setting: SettingView()
-        case .userProfileEdit: UserProfileEditView()
-        case .userFavoriteTagEdit: UserFavoriteTagEditView()
-        case .userWithDraw: UserWithDrawView()
+        case .setting: SettingView().toolbarRole(.editor)
+        case .userProfileEdit: UserProfileEditView().toolbarRole(.editor)
+        case .userFavoriteTagEdit: UserFavoriteTagEditView().toolbarRole(.editor)
+        case .userWithDraw: UserWithDrawView().toolbarRole(.editor)
             
-        case .myPage: UserProfileView()
-        case .otherUserProfile: OtherUserProfileView()
+        case .myPage: UserProfileView().toolbarRole(.editor)
+        case .otherUserProfile: OtherUserProfileView().toolbarRole(.editor)
         }
     }
     
