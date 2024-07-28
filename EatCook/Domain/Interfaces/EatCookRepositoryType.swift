@@ -21,6 +21,9 @@ protocol EatCookRepositoryType: AnyObject {
     /// Liked
     func requestLikeAddOrDelete(of endpoint: EndPoint) -> Future<LikedCheckRequestResponse, NetworkError>
     
+    /// Follow
+    func requestFollowOrUnFollow(of endpoint: EndPoint) -> Future<EmptyResponse, NetworkError>
+    
     /// MyPage
     func responseMyPageUserInfo(of endpoint: EndPoint) -> Future<MyPageResponse, NetworkError>
     func requestMyPageProfileEdit(of endpoint: EndPoint) -> Future<MyPageProfileEditRequestResponse, NetworkError>
@@ -28,6 +31,13 @@ protocol EatCookRepositoryType: AnyObject {
     func responseMyPageMyRecipe(of endpoint: EndPoint) -> Future<MyPageMyRecipeResponse, NetworkError>
     func responseMyPageArchive(of endpoint: EndPoint) -> Future<MyPageArchiveResponse, NetworkError>
     
+    /// MyPageSetting
+    func responseMyFavoriteTag(of endpoint: EndPoint) -> Future<MyFavoriteCookResponse, NetworkError>
+    func requestMyFavoriteTagUpdate(of endpoint: EndPoint) -> Future<MyFavoriteTagRequestResponse, NetworkError>
+    
+    /// OtherUser
+    func responseOtherUserInfo(of endpoint: EndPoint) -> Future<OtherUserInfoResponse, NetworkError>
+    func responseOtherUserPosts(of endpoint: EndPoint) -> Future<OtherUserPostsResponse, NetworkError>
     
     /// Archive
     func requestArchiveAdd(of endpoint: EndPoint) -> Future<ArchiveAddRequestResponse, NetworkError>

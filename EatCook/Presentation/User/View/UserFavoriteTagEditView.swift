@@ -29,8 +29,20 @@ struct FoodThemeTag {
 }
 
 struct UserFavoriteTagEditView: View {
-    @State private var sample1: [FavoriteFoodTag] = []
-    @State private var sample2: [FoodThemeTag] = []
+    
+    @StateObject private var viewModel = UserFavoriteTagViewModel(
+        myPageUseCase: MyPageUseCase(
+            eatCookRepository: EatCookRepository(
+                networkProvider: NetworkProviderImpl(
+                    requestManager: NetworkManager()
+                )
+            )
+        )
+    )
+    
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    
+    @State private var selectedFoodThemeTag: String = ""
     
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -44,18 +56,24 @@ struct UserFavoriteTagEditView: View {
                     .foregroundStyle(.gray6)
                 
                 ChipLayout(verticalSpacing: 16, horizontalSpacing: 8) {
-                    ForEach(sample1.indices, id: \.self) { index in
-                        let model = sample1[index]
+                    ForEach(viewModel.foodTag.indices, id: \.self) { index in
+                        let model = viewModel.foodTag[index]
                         Button {
                             withAnimation(.easeInOut(duration: 0.2)) {
-                                sample1[index].isSelected.toggle()
+                                let selectedCount = viewModel.foodTag.filter { $0.isSelected }.count
+                                
+                                if selectedCount < 3 || model.isSelected {
+                                    viewModel.foodTag[index].isSelected.toggle()
+                                } else {
+                                    print("3개까지 선택 가능함.")
+                                }
+                                print(viewModel.foodTag.filter { $0.isSelected })
                             }
                         } label: {
                             Text(model.title)
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
                                 .font(.system(size: 14))
-                            //                                .fontWeight(model.isSelected ? .semibold : .regular)
                                 .foregroundStyle(model.isSelected ? .white : .gray6)
                                 .background(
                                     RoundedRectangle(cornerRadius: 6)
@@ -66,7 +84,6 @@ struct UserFavoriteTagEditView: View {
                     }
                 }
                 .padding(.vertical, 24)
-                //                .border(.black)
             }
             
             VStack(alignment: .leading, spacing: 8) {
@@ -79,18 +96,22 @@ struct UserFavoriteTagEditView: View {
                     .foregroundStyle(.gray6)
                 
                 ChipLayout(verticalSpacing: 16, horizontalSpacing: 8) {
-                    ForEach(sample2.indices, id: \.self) { index in
-                        let model = sample2[index]
+                    ForEach(viewModel.foodThemeTag.indices, id: \.self) { index in
+                        let model = viewModel.foodThemeTag[index]
                         Button {
                             withAnimation(.easeInOut(duration: 0.2)) {
-                                sample2[index].isSelected.toggle()
+                                for i in 0..<viewModel.foodThemeTag.count {
+                                    viewModel.foodThemeTag[i].isSelected = false
+                                }
+                                viewModel.foodThemeTag[index].isSelected = true
+                                selectedFoodThemeTag = viewModel.foodThemeTag[index].title
+                                print(selectedFoodThemeTag)
                             }
                         } label: {
                             Text(model.title)
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
                                 .font(.system(size: 14))
-                            //                                .fontWeight(model.isSelected ? .semibold : .regular)
                                 .foregroundStyle(model.isSelected ? .white : .gray6)
                                 .background(
                                     RoundedRectangle(cornerRadius: 6)
@@ -100,13 +121,19 @@ struct UserFavoriteTagEditView: View {
                     }
                 }
                 .padding(.vertical, 24)
-                //                .border(.black)
             }
             
             Spacer()
             
             Button {
-                
+                Task {
+                    await viewModel.requestMyFavoriteTagUpdate()
+                    
+                    if !viewModel.isUpdate && viewModel.isUpdateError == nil {
+                        print("업데이트 성공!!!!")
+                        naviPathFinder.pop()
+                    }
+                }
             } label: {
                 Text("완료")
                     .font(.system(size: 16, weight: .semibold))
@@ -123,25 +150,7 @@ struct UserFavoriteTagEditView: View {
         .padding(.horizontal, 16)
         .padding(.top, 24)
         .onAppear {
-            sample1 = [
-                FavoriteFoodTag(title: "반찬", isSelected: true),
-                FavoriteFoodTag(title: "일식"),
-                FavoriteFoodTag(title: "중식", isSelected: true),
-                FavoriteFoodTag(title: "한식", isSelected: true),
-                FavoriteFoodTag(title: "양식"),
-                FavoriteFoodTag(title: "디저트"),
-                FavoriteFoodTag(title: "아시안"),
-                FavoriteFoodTag(title: "야식"),
-                FavoriteFoodTag(title: "분식")
-            ]
-            
-            sample2 = [
-                FoodThemeTag(title: "다이어트만 n년째"),
-                FoodThemeTag(title: "건강한 식단관리", isSelected: true),
-                FoodThemeTag(title: "밀키트 lover"),
-                FoodThemeTag(title: "편의점은 내 구역"),
-                FoodThemeTag(title: "배달음식 단골고객")
-            ]
+            viewModel.responseMyFavoriteTag()
         }
         .navigationTitle("관심 요리 편집")
         .navigationBarTitleDisplayMode(.inline)
@@ -151,7 +160,6 @@ struct UserFavoriteTagEditView: View {
 }
 
 #Preview {
-//    NavigationStack {
-        UserFavoriteTagEditView()
-//    }
+    UserFavoriteTagEditView()
+        .environmentObject(NavigationPathFinder.shared)
 }

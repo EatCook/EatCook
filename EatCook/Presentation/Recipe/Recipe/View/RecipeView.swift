@@ -70,7 +70,7 @@ struct RecipeView: View {
                                     .font(.system(size: 16, weight: .semibold))
                             }
                             .onTapGesture {
-                                naviPathFinder.addPath(.otherUserProfile)
+                                naviPathFinder.addPath(.otherUserProfile(viewModel.userId))
                             }
                             
                             Spacer()

@@ -133,6 +133,25 @@ extension EatCookRepository {
         }
     }
     
+    /// Follow
+    func requestFollowOrUnFollow(of endpoint: EndPoint) -> Future<EmptyResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(EmptyResponse.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
     /// MyPage
     func responseMyPageUserInfo(of endpoint: EndPoint) -> Future<MyPageResponse, NetworkError> {
         return Future { promise in
@@ -224,7 +243,79 @@ extension EatCookRepository {
         }
     }
     
+    /// MyPageSetting
+    func responseMyFavoriteTag(of endpoint: EndPoint) -> Future<MyFavoriteCookResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(MyFavoriteCookResponseDTO.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data.toDomain()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
     
+    func requestMyFavoriteTagUpdate(of endpoint: EndPoint) -> Future<MyFavoriteTagRequestResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(MyFavoriteTagRequestResponse.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
+    /// OtherUser
+    func responseOtherUserInfo(of endpoint: EndPoint) -> Future<OtherUserInfoResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(OtherUserInfoResponseDTO.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data.toDomain()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
+    func responseOtherUserPosts(of endpoint: EndPoint) -> Future<OtherUserPostsResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(OtherUserPostsResponseDTO.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data.toDomain()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
     
     /// Archive
     func requestArchiveAdd(of endpoint: EndPoint) -> Future<ArchiveAddRequestResponse, NetworkError> {

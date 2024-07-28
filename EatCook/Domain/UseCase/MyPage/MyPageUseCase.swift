@@ -51,6 +51,16 @@ extension MyPageUseCase {
             .eraseToAnyPublisher()
     }
     
+    func responseMyFavoriteTag() -> AnyPublisher<MyFavoriteCookResponse, NetworkError> {
+        return eatCookRepository
+            .responseMyFavoriteTag(of: MyPageSettingAPI.interestCook)
+            .eraseToAnyPublisher()
+    }
     
+    func requestMyFavoriteTagUpdate(_ query: MyFavoriteTagRequestDTO) -> AnyPublisher<MyFavoriteTagRequestResponse, NetworkError> {
+        return eatCookRepository
+            .requestMyFavoriteTagUpdate(of: MyPageSettingAPI.updateInterestCook(query))
+            .eraseToAnyPublisher()
+    }
     
 }

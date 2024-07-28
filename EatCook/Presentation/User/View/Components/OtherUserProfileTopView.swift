@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct OtherUserProfileTopView: View {
+    @Binding var otherUserData: OtherUserInfoResponseData
     @Binding var isFollowed: Bool
+    var followButtonAction: () -> ()
     
     var body: some View {
         VStack {
@@ -18,23 +20,23 @@ struct OtherUserProfileTopView: View {
                     .frame(width: 52, height: 52)
                 
                 VStack(alignment: .leading) {
-                    Text("나는 쉐프다")
+                    Text(otherUserData.nickName)
                         .font(.system(size: 18, weight: .semibold))
                     
-                    BadgeTitleView(badgeLevel: BadgeTitleView.checkBadgeLevel(40))
+                    BadgeTitleView(badgeLevel: BadgeTitleView.checkBadgeLevel(otherUserData.postCounts))
                     
                     HStack(spacing: 4) {
                         Text("팔로우")
                             .font(.system(size: 14, weight: .regular))
                         
-                        Text("399")
+                        Text("\(otherUserData.followerCounts)")
                             .font(.system(size: 14, weight: .semibold))
                             .padding(.trailing, 8)
                         
                         Text("레시피")
                             .font(.system(size: 14, weight: .regular))
                         
-                        Text("150")
+                        Text("\(otherUserData.postCounts)")
                             .font(.system(size: 14, weight: .semibold))
                     }
                     .padding(.top, 8)
@@ -43,7 +45,7 @@ struct OtherUserProfileTopView: View {
                 Spacer()
                 
                 FollowButton(isFollowed: $isFollowed) {
-                    isFollowed.toggle()
+                    followButtonAction()
                 }
                 
             }
@@ -56,7 +58,7 @@ struct OtherUserProfileTopView: View {
     }
 }
 
-#Preview {
-    OtherUserProfileView()
-}
+//#Preview {
+//    OtherUserProfileView()
+//}
 

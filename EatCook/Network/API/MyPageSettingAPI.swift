@@ -13,7 +13,7 @@ enum MyPageSettingAPI: EndPoint {
     case alarm
     case updateAlarm
     case interestCook
-    case updateInterestCook
+    case updateInterestCook(_ query: MyFavoriteTagRequestDTO)
     
     var path: String {
         switch self {
@@ -66,9 +66,9 @@ enum MyPageSettingAPI: EndPoint {
                 parameters: [:],
                 encoding: .urlEncoding
             )
-        case .updateInterestCook:
+        case .updateInterestCook(let query):
             return .requestWithParameters(
-                parameters: [:],
+                parameters: query.toDictionary,
                 encoding: .jsonEncoding
             )
         }

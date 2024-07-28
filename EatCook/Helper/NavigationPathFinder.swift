@@ -19,7 +19,7 @@ enum ViewOptions: Hashable {
     case userWithDraw
     
     case myPage
-    case otherUserProfile
+    case otherUserProfile(_ userId: Int)
     
     @ViewBuilder
     func view() -> some View {
@@ -35,7 +35,7 @@ enum ViewOptions: Hashable {
         case .userWithDraw: UserWithDrawView().toolbarRole(.editor)
             
         case .myPage: UserProfileView().toolbarRole(.editor)
-        case .otherUserProfile: OtherUserProfileView().toolbarRole(.editor)
+        case .otherUserProfile(let userId): OtherUserProfileView(userId: userId).toolbarRole(.editor)
         }
     }
     

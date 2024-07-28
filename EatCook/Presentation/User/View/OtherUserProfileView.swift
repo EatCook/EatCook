@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct OtherUserProfileView: View {
-    @State private var isFollowed: Bool = false
+    
+    @StateObject private var viewModel = OtherUserProfileViewModel(
+        otherUserUseCase: OtherUserUseCase(
+            eatCookRepository: EatCookRepository(
+                networkProvider: NetworkProviderImpl(
+                    requestManager: NetworkManager()
+                )
+            )
+        )
+    )
+    
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    
+    var userId: Int
     
     var body: some View {
         ScrollView {
-            OtherUserProfileTopView(isFollowed: $isFollowed)
+            OtherUserProfileTopView(
+                otherUserData: $viewModel.otherUserInfo,
+                isFollowed: $viewModel.isFollowed
+            ) {
+                viewModel.requestFollowOrUnFollow()
+            }
             
             VStack(alignment: .leading) {
                 HStack {
@@ -32,9 +50,15 @@ struct OtherUserProfileView: View {
             .padding(.top, 32)
             .padding(.bottom, 60)
         }
+        .onAppear {
+            Task {
+                await viewModel.responseOtherUserInfo(userId)
+                await viewModel.responseOtherUserPosts(userId, viewModel.page)
+            }
+        }
     }
 }
 
-#Preview {
-    OtherUserProfileView()
-}
+//#Preview {
+//    OtherUserProfileView()
+//}
