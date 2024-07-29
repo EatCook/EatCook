@@ -49,6 +49,7 @@
 		E57529BF2C4F94E8001A277F /* FindAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57529BE2C4F94E8001A277F /* FindAccountView.swift */; };
 		E57529C12C4F9511001A277F /* FindAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57529C02C4F9511001A277F /* FindAccountViewModel.swift */; };
 		E5786EA42C535DA100169610 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5786EA32C535DA100169610 /* KeyboardResponder.swift */; };
+		E5786EA62C53925C00169610 /* KeyvoardAwareModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5786EA52C53925C00169610 /* KeyvoardAwareModifier.swift */; };
 		E578D5AC2C296B1300A91EB8 /* SearchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578D5AB2C296B1300A91EB8 /* SearchMenu.swift */; };
 		E58300A92C4DF19C005354A8 /* HouseholdCompositionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58300A82C4DF19C005354A8 /* HouseholdCompositionViewModel.swift */; };
 		E58300AB2C4DF69D005354A8 /* AddSignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58300AA2C4DF69D005354A8 /* AddSignUpResponse.swift */; };
@@ -169,6 +170,7 @@
 		E57529BE2C4F94E8001A277F /* FindAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountView.swift; sourceTree = "<group>"; };
 		E57529C02C4F9511001A277F /* FindAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountViewModel.swift; sourceTree = "<group>"; };
 		E5786EA32C535DA100169610 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		E5786EA52C53925C00169610 /* KeyvoardAwareModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyvoardAwareModifier.swift; sourceTree = "<group>"; };
 		E578D5AB2C296B1300A91EB8 /* SearchMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMenu.swift; sourceTree = "<group>"; };
 		E58300A82C4DF19C005354A8 /* HouseholdCompositionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseholdCompositionViewModel.swift; sourceTree = "<group>"; };
 		E58300AA2C4DF69D005354A8 /* AddSignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSignUpResponse.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				F69B6DB52B80D80500EFB467 /* TabCase.swift */,
 				E595A61B2C2D393000EFB873 /* ImageLoader.swift */,
 				E5786EA32C535DA100169610 /* KeyboardResponder.swift */,
+				E5786EA52C53925C00169610 /* KeyvoardAwareModifier.swift */,
 			);
 			path = Utillites;
 			sourceTree = "<group>";
@@ -1039,6 +1042,7 @@
 				E5F452F62C50C12F0074618B /* FindAccountVerifyResponse.swift in Sources */,
 				F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */,
 				E5F2F6F82C461371000EC91C /* EmailVerifyResponseDTO.swift in Sources */,
+				E5786EA62C53925C00169610 /* KeyvoardAwareModifier.swift in Sources */,
 				F66E2D112B8CCFDE00524B8B /* NetworkProviderImpl.swift in Sources */,
 				E58300AF2C4E2E09005354A8 /* FoodThemeViewModel.swift in Sources */,
 				F66E2D092B8CCF0000524B8B /* NetworkError.swift in Sources */,

@@ -12,20 +12,20 @@ import SwiftUI
 class SearchViewModel : ObservableObject {
     
     
-    @Published var topRankData : [SearchRankingData] =  [SearchRankingData(searchWord: "된장찌개", searchCount: 0, rank: 1, rankChange: 1), SearchRankingData( searchWord: "김치", searchCount: 19, rank: 2, rankChange: 4), SearchRankingData(searchWord: "돈까스", searchCount: 3, rank: 3, rankChange: 1), SearchRankingData(searchWord: "김치볶음밥", searchCount: 1, rank: 4, rankChange: 0), SearchRankingData(searchWord: "케이크", searchCount: 1, rank: 5, rankChange: 0), SearchRankingData(searchWord: "떡국", searchCount: 1, rank: 6, rankChange: -1),  SearchRankingData(searchWord: "생크림", searchCount: 1, rank: 7, rankChange: 0), SearchRankingData(searchWord: "생크림", searchCount: 1, rank: 8, rankChange: 0), SearchRankingData(searchWord: "수육", searchCount: 1, rank: 9, rankChange: 0), SearchRankingData(searchWord: "우유", searchCount: 1, rank: 10, rankChange: 0)]
+    @Published var topRankData : [SearchRankingData] =  [SearchRankingData(searchWord: "된장찌개", searchCount: 0, rank: 1, rankChange: 1), SearchRankingData( searchWord: "김치", searchCount: 19, rank: 2, rankChange: 4), SearchRankingData(searchWord: "돈까스", searchCount: 3, rank: 3, rankChange: 1), SearchRankingData(searchWord: "김치볶음밥", searchCount: 1, rank: 4, rankChange: 0), SearchRankingData(searchWord: "케이크", searchCount: 1, rank: 5, rankChange: 0), SearchRankingData(searchWord: "떡국", searchCount: 1, rank: 6, rankChange: -1),  SearchRankingData(searchWord: "생크림", searchCount: 1, rank: 7, rankChange: 0), SearchRankingData(searchWord: "밥", searchCount: 1, rank: 8, rankChange: 0), SearchRankingData(searchWord: "수육", searchCount: 1, rank: 9, rankChange: 0), SearchRankingData(searchWord: "우유", searchCount: 1, rank: 10, rankChange: 0)]
     @Published var recipes : [Recipe] = []
     @Published var ingredients : [Ingredient] = []
     @Published var tags : [Tag] = []
     @Published var selectedTab : selectedTabType = .ingredient
     @Published var searchText = ""
-    
+    @Published var isSearching = false
     
     
     init() {
         SearchService.shard.getSearchRanking(success: { result in
             print("TopRankresult" ,result.data.rankings)
             DispatchQueue.main.async {
-                if (result.data.rankings.count  == 0 ) {
+                if (result.data.rankings.count  != 0 ) {
                     self.topRankData = result.data.rankings
                 }
             }
@@ -41,7 +41,7 @@ class SearchViewModel : ObservableObject {
             
             DispatchQueue.main.async {
                 self.recipes = result.data.map { Recipe(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
-                
+                self.isSearching = true
             }
         } failure: { error in
             print(error)
@@ -54,6 +54,8 @@ class SearchViewModel : ObservableObject {
             
             DispatchQueue.main.async {
                 self.ingredients = result.data.map { Ingredient(postId: $0.postId, recipeName: $0.recipeName, introduction: $0.introduction, imageFilePath: $0.imageFilePath, likeCount: $0.likeCount, foodIngredients: $0.foodIngredients, userNickName: $0.userNickName ?? "" )}
+                self.isSearching = true
+                
             }
         } failure: { error in
             print(error)

@@ -39,7 +39,7 @@ class HomeViewModel : ObservableObject {
         }, failure: { error in
             print(error)
         })
-        
+
 
         
     }

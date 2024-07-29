@@ -7,14 +7,14 @@
 
 import SwiftUI
 
+
 struct SearchView: View {
     @StateObject private var searchViewModel = SearchViewModel()
     @StateObject private var keyboardResponder = KeyboardResponder()
     
-    
     @State private var isSearching = false
-    @State var recentSearchData: [[String]] = [["홍고추"],["계란덮밥", "덮밥"], ["감바스","마늘","고추"],["감바스","마늘","고추", "양배추"],["감바스","마늘","고추", "양배추", "닭갈비"]]
- 
+    @State var recentSearchData: [[String]] = [["홍고추"], ["계란덮밥", "덮밥"], ["감바스", "마늘", "고추"], ["감바스", "마늘", "고추", "양배추"], ["감바스", "마늘", "고추", "양배추", "닭갈비"]]
+    
     @State private var navigationPath = NavigationPath()
     @SwiftUI.Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
@@ -22,61 +22,53 @@ struct SearchView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                HStack {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(.backButton).resizable()
-                            .frame(width: 20, height: 20)
-                    }.padding(.trailing)
-                    
-                    TextField("재료 또는 레시피를 검색해 보세요", text: $searchViewModel.searchText, onCommit: {
-                        guard searchViewModel.searchText.count > 0 else {
-                            //                                    TODO : Alert 창
-                            return
-                        }
-                        searchViewModel.searchCheckValidate()
-                        
-                    })
-                    
-                    Button(action: {
-                        
-                        searchViewModel.searchCheckValidate()
-                        
-                    }) {
-                        Image(systemName: "magnifyingglass")
-                            .tint(.gray)
-                    }
-                }
-                .padding(.horizontal)
-                
-                ScrollView(.horizontal, showsIndicators: false) {
+                VStack {
                     HStack {
-                        ForEach(searchViewModel.tags, id: \.self) { tag in
-                            SearchTagView(tag: tag.value) {
-                                searchViewModel.removeTag(tag: tag.value)
+                        Button {
+                            dismiss()
+                        } label: {
+                            Image(.backButton).resizable()
+                                .frame(width: 20, height: 20)
+                        }.padding(.trailing)
+                        
+                        TextField("재료 또는 레시피를 검색해 보세요", text: $searchViewModel.searchText, onCommit: {
+                            guard searchViewModel.searchText.count > 0 else {
+                                // TODO : Alert 창
+                                return
                             }
+                            searchViewModel.searchCheckValidate()
+                        })
+                        
+                        Button(action: {
+                            searchViewModel.searchCheckValidate()
+                        }) {
+                            Image(systemName: "magnifyingglass")
+                                .tint(.gray)
                         }
                     }
                     .padding(.horizontal)
-                }.padding(.top)
-                    .padding(.bottom , 12)
-            }
-            .offset(y: keyboardResponder.currentHeight * 0.01)
-            .animation(.easeOut(duration: 0.16), value: keyboardResponder.currentHeight * 0.01)
-            .background(Color.gray10)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(searchViewModel.tags, id: \.self) { tag in
+                                SearchTagView(tag: tag.value) {
+                                    searchViewModel.removeTag(tag: tag.value)
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
+                    }.padding(.top)
+                        .padding(.bottom , 12)
+                }
+                .background(Color.gray10)
                 .padding(.bottom)
-
-            ZStack {
-                Color.gray10.edgesIgnoringSafeArea(.all)
-                
-
                 
                 
-                if searchViewModel.ingredients.isEmpty && searchViewModel.recipes.isEmpty {
-                    VStack {
-                        ZStack(alignment: .top) {
-                            VStack {
+                if !searchViewModel.isSearching {
+                    ScrollView {
+                        VStack {
+                            ZStack(alignment: .top) {
+                                VStack {
                                     HStack(alignment: .bottom) {
                                         Text("지금 많이 검색하고 있어요")
                                             .font(.title3).bold()
@@ -91,31 +83,29 @@ struct SearchView: View {
                                     LazyVStack(alignment: .leading) {
                                         ForEach(searchViewModel.topRankData) { data in
                                             Button(action: {
-                                                print("index ::" , data)
+                                                print("index ::", data)
                                             }) {
                                                 HStack {
                                                     if data.rank > 3 {
                                                         HStack(spacing: 24) {
-                                                            Text("\(data.rank)").foregroundColor(.secondary).bold()
+                                                            Text("\(data.rank)").frame(width : 20 , height : 20).foregroundColor(.secondary).bold()
                                                             Text(data.searchWord).font(.system(size: 18))
                                                         }
                                                         .padding(.vertical, 12)
                                                     } else {
                                                         HStack(spacing: 24) {
-                                                            Text("\(data.rank)").foregroundColor(.primary6).bold()
+                                                            Text("\(data.rank)").frame(width : 20 , height : 20).foregroundColor(.primary6).bold()
                                                             Text(data.searchWord).font(.system(size: 18)).bold()
                                                         }
                                                         .padding(.vertical, 12)
                                                     }
                                                     Spacer()
                                                     
-                                                    
                                                     if data.rankChange == 0 {
-                                                        Image(.same).resizable().scaledToFit().frame(width: 15, height : 15)
-                                                    }else{
-                                                        Image(data.rankChange > 0 ? .upPrimary : .downGray ).resizable().scaledToFit().frame(width: 15, height : 15)
+                                                        Image(.same).resizable().scaledToFit().frame(width: 15, height: 15)
+                                                    } else {
+                                                        Image(data.rankChange > 0 ? .upPrimary : .downGray).resizable().scaledToFit().frame(width: 15, height: 15)
                                                     }
-                                                    
                                                 }
                                             }
                                         }
@@ -125,7 +115,7 @@ struct SearchView: View {
                                 }
                                 .padding(.bottom, 30)
                                 .background(Color.white)
-
+                                
                                 if isSearching {
                                     VStack(alignment: .leading, spacing: 0) {
                                         RecentSearchView(recentSearchData: $recentSearchData)
@@ -140,34 +130,37 @@ struct SearchView: View {
                                 }
                             }
                         }
-                        .padding(.top, 15)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .navigationBarTitle("", displayMode: .inline)
-                        .navigationBarHidden(true)
-                        .background(Color.white)
-                    }else{
-                        VStack {
-                            SearchViewCustomTabView(selectedTab: $searchViewModel.selectedTab)
-                            TabView(selection: $searchViewModel.selectedTab) {
-                                IngredientsView(ingredients: $searchViewModel.ingredients)
-                                    .tag(selectedTabType.ingredient)
-                                RecipesView(recipes: $searchViewModel.recipes)
-                                    .tag(selectedTabType.recipe)
-                            }
-                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-
-                        }.navigationBarTitle("", displayMode: .inline)
-                        .navigationBarHidden(true)
-                        .background(Color.white)
+                        
                     }
+                    
+            
+                    .padding(.top, 15)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .navigationBarTitle("", displayMode: .inline)
+                    .navigationBarHidden(true)
+                    .background(Color.white)
+                } else {
+                    VStack {
+                        SearchViewCustomTabView(selectedTab: $searchViewModel.selectedTab)
+                        TabView(selection: $searchViewModel.selectedTab) {
+                            IngredientsView(ingredients: $searchViewModel.ingredients)
+                                .tag(selectedTabType.ingredient)
+                            RecipesView(recipes: $searchViewModel.recipes)
+                                .tag(selectedTabType.recipe)
+                        }
+                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    }
+                    .navigationBarTitle("", displayMode: .inline)
+                    .navigationBarHidden(true)
+                    .background(Color.white)
                 }
-
             }
-
+            .navigationBarTitle("", displayMode: .inline)
+        }
         .environmentObject(searchViewModel)
-       
     }
 }
+
 
 
 
@@ -186,6 +179,7 @@ struct SearchViewCustomTabView: View {
                 }) {
                     VStack {
                         Text("재료")
+                            .bold()
                             .foregroundColor(selectedTab == .ingredient ? .primary6 : .gray5)
                         
                         if selectedTab == .ingredient {
@@ -209,6 +203,7 @@ struct SearchViewCustomTabView: View {
                 }) {
                     VStack {
                         Text("레시피")
+                            .bold()
                             .foregroundColor(selectedTab == .recipe ? .primary6 : .gray5)
                             .padding(.bottom, 8)
                         
@@ -234,21 +229,60 @@ struct SearchViewCustomTabView: View {
 
 
 struct IngredientsView: View {
+    @EnvironmentObject var searchViewModel: SearchViewModel
     @Binding var ingredients : [Ingredient]
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(ingredients) { ingredient in
-                    IngredientView(ingredient: ingredient)
+        if ingredients.isEmpty {
+            VStack {
+                HStack {
+                    HStack {
+                        ForEach(searchViewModel.tags.indices, id: \.self) { index in
+                            let tag = searchViewModel.tags[index]
+                            Text("'\(tag.value) '\(index < searchViewModel.tags.count - 1 ? "," : "")")
+                                .font(.headline)
+                              
+                        }
+                    }
+                    
+                    Text(" 검색 결과가 없습니다.")
+                        .font(.headline)
+                }
+                
+                
+                Text("추천 레시피를 둘러볼까요?")
+                    .foregroundColor(.gray6)
+                    .padding(.bottom)
+                Button(action: {
+                    // Navigate to home
+                }) {
+                    Text("홈으로 가기")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.primary7)
+                        .cornerRadius(8)
                 }
             }
             .padding()
             
+        }else{
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(ingredients) { ingredient in
+                        IngredientView(ingredient: ingredient)
+                    }
+                }
+                .padding()
+                
+            }
+            
         }
+        
+        
+        
 
     }
 }
@@ -339,6 +373,7 @@ struct IngredientView: View {
 
 
 struct RecipesView: View {
+    @EnvironmentObject var searchViewModel: SearchViewModel
     @Binding var recipes: [Recipe]
     
     let columns = [
@@ -347,15 +382,55 @@ struct RecipesView: View {
     ]
 
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(recipes) { recipe in
-                    SearchRecipeView(recipe: recipe)
+        if recipes.isEmpty {
+            VStack {
+                HStack {
+                    HStack {
+                        ForEach(searchViewModel.tags.indices, id: \.self) { index in
+                            let tag = searchViewModel.tags[index]
+                            Text("'\(tag.value) '\(index < searchViewModel.tags.count - 1 ? "," : "")")
+                                .font(.headline)
+                              
+                        }
+                    }
+                    
+                    Text(" 검색 결과가 없습니다.")
+                        .font(.headline)
+                }
+                
+                
+                Text("추천 레시피를 둘러볼까요?")
+                    .foregroundColor(.gray6)
+                    .padding(.bottom)
+                Button(action: {
+                    // Navigate to home
+                }) {
+                    Text("홈으로 가기")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.primary7)
+                        .cornerRadius(8)
                 }
             }
             .padding()
             
+            
+            
+            
+        }else{
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(recipes) { recipe in
+                        SearchRecipeView(recipe: recipe)
+                    }
+                }
+                .padding()
+                
+            }
+            
         }
+        
+
         
     }
 }

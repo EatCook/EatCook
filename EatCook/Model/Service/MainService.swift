@@ -12,7 +12,7 @@ class MainService {
     static let shard = { MainService() }()
     
     private let API_HOME_USERINFO = "/api/v1/home"
-    private let API_HOME_INTEREST = "/api/v1/home/interest/WESTERN_FOOD"
+    private let API_HOME_INTEREST = "/api/v1/home/interest/BUNSIK"
     private let API_HOME_SPECIAL = "/api/v1/home/special/HEALTH_DIET"
     
 
