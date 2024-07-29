@@ -7,18 +7,284 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F6E1C0972B722EE500A05703 /* EatCookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0962B722EE500A05703 /* EatCookApp.swift */; };
-		F6E1C0992B722EE500A05703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0982B722EE500A05703 /* ContentView.swift */; };
-		F6E1C09B2B722EE800A05703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6E1C09A2B722EE800A05703 /* Assets.xcassets */; };
-		F6E1C09E2B722EE800A05703 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6E1C09D2B722EE800A05703 /* Preview Assets.xcassets */; };
+		F69411132C57B4B700ECA302 /* CookTalkFollowResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410382C57B4B600ECA302 /* CookTalkFollowResponse.swift */; };
+		F69411142C57B4B700ECA302 /* CookTalkFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410392C57B4B600ECA302 /* CookTalkFeedResponse.swift */; };
+		F69411152C57B4B700ECA302 /* RecipeReadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694103B2C57B4B600ECA302 /* RecipeReadResponse.swift */; };
+		F69411162C57B4B700ECA302 /* MyPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694103D2C57B4B600ECA302 /* MyPageResponse.swift */; };
+		F69411172C57B4B700ECA302 /* MyFavoriteCookResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694103E2C57B4B600ECA302 /* MyFavoriteCookResponse.swift */; };
+		F69411182C57B4B700ECA302 /* MyPageMyRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694103F2C57B4B600ECA302 /* MyPageMyRecipeResponse.swift */; };
+		F69411192C57B4B700ECA302 /* MyPageArchiveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410402C57B4B600ECA302 /* MyPageArchiveResponse.swift */; };
+		F694111A2C57B4B700ECA302 /* OtherUserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410422C57B4B600ECA302 /* OtherUserInfoResponse.swift */; };
+		F694111B2C57B4B700ECA302 /* OtherUserPostsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410432C57B4B600ECA302 /* OtherUserPostsResponse.swift */; };
+		F694111C2C57B4B700ECA302 /* LikedCheckRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410462C57B4B600ECA302 /* LikedCheckRequestResponse.swift */; };
+		F694111D2C57B4B700ECA302 /* ArchiveAddRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410482C57B4B600ECA302 /* ArchiveAddRequestResponse.swift */; };
+		F694111E2C57B4B700ECA302 /* RecipeCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694104A2C57B4B600ECA302 /* RecipeCreateRequest.swift */; };
+		F694111F2C57B4B700ECA302 /* RecipeDeleteRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694104B2C57B4B600ECA302 /* RecipeDeleteRequestResponse.swift */; };
+		F69411202C57B4B700ECA302 /* RecipeUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694104C2C57B4B600ECA302 /* RecipeUpdateRequest.swift */; };
+		F69411212C57B4B700ECA302 /* MyPageProfileEditRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694104E2C57B4B600ECA302 /* MyPageProfileEditRequestResponse.swift */; };
+		F69411222C57B4B700ECA302 /* MyFavoriteTagRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694104F2C57B4B600ECA302 /* MyFavoriteTagRequest.swift */; };
+		F69411232C57B4B700ECA302 /* CookTalkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410522C57B4B600ECA302 /* CookTalkUseCase.swift */; };
+		F69411242C57B4B700ECA302 /* ArchiveUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410542C57B4B600ECA302 /* ArchiveUseCase.swift */; };
+		F69411252C57B4B700ECA302 /* RecipeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410562C57B4B600ECA302 /* RecipeUseCase.swift */; };
+		F69411262C57B4B700ECA302 /* FollowUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410582C57B4B600ECA302 /* FollowUseCase.swift */; };
+		F69411272C57B4B700ECA302 /* MyPageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694105A2C57B4B600ECA302 /* MyPageUseCase.swift */; };
+		F69411282C57B4B700ECA302 /* OtherUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694105C2C57B4B600ECA302 /* OtherUserUseCase.swift */; };
+		F69411292C57B4B700ECA302 /* EatCookRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694105E2C57B4B600ECA302 /* EatCookRepositoryType.swift */; };
+		F694112A2C57B4B700ECA302 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F69410602C57B4B600ECA302 /* Preview Assets.xcassets */; };
+		F694112B2C57B4B700ECA302 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410622C57B4B600ECA302 /* Util.swift */; };
+		F694112C2C57B4B700ECA302 /* TabCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410632C57B4B600ECA302 /* TabCase.swift */; };
+		F694112D2C57B4B700ECA302 /* ScrollOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410652C57B4B600ECA302 /* ScrollOffset.swift */; };
+		F694112E2C57B4B700ECA302 /* Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410662C57B4B600ECA302 /* Ex.swift */; };
+		F694112F2C57B4B700ECA302 /* CustomBorderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410682C57B4B600ECA302 /* CustomBorderModifier.swift */; };
+		F69411302C57B4B700ECA302 /* BadgeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410692C57B4B600ECA302 /* BadgeTitleView.swift */; };
+		F69411312C57B4B700ECA302 /* ChipLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694106A2C57B4B600ECA302 /* ChipLayout.swift */; };
+		F69411322C57B4B700ECA302 /* LoadFailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694106B2C57B4B600ECA302 /* LoadFailImageView.swift */; };
+		F69411332C57B4B700ECA302 /* CheckImageTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694106C2C57B4B600ECA302 /* CheckImageTitleButton.swift */; };
+		F69411342C57B4B700ECA302 /* EmptyProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694106D2C57B4B600ECA302 /* EmptyProfileImageView.swift */; };
+		F69411352C57B4B700ECA302 /* CustomTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694106E2C57B4B600ECA302 /* CustomTextFieldModifier.swift */; };
+		F69411362C57B4B700ECA302 /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694106F2C57B4B600ECA302 /* CameraImageView.swift */; };
+		F69411372C57B4B700ECA302 /* CustomImageTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410702C57B4B600ECA302 /* CustomImageTitleButton.swift */; };
+		F69411382C57B4B700ECA302 /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410712C57B4B600ECA302 /* FollowButton.swift */; };
+		F69411392C57B4B700ECA302 /* NavigationPathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410732C57B4B600ECA302 /* NavigationPathFinder.swift */; };
+		F694113A2C57B4B700ECA302 /* EatCookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410752C57B4B700ECA302 /* EatCookApp.swift */; };
+		F694113B2C57B4B700ECA302 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410782C57B4B700ECA302 /* NetworkManager.swift */; };
+		F694113C2C57B4B700ECA302 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694107A2C57B4B700ECA302 /* Environment.swift */; };
+		F694113D2C57B4B700ECA302 /* URLRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694107B2C57B4B700ECA302 /* URLRequestable.swift */; };
+		F694113E2C57B4B700ECA302 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694107C2C57B4B700ECA302 /* HTTPTask.swift */; };
+		F694113F2C57B4B700ECA302 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694107D2C57B4B700ECA302 /* HTTPHeaderField.swift */; };
+		F69411402C57B4B700ECA302 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694107E2C57B4B700ECA302 /* HTTPMethod.swift */; };
+		F69411412C57B4B700ECA302 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694107F2C57B4B700ECA302 /* NetworkProvider.swift */; };
+		F69411422C57B4B700ECA302 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410802C57B4B700ECA302 /* EndPoint.swift */; };
+		F69411432C57B4B700ECA302 /* NetworkProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410822C57B4B700ECA302 /* NetworkProviderImpl.swift */; };
+		F69411442C57B4B700ECA302 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410842C57B4B700ECA302 /* LoginAPI.swift */; };
+		F69411452C57B4B700ECA302 /* ArchiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410852C57B4B700ECA302 /* ArchiveAPI.swift */; };
+		F69411462C57B4B700ECA302 /* FollowAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410862C57B4B700ECA302 /* FollowAPI.swift */; };
+		F69411472C57B4B700ECA302 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410872C57B4B700ECA302 /* AuthAPI.swift */; };
+		F69411482C57B4B700ECA302 /* OtherUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410882C57B4B700ECA302 /* OtherUserAPI.swift */; };
+		F69411492C57B4B700ECA302 /* MyPageSettingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410892C57B4B700ECA302 /* MyPageSettingAPI.swift */; };
+		F694114A2C57B4B700ECA302 /* RecipeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694108A2C57B4B700ECA302 /* RecipeAPI.swift */; };
+		F694114B2C57B4B700ECA302 /* MyPageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694108B2C57B4B700ECA302 /* MyPageAPI.swift */; };
+		F694114C2C57B4B700ECA302 /* LikeCheckAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694108C2C57B4B700ECA302 /* LikeCheckAPI.swift */; };
+		F694114D2C57B4B700ECA302 /* CookTalkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694108D2C57B4B700ECA302 /* CookTalkAPI.swift */; };
+		F694114E2C57B4B700ECA302 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694108F2C57B4B700ECA302 /* HTTPError.swift */; };
+		F694114F2C57B4B700ECA302 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410902C57B4B700ECA302 /* NetworkError.swift */; };
+		F69411502C57B4B700ECA302 /* EatCookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410932C57B4B700ECA302 /* EatCookRepository.swift */; };
+		F69411512C57B4B700ECA302 /* CookTalkFollowResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410972C57B4B700ECA302 /* CookTalkFollowResponseDTO.swift */; };
+		F69411522C57B4B700ECA302 /* CookTalkFeedResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410982C57B4B700ECA302 /* CookTalkFeedResponseDTO.swift */; };
+		F69411532C57B4B700ECA302 /* RecipeReadResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694109A2C57B4B700ECA302 /* RecipeReadResponseDTO.swift */; };
+		F69411542C57B4B700ECA302 /* MyPageArchiveResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694109C2C57B4B700ECA302 /* MyPageArchiveResponseDTO.swift */; };
+		F69411552C57B4B700ECA302 /* MyPageMyRecipeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694109D2C57B4B700ECA302 /* MyPageMyRecipeResponseDTO.swift */; };
+		F69411562C57B4B700ECA302 /* MyPageResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694109E2C57B4B700ECA302 /* MyPageResponseDTO.swift */; };
+		F69411572C57B4B700ECA302 /* MyFavoriteCookResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694109F2C57B4B700ECA302 /* MyFavoriteCookResponseDTO.swift */; };
+		F69411582C57B4B700ECA302 /* OtherUserInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410A12C57B4B700ECA302 /* OtherUserInfoResponseDTO.swift */; };
+		F69411592C57B4B700ECA302 /* OtherUserPostsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410A22C57B4B700ECA302 /* OtherUserPostsResponseDTO.swift */; };
+		F694115A2C57B4B700ECA302 /* ArchiveAddRequestResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410A52C57B4B700ECA302 /* ArchiveAddRequestResponseDTO.swift */; };
+		F694115B2C57B4B700ECA302 /* RecipeUpdateRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410A72C57B4B700ECA302 /* RecipeUpdateRequestDTO.swift */; };
+		F694115C2C57B4B700ECA302 /* RecipeDeleteRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410A82C57B4B700ECA302 /* RecipeDeleteRequestDTO.swift */; };
+		F694115D2C57B4B700ECA302 /* RecipeCreateRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410A92C57B4B700ECA302 /* RecipeCreateRequestDTO.swift */; };
+		F694115E2C57B4B700ECA302 /* MyPageProfileEditRequestResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410AB2C57B4B700ECA302 /* MyPageProfileEditRequestResponseDTO.swift */; };
+		F694115F2C57B4B700ECA302 /* MyFavoriteTagRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410AC2C57B4B700ECA302 /* MyFavoriteTagRequestDTO.swift */; };
+		F69411602C57B4B700ECA302 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F69410AE2C57B4B700ECA302 /* Assets.xcassets */; };
+		F69411612C57B4B700ECA302 /* LoginUserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410B02C57B4B700ECA302 /* LoginUserInfoManager.swift */; };
+		F69411622C57B4B700ECA302 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410B42C57B4B700ECA302 /* HomeViewModel.swift */; };
+		F69411632C57B4B700ECA302 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410B62C57B4B700ECA302 /* HomeView.swift */; };
+		F69411642C57B4B700ECA302 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410BA2C57B4B700ECA302 /* FeedViewModel.swift */; };
+		F69411652C57B4B700ECA302 /* FollowRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410BD2C57B4B700ECA302 /* FollowRowView.swift */; };
+		F69411662C57B4B700ECA302 /* FeedTabIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410BE2C57B4B700ECA302 /* FeedTabIndicatorView.swift */; };
+		F69411672C57B4B700ECA302 /* FeedContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410BF2C57B4B700ECA302 /* FeedContainerView.swift */; };
+		F69411682C57B4B700ECA302 /* FeedRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410C02C57B4B700ECA302 /* FeedRowView.swift */; };
+		F69411692C57B4B700ECA302 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410C12C57B4B700ECA302 /* FeedView.swift */; };
+		F694116A2C57B4B700ECA302 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410C52C57B4B700ECA302 /* RecipeViewModel.swift */; };
+		F694116B2C57B4B700ECA302 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410C72C57B4B700ECA302 /* RecipeView.swift */; };
+		F694116C2C57B4B700ECA302 /* IngredientsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410C92C57B4B700ECA302 /* IngredientsContainerView.swift */; };
+		F694116D2C57B4B700ECA302 /* RecipeContainerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410CA2C57B4B700ECA302 /* RecipeContainerRowView.swift */; };
+		F694116E2C57B4B700ECA302 /* RecipeContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410CB2C57B4B700ECA302 /* RecipeContainerView.swift */; };
+		F694116F2C57B4B700ECA302 /* TabIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410CC2C57B4B700ECA302 /* TabIndicatorView.swift */; };
+		F69411702C57B4B700ECA302 /* RecipeCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410CF2C57B4B700ECA302 /* RecipeCreateViewModel.swift */; };
+		F69411712C57B4B700ECA302 /* RecipeStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410D12C57B4B700ECA302 /* RecipeStepView.swift */; };
+		F69411722C57B4B700ECA302 /* EmptyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410D32C57B4B700ECA302 /* EmptyImageView.swift */; };
+		F69411732C57B4B700ECA302 /* TagField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410D42C57B4B700ECA302 /* TagField.swift */; };
+		F69411742C57B4B700ECA302 /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410D52C57B4B700ECA302 /* TimerPickerView.swift */; };
+		F69411752C57B4B700ECA302 /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410D62C57B4B700ECA302 /* DropdownView.swift */; };
+		F69411762C57B4B700ECA302 /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410D72C57B4B700ECA302 /* TagLayout.swift */; };
+		F69411772C57B4B700ECA302 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410D82C57B4B700ECA302 /* ImagePicker.swift */; };
+		F69411782C57B4B700ECA302 /* RecipeCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410D92C57B4B700ECA302 /* RecipeCreateView.swift */; };
+		F69411792C57B4B700ECA302 /* RecipeTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410DA2C57B4B700ECA302 /* RecipeTagView.swift */; };
+		F694117A2C57B4B700ECA302 /* UserProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410DD2C57B4B700ECA302 /* UserProfileEditViewModel.swift */; };
+		F694117B2C57B4B700ECA302 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410DE2C57B4B700ECA302 /* UserProfileViewModel.swift */; };
+		F694117C2C57B4B700ECA302 /* OtherUserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410DF2C57B4B700ECA302 /* OtherUserProfileViewModel.swift */; };
+		F694117D2C57B4B700ECA302 /* UserFavoriteTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410E02C57B4B700ECA302 /* UserFavoriteTagViewModel.swift */; };
+		F694117E2C57B4B700ECA302 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410E22C57B4B700ECA302 /* UserProfileView.swift */; };
+		F694117F2C57B4B700ECA302 /* UserProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410E32C57B4B700ECA302 /* UserProfileEditView.swift */; };
+		F69411802C57B4B700ECA302 /* UserProfileContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410E52C57B4B700ECA302 /* UserProfileContainerView.swift */; };
+		F69411812C57B4B700ECA302 /* UserProfileStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410E62C57B4B700ECA302 /* UserProfileStorageView.swift */; };
+		F69411822C57B4B700ECA302 /* OtherUserProfileTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410E72C57B4B700ECA302 /* OtherUserProfileTopView.swift */; };
+		F69411832C57B4B700ECA302 /* UserProfileRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410E82C57B4B700ECA302 /* UserProfileRowView.swift */; };
+		F69411842C57B4B700ECA302 /* UserProfileTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410E92C57B4B700ECA302 /* UserProfileTopView.swift */; };
+		F69411852C57B4B700ECA302 /* UserWithDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410EA2C57B4B700ECA302 /* UserWithDrawView.swift */; };
+		F69411862C57B4B700ECA302 /* OtherUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410EB2C57B4B700ECA302 /* OtherUserProfileView.swift */; };
+		F69411872C57B4B700ECA302 /* UserFavoriteTagEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410EC2C57B4B700ECA302 /* UserFavoriteTagEditView.swift */; };
+		F69411882C57B4B700ECA302 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410EF2C57B4B700ECA302 /* SearchViewModel.swift */; };
+		F69411892C57B4B700ECA302 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410F12C57B4B700ECA302 /* SearchView.swift */; };
+		F694118A2C57B4B700ECA302 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410F42C57B4B700ECA302 /* ProfileViewModel.swift */; };
+		F694118B2C57B4B700ECA302 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410F62C57B4B700ECA302 /* CreateProfileView.swift */; };
+		F694118C2C57B4B700ECA302 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410F72C57B4B700ECA302 /* ProfileView.swift */; };
+		F694118D2C57B4B700ECA302 /* FoodThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410F82C57B4B700ECA302 /* FoodThemeView.swift */; };
+		F694118E2C57B4B700ECA302 /* HouseholdCompositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410F92C57B4B700ECA302 /* HouseholdCompositionView.swift */; };
+		F694118F2C57B4B700ECA302 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410FA2C57B4B700ECA302 /* SplashView.swift */; };
+		F69411902C57B4B700ECA302 /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410FD2C57B4B700ECA302 /* AlarmViewModel.swift */; };
+		F69411912C57B4B700ECA302 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410FF2C57B4B700ECA302 /* AlarmView.swift */; };
+		F69411922C57B4B700ECA302 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69411022C57B4B700ECA302 /* SettingViewModel.swift */; };
+		F69411932C57B4B700ECA302 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69411042C57B4B700ECA302 /* SettingView.swift */; };
+		F69411942C57B4B700ECA302 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69411072C57B4B700ECA302 /* AuthViewModel.swift */; };
+		F69411952C57B4B700ECA302 /* PasswordCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69411092C57B4B700ECA302 /* PasswordCheckView.swift */; };
+		F69411962C57B4B700ECA302 /* EmailAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694110A2C57B4B700ECA302 /* EmailAuthView.swift */; };
+		F69411972C57B4B700ECA302 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694110B2C57B4B700ECA302 /* AuthView.swift */; };
+		F69411982C57B4B700ECA302 /* StartPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694110C2C57B4B700ECA302 /* StartPopupView.swift */; };
+		F69411992C57B4B700ECA302 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694110D2C57B4B700ECA302 /* ContentView.swift */; };
+		F694119A2C57B4B700ECA302 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69411102C57B4B700ECA302 /* LoginViewModel.swift */; };
+		F694119B2C57B4B700ECA302 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69411122C57B4B700ECA302 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F69410382C57B4B600ECA302 /* CookTalkFollowResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookTalkFollowResponse.swift; sourceTree = "<group>"; };
+		F69410392C57B4B600ECA302 /* CookTalkFeedResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookTalkFeedResponse.swift; sourceTree = "<group>"; };
+		F694103B2C57B4B600ECA302 /* RecipeReadResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeReadResponse.swift; sourceTree = "<group>"; };
+		F694103D2C57B4B600ECA302 /* MyPageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageResponse.swift; sourceTree = "<group>"; };
+		F694103E2C57B4B600ECA302 /* MyFavoriteCookResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFavoriteCookResponse.swift; sourceTree = "<group>"; };
+		F694103F2C57B4B600ECA302 /* MyPageMyRecipeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageMyRecipeResponse.swift; sourceTree = "<group>"; };
+		F69410402C57B4B600ECA302 /* MyPageArchiveResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageArchiveResponse.swift; sourceTree = "<group>"; };
+		F69410422C57B4B600ECA302 /* OtherUserInfoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserInfoResponse.swift; sourceTree = "<group>"; };
+		F69410432C57B4B600ECA302 /* OtherUserPostsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserPostsResponse.swift; sourceTree = "<group>"; };
+		F69410462C57B4B600ECA302 /* LikedCheckRequestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedCheckRequestResponse.swift; sourceTree = "<group>"; };
+		F69410482C57B4B600ECA302 /* ArchiveAddRequestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveAddRequestResponse.swift; sourceTree = "<group>"; };
+		F694104A2C57B4B600ECA302 /* RecipeCreateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCreateRequest.swift; sourceTree = "<group>"; };
+		F694104B2C57B4B600ECA302 /* RecipeDeleteRequestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDeleteRequestResponse.swift; sourceTree = "<group>"; };
+		F694104C2C57B4B600ECA302 /* RecipeUpdateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeUpdateRequest.swift; sourceTree = "<group>"; };
+		F694104E2C57B4B600ECA302 /* MyPageProfileEditRequestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageProfileEditRequestResponse.swift; sourceTree = "<group>"; };
+		F694104F2C57B4B600ECA302 /* MyFavoriteTagRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFavoriteTagRequest.swift; sourceTree = "<group>"; };
+		F69410522C57B4B600ECA302 /* CookTalkUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookTalkUseCase.swift; sourceTree = "<group>"; };
+		F69410542C57B4B600ECA302 /* ArchiveUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveUseCase.swift; sourceTree = "<group>"; };
+		F69410562C57B4B600ECA302 /* RecipeUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeUseCase.swift; sourceTree = "<group>"; };
+		F69410582C57B4B600ECA302 /* FollowUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUseCase.swift; sourceTree = "<group>"; };
+		F694105A2C57B4B600ECA302 /* MyPageUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageUseCase.swift; sourceTree = "<group>"; };
+		F694105C2C57B4B600ECA302 /* OtherUserUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserUseCase.swift; sourceTree = "<group>"; };
+		F694105E2C57B4B600ECA302 /* EatCookRepositoryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatCookRepositoryType.swift; sourceTree = "<group>"; };
+		F69410602C57B4B600ECA302 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F69410622C57B4B600ECA302 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		F69410632C57B4B600ECA302 /* TabCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabCase.swift; sourceTree = "<group>"; };
+		F69410652C57B4B600ECA302 /* ScrollOffset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollOffset.swift; sourceTree = "<group>"; };
+		F69410662C57B4B600ECA302 /* Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ex.swift; sourceTree = "<group>"; };
+		F69410682C57B4B600ECA302 /* CustomBorderModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBorderModifier.swift; sourceTree = "<group>"; };
+		F69410692C57B4B600ECA302 /* BadgeTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeTitleView.swift; sourceTree = "<group>"; };
+		F694106A2C57B4B600ECA302 /* ChipLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipLayout.swift; sourceTree = "<group>"; };
+		F694106B2C57B4B600ECA302 /* LoadFailImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadFailImageView.swift; sourceTree = "<group>"; };
+		F694106C2C57B4B600ECA302 /* CheckImageTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckImageTitleButton.swift; sourceTree = "<group>"; };
+		F694106D2C57B4B600ECA302 /* EmptyProfileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyProfileImageView.swift; sourceTree = "<group>"; };
+		F694106E2C57B4B600ECA302 /* CustomTextFieldModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextFieldModifier.swift; sourceTree = "<group>"; };
+		F694106F2C57B4B600ECA302 /* CameraImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
+		F69410702C57B4B600ECA302 /* CustomImageTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageTitleButton.swift; sourceTree = "<group>"; };
+		F69410712C57B4B600ECA302 /* FollowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
+		F69410732C57B4B600ECA302 /* NavigationPathFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationPathFinder.swift; sourceTree = "<group>"; };
+		F69410752C57B4B700ECA302 /* EatCookApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatCookApp.swift; sourceTree = "<group>"; };
+		F69410782C57B4B700ECA302 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F694107A2C57B4B700ECA302 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		F694107B2C57B4B700ECA302 /* URLRequestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestable.swift; sourceTree = "<group>"; };
+		F694107C2C57B4B700ECA302 /* HTTPTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		F694107D2C57B4B700ECA302 /* HTTPHeaderField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
+		F694107E2C57B4B700ECA302 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		F694107F2C57B4B700ECA302 /* NetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		F69410802C57B4B700ECA302 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		F69410822C57B4B700ECA302 /* NetworkProviderImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProviderImpl.swift; sourceTree = "<group>"; };
+		F69410842C57B4B700ECA302 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		F69410852C57B4B700ECA302 /* ArchiveAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
+		F69410862C57B4B700ECA302 /* FollowAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowAPI.swift; sourceTree = "<group>"; };
+		F69410872C57B4B700ECA302 /* AuthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		F69410882C57B4B700ECA302 /* OtherUserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserAPI.swift; sourceTree = "<group>"; };
+		F69410892C57B4B700ECA302 /* MyPageSettingAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageSettingAPI.swift; sourceTree = "<group>"; };
+		F694108A2C57B4B700ECA302 /* RecipeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeAPI.swift; sourceTree = "<group>"; };
+		F694108B2C57B4B700ECA302 /* MyPageAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageAPI.swift; sourceTree = "<group>"; };
+		F694108C2C57B4B700ECA302 /* LikeCheckAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeCheckAPI.swift; sourceTree = "<group>"; };
+		F694108D2C57B4B700ECA302 /* CookTalkAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookTalkAPI.swift; sourceTree = "<group>"; };
+		F694108F2C57B4B700ECA302 /* HTTPError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
+		F69410902C57B4B700ECA302 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		F69410932C57B4B700ECA302 /* EatCookRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatCookRepository.swift; sourceTree = "<group>"; };
+		F69410972C57B4B700ECA302 /* CookTalkFollowResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookTalkFollowResponseDTO.swift; sourceTree = "<group>"; };
+		F69410982C57B4B700ECA302 /* CookTalkFeedResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookTalkFeedResponseDTO.swift; sourceTree = "<group>"; };
+		F694109A2C57B4B700ECA302 /* RecipeReadResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeReadResponseDTO.swift; sourceTree = "<group>"; };
+		F694109C2C57B4B700ECA302 /* MyPageArchiveResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageArchiveResponseDTO.swift; sourceTree = "<group>"; };
+		F694109D2C57B4B700ECA302 /* MyPageMyRecipeResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageMyRecipeResponseDTO.swift; sourceTree = "<group>"; };
+		F694109E2C57B4B700ECA302 /* MyPageResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageResponseDTO.swift; sourceTree = "<group>"; };
+		F694109F2C57B4B700ECA302 /* MyFavoriteCookResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFavoriteCookResponseDTO.swift; sourceTree = "<group>"; };
+		F69410A12C57B4B700ECA302 /* OtherUserInfoResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserInfoResponseDTO.swift; sourceTree = "<group>"; };
+		F69410A22C57B4B700ECA302 /* OtherUserPostsResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserPostsResponseDTO.swift; sourceTree = "<group>"; };
+		F69410A52C57B4B700ECA302 /* ArchiveAddRequestResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveAddRequestResponseDTO.swift; sourceTree = "<group>"; };
+		F69410A72C57B4B700ECA302 /* RecipeUpdateRequestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeUpdateRequestDTO.swift; sourceTree = "<group>"; };
+		F69410A82C57B4B700ECA302 /* RecipeDeleteRequestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDeleteRequestDTO.swift; sourceTree = "<group>"; };
+		F69410A92C57B4B700ECA302 /* RecipeCreateRequestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCreateRequestDTO.swift; sourceTree = "<group>"; };
+		F69410AB2C57B4B700ECA302 /* MyPageProfileEditRequestResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageProfileEditRequestResponseDTO.swift; sourceTree = "<group>"; };
+		F69410AC2C57B4B700ECA302 /* MyFavoriteTagRequestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFavoriteTagRequestDTO.swift; sourceTree = "<group>"; };
+		F69410AE2C57B4B700ECA302 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F69410B02C57B4B700ECA302 /* LoginUserInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUserInfoManager.swift; sourceTree = "<group>"; };
+		F69410B42C57B4B700ECA302 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F69410B62C57B4B700ECA302 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F69410BA2C57B4B700ECA302 /* FeedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		F69410BD2C57B4B700ECA302 /* FollowRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowRowView.swift; sourceTree = "<group>"; };
+		F69410BE2C57B4B700ECA302 /* FeedTabIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTabIndicatorView.swift; sourceTree = "<group>"; };
+		F69410BF2C57B4B700ECA302 /* FeedContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedContainerView.swift; sourceTree = "<group>"; };
+		F69410C02C57B4B700ECA302 /* FeedRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedRowView.swift; sourceTree = "<group>"; };
+		F69410C12C57B4B700ECA302 /* FeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		F69410C52C57B4B700ECA302 /* RecipeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
+		F69410C72C57B4B700ECA302 /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		F69410C92C57B4B700ECA302 /* IngredientsContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientsContainerView.swift; sourceTree = "<group>"; };
+		F69410CA2C57B4B700ECA302 /* RecipeContainerRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeContainerRowView.swift; sourceTree = "<group>"; };
+		F69410CB2C57B4B700ECA302 /* RecipeContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeContainerView.swift; sourceTree = "<group>"; };
+		F69410CC2C57B4B700ECA302 /* TabIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabIndicatorView.swift; sourceTree = "<group>"; };
+		F69410CF2C57B4B700ECA302 /* RecipeCreateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCreateViewModel.swift; sourceTree = "<group>"; };
+		F69410D12C57B4B700ECA302 /* RecipeStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeStepView.swift; sourceTree = "<group>"; };
+		F69410D32C57B4B700ECA302 /* EmptyImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyImageView.swift; sourceTree = "<group>"; };
+		F69410D42C57B4B700ECA302 /* TagField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagField.swift; sourceTree = "<group>"; };
+		F69410D52C57B4B700ECA302 /* TimerPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerPickerView.swift; sourceTree = "<group>"; };
+		F69410D62C57B4B700ECA302 /* DropdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
+		F69410D72C57B4B700ECA302 /* TagLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
+		F69410D82C57B4B700ECA302 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F69410D92C57B4B700ECA302 /* RecipeCreateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCreateView.swift; sourceTree = "<group>"; };
+		F69410DA2C57B4B700ECA302 /* RecipeTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTagView.swift; sourceTree = "<group>"; };
+		F69410DD2C57B4B700ECA302 /* UserProfileEditViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEditViewModel.swift; sourceTree = "<group>"; };
+		F69410DE2C57B4B700ECA302 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		F69410DF2C57B4B700ECA302 /* OtherUserProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileViewModel.swift; sourceTree = "<group>"; };
+		F69410E02C57B4B700ECA302 /* UserFavoriteTagViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFavoriteTagViewModel.swift; sourceTree = "<group>"; };
+		F69410E22C57B4B700ECA302 /* UserProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		F69410E32C57B4B700ECA302 /* UserProfileEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEditView.swift; sourceTree = "<group>"; };
+		F69410E52C57B4B700ECA302 /* UserProfileContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileContainerView.swift; sourceTree = "<group>"; };
+		F69410E62C57B4B700ECA302 /* UserProfileStorageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileStorageView.swift; sourceTree = "<group>"; };
+		F69410E72C57B4B700ECA302 /* OtherUserProfileTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileTopView.swift; sourceTree = "<group>"; };
+		F69410E82C57B4B700ECA302 /* UserProfileRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileRowView.swift; sourceTree = "<group>"; };
+		F69410E92C57B4B700ECA302 /* UserProfileTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTopView.swift; sourceTree = "<group>"; };
+		F69410EA2C57B4B700ECA302 /* UserWithDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWithDrawView.swift; sourceTree = "<group>"; };
+		F69410EB2C57B4B700ECA302 /* OtherUserProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileView.swift; sourceTree = "<group>"; };
+		F69410EC2C57B4B700ECA302 /* UserFavoriteTagEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFavoriteTagEditView.swift; sourceTree = "<group>"; };
+		F69410EF2C57B4B700ECA302 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		F69410F12C57B4B700ECA302 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		F69410F42C57B4B700ECA302 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		F69410F62C57B4B700ECA302 /* CreateProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
+		F69410F72C57B4B700ECA302 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F69410F82C57B4B700ECA302 /* FoodThemeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodThemeView.swift; sourceTree = "<group>"; };
+		F69410F92C57B4B700ECA302 /* HouseholdCompositionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseholdCompositionView.swift; sourceTree = "<group>"; };
+		F69410FA2C57B4B700ECA302 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		F69410FD2C57B4B700ECA302 /* AlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
+		F69410FF2C57B4B700ECA302 /* AlarmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
+		F69411022C57B4B700ECA302 /* SettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		F69411042C57B4B700ECA302 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		F69411072C57B4B700ECA302 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		F69411092C57B4B700ECA302 /* PasswordCheckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordCheckView.swift; sourceTree = "<group>"; };
+		F694110A2C57B4B700ECA302 /* EmailAuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAuthView.swift; sourceTree = "<group>"; };
+		F694110B2C57B4B700ECA302 /* AuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		F694110C2C57B4B700ECA302 /* StartPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPopupView.swift; sourceTree = "<group>"; };
+		F694110D2C57B4B700ECA302 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F69411102C57B4B700ECA302 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		F69411122C57B4B700ECA302 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F6E1C0932B722EE500A05703 /* EatCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6E1C0962B722EE500A05703 /* EatCookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookApp.swift; sourceTree = "<group>"; };
-		F6E1C0982B722EE500A05703 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F6E1C09A2B722EE800A05703 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F6E1C09D2B722EE800A05703 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +298,820 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F69410342C57B4B600ECA302 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F69410352C57B4B600ECA302 /* Model */,
+				F69410502C57B4B600ECA302 /* UseCase */,
+				F694105D2C57B4B600ECA302 /* Interfaces */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F69410352C57B4B600ECA302 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F69410362C57B4B600ECA302 /* Response */,
+				F69410442C57B4B600ECA302 /* Request */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F69410362C57B4B600ECA302 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				F69410372C57B4B600ECA302 /* CookTalk */,
+				F694103A2C57B4B600ECA302 /* Recipe */,
+				F694103C2C57B4B600ECA302 /* MyPage */,
+				F69410412C57B4B600ECA302 /* OtherUser */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		F69410372C57B4B600ECA302 /* CookTalk */ = {
+			isa = PBXGroup;
+			children = (
+				F69410382C57B4B600ECA302 /* CookTalkFollowResponse.swift */,
+				F69410392C57B4B600ECA302 /* CookTalkFeedResponse.swift */,
+			);
+			path = CookTalk;
+			sourceTree = "<group>";
+		};
+		F694103A2C57B4B600ECA302 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				F694103B2C57B4B600ECA302 /* RecipeReadResponse.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		F694103C2C57B4B600ECA302 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				F694103D2C57B4B600ECA302 /* MyPageResponse.swift */,
+				F694103E2C57B4B600ECA302 /* MyFavoriteCookResponse.swift */,
+				F694103F2C57B4B600ECA302 /* MyPageMyRecipeResponse.swift */,
+				F69410402C57B4B600ECA302 /* MyPageArchiveResponse.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		F69410412C57B4B600ECA302 /* OtherUser */ = {
+			isa = PBXGroup;
+			children = (
+				F69410422C57B4B600ECA302 /* OtherUserInfoResponse.swift */,
+				F69410432C57B4B600ECA302 /* OtherUserPostsResponse.swift */,
+			);
+			path = OtherUser;
+			sourceTree = "<group>";
+		};
+		F69410442C57B4B600ECA302 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				F69410452C57B4B600ECA302 /* Like */,
+				F69410472C57B4B600ECA302 /* Archive */,
+				F69410492C57B4B600ECA302 /* Recipe */,
+				F694104D2C57B4B600ECA302 /* MyPage */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		F69410452C57B4B600ECA302 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				F69410462C57B4B600ECA302 /* LikedCheckRequestResponse.swift */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
+		F69410472C57B4B600ECA302 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				F69410482C57B4B600ECA302 /* ArchiveAddRequestResponse.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		F69410492C57B4B600ECA302 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				F694104A2C57B4B600ECA302 /* RecipeCreateRequest.swift */,
+				F694104B2C57B4B600ECA302 /* RecipeDeleteRequestResponse.swift */,
+				F694104C2C57B4B600ECA302 /* RecipeUpdateRequest.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		F694104D2C57B4B600ECA302 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				F694104E2C57B4B600ECA302 /* MyPageProfileEditRequestResponse.swift */,
+				F694104F2C57B4B600ECA302 /* MyFavoriteTagRequest.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		F69410502C57B4B600ECA302 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				F69410512C57B4B600ECA302 /* CookTalk */,
+				F69410532C57B4B600ECA302 /* Archive */,
+				F69410552C57B4B600ECA302 /* Recipe */,
+				F69410572C57B4B600ECA302 /* Follow */,
+				F69410592C57B4B600ECA302 /* MyPage */,
+				F694105B2C57B4B600ECA302 /* OtherUser */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		F69410512C57B4B600ECA302 /* CookTalk */ = {
+			isa = PBXGroup;
+			children = (
+				F69410522C57B4B600ECA302 /* CookTalkUseCase.swift */,
+			);
+			path = CookTalk;
+			sourceTree = "<group>";
+		};
+		F69410532C57B4B600ECA302 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				F69410542C57B4B600ECA302 /* ArchiveUseCase.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		F69410552C57B4B600ECA302 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				F69410562C57B4B600ECA302 /* RecipeUseCase.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		F69410572C57B4B600ECA302 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				F69410582C57B4B600ECA302 /* FollowUseCase.swift */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
+		F69410592C57B4B600ECA302 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				F694105A2C57B4B600ECA302 /* MyPageUseCase.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		F694105B2C57B4B600ECA302 /* OtherUser */ = {
+			isa = PBXGroup;
+			children = (
+				F694105C2C57B4B600ECA302 /* OtherUserUseCase.swift */,
+			);
+			path = OtherUser;
+			sourceTree = "<group>";
+		};
+		F694105D2C57B4B600ECA302 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F694105E2C57B4B600ECA302 /* EatCookRepositoryType.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F694105F2C57B4B600ECA302 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F69410602C57B4B600ECA302 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F69410612C57B4B600ECA302 /* Utillites */ = {
+			isa = PBXGroup;
+			children = (
+				F69410622C57B4B600ECA302 /* Util.swift */,
+				F69410632C57B4B600ECA302 /* TabCase.swift */,
+			);
+			path = Utillites;
+			sourceTree = "<group>";
+		};
+		F69410642C57B4B600ECA302 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F69410652C57B4B600ECA302 /* ScrollOffset.swift */,
+				F69410662C57B4B600ECA302 /* Ex.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F69410672C57B4B600ECA302 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				F69410682C57B4B600ECA302 /* CustomBorderModifier.swift */,
+				F69410692C57B4B600ECA302 /* BadgeTitleView.swift */,
+				F694106A2C57B4B600ECA302 /* ChipLayout.swift */,
+				F694106B2C57B4B600ECA302 /* LoadFailImageView.swift */,
+				F694106C2C57B4B600ECA302 /* CheckImageTitleButton.swift */,
+				F694106D2C57B4B600ECA302 /* EmptyProfileImageView.swift */,
+				F694106E2C57B4B600ECA302 /* CustomTextFieldModifier.swift */,
+				F694106F2C57B4B600ECA302 /* CameraImageView.swift */,
+				F69410702C57B4B600ECA302 /* CustomImageTitleButton.swift */,
+				F69410712C57B4B600ECA302 /* FollowButton.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		F69410722C57B4B600ECA302 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F69410732C57B4B600ECA302 /* NavigationPathFinder.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		F69410742C57B4B700ECA302 /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				F69410752C57B4B700ECA302 /* EatCookApp.swift */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		F69410762C57B4B700ECA302 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F69410772C57B4B700ECA302 /* NetworkManager */,
+				F69410792C57B4B700ECA302 /* Foundation */,
+				F69410812C57B4B700ECA302 /* NetworkProvider */,
+				F69410832C57B4B700ECA302 /* API */,
+				F694108E2C57B4B700ECA302 /* Error */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F69410772C57B4B700ECA302 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				F69410782C57B4B700ECA302 /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		F69410792C57B4B700ECA302 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				F694107A2C57B4B700ECA302 /* Environment.swift */,
+				F694107B2C57B4B700ECA302 /* URLRequestable.swift */,
+				F694107C2C57B4B700ECA302 /* HTTPTask.swift */,
+				F694107D2C57B4B700ECA302 /* HTTPHeaderField.swift */,
+				F694107E2C57B4B700ECA302 /* HTTPMethod.swift */,
+				F694107F2C57B4B700ECA302 /* NetworkProvider.swift */,
+				F69410802C57B4B700ECA302 /* EndPoint.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		F69410812C57B4B700ECA302 /* NetworkProvider */ = {
+			isa = PBXGroup;
+			children = (
+				F69410822C57B4B700ECA302 /* NetworkProviderImpl.swift */,
+			);
+			path = NetworkProvider;
+			sourceTree = "<group>";
+		};
+		F69410832C57B4B700ECA302 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F69410842C57B4B700ECA302 /* LoginAPI.swift */,
+				F69410852C57B4B700ECA302 /* ArchiveAPI.swift */,
+				F69410862C57B4B700ECA302 /* FollowAPI.swift */,
+				F69410872C57B4B700ECA302 /* AuthAPI.swift */,
+				F69410882C57B4B700ECA302 /* OtherUserAPI.swift */,
+				F69410892C57B4B700ECA302 /* MyPageSettingAPI.swift */,
+				F694108A2C57B4B700ECA302 /* RecipeAPI.swift */,
+				F694108B2C57B4B700ECA302 /* MyPageAPI.swift */,
+				F694108C2C57B4B700ECA302 /* LikeCheckAPI.swift */,
+				F694108D2C57B4B700ECA302 /* CookTalkAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		F694108E2C57B4B700ECA302 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				F694108F2C57B4B700ECA302 /* HTTPError.swift */,
+				F69410902C57B4B700ECA302 /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		F69410912C57B4B700ECA302 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F69410922C57B4B700ECA302 /* Repository */,
+				F69410942C57B4B700ECA302 /* DataMapping */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F69410922C57B4B700ECA302 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F69410932C57B4B700ECA302 /* EatCookRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F69410942C57B4B700ECA302 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				F69410952C57B4B700ECA302 /* ResponseDTO */,
+				F69410A32C57B4B700ECA302 /* RequestDTO */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		F69410952C57B4B700ECA302 /* ResponseDTO */ = {
+			isa = PBXGroup;
+			children = (
+				F69410962C57B4B700ECA302 /* CookTalk */,
+				F69410992C57B4B700ECA302 /* Recipe */,
+				F694109B2C57B4B700ECA302 /* MyPage */,
+				F69410A02C57B4B700ECA302 /* OtherUser */,
+			);
+			path = ResponseDTO;
+			sourceTree = "<group>";
+		};
+		F69410962C57B4B700ECA302 /* CookTalk */ = {
+			isa = PBXGroup;
+			children = (
+				F69410972C57B4B700ECA302 /* CookTalkFollowResponseDTO.swift */,
+				F69410982C57B4B700ECA302 /* CookTalkFeedResponseDTO.swift */,
+			);
+			path = CookTalk;
+			sourceTree = "<group>";
+		};
+		F69410992C57B4B700ECA302 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				F694109A2C57B4B700ECA302 /* RecipeReadResponseDTO.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		F694109B2C57B4B700ECA302 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				F694109C2C57B4B700ECA302 /* MyPageArchiveResponseDTO.swift */,
+				F694109D2C57B4B700ECA302 /* MyPageMyRecipeResponseDTO.swift */,
+				F694109E2C57B4B700ECA302 /* MyPageResponseDTO.swift */,
+				F694109F2C57B4B700ECA302 /* MyFavoriteCookResponseDTO.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		F69410A02C57B4B700ECA302 /* OtherUser */ = {
+			isa = PBXGroup;
+			children = (
+				F69410A12C57B4B700ECA302 /* OtherUserInfoResponseDTO.swift */,
+				F69410A22C57B4B700ECA302 /* OtherUserPostsResponseDTO.swift */,
+			);
+			path = OtherUser;
+			sourceTree = "<group>";
+		};
+		F69410A32C57B4B700ECA302 /* RequestDTO */ = {
+			isa = PBXGroup;
+			children = (
+				F69410A42C57B4B700ECA302 /* Archive */,
+				F69410A62C57B4B700ECA302 /* Recipe */,
+				F69410AA2C57B4B700ECA302 /* MyPage */,
+			);
+			path = RequestDTO;
+			sourceTree = "<group>";
+		};
+		F69410A42C57B4B700ECA302 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				F69410A52C57B4B700ECA302 /* ArchiveAddRequestResponseDTO.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		F69410A62C57B4B700ECA302 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				F69410A72C57B4B700ECA302 /* RecipeUpdateRequestDTO.swift */,
+				F69410A82C57B4B700ECA302 /* RecipeDeleteRequestDTO.swift */,
+				F69410A92C57B4B700ECA302 /* RecipeCreateRequestDTO.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		F69410AA2C57B4B700ECA302 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				F69410AB2C57B4B700ECA302 /* MyPageProfileEditRequestResponseDTO.swift */,
+				F69410AC2C57B4B700ECA302 /* MyFavoriteTagRequestDTO.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		F69410AD2C57B4B700ECA302 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F69410AE2C57B4B700ECA302 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F69410AF2C57B4B700ECA302 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				F69410B02C57B4B700ECA302 /* LoginUserInfoManager.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		F69410B12C57B4B700ECA302 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F69410B22C57B4B700ECA302 /* Home */,
+				F69410B72C57B4B700ECA302 /* CookTalk */,
+				F69410C22C57B4B700ECA302 /* Recipe */,
+				F69410DB2C57B4B700ECA302 /* User */,
+				F69410ED2C57B4B700ECA302 /* Search */,
+				F69410F22C57B4B700ECA302 /* Profile */,
+				F69410FA2C57B4B700ECA302 /* SplashView.swift */,
+				F69410FB2C57B4B700ECA302 /* Alarm */,
+				F69411002C57B4B700ECA302 /* Setting */,
+				F69411052C57B4B700ECA302 /* Authentication */,
+				F694110D2C57B4B700ECA302 /* ContentView.swift */,
+				F694110E2C57B4B700ECA302 /* Login */,
+			);
+			name = Presentation;
+			path = "../../Project/TestEatCook/EatCook-iOS/EatCook/Presentation";
+			sourceTree = "<group>";
+		};
+		F69410B22C57B4B700ECA302 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F69410B32C57B4B700ECA302 /* ViewModel */,
+				F69410B52C57B4B700ECA302 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F69410B32C57B4B700ECA302 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F69410B42C57B4B700ECA302 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F69410B52C57B4B700ECA302 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F69410B62C57B4B700ECA302 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F69410B72C57B4B700ECA302 /* CookTalk */ = {
+			isa = PBXGroup;
+			children = (
+				F69410B82C57B4B700ECA302 /* Feed */,
+			);
+			path = CookTalk;
+			sourceTree = "<group>";
+		};
+		F69410B82C57B4B700ECA302 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				F69410B92C57B4B700ECA302 /* ViewModel */,
+				F69410BB2C57B4B700ECA302 /* View */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		F69410B92C57B4B700ECA302 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F69410BA2C57B4B700ECA302 /* FeedViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F69410BB2C57B4B700ECA302 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F69410BC2C57B4B700ECA302 /* Components */,
+				F69410C12C57B4B700ECA302 /* FeedView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F69410BC2C57B4B700ECA302 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F69410BD2C57B4B700ECA302 /* FollowRowView.swift */,
+				F69410BE2C57B4B700ECA302 /* FeedTabIndicatorView.swift */,
+				F69410BF2C57B4B700ECA302 /* FeedContainerView.swift */,
+				F69410C02C57B4B700ECA302 /* FeedRowView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F69410C22C57B4B700ECA302 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				F69410C32C57B4B700ECA302 /* Recipe */,
+				F69410CD2C57B4B700ECA302 /* RecipeCreate */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		F69410C32C57B4B700ECA302 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				F69410C42C57B4B700ECA302 /* ViewModel */,
+				F69410C62C57B4B700ECA302 /* View */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		F69410C42C57B4B700ECA302 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F69410C52C57B4B700ECA302 /* RecipeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F69410C62C57B4B700ECA302 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F69410C72C57B4B700ECA302 /* RecipeView.swift */,
+				F69410C82C57B4B700ECA302 /* Components */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F69410C82C57B4B700ECA302 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F69410C92C57B4B700ECA302 /* IngredientsContainerView.swift */,
+				F69410CA2C57B4B700ECA302 /* RecipeContainerRowView.swift */,
+				F69410CB2C57B4B700ECA302 /* RecipeContainerView.swift */,
+				F69410CC2C57B4B700ECA302 /* TabIndicatorView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F69410CD2C57B4B700ECA302 /* RecipeCreate */ = {
+			isa = PBXGroup;
+			children = (
+				F69410CE2C57B4B700ECA302 /* ViewModel */,
+				F69410D02C57B4B700ECA302 /* View */,
+			);
+			path = RecipeCreate;
+			sourceTree = "<group>";
+		};
+		F69410CE2C57B4B700ECA302 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F69410CF2C57B4B700ECA302 /* RecipeCreateViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F69410D02C57B4B700ECA302 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F69410D12C57B4B700ECA302 /* RecipeStepView.swift */,
+				F69410D22C57B4B700ECA302 /* Components */,
+				F69410D92C57B4B700ECA302 /* RecipeCreateView.swift */,
+				F69410DA2C57B4B700ECA302 /* RecipeTagView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F69410D22C57B4B700ECA302 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F69410D32C57B4B700ECA302 /* EmptyImageView.swift */,
+				F69410D42C57B4B700ECA302 /* TagField.swift */,
+				F69410D52C57B4B700ECA302 /* TimerPickerView.swift */,
+				F69410D62C57B4B700ECA302 /* DropdownView.swift */,
+				F69410D72C57B4B700ECA302 /* TagLayout.swift */,
+				F69410D82C57B4B700ECA302 /* ImagePicker.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F69410DB2C57B4B700ECA302 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F69410DC2C57B4B700ECA302 /* ViewModel */,
+				F69410E12C57B4B700ECA302 /* View */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		F69410DC2C57B4B700ECA302 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F69410DD2C57B4B700ECA302 /* UserProfileEditViewModel.swift */,
+				F69410DE2C57B4B700ECA302 /* UserProfileViewModel.swift */,
+				F69410DF2C57B4B700ECA302 /* OtherUserProfileViewModel.swift */,
+				F69410E02C57B4B700ECA302 /* UserFavoriteTagViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F69410E12C57B4B700ECA302 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F69410E22C57B4B700ECA302 /* UserProfileView.swift */,
+				F69410E32C57B4B700ECA302 /* UserProfileEditView.swift */,
+				F69410E42C57B4B700ECA302 /* Components */,
+				F69410EA2C57B4B700ECA302 /* UserWithDrawView.swift */,
+				F69410EB2C57B4B700ECA302 /* OtherUserProfileView.swift */,
+				F69410EC2C57B4B700ECA302 /* UserFavoriteTagEditView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F69410E42C57B4B700ECA302 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F69410E52C57B4B700ECA302 /* UserProfileContainerView.swift */,
+				F69410E62C57B4B700ECA302 /* UserProfileStorageView.swift */,
+				F69410E72C57B4B700ECA302 /* OtherUserProfileTopView.swift */,
+				F69410E82C57B4B700ECA302 /* UserProfileRowView.swift */,
+				F69410E92C57B4B700ECA302 /* UserProfileTopView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F69410ED2C57B4B700ECA302 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F69410EE2C57B4B700ECA302 /* ViewModel */,
+				F69410F02C57B4B700ECA302 /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F69410EE2C57B4B700ECA302 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F69410EF2C57B4B700ECA302 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F69410F02C57B4B700ECA302 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F69410F12C57B4B700ECA302 /* SearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F69410F22C57B4B700ECA302 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F69410F32C57B4B700ECA302 /* ViewModel */,
+				F69410F52C57B4B700ECA302 /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F69410F32C57B4B700ECA302 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F69410F42C57B4B700ECA302 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F69410F52C57B4B700ECA302 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F69410F62C57B4B700ECA302 /* CreateProfileView.swift */,
+				F69410F72C57B4B700ECA302 /* ProfileView.swift */,
+				F69410F82C57B4B700ECA302 /* FoodThemeView.swift */,
+				F69410F92C57B4B700ECA302 /* HouseholdCompositionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F69410FB2C57B4B700ECA302 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				F69410FC2C57B4B700ECA302 /* ViewModel */,
+				F69410FE2C57B4B700ECA302 /* View */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		F69410FC2C57B4B700ECA302 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F69410FD2C57B4B700ECA302 /* AlarmViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F69410FE2C57B4B700ECA302 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F69410FF2C57B4B700ECA302 /* AlarmView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F69411002C57B4B700ECA302 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F69411012C57B4B700ECA302 /* ViewModel */,
+				F69411032C57B4B700ECA302 /* View */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		F69411012C57B4B700ECA302 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F69411022C57B4B700ECA302 /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F69411032C57B4B700ECA302 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F69411042C57B4B700ECA302 /* SettingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F69411052C57B4B700ECA302 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F69411062C57B4B700ECA302 /* ViewModel */,
+				F69411082C57B4B700ECA302 /* View */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		F69411062C57B4B700ECA302 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F69411072C57B4B700ECA302 /* AuthViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F69411082C57B4B700ECA302 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F69411092C57B4B700ECA302 /* PasswordCheckView.swift */,
+				F694110A2C57B4B700ECA302 /* EmailAuthView.swift */,
+				F694110B2C57B4B700ECA302 /* AuthView.swift */,
+				F694110C2C57B4B700ECA302 /* StartPopupView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F694110E2C57B4B700ECA302 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F694110F2C57B4B700ECA302 /* ViewModel */,
+				F69411112C57B4B700ECA302 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		F694110F2C57B4B700ECA302 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F69411102C57B4B700ECA302 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F69411112C57B4B700ECA302 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F69411122C57B4B700ECA302 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F6E1C08A2B722EE500A05703 = {
 			isa = PBXGroup;
 			children = (
@@ -51,228 +1131,20 @@
 		F6E1C0952B722EE500A05703 /* EatCook */ = {
 			isa = PBXGroup;
 			children = (
-				F6E1C0B72B73C62900A05703 /* Applications */,
-				F6E1C0B52B73C62000A05703 /* Extensions */,
-				F6E1C0B62B73C62200A05703 /* Utillites */,
-				F6E1C0B42B73C61F00A05703 /* Domain */,
-				F6E1C0B32B73C61E00A05703 /* Data */,
-				F6E1C0B22B73C61D00A05703 /* Presentation */,
-				F6E1C0B12B73C61A00A05703 /* Infrastructure */,
-				F6E1C09C2B722EE800A05703 /* Preview Content */,
-				F6E1C0B02B73C61600A05703 /* Resources */,
+				F69410742C57B4B700ECA302 /* Applications */,
+				F69410672C57B4B600ECA302 /* Component */,
+				F69410912C57B4B700ECA302 /* Data */,
+				F69410342C57B4B600ECA302 /* Domain */,
+				F69410642C57B4B600ECA302 /* Extensions */,
+				F69410AF2C57B4B700ECA302 /* Global */,
+				F69410722C57B4B600ECA302 /* Helper */,
+				F69410762C57B4B700ECA302 /* Network */,
+				F69410B12C57B4B700ECA302 /* Presentation */,
+				F694105F2C57B4B600ECA302 /* Preview Content */,
+				F69410AD2C57B4B700ECA302 /* Resources */,
+				F69410612C57B4B600ECA302 /* Utillites */,
 			);
 			path = EatCook;
-			sourceTree = "<group>";
-		};
-		F6E1C09C2B722EE800A05703 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C09D2B722EE800A05703 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		F6E1C0B02B73C61600A05703 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0BC2B73C70400A05703 /* Font */,
-				F6E1C09A2B722EE800A05703 /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		F6E1C0B12B73C61A00A05703 /* Infrastructure */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0BB2B73C6DA00A05703 /* Network */,
-			);
-			path = Infrastructure;
-			sourceTree = "<group>";
-		};
-		F6E1C0B22B73C61D00A05703 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0982B722EE500A05703 /* ContentView.swift */,
-				F6E1C0C22B73C71900A05703 /* Login */,
-				F6E1C0C12B73C71800A05703 /* Authentication */,
-				F6E1C0C02B73C71700A05703 /* Home */,
-				F6E1C0BF2B73C71600A05703 /* Search */,
-				F6E1C0BE2B73C71400A05703 /* CookTalk */,
-				F6E1C0C72B73C7FC00A05703 /* User */,
-				F6E1C0BD2B73C71200A05703 /* Profile */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		F6E1C0B32B73C61E00A05703 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0BA2B73C6B800A05703 /* Repository */,
-				F6E1C0B92B73C6B400A05703 /* DataMapping */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		F6E1C0B42B73C61F00A05703 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0B82B73C69D00A05703 /* Model */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		F6E1C0B52B73C62000A05703 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		F6E1C0B62B73C62200A05703 /* Utillites */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utillites;
-			sourceTree = "<group>";
-		};
-		F6E1C0B72B73C62900A05703 /* Applications */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0962B722EE500A05703 /* EatCookApp.swift */,
-			);
-			path = Applications;
-			sourceTree = "<group>";
-		};
-		F6E1C0B82B73C69D00A05703 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		F6E1C0B92B73C6B400A05703 /* DataMapping */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataMapping;
-			sourceTree = "<group>";
-		};
-		F6E1C0BA2B73C6B800A05703 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
-		F6E1C0BB2B73C6DA00A05703 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		F6E1C0BC2B73C70400A05703 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Font;
-			sourceTree = "<group>";
-		};
-		F6E1C0BD2B73C71200A05703 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		F6E1C0BE2B73C71400A05703 /* CookTalk */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0C32B73C7BB00A05703 /* Feed */,
-				F6E1C0C42B73C7BE00A05703 /* Recipe */,
-			);
-			path = CookTalk;
-			sourceTree = "<group>";
-		};
-		F6E1C0BF2B73C71600A05703 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		F6E1C0C02B73C71700A05703 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		F6E1C0C12B73C71800A05703 /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Authentication;
-			sourceTree = "<group>";
-		};
-		F6E1C0C22B73C71900A05703 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		F6E1C0C32B73C7BB00A05703 /* Feed */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0C92B73C81500A05703 /* View */,
-				F6E1C0C82B73C81400A05703 /* ViewModel */,
-			);
-			path = Feed;
-			sourceTree = "<group>";
-		};
-		F6E1C0C42B73C7BE00A05703 /* Recipe */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0CB2B73C81800A05703 /* View */,
-				F6E1C0CA2B73C81700A05703 /* ViewModel */,
-			);
-			path = Recipe;
-			sourceTree = "<group>";
-		};
-		F6E1C0C72B73C7FC00A05703 /* User */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		F6E1C0C82B73C81400A05703 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		F6E1C0C92B73C81500A05703 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		F6E1C0CA2B73C81700A05703 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		F6E1C0CB2B73C81800A05703 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,8 +1205,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6E1C09E2B722EE800A05703 /* Preview Assets.xcassets in Resources */,
-				F6E1C09B2B722EE800A05703 /* Assets.xcassets in Resources */,
+				F69411602C57B4B700ECA302 /* Assets.xcassets in Resources */,
+				F694112A2C57B4B700ECA302 /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,8 +1217,141 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6E1C0992B722EE500A05703 /* ContentView.swift in Sources */,
-				F6E1C0972B722EE500A05703 /* EatCookApp.swift in Sources */,
+				F69411862C57B4B700ECA302 /* OtherUserProfileView.swift in Sources */,
+				F69411532C57B4B700ECA302 /* RecipeReadResponseDTO.swift in Sources */,
+				F69411222C57B4B700ECA302 /* MyFavoriteTagRequest.swift in Sources */,
+				F69411752C57B4B700ECA302 /* DropdownView.swift in Sources */,
+				F694116A2C57B4B700ECA302 /* RecipeViewModel.swift in Sources */,
+				F694116C2C57B4B700ECA302 /* IngredientsContainerView.swift in Sources */,
+				F69411152C57B4B700ECA302 /* RecipeReadResponse.swift in Sources */,
+				F69411442C57B4B700ECA302 /* LoginAPI.swift in Sources */,
+				F69411802C57B4B700ECA302 /* UserProfileContainerView.swift in Sources */,
+				F694112C2C57B4B700ECA302 /* TabCase.swift in Sources */,
+				F69411232C57B4B700ECA302 /* CookTalkUseCase.swift in Sources */,
+				F694118F2C57B4B700ECA302 /* SplashView.swift in Sources */,
+				F69411942C57B4B700ECA302 /* AuthViewModel.swift in Sources */,
+				F69411912C57B4B700ECA302 /* AlarmView.swift in Sources */,
+				F69411502C57B4B700ECA302 /* EatCookRepository.swift in Sources */,
+				F694111D2C57B4B700ECA302 /* ArchiveAddRequestResponse.swift in Sources */,
+				F694111B2C57B4B700ECA302 /* OtherUserPostsResponse.swift in Sources */,
+				F694118A2C57B4B700ECA302 /* ProfileViewModel.swift in Sources */,
+				F694114A2C57B4B700ECA302 /* RecipeAPI.swift in Sources */,
+				F69411872C57B4B700ECA302 /* UserFavoriteTagEditView.swift in Sources */,
+				F69411172C57B4B700ECA302 /* MyFavoriteCookResponse.swift in Sources */,
+				F694116B2C57B4B700ECA302 /* RecipeView.swift in Sources */,
+				F69411882C57B4B700ECA302 /* SearchViewModel.swift in Sources */,
+				F694114F2C57B4B700ECA302 /* NetworkError.swift in Sources */,
+				F69411842C57B4B700ECA302 /* UserProfileTopView.swift in Sources */,
+				F694113D2C57B4B700ECA302 /* URLRequestable.swift in Sources */,
+				F69411552C57B4B700ECA302 /* MyPageMyRecipeResponseDTO.swift in Sources */,
+				F69411212C57B4B700ECA302 /* MyPageProfileEditRequestResponse.swift in Sources */,
+				F69411292C57B4B700ECA302 /* EatCookRepositoryType.swift in Sources */,
+				F69411312C57B4B700ECA302 /* ChipLayout.swift in Sources */,
+				F69411652C57B4B700ECA302 /* FollowRowView.swift in Sources */,
+				F69411522C57B4B700ECA302 /* CookTalkFeedResponseDTO.swift in Sources */,
+				F694112D2C57B4B700ECA302 /* ScrollOffset.swift in Sources */,
+				F69411422C57B4B700ECA302 /* EndPoint.swift in Sources */,
+				F694118D2C57B4B700ECA302 /* FoodThemeView.swift in Sources */,
+				F69411462C57B4B700ECA302 /* FollowAPI.swift in Sources */,
+				F69411202C57B4B700ECA302 /* RecipeUpdateRequest.swift in Sources */,
+				F69411472C57B4B700ECA302 /* AuthAPI.swift in Sources */,
+				F69411612C57B4B700ECA302 /* LoginUserInfoManager.swift in Sources */,
+				F69411792C57B4B700ECA302 /* RecipeTagView.swift in Sources */,
+				F694113F2C57B4B700ECA302 /* HTTPHeaderField.swift in Sources */,
+				F694114E2C57B4B700ECA302 /* HTTPError.swift in Sources */,
+				F69411482C57B4B700ECA302 /* OtherUserAPI.swift in Sources */,
+				F694113B2C57B4B700ECA302 /* NetworkManager.swift in Sources */,
+				F69411922C57B4B700ECA302 /* SettingViewModel.swift in Sources */,
+				F69411962C57B4B700ECA302 /* EmailAuthView.swift in Sources */,
+				F69411242C57B4B700ECA302 /* ArchiveUseCase.swift in Sources */,
+				F694115A2C57B4B700ECA302 /* ArchiveAddRequestResponseDTO.swift in Sources */,
+				F694119B2C57B4B700ECA302 /* LoginView.swift in Sources */,
+				F69411642C57B4B700ECA302 /* FeedViewModel.swift in Sources */,
+				F694111A2C57B4B700ECA302 /* OtherUserInfoResponse.swift in Sources */,
+				F69411932C57B4B700ECA302 /* SettingView.swift in Sources */,
+				F694114C2C57B4B700ECA302 /* LikeCheckAPI.swift in Sources */,
+				F694114B2C57B4B700ECA302 /* MyPageAPI.swift in Sources */,
+				F694117C2C57B4B700ECA302 /* OtherUserProfileViewModel.swift in Sources */,
+				F69411702C57B4B700ECA302 /* RecipeCreateViewModel.swift in Sources */,
+				F694117A2C57B4B700ECA302 /* UserProfileEditViewModel.swift in Sources */,
+				F694112F2C57B4B700ECA302 /* CustomBorderModifier.swift in Sources */,
+				F694115C2C57B4B700ECA302 /* RecipeDeleteRequestDTO.swift in Sources */,
+				F69411302C57B4B700ECA302 /* BadgeTitleView.swift in Sources */,
+				F69411972C57B4B700ECA302 /* AuthView.swift in Sources */,
+				F69411742C57B4B700ECA302 /* TimerPickerView.swift in Sources */,
+				F69411272C57B4B700ECA302 /* MyPageUseCase.swift in Sources */,
+				F69411362C57B4B700ECA302 /* CameraImageView.swift in Sources */,
+				F69411342C57B4B700ECA302 /* EmptyProfileImageView.swift in Sources */,
+				F69411512C57B4B700ECA302 /* CookTalkFollowResponseDTO.swift in Sources */,
+				F69411992C57B4B700ECA302 /* ContentView.swift in Sources */,
+				F69411162C57B4B700ECA302 /* MyPageResponse.swift in Sources */,
+				F69411902C57B4B700ECA302 /* AlarmViewModel.swift in Sources */,
+				F69411402C57B4B700ECA302 /* HTTPMethod.swift in Sources */,
+				F694118B2C57B4B700ECA302 /* CreateProfileView.swift in Sources */,
+				F69411382C57B4B700ECA302 /* FollowButton.swift in Sources */,
+				F694117D2C57B4B700ECA302 /* UserFavoriteTagViewModel.swift in Sources */,
+				F69411692C57B4B700ECA302 /* FeedView.swift in Sources */,
+				F69411182C57B4B700ECA302 /* MyPageMyRecipeResponse.swift in Sources */,
+				F69411432C57B4B700ECA302 /* NetworkProviderImpl.swift in Sources */,
+				F69411282C57B4B700ECA302 /* OtherUserUseCase.swift in Sources */,
+				F694115D2C57B4B700ECA302 /* RecipeCreateRequestDTO.swift in Sources */,
+				F69411412C57B4B700ECA302 /* NetworkProvider.swift in Sources */,
+				F69411322C57B4B700ECA302 /* LoadFailImageView.swift in Sources */,
+				F69411762C57B4B700ECA302 /* TagLayout.swift in Sources */,
+				F694117E2C57B4B700ECA302 /* UserProfileView.swift in Sources */,
+				F69411562C57B4B700ECA302 /* MyPageResponseDTO.swift in Sources */,
+				F69411332C57B4B700ECA302 /* CheckImageTitleButton.swift in Sources */,
+				F69411142C57B4B700ECA302 /* CookTalkFeedResponse.swift in Sources */,
+				F694117B2C57B4B700ECA302 /* UserProfileViewModel.swift in Sources */,
+				F69411892C57B4B700ECA302 /* SearchView.swift in Sources */,
+				F69411712C57B4B700ECA302 /* RecipeStepView.swift in Sources */,
+				F694111C2C57B4B700ECA302 /* LikedCheckRequestResponse.swift in Sources */,
+				F694118E2C57B4B700ECA302 /* HouseholdCompositionView.swift in Sources */,
+				F69411452C57B4B700ECA302 /* ArchiveAPI.swift in Sources */,
+				F69411352C57B4B700ECA302 /* CustomTextFieldModifier.swift in Sources */,
+				F69411832C57B4B700ECA302 /* UserProfileRowView.swift in Sources */,
+				F694116F2C57B4B700ECA302 /* TabIndicatorView.swift in Sources */,
+				F694117F2C57B4B700ECA302 /* UserProfileEditView.swift in Sources */,
+				F69411852C57B4B700ECA302 /* UserWithDrawView.swift in Sources */,
+				F69411392C57B4B700ECA302 /* NavigationPathFinder.swift in Sources */,
+				F69411822C57B4B700ECA302 /* OtherUserProfileTopView.swift in Sources */,
+				F69411262C57B4B700ECA302 /* FollowUseCase.swift in Sources */,
+				F69411672C57B4B700ECA302 /* FeedContainerView.swift in Sources */,
+				F694112E2C57B4B700ECA302 /* Ex.swift in Sources */,
+				F69411252C57B4B700ECA302 /* RecipeUseCase.swift in Sources */,
+				F694112B2C57B4B700ECA302 /* Util.swift in Sources */,
+				F694119A2C57B4B700ECA302 /* LoginViewModel.swift in Sources */,
+				F69411682C57B4B700ECA302 /* FeedRowView.swift in Sources */,
+				F69411952C57B4B700ECA302 /* PasswordCheckView.swift in Sources */,
+				F69411592C57B4B700ECA302 /* OtherUserPostsResponseDTO.swift in Sources */,
+				F694114D2C57B4B700ECA302 /* CookTalkAPI.swift in Sources */,
+				F69411732C57B4B700ECA302 /* TagField.swift in Sources */,
+				F694113E2C57B4B700ECA302 /* HTTPTask.swift in Sources */,
+				F694115F2C57B4B700ECA302 /* MyFavoriteTagRequestDTO.swift in Sources */,
+				F69411572C57B4B700ECA302 /* MyFavoriteCookResponseDTO.swift in Sources */,
+				F69411582C57B4B700ECA302 /* OtherUserInfoResponseDTO.swift in Sources */,
+				F69411372C57B4B700ECA302 /* CustomImageTitleButton.swift in Sources */,
+				F694111E2C57B4B700ECA302 /* RecipeCreateRequest.swift in Sources */,
+				F69411662C57B4B700ECA302 /* FeedTabIndicatorView.swift in Sources */,
+				F69411772C57B4B700ECA302 /* ImagePicker.swift in Sources */,
+				F694113C2C57B4B700ECA302 /* Environment.swift in Sources */,
+				F69411132C57B4B700ECA302 /* CookTalkFollowResponse.swift in Sources */,
+				F694116D2C57B4B700ECA302 /* RecipeContainerRowView.swift in Sources */,
+				F694115B2C57B4B700ECA302 /* RecipeUpdateRequestDTO.swift in Sources */,
+				F69411722C57B4B700ECA302 /* EmptyImageView.swift in Sources */,
+				F69411542C57B4B700ECA302 /* MyPageArchiveResponseDTO.swift in Sources */,
+				F694111F2C57B4B700ECA302 /* RecipeDeleteRequestResponse.swift in Sources */,
+				F69411782C57B4B700ECA302 /* RecipeCreateView.swift in Sources */,
+				F69411632C57B4B700ECA302 /* HomeView.swift in Sources */,
+				F694118C2C57B4B700ECA302 /* ProfileView.swift in Sources */,
+				F69411622C57B4B700ECA302 /* HomeViewModel.swift in Sources */,
+				F694115E2C57B4B700ECA302 /* MyPageProfileEditRequestResponseDTO.swift in Sources */,
+				F694116E2C57B4B700ECA302 /* RecipeContainerView.swift in Sources */,
+				F694113A2C57B4B700ECA302 /* EatCookApp.swift in Sources */,
+				F69411982C57B4B700ECA302 /* StartPopupView.swift in Sources */,
+				F69411492C57B4B700ECA302 /* MyPageSettingAPI.swift in Sources */,
+				F69411192C57B4B700ECA302 /* MyPageArchiveResponse.swift in Sources */,
+				F69411812C57B4B700ECA302 /* UserProfileStorageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
