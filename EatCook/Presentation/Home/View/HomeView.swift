@@ -9,20 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State var search = ""
     @State private var selectFoodTheme = 0
     @State private var selectMenuRecommend = 0
     @State private var scrollOffset: CGFloat = 0
     
     @StateObject private var homeViewModel = HomeViewModel()
-    
-//  TODO : 한식 일식 야식 별로 서버 데이터 세팅
-    @State private var interestingFoods : [interestingFoods] = [
-                    interestingFoods(title: "간장 마늘 치킨", user: "나는쉐프다", image: Image(.testFood1)),
-                    interestingFoods(title: "아보카도 샐러드", user: "하루집밥살이", image: Image(.testFood1)),
-                    interestingFoods(title: "소고기 미트볼", user: "헝그리맨", image: Image(.testFood1)),
-                    interestingFoods(title: "깍두기 소고기 비빕밥", user: "배고팡팡", image: Image(.testFood1))
-    ]
+
     
     let foodThemecolumns = [GridItem(.flexible())]
     let menuRecommendcolumns = [GridItem(.flexible())]
@@ -62,7 +54,7 @@ struct HomeView: View {
                            }
    
                         VStack(spacing: 20) {
-                            HomeInterestingView(interestingFoods: $interestingFoods)
+                            HomeInterestingView()
                             HomeRecommendView()
                             
 
@@ -70,12 +62,12 @@ struct HomeView: View {
                         
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(.bgPrimary)
+                    .background(.white)
                     .padding(.top)
                     
                 }
 
-            }
+            }.environmentObject(homeViewModel)
 
         }
     }
@@ -139,55 +131,87 @@ struct HomeMenuTopView : View {
 
 
 struct HomeInterestingView : View {
+        
     
-    //TODO : 서버값 연결
-    var interestingTabs = ["한식", "일식" , "야식"]
-    @State var currentTab = "한식"
-    
-    @Binding var interestingFoods : [HomeView.interestingFoods]
-//    var foodThemecolumns : [cook]
+    @EnvironmentObject var homeViewModel : HomeViewModel
     
     var body: some View {
         VStack {
             VStack {
-                VStack {
-                    HStack {
-                        Text("김잇쿡님의 관심 요리")
-                            .bold()
-                            .font(.system(size: 24))
-                        
-                        Spacer()
-                        
-                        
-                    }.padding(.top, 25)
-                        .padding(.bottom, 8)
-                    
-                    HStack {
-                        ForEach(interestingTabs, id : \.self) { tab in
-                            Button(action: {
-                                currentTab = tab
-                            }) {
-                                Text(tab)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(currentTab == tab ? .white : .gray)
-                            }.buttonStyle(.borderedProminent)
-                                .tint(currentTab == tab ? .primary7 : .gray2)
+                
+                if homeViewModel.interestingFoods.isEmpty {
+                    VStack {
+                        HStack {
+                            VStack(alignment : .leading){
+                                Text("내 취향 레시피만 보고싶다면?").bold()
+                                    .font(.system(size: 20))
+                                Text("나의 관심 요리를 설정해 보세요").foregroundColor(.gray8).font(.system(size: 16))
+                            }
+                            
+                            Spacer()
+                            
+                            Image(.mainRecipeEmpty).resizable().frame(width: 60 , height: 60)
+                            
                             
                         }
-                        Spacer()
-                    }.padding(.top , 12)
-                        .padding(.leading , 0)
-                }.padding(.horizontal, 12)
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    
-                    LazyHStack(alignment : .top){
-                        ForEach($interestingFoods, id: \.self) { interestingFood in
-                            interestingRowView(foodName: interestingFood.title, time:interestingFood.time, userImage: interestingFood.userImage, foodImage: interestingFood.image, userName: interestingFood.user)
-                        }
-                   
+                        
+       
                     }
-                       
+                    .padding(.horizontal , 24)
+                    .padding(.vertical , 24)
+                    
+                    .background{
+                        Color.gray10
+                    }
+                    .cornerRadius(10)
+                    .padding(.horizontal , 12)
+                    
+                }else{
+                    VStack {
+                        HStack {
+                            Text("김잇쿡님의 관심 요리")
+                                .bold()
+                                .font(.system(size: 24))
+                            
+                            Spacer()
+                            
+                            
+                        }.padding(.top, 25)
+                            .padding(.bottom, 8)
+                        
+                        HStack {
+                            ForEach(Array(homeViewModel.userCookingTheme), id: \.key) { key , value in
+                                let tab = homeViewModel.userCookingTheme[key]!
+                                Button(action: {
+                                    homeViewModel.interestCurrentTab = key
+                    
+                                }) {
+                                    Text(tab)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(homeViewModel.userCookingTheme[homeViewModel.interestCurrentTab] == tab ? .white : .gray)
+                                }
+                                .buttonStyle(.borderedProminent)
+                                .tint(homeViewModel.userCookingTheme[homeViewModel.interestCurrentTab] == tab ? .primary7 : .gray2)
+                            }
+                            Spacer()
+                        }
+                        .padding(.top, 12)
+                        .padding(.leading, 0)
+                    }.padding(.horizontal, 12)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        if let foods = homeViewModel.interestingFoods[homeViewModel.userCookingTheme[homeViewModel.interestCurrentTab] ?? ""] {
+                            VStack(alignment: .leading) {
+                                LazyHStack(alignment: .top) {
+                                    ForEach(foods) { interestingFood in
+                                        interestingRowView(postId: interestingFood.postId, postImagePath: interestingFood.postImagePath, recipeName: interestingFood.recipeName, recipeTime: interestingFood.recipeTime, profile: interestingFood.profile, nickName: interestingFood.nickName, likedCounts: interestingFood.likedCounts, likedCheck: interestingFood.likedCheck, archiveCheck: interestingFood.archiveCheck)
+                                    }
+                                }
+                            }
+                            .padding()
+                        }
+                    }
+                    
                 }
                 
             }.padding(.bottom, 22)
@@ -204,24 +228,28 @@ struct HomeInterestingView : View {
 
 struct interestingRowView : View {
     
-    @Binding var foodName : String
-    @Binding var time : String
-    @Binding var userImage : Image
-    @Binding var foodImage : Image
-    @Binding var userName : String
+    var postId : Int
+    var postImagePath : String
+    var recipeName : String
+    var recipeTime : Int
+    var profile : String
+    var nickName : String
+    var likedCounts : Int
+    var likedCheck : Bool
+    var archiveCheck : Bool
     
     var body: some View {
         VStack(alignment : .leading) {
    
             ZStack(alignment: .topLeading) {
                 ZStack(alignment : .bottomTrailing) {
-                    foodImage.resizable().frame(width : 220, height : 165)
+                    Image(.testFood1).resizable().frame(width : 220, height : 165)
                     Image(.bookMark).resizable().frame(width: 20 , height:  24).padding()
                 }
                
                 HStack {
                     Image(.whiteHeart).resizable().frame(width: 20 , height: 20)
-                    Text("120").font(.callout).foregroundColor(.white)
+                    Text(String(likedCounts)).font(.callout).foregroundColor(.white)
                 }
                 .padding(.vertical, 3)
                 .padding(.horizontal, 5)
@@ -231,7 +259,7 @@ struct interestingRowView : View {
             }
     
             HStack {
-                Text(foodName)
+                Text(recipeName)
                     .font(.system(size : 18))
                     .font(.callout)
                     .bold()
@@ -243,8 +271,8 @@ struct interestingRowView : View {
      
             }
             HStack {
-                userImage.resizable().frame(width : 20, height: 20)
-                Text("유저 이름").foregroundColor(.black)
+                Image(.testUserImage1).resizable().frame(width : 20, height: 20)
+                Text(nickName).foregroundColor(.black)
             }
           
         }.padding(.horizontal, 6)
@@ -461,29 +489,8 @@ extension HomeView {
         ]
     }
     
-    struct interestingFoods : Identifiable, Hashable  {
-        var id = UUID()
-        var title: String
-        var user: String
-        var userImage = Image(.testUserImage1)
-        var image = Image(.testFood1)
-        var time = "15분"
-        var bookMark : Bool = false
-        
-        static func ==(lhs: interestingFoods, rhs: interestingFoods) -> Bool {
-           return lhs.id == rhs.id
-         }
-         func hash(into hasher: inout Hasher) {
-           hasher.combine(id)
-         }
-       
-        
-    }
 
 
-    
-    
-    
 }
 
 struct SizePreferenceKey: PreferenceKey {

@@ -40,6 +40,8 @@
 		3F4C10F92B7A640600D6DA1B /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C10F82B7A640600D6DA1B /* CreateProfileView.swift */; };
 		E52261312BEB63F300ECC939 /* EmailValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */; };
 		E535A31B2C04604200E767EC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E535A31A2C04604200E767EC /* ToastView.swift */; };
+		E536FE1A2C57551F00632A7E /* MainUserInterestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E536FE192C57551F00632A7E /* MainUserInterestResponse.swift */; };
+		E536FE1C2C57567D00632A7E /* MainUserLifeTypeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E536FE1B2C57567D00632A7E /* MainUserLifeTypeResponse.swift */; };
 		E55965342C059C38002B3E75 /* AppleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55965332C059C38002B3E75 /* AppleLoginButtonView.swift */; };
 		E55965372C0986FB002B3E75 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = E55965362C0986FB002B3E75 /* KakaoSDK */; };
 		E56146492C01D01700CA1991 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56146482C01D01700CA1991 /* EmailLoginView.swift */; };
@@ -162,6 +164,8 @@
 		E52261302BEB63F300ECC939 /* EmailValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationViewModel.swift; sourceTree = "<group>"; };
 		E535A3182C044BF100E767EC /* EatCook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EatCook.entitlements; sourceTree = "<group>"; };
 		E535A31A2C04604200E767EC /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		E536FE192C57551F00632A7E /* MainUserInterestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserInterestResponse.swift; sourceTree = "<group>"; };
+		E536FE1B2C57567D00632A7E /* MainUserLifeTypeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserLifeTypeResponse.swift; sourceTree = "<group>"; };
 		E55965332C059C38002B3E75 /* AppleLoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButtonView.swift; sourceTree = "<group>"; };
 		E56146482C01D01700CA1991 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
 		E561464A2C01D02800CA1991 /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
@@ -717,6 +721,8 @@
 				E5F2F6E62C461196000EC91C /* EmailRequestResponse.swift */,
 				E5F2F6E82C4611A3000EC91C /* EmailVerifyResponse.swift */,
 				E5F2F6EA2C4611B2000EC91C /* PasswordCheckResponse.swift */,
+				E536FE192C57551F00632A7E /* MainUserInterestResponse.swift */,
+				E536FE1B2C57567D00632A7E /* MainUserLifeTypeResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1043,6 +1049,7 @@
 				F69B6DB62B80D80500EFB467 /* TabCase.swift in Sources */,
 				E5F2F6F82C461371000EC91C /* EmailVerifyResponseDTO.swift in Sources */,
 				E5786EA62C53925C00169610 /* KeyvoardAwareModifier.swift in Sources */,
+				E536FE1C2C57567D00632A7E /* MainUserLifeTypeResponse.swift in Sources */,
 				F66E2D112B8CCFDE00524B8B /* NetworkProviderImpl.swift in Sources */,
 				E58300AF2C4E2E09005354A8 /* FoodThemeViewModel.swift in Sources */,
 				F66E2D092B8CCF0000524B8B /* NetworkError.swift in Sources */,
@@ -1058,6 +1065,7 @@
 				F66E2D0F2B8CCFC400524B8B /* URLRequestable.swift in Sources */,
 				E578D5AC2C296B1300A91EB8 /* SearchMenu.swift in Sources */,
 				E5F452FE2C522E690074618B /* FindNewPasswordResponse.swift in Sources */,
+				E536FE1A2C57551F00632A7E /* MainUserInterestResponse.swift in Sources */,
 				F6F9FB672BA1AA1000AEF22E /* RecipeStepView.swift in Sources */,
 				F6F9FB582BA1A9CE00AEF22E /* RecipeCreateViewModel.swift in Sources */,
 				3F4C10DC2B73EA3200D6DA1B /* FeedViewModel.swift in Sources */,

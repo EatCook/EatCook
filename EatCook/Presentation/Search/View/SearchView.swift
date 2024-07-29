@@ -199,7 +199,6 @@ struct SearchViewCustomTabView: View {
                     withAnimation {
                         selectedTab = .recipe
                     }
-                   
                 }) {
                     VStack {
                         Text("레시피")
