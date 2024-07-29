@@ -19,7 +19,7 @@ struct PasswordCheckView: View {
     
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack {
                 Text("비밀번호를 입력해 주세요")
                     .font(.title2)
@@ -150,7 +150,7 @@ struct PasswordCheckView: View {
             .background(.bgPrimary)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("회원가입").bold()
-        }
+//        }
     }
 }
 

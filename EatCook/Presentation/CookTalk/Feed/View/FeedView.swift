@@ -1,3 +1,4 @@
+
 //
 //  FeedView.swift
 //  EatCook
@@ -28,77 +29,138 @@ enum CookTalkTabCase: CaseIterable {
     }
     
     @ViewBuilder
-    func tabCaseContainerView() -> some View {
+    func tabCaseContainerView(_ viewModel: FeedViewModel) -> some View {
         switch self {
-        case .cooktalk: FeedContainerView()
-        case .follow: Text("팔로우 피드")
+        case .cooktalk: FeedContainerView(viewModel: viewModel, feedType: .cooktalk)
+        case .follow: FeedContainerView(viewModel: viewModel, feedType: .follow)
         }
-
+        
     }
 }
 
 struct FeedView: View {
     @State private var activeTab: CookTalkTabCase = .cooktalk
-
-    //    @Namespace private var animation
-
+    @Namespace private var animation
+    //    @State private var offsetX: CGFloat = 0
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    
+    @StateObject private var viewModel = FeedViewModel(
+        useCase: CookTalkUseCase(
+            eatCookRepository: EatCookRepository(
+                networkProvider: NetworkProviderImpl(
+                    requestManager: NetworkManager()))))
     
     var body: some View {
-        NavigationStack {
+        GeometryReader {
+            let size = $0.size
+            let tabWidth = size.width / CGFloat(CookTalkTabCase.allCases.count)
+            
             ZStack(alignment: .bottomTrailing) {
-                ScrollView(showsIndicators: false) {
-
-                    LazyVStack(spacing: 12, pinnedViews: [.sectionHeaders]) {
-                        Section {
-                            TabView(selection: $activeTab) {
-                                ForEach(CookTalkTabCase.allCases, id: \.self) { tabCase in
-                                    NavigationLink(destination: RecipeView().toolbarRole(.editor)) {
-                                        tabCase.tabCaseContainerView()
-                                            .tag(tabCase)
-                                    }
-                                    .tint(.primary)
+                VStack(spacing: 0) {
+                    HStack {
+                        Text("쿡Talk")
+                            .font(.system(size: 24, weight: .semibold))
+                            .padding(.vertical, 14)
+                            .padding(.horizontal, 16)
+                        
+                        Spacer()
+                    }
+                    .frame(height: 44)
+                    
+                    /// TabIndicator
+                    HStack(alignment: .center, spacing: 0) {
+                        ForEach(CookTalkTabCase.allCases, id: \.self) { tabCase in
+                            Button {
+                                withAnimation(.easeInOut(duration: 0.3)) {
+                                    activeTab = tabCase
+                                }
+                            } label: {
+                                Text(tabCase.title)
+                                    .font(.headline)
+                                    .fontWeight(activeTab == tabCase ? .bold : .semibold)
+                                    .foregroundStyle(activeTab == tabCase ? .black : .gray)
+                                    .frame(width: tabWidth - 80)
+                                    .padding(.vertical, 12)
+                            }
+                            .overlay(alignment: .bottom) {
+                                if activeTab == tabCase {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill()
+                                        .frame(height: 3)
+                                        .padding(.horizontal, 20)
+                                        .matchedGeometryEffect(id: "ACTIVETAB", in: animation)
+                                    //                                    .animation(.easeInOut(duration: 0.3), value: activeTab)
                                 }
                             }
-                            .frame(height: 2500)
-                            .tabViewStyle(.page(indexDisplayMode: .never))
-                            .ignoresSafeArea(.container, edges: .bottom)
-                        } header: {
-                            //                        tabView()
-                            FeedTabIndicatorView(activeTab: $activeTab)
-
                         }
                     }
-                    .background(Color("BackGround"))
+                    .frame(maxWidth: .infinity)
+                    .background {
+                        Rectangle()
+                            .fill(.gray)
+                            .frame(height: 1)
+                            .offset(y: 20)
+                    }
+                    
+                    /// TabView
+                    TabView(selection: $activeTab) {
+                        ForEach(CookTalkTabCase.allCases, id: \.self) { tabCase in
+                            ScrollView(.vertical) {
+                                tabCase.tabCaseContainerView(viewModel)
+                                    .tag(tabCase)
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 24)
+                            }
+                            .scrollIndicators(.never)
+                            
+                        }
+                    }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    .background(.gray1)
+                    .onAppear {
+                        viewModel.responseCookTalkFeed()
+                        viewModel.responseCookTalkFollow()
+                    }
+                    //                .gesture(
+                    //                    DragGesture().onChanged { gesture in
+                    //                        offsetX = gesture.translation.width
+                    //                    }
+                    //                        .onEnded { _ in
+                    //                            let relativeDrag = offsetX / size.width
+                    //                            let currentTabIndex = activeTab.index
+                    //                            let newIndex = max(0, min(CookTalkTabCase.allCases.count - 1, currentTabIndex - Int(relativeDrag.rounded())))
+                    //
+                    //                            if newIndex != currentTabIndex { // 새 인덱스가 현재 인덱스와 다를 때만 업데이트
+                    //                                withAnimation {
+                    //                                    activeTab = CookTalkTabCase.allCases[newIndex]
+                    //                                }
+                    //                            }
+                    //                            offsetX = 0
+                    //                        }
+                    //                )
+                }
+//                .navigationTitle("쿡Talk")
+//                .navigationBarTitleDisplayMode(.large)
+                
+                Button {
+                    naviPathFinder.addPath(.recipeCreate(""))
+                } label: {
+                    Image("plusbutton")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 48, height: 48)
+                        .offset(x: -16, y: -16)
                 }
                 
-                NavigationLink(destination: RecipeCreateView().toolbarRole(.editor)) {
-
-                    Image(systemName: "plus")
-                        .resizable()
-                        .frame(width: 15, height: 15)
-                        .foregroundStyle(.white)
-                        .background {
-                            Circle()
-                                .fill(.black)
-                                .frame(width: 45, height: 45)
-                                .shadow(color: .black, radius: 7)
-                        }
-                        .padding(30)
-                }
-
             }
-            .navigationTitle("쿡Talk")
-            .navigationBarTitleDisplayMode(.inline)
             
         }
-        
-
-        
     }
 }
 
 #Preview {
     NavigationStack {
         FeedView()
+            .environmentObject(NavigationPathFinder.shared)
     }
 }

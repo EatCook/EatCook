@@ -8,15 +8,38 @@
 import SwiftUI
 
 struct FeedContainerView: View {
+    @ObservedObject var viewModel: FeedViewModel
+    var feedType: CookTalkTabCase = .cooktalk
+    
     var body: some View {
-        VStack {
-            ForEach(1...7, id: \.self) { index in
-                FeedRowView()
+        VStack(spacing: 16) {
+            switch feedType {
+            case .cooktalk:
+                if viewModel.feedDataIsLoading {
+                    ProgressView()
+                } else if let error = viewModel.feedError {
+                    Text(error)
+                } else if let feedData = viewModel.feedData {
+                    ForEach(feedData.cookTalkDtoList, id: \.id) { data in
+                        FeedRowView(cookTalkFeedData: data)
+                    }
+                }
+            case .follow:
+                if viewModel.followDataIsLoading {
+                    ProgressView()
+                } else if let error = viewModel.followError {
+                    Text(error)
+                } else if let followData = viewModel.followData {
+                    ForEach(followData.cookTalkDtoList, id: \.id) { data in
+                        FollowRowView(cookTalkFollowData: data)
+                    }
+                }
             }
+            
         }
     }
 }
 
 #Preview {
-    FeedContainerView()
+    FeedView()
 }

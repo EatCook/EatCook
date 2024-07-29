@@ -15,15 +15,21 @@ struct FeedTabIndicatorView: View {
     var body: some View {
         GeometryReader {
             let size = $0.size
-            let tabWidth = size.width / CGFloat(CookTalkTabCase.allCases.count)
+            let tabWidth = (size.width - 60) / CGFloat(CookTalkTabCase.allCases.count)
             
-            HStack(spacing: 0) {
+            HStack(alignment: .center, spacing: 0) {
                 ForEach(CookTalkTabCase.allCases, id: \.self) { tabCase in
                     Text(tabCase.title)
                         .font(.headline)
                         .fontWeight(activeTab == tabCase ? .bold : .semibold)
                         .foregroundStyle(activeTab == tabCase ? Color.black : Color.gray)
                         .frame(width: tabWidth)
+                        .background {
+                            Rectangle()
+                                .fill(.gray2)
+                                .frame(height: 1)
+                                .offset(y: 25)
+                        }
                         .overlay(alignment: .bottom) {
                             if activeTab == tabCase {
                                 RoundedRectangle(cornerRadius: 8)
@@ -35,8 +41,8 @@ struct FeedTabIndicatorView: View {
                                     .matchedGeometryEffect(id: "ACTIVETAB", in: animation)
                             }
                             
-                            Divider()
-                                .offset(y: 15)
+//                            Divider()
+//                                .offset(y: 15)
                             
                         }
                         .contentShape(Rectangle())
@@ -48,7 +54,8 @@ struct FeedTabIndicatorView: View {
                 }
             }
             .padding()
-            .frame(width: CGFloat(CookTalkTabCase.allCases.count) * tabWidth)
+            .frame(maxWidth: .infinity)
+//            .frame(width: CGFloat(CookTalkTabCase.allCases.count) * tabWidth)
             
         }
         .frame(height: 50)

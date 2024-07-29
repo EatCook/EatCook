@@ -18,7 +18,7 @@ struct CreateProfileView: View {
     @State private var shake = false
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack {
                 Text("프로필을 설정해 주세요")
                     .bold()
@@ -107,7 +107,7 @@ struct CreateProfileView: View {
             .background(.bgPrimary)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("회원가입")
-        }
+//        }
     }
 }
 

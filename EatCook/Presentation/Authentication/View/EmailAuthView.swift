@@ -46,7 +46,7 @@ struct EmailAuthView: View {
     }
 
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack {
                 Text("이메일을 인증해 주세요")
                     .font(.title2)
@@ -156,7 +156,7 @@ struct EmailAuthView: View {
             .background(.bgPrimary)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("회원가입").bold()
-        }
+//        }
     }
 }
 

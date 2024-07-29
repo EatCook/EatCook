@@ -8,39 +8,115 @@
 import SwiftUI
 
 struct FeedRowView: View {
+    @State private var isExpended: Bool = false
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    var cookTalkFeedData: CookTalkFeedResponseList
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 8)
-                .fill(Color.gray)
-                .frame(height: 200)
-            
-            HStack {
-                Circle()
-                    .fill(Color.gray)
-                    .frame(width: 25, height: 25)
-                
-                Text("Username")
-                    .font(.body)
-                    .fontWeight(.semibold)
-                
-                Button {
+        VStack(alignment: .leading, spacing: 16) {
+            if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(cookTalkFeedData.postImagePath)") {
+                ZStack(alignment: .bottomTrailing) {
+                    AsyncImage(url: imageUrl) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                                .frame(height: 196)
+//                                .aspectRatio(contentMode: .fit)
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .frame(maxWidth: .infinity)
+                                .aspectRatio(4/3, contentMode: .fit)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        case .failure:
+                            LoadFailImageView()
+                        @unknown default:
+                            EmptyView()
+                        }
+                    }
                     
-                } label: {
-                    Text("팔로우")
+                    HStack(spacing: 4) {
+                        Text("\(cookTalkFeedData.likeCount)")
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(.white)
+                        
+                        Image(systemName: cookTalkFeedData.followCheck ? "heart.fill" : "heart")
+                            .resizable()
+                            .frame(width: 18, height: 18)
+                            .scaledToFit()
+                            .foregroundStyle(cookTalkFeedData.followCheck ? Color.red : Color.white)
+                    }
+                    .padding(.trailing, 12)
+                    .padding(.bottom, 12)
+                }
+                .frame(maxWidth: .infinity)
+                
+            }
+//            RoundedRectangle(cornerRadius: 10)
+//                .frame(width: 311, height: 196)
+//                .foregroundStyle(.gray4)
+            if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(cookTalkFeedData.profile ?? "")") {
+                HStack(spacing: 8) {
+                    AsyncImage(url: imageUrl) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                                .frame(width: 25, height: 25)
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .clipShape(Circle())
+                        case .failure:
+                            EmptyProfileImageView()
+                        @unknown default:
+                            EmptyView()
+                        }
+                    }
+                    
+                    Text(cookTalkFeedData.nickName)
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(.gray9)
                 }
             }
             
-            Text("오늘 냉장고 재료로 만든 요리는 바질 치킨 스테이크! 가뜩이나 약속도 없는데 집에서 혼자 배달시켜 먹을까 생각하다가, 크리스마스인 오늘 만큼은 나에게 대접하고 싶은 마음ㅎ_ㅎ 나도 크리스마스에 분위기 낼 수 있다구! 마침 집에 먹다 남은 치킨이 있길래, 치킨 남은거에 바질 사다가 바질 스테이크 해먹었다~")
-                .font(.caption)
+            HStack(alignment: .top, spacing: 8) {
+                Text(cookTalkFeedData.introduction)
+                    .font(.system(size: 14, weight: .regular))
+                    .foregroundStyle(.gray8)
+                    .lineLimit(isExpended ? nil : 3)
+                    .lineSpacing(4)
+                    .multilineTextAlignment(.leading)
+                
+                if !isExpended {
+                    Button {
+                        isExpended.toggle()
+                    } label: {
+                        Text("더 보기")
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(.gray6)
+                    }
+                }
+                
+                Spacer()
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 28)
+            .padding(.top, -10)
+            
         }
-        .padding(8)
+        .padding(16)
         .background {
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 10)
                 .fill(.white)
+                .shadow(color: .black.opacity(0.05), radius: 10, y: 5)
+        }
+        .onTapGesture {
+            naviPathFinder.addPath(.recipeDetail(cookTalkFeedData.postID))
         }
     }
 }
 
 #Preview {
-    FeedRowView()
+    FeedView()
 }

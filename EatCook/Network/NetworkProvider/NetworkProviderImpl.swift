@@ -22,7 +22,16 @@ final class NetworkProviderImpl: NetworkProvider {
     
     func excute<T: Decodable>(_ object: T.Type, of endpoint: EndPoint) async throws -> Result<T, NetworkError> {
         do {
-            let data = try await self.loadData(of: endpoint)
+            let (data, httpResponse) = try await self.loadData(of: endpoint)
+            
+            if data.isEmpty {
+                if let emptyResponse = EmptyResponse() as? T {
+                    return .success(emptyResponse)
+                } else {
+                    throw NetworkError.emptyData
+                }
+            }
+            
             let decodedData = try await requestManager.decode(object, data)
             return .success(decodedData)
         } catch let error {
@@ -30,7 +39,7 @@ final class NetworkProviderImpl: NetworkProvider {
         }
     }
     
-    private func loadData(of endpoint: EndPoint) async throws -> Data {
+    private func loadData(of endpoint: EndPoint) async throws -> (Data, HTTPURLResponse) {
         do {
             let urlRequest = try await requestManager.makeURLRequest(of: endpoint)
             let (data, response) = try await session.data(for: urlRequest)
@@ -39,7 +48,7 @@ final class NetworkProviderImpl: NetworkProvider {
             
             guard 200..<300 ~= httpResponse.statusCode else { throw httpResponseError(httpResponse) }
             
-            return data
+            return (data, httpResponse)
         } catch {
             throw HTTPError.requestFail
         }
@@ -56,3 +65,5 @@ final class NetworkProviderImpl: NetworkProvider {
         }
     }
 }
+
+struct EmptyResponse: Codable { }

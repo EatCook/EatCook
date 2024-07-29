@@ -11,6 +11,7 @@ import KakaoSDKAuth
 
 @main
 struct EatCookApp: App {
+<<<<<<< HEAD
     
     init() {
         // Kakao SDK 초기화
@@ -23,6 +24,9 @@ struct EatCookApp: App {
         }
 
     }
+=======
+    @StateObject private var loginUserInfo = LoginUserInfoManager.shared
+>>>>>>> feature/roar
     
     var body: some Scene {
         WindowGroup {
