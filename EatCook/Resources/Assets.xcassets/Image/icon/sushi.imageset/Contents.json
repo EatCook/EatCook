@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "email.png",
+      "filename" : "sushi--japanese-raw-fish-rice-cook-sushi.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "email 1.png",
+      "filename" : "sushi--japanese-raw-fish-rice-cook-sushi@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "email 2.png",
+      "filename" : "sushi--japanese-raw-fish-rice-cook-sushi@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

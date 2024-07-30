@@ -1190,6 +1190,9 @@
 				Base,
 			);
 			mainGroup = F6E1C08A2B722EE500A05703;
+			packageReferences = (
+				E59D7CDF2C588531007702C2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+			);
 			productRefGroup = F6E1C0942B722EE500A05703 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1572,6 +1575,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E59D7CDF2C588531007702C2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = F6E1C08B2B722EE500A05703 /* Project object */;
 }
