@@ -15,25 +15,20 @@ struct CookTalkFollowResponseDTO: Codable {
 
 struct CookTalkFollowResponseDataDTO: Codable {
     let nextPageValid: Bool
-    let totalElements, totalPages: Int
+    let page, size, totalElements, totalPages: Int
     let cookTalkDtoList: [CookTalkFollowResponseListDTO]
 }
 
 struct CookTalkFollowResponseListDTO: Codable {
-    let postID: Int
-    let introduction, postImagePath, createdAt, lastModifiedAt: String
-    let userID: Int
-    let nickName: String
+    let writerUserId: Int
+    let writerUserEmail: String
+    let writerProfile: String?
+    let writerNickName: String
+    let postId: Int
+    let introduction, postImagePath, lastModifiedAt: String
     let profile: String?
-    let likeCount: Int
+    let likeCounts: Int
     let likedCheck, followCheck: Bool
-
-    enum CodingKeys: String, CodingKey {
-        case postID = "postId"
-        case introduction, postImagePath, createdAt, lastModifiedAt
-        case userID = "userId"
-        case nickName, profile, likeCount, likedCheck, followCheck
-    }
 }
 
 extension CookTalkFollowResponseDTO {
@@ -47,25 +42,32 @@ extension CookTalkFollowResponseDTO {
 
 extension CookTalkFollowResponseDataDTO {
     func toDomain() -> CookTalkFollowResponseData {
-        return .init(nextPageValid: nextPageValid,
-                     totalElements: totalElements,
-                     totalPages: totalPages,
-                     cookTalkDtoList: cookTalkDtoList.map { $0.toDomain() })
+        return .init(
+            nextPageValid: nextPageValid,
+            page: page,
+            size: size,
+            totalElements: totalElements,
+            totalPages: totalPages,
+            cookTalkDtoList: cookTalkDtoList.map { $0.toDomain() }
+        )
     }
 }
 
 extension CookTalkFollowResponseListDTO {
     func toDomain() -> CookTalkFollowResponseList {
-        return .init(postID: postID,
-                     introduction: introduction,
-                     postImagePath: postImagePath,
-                     createdAt: createdAt,
-                     lastModifiedAt: lastModifiedAt,
-                     userID: userID,
-                     nickName: nickName,
-                     profile: profile,
-                     likeCount: likeCount,
-                     likedCheck: likedCheck,
-                     followCheck: followCheck)
+        return .init(
+            writerUserId: writerUserId,
+            writerUserEmail: writerUserEmail,
+            writerProfile: writerProfile,
+            writerNickName: writerNickName,
+            postId: postId,
+            introduction: introduction,
+            postImagePath: postImagePath,
+            lastModifiedAt: lastModifiedAt,
+            profile: profile,
+            likeCounts: likeCounts,
+            likedCheck: likedCheck,
+            followCheck: followCheck
+        )
     }
 }

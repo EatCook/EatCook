@@ -15,25 +15,19 @@ struct CookTalkFeedResponseDTO: Codable {
 
 struct CookTalkFeedResponseDataDTO: Codable {
     let nextPageValid: Bool
-    let totalElements, totalPages: Int
+    let page, size, totalElements, totalPages: Int
     let cookTalkDtoList: [CookTalkFeedResponseListDTO]
 }
 
 struct CookTalkFeedResponseListDTO: Codable {
-    let postID: Int
-    let introduction, postImagePath, createdAt, lastModifiedAt: String
-    let userID: Int
-    let nickName: String
-    let profile: String?
-    let likeCount: Int
+    let writerUserId: Int
+    let writerUserEmail: String
+    let writerProfile: String?
+    let writerNickName: String
+    let postId: Int
+    let introduction, postImagePath, lastModifiedAt: String
+    let likeCounts: Int
     let likedCheck, followCheck: Bool
-
-    enum CodingKeys: String, CodingKey {
-        case postID = "postId"
-        case introduction, postImagePath, createdAt, lastModifiedAt
-        case userID = "userId"
-        case nickName, profile, likeCount, likedCheck, followCheck
-    }
 }
 
 extension CookTalkFeedResponseDTO {
@@ -47,25 +41,31 @@ extension CookTalkFeedResponseDTO {
 
 extension CookTalkFeedResponseDataDTO {
     func toDomain() -> CookTalkFeedResponseData {
-        return .init(nextPageValid: nextPageValid,
-                     totalElements: totalElements,
-                     totalPages: totalPages,
-                     cookTalkDtoList: cookTalkDtoList.map { $0.toDomain() })
+        return .init(
+            nextPageValid: nextPageValid,
+            page: page,
+            size: size,
+            totalElements: totalElements,
+            totalPages: totalPages,
+            cookTalkDtoList: cookTalkDtoList.map { $0.toDomain() }
+        )
     }
 }
 
 extension CookTalkFeedResponseListDTO {
     func toDomain() -> CookTalkFeedResponseList {
-        return .init(postID: postID,
-                     introduction: introduction,
-                     postImagePath: postImagePath,
-                     createdAt: createdAt,
-                     lastModifiedAt: lastModifiedAt,
-                     userID: userID,
-                     nickName: nickName,
-                     profile: profile,
-                     likeCount: likeCount,
-                     likedCheck: likedCheck,
-                     followCheck: followCheck)
+        return .init(
+            writerUserId: writerUserId,
+            writerUserEmail: writerUserEmail,
+            writerProfile: writerProfile,
+            writerNickName: writerNickName,
+            postId: postId,
+            introduction: introduction,
+            postImagePath: postImagePath,
+            lastModifiedAt: lastModifiedAt,
+            likeCounts: likeCounts,
+            likedCheck: likedCheck,
+            followCheck: followCheck
+        )
     }
 }
