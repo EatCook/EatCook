@@ -289,6 +289,7 @@ struct LoginView: View {
 //            }
             
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
 }
 

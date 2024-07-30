@@ -36,7 +36,7 @@ struct FollowRowView: View {
                     }
                     
                     HStack(spacing: 4) {
-                        Text("\(cookTalkFollowData.likeCount)")
+                        Text("\(cookTalkFollowData.likeCounts)")
                             .font(.system(size: 14, weight: .regular))
                             .foregroundStyle(.white)
                         
@@ -55,7 +55,7 @@ struct FollowRowView: View {
 //            RoundedRectangle(cornerRadius: 10)
 //                .frame(width: 311, height: 196)
 //                .foregroundStyle(.gray4)
-            if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(cookTalkFollowData.profile ?? "")") {
+            if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(cookTalkFollowData.writerProfile ?? "")") {
                 HStack(spacing: 8) {
                     AsyncImage(url: imageUrl) { phase in
                         switch phase {
@@ -74,7 +74,7 @@ struct FollowRowView: View {
                         }
                     }
                     
-                    Text(cookTalkFollowData.nickName)
+                    Text(cookTalkFollowData.writerNickname)
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundStyle(.gray9)
                 }
@@ -112,7 +112,7 @@ struct FollowRowView: View {
                 .shadow(color: .black.opacity(0.05), radius: 10, y: 5)
         }
         .onTapGesture {
-            naviPathFinder.addPath(.recipeDetail(cookTalkFollowData.postID))
+            naviPathFinder.addPath(.recipeDetail(cookTalkFollowData.postId))
         }
     }
 }

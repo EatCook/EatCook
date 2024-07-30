@@ -14,9 +14,9 @@ enum CookTalkAPI: EndPoint {
     var path: String {
         switch self {
         case .cookTalkFeed:
-            return "/api/v1/cooktalk/feed"
+            return "/api/v1/posts/cooktalks/feeds"
         case .cookTalkFollow:
-            return "/api/v1/cooktalk/following"
+            return "/api/v1/posts/cooktalks/follows"
         }
     }
     

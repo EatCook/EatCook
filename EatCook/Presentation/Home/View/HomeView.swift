@@ -24,7 +24,7 @@ struct HomeView: View {
     
     var body: some View {
 
-        NavigationStack {
+//        NavigationStack {
             ZStack(alignment : .top) {
                 GeometryReader { geometry in
                     
@@ -80,7 +80,8 @@ struct HomeView: View {
 
             }.environmentObject(homeViewModel)
 
-        }
+//        }
+//        .toolbar(.hidden, for: .navigationBar)
     }
 }
 

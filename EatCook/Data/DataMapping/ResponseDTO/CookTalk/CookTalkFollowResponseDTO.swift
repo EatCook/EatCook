@@ -14,19 +14,19 @@ struct CookTalkFollowResponseDTO: Codable {
 }
 
 struct CookTalkFollowResponseDataDTO: Codable {
-    let nextPageValid: Bool
+    let hasNextPage: Bool
     let page, size, totalElements, totalPages: Int
-    let cookTalkDtoList: [CookTalkFollowResponseListDTO]
+    let content: [CookTalkFollowResponseListDTO]
 }
 
 struct CookTalkFollowResponseListDTO: Codable {
     let writerUserId: Int
     let writerUserEmail: String
-    let writerProfile: String?
-    let writerNickName: String
+    let writerProfile: String
+    let writerNickname: String
     let postId: Int
+    let recipeName: String
     let introduction, postImagePath, lastModifiedAt: String
-    let profile: String?
     let likeCounts: Int
     let likedCheck, followCheck: Bool
 }
@@ -43,12 +43,12 @@ extension CookTalkFollowResponseDTO {
 extension CookTalkFollowResponseDataDTO {
     func toDomain() -> CookTalkFollowResponseData {
         return .init(
-            nextPageValid: nextPageValid,
+            hasNextPage: hasNextPage,
             page: page,
             size: size,
             totalElements: totalElements,
             totalPages: totalPages,
-            cookTalkDtoList: cookTalkDtoList.map { $0.toDomain() }
+            content: content.map { $0.toDomain() }
         )
     }
 }
@@ -59,12 +59,12 @@ extension CookTalkFollowResponseListDTO {
             writerUserId: writerUserId,
             writerUserEmail: writerUserEmail,
             writerProfile: writerProfile,
-            writerNickName: writerNickName,
+            writerNickname: writerNickname,
             postId: postId,
+            recipeName: recipeName,
             introduction: introduction,
             postImagePath: postImagePath,
             lastModifiedAt: lastModifiedAt,
-            profile: profile,
             likeCounts: likeCounts,
             likedCheck: likedCheck,
             followCheck: followCheck

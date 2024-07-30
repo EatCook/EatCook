@@ -20,7 +20,7 @@ struct FeedContainerView: View {
                 } else if let error = viewModel.feedError {
                     Text(error)
                 } else if let feedData = viewModel.feedData {
-                    ForEach(feedData.cookTalkDtoList, id: \.id) { data in
+                    ForEach(feedData.content, id: \.id) { data in
                         FeedRowView(cookTalkFeedData: data)
                     }
                 }
@@ -30,7 +30,7 @@ struct FeedContainerView: View {
                 } else if let error = viewModel.followError {
                     Text(error)
                 } else if let followData = viewModel.followData {
-                    ForEach(followData.cookTalkDtoList, id: \.id) { data in
+                    ForEach(followData.content, id: \.id) { data in
                         FollowRowView(cookTalkFollowData: data)
                     }
                 }

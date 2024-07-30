@@ -119,28 +119,9 @@ struct FeedView: View {
                     .background(.gray1)
                     .onAppear {
                         viewModel.responseCookTalkFeed()
-                        viewModel.responseCookTalkFollow()
+//                        viewModel.responseCookTalkFollow()
                     }
-                    //                .gesture(
-                    //                    DragGesture().onChanged { gesture in
-                    //                        offsetX = gesture.translation.width
-                    //                    }
-                    //                        .onEnded { _ in
-                    //                            let relativeDrag = offsetX / size.width
-                    //                            let currentTabIndex = activeTab.index
-                    //                            let newIndex = max(0, min(CookTalkTabCase.allCases.count - 1, currentTabIndex - Int(relativeDrag.rounded())))
-                    //
-                    //                            if newIndex != currentTabIndex { // 새 인덱스가 현재 인덱스와 다를 때만 업데이트
-                    //                                withAnimation {
-                    //                                    activeTab = CookTalkTabCase.allCases[newIndex]
-                    //                                }
-                    //                            }
-                    //                            offsetX = 0
-                    //                        }
-                    //                )
                 }
-//                .navigationTitle("쿡Talk")
-//                .navigationBarTitleDisplayMode(.large)
                 
                 Button {
                     naviPathFinder.addPath(.recipeCreate(""))

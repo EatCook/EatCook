@@ -14,17 +14,18 @@ struct CookTalkFeedResponse: Codable {
 }
 
 struct CookTalkFeedResponseData: Codable {
-    let nextPageValid: Bool
+    let hasNextPage: Bool
     let page, size, totalElements, totalPages: Int
-    let cookTalkDtoList: [CookTalkFeedResponseList]
+    let content: [CookTalkFeedResponseList]
 }
 
 struct CookTalkFeedResponseList: Codable, Identifiable, Hashable {
     let writerUserId: Int
     let writerUserEmail: String
     let writerProfile: String?
-    let writerNickName: String
+    let writerNickname: String
     let postId: Int
+    let recipeName: String
     let introduction, postImagePath, lastModifiedAt: String
     let likeCounts: Int
     let likedCheck, followCheck: Bool

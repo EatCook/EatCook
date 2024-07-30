@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum HTTPHeaderField: String {
     case contentType = "Content-Type"
@@ -16,7 +17,7 @@ enum HTTPHeaderField: String {
 enum ContentType: String {
     case urlEncoded = "application/x-www-form-urlencoded"
     case json = "application/json"
-    case jwtToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJlYXRjb29rIiwic3ViIjoiYWNjZXNzLXRva2VuIiwiaWF0IjoxNzIyMTczNDQ0LCJ1c2VybmFtZSI6Iml0Y29va0BnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzIyMjU5ODQ0fQ.DRf7ULQBeAw3jrG0um8D_BuyG5x8Ptny29ylgx6d9pLHYe9De0XeILFwKuG_0_62ZdY_wj6p1BIBEcNqqHVjKw"
+    case jwtToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJlYXRjb29rIiwic3ViIjoiYWNjZXNzLXRva2VuIiwiaWF0IjoxNzIyMzQ0NTk2LCJ1c2VybmFtZSI6Iml0Y29vazFAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImV4cCI6MTcyMjQzMDk5Nn0.SHz4jOYKch0vxftWXzulnvlsMu6bHm-aLMulf_JXghN9LnlK9gFNkxMoRUExP1CPWkU-hEKUi0WEMQfP2KpGug"
     case multipart = "multipart/form-data"
     case jpg = "image/jpeg" // jpg, jpeg
     case png = "image/png"
