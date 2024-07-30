@@ -84,6 +84,19 @@ struct HomeView: View {
                     }
                 }
                 
+                NavigationLink(destination: LoginView().toolbarRole(.editor)) {
+                    ZStack {
+                        Text("LoginView")
+                            .font(.callout)
+                    }.frame(height: 50)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.gray)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .border(.bdBorder, width: 1)
+                        .padding(.horizontal, 22)
+                }
+                
                 VStack(spacing: 15) {
                     VStack {
                         VStack {
@@ -239,6 +252,9 @@ struct HomeView: View {
                         )
                     }.background(Color.white)
                 }
+                
+                
+                
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.bgPrimary)
             .padding(.vertical)

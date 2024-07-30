@@ -8,16 +8,37 @@
 import SwiftUI
 
 struct HouseholdCompositionView: View {
+    var email: String
+    var nickName : String
+    var cookingType: [String]
+    var userImage: UIImage?
+
+    @StateObject private var householdCompositionViewModel : HouseholdCompositionViewModel
+    @State private var navigateToHomeView = false
+
+    init(email: String, nickName : String ,cookingType: [String], userImage: UIImage?) {
+        self.email = email
+        self.nickName = nickName
+        self.cookingType = cookingType
+        self.userImage = userImage
+        
+        // Initialize the StateObject with the wrapped value
+        _householdCompositionViewModel = StateObject(wrappedValue: HouseholdCompositionViewModel(email: email,nickName: nickName ,cookingType: cookingType, userImage: userImage))
+    }
+    
+
     let columns = [GridItem(.flexible())]
     @State var isButtonEnabled = false
+    @State private var selectedItem: String? = nil
     
     var body: some View {
-//        NavigationStack {
+        NavigationStack {
             VStack {
-                Text("누구와 함께 살고있나요?")
-                    .font(.title2)
+                Text("주로 어떤 식사를 하나요?")
+                    .bold()
+                    .font(.title)
                 
-                Text("나의 거주 형태에 맞는\n레시피를 만들어보아요.")
+                Text("나의 생활 유형에 맞는\n레시피만 골라 볼 수 있어요.")
                     .font(.body)
                     .multilineTextAlignment(.center)
                     .frame(height: 50)
@@ -27,19 +48,21 @@ struct HouseholdCompositionView: View {
                 LazyVGrid(columns: columns, spacing: 14) {
                     ForEach(Household.themes, id: \.id) { data in
                         Button(action: {
-                            
+                            householdCompositionViewModel.lifeType = data.title
                         }, label: {
+                            Text(data.img)
                             Text(data.title)
                                 .font(.callout)
-                                .foregroundColor(.gray)
+                                .foregroundColor(.black)
+                                .bold()
                         })
                         .frame(height: 70)
                         .frame(maxWidth: .infinity)
-                        .background(Color.white)
+                        .background(.white)
                         .cornerRadius(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.bdBorder, lineWidth:1)
+                                .stroke(householdCompositionViewModel.lifeType == data.title ? Color.primary7 : Color.gray1, lineWidth:1)
                         )
                     }
                 }.padding(.horizontal, 40)
@@ -47,41 +70,58 @@ struct HouseholdCompositionView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: HomeView().toolbarRole(.editor)) {
+                Button(action: {
+                    householdCompositionViewModel.addSignUp { result in
+                        if result.success {
+                            navigateToHomeView = true
+//                            TODO : 이미지 URL 받아서 전송
+                        }else{
+//                            TODO : Alert 추가
+                        }
+                    }
+
+                }) {
                     Text("다음")
+                        .bold()
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
-                        .background(isButtonEnabled ? Color.bdActive : Color.bdInactive)
+                        .background(Color.primary7) // 활성화 상태에 따라 배경 색상 변경
+                        .foregroundColor(.white)
                         .cornerRadius(10)
                         .padding(.horizontal, 24)
                         .padding(.vertical, 46)
+                }.disabled(householdCompositionViewModel.lifeType == "")
+                
+        
+                NavigationLink(destination: HomeView().toolbarRole(.editor), isActive: $navigateToHomeView) {
+                    EmptyView()
                 }
+                
             }
             .padding(.top, 30)
-            
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.bgPrimary)
+            .background(.gray1)
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("회원가입")
-//        }
+        }
     }
 }
 
 extension HouseholdCompositionView {
     struct Household {
         let id = UUID()
+        let img : String
         let title: String
         
         static let themes: [Household] = [
-            Household(title: "혼자 살아요"),
-            Household(title: "부모님과 살아요"),
-            Household(title: "친구와 살아요"),
-            Household(title: "아이가 있어요"),
-            Household(title: "남편/아내와 살아요"),
+            Household(img: "🔥",  title: "다이어트만 n년째"),
+            Household(img : "🥦" , title: "건강한 식단관리"),
+            Household(img : "🍙" ,  title: "편의점은 내 구역"),
+            Household(img : "🍕" , title: "배달음식 단골고객"),
+            Household(img : "🍱" , title: " 밀키트 lover"),
         ]
     }
 }
 
 #Preview {
-    HouseholdCompositionView()
+    HouseholdCompositionView(email: "rkdtlscks123@naver.com", nickName: "신규" ,cookingType: ["일식", "한식"], userImage: .food)
 }

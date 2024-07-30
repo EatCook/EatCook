@@ -7,8 +7,8 @@
 
 import SwiftUI
 import KakaoSDKCommon
+import KakaoSDKAuth
 
-//import KakaoSDKCommon
 
 @main
 struct EatCookApp: App {
@@ -24,6 +24,11 @@ struct EatCookApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(NavigationPathFinder.shared)
+                .onOpenURL(perform: { url in
+                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                        AuthController.handleOpenUrl(url: url)
+                    }
+                })
         }
     }
 }

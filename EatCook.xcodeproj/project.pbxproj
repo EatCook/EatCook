@@ -77,6 +77,32 @@
 		E5D3EF422C58A71F00ECF9CF /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = E5D3EF412C58A71F00ECF9CF /* KakaoSDKTalk */; };
 		E5D3EF442C58A71F00ECF9CF /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = E5D3EF432C58A71F00ECF9CF /* KakaoSDKTemplate */; };
 		E5D3EF462C58A71F00ECF9CF /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = E5D3EF452C58A71F00ECF9CF /* KakaoSDKUser */; };
+		E5D3EF482C58ACF200ECF9CF /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF472C58ACF200ECF9CF /* Color+Extension.swift */; };
+		E5D3EF4A2C58B09E00ECF9CF /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF492C58B09E00ECF9CF /* APIClient.swift */; };
+		E5D3EF4C2C58B0DF00ECF9CF /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF4B2C58B0DF00ECF9CF /* DataStorage.swift */; };
+		E5D3EF4F2C58B4B000ECF9CF /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF4E2C58B4B000ECF9CF /* UserService.swift */; };
+		E5D3EF522C58B5A900ECF9CF /* EmailRequestResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF512C58B5A900ECF9CF /* EmailRequestResponseDTO.swift */; };
+		E5D3EF542C58B5F100ECF9CF /* EmailVerifyResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF532C58B5F100ECF9CF /* EmailVerifyResponseDTO.swift */; };
+		E5D3EF562C58B61D00ECF9CF /* PasswordCheckResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF552C58B61D00ECF9CF /* PasswordCheckResponseDTO.swift */; };
+		E5D3EF582C58B69700ECF9CF /* LoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF572C58B69700ECF9CF /* LoginResponseDTO.swift */; };
+		E5D3EF5A2C58B6E700ECF9CF /* AddSignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF592C58B6E700ECF9CF /* AddSignUpResponse.swift */; };
+		E5D3EF5C2C58B75000ECF9CF /* CheckNickNameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF5B2C58B75000ECF9CF /* CheckNickNameResponse.swift */; };
+		E5D3EF5E2C58B77C00ECF9CF /* FindAccountResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF5D2C58B77C00ECF9CF /* FindAccountResponseDTO.swift */; };
+		E5D3EF602C58B7AA00ECF9CF /* FindAccountVerifyResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF5F2C58B7AA00ECF9CF /* FindAccountVerifyResponseDTO.swift */; };
+		E5D3EF622C58B7D100ECF9CF /* FindNewPasswordResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF612C58B7D100ECF9CF /* FindNewPasswordResponseDTO.swift */; };
+		E5D3EF642C58BB7C00ECF9CF /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF632C58BB7C00ECF9CF /* EmailLoginView.swift */; };
+		E5D3EF662C58BB8E00ECF9CF /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF652C58BB8E00ECF9CF /* EmailLoginViewModel.swift */; };
+		E5D3EF682C58BBFC00ECF9CF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF672C58BBFC00ECF9CF /* Toast.swift */; };
+		E5D3EF6B2C58BEEF00ECF9CF /* EmailValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF6A2C58BEEF00ECF9CF /* EmailValidationViewModel.swift */; };
+		E5D3EF6D2C58BF3D00ECF9CF /* PasswordChcekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF6C2C58BF3D00ECF9CF /* PasswordChcekViewModel.swift */; };
+		E5D3EF6F2C58BFBC00ECF9CF /* FindAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF6E2C58BFBC00ECF9CF /* FindAccountView.swift */; };
+		E5D3EF712C58BFCA00ECF9CF /* FindAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF702C58BFCA00ECF9CF /* FindAccountViewModel.swift */; };
+		E5D3EF732C58C00600ECF9CF /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF722C58C00600ECF9CF /* ShakeEffect.swift */; };
+		E5D3EF752C58C02500ECF9CF /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF742C58C02500ECF9CF /* ChangePasswordView.swift */; };
+		E5D3EF772C58C03C00ECF9CF /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF762C58C03C00ECF9CF /* ChangePasswordViewModel.swift */; };
+		E5D3EF792C58C4D700ECF9CF /* CreateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF782C58C4D700ECF9CF /* CreateProfileViewModel.swift */; };
+		E5D3EF7B2C58C6E100ECF9CF /* FoodThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF7A2C58C6E100ECF9CF /* FoodThemeViewModel.swift */; };
+		E5D3EF7D2C58C72700ECF9CF /* HouseholdCompositionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF7C2C58C72700ECF9CF /* HouseholdCompositionViewModel.swift */; };
 		F69411132C57B4B700ECA302 /* CookTalkFollowResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410382C57B4B600ECA302 /* CookTalkFollowResponse.swift */; };
 		F69411142C57B4B700ECA302 /* CookTalkFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410392C57B4B600ECA302 /* CookTalkFeedResponse.swift */; };
 		F69411152C57B4B700ECA302 /* RecipeReadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694103B2C57B4B600ECA302 /* RecipeReadResponse.swift */; };
@@ -218,6 +244,33 @@
 		E59D7CCC2C588143007702C2 /* UserFavoriteTagViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFavoriteTagViewModel.swift; sourceTree = "<group>"; };
 		E59D7CCD2C588143007702C2 /* UserProfileEditViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEditViewModel.swift; sourceTree = "<group>"; };
 		E59D7CCE2C588143007702C2 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		E5D3EF472C58ACF200ECF9CF /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		E5D3EF492C58B09E00ECF9CF /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		E5D3EF4B2C58B0DF00ECF9CF /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		E5D3EF4E2C58B4B000ECF9CF /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		E5D3EF512C58B5A900ECF9CF /* EmailRequestResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequestResponseDTO.swift; sourceTree = "<group>"; };
+		E5D3EF532C58B5F100ECF9CF /* EmailVerifyResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerifyResponseDTO.swift; sourceTree = "<group>"; };
+		E5D3EF552C58B61D00ECF9CF /* PasswordCheckResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckResponseDTO.swift; sourceTree = "<group>"; };
+		E5D3EF572C58B69700ECF9CF /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
+		E5D3EF592C58B6E700ECF9CF /* AddSignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSignUpResponse.swift; sourceTree = "<group>"; };
+		E5D3EF5B2C58B75000ECF9CF /* CheckNickNameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNickNameResponse.swift; sourceTree = "<group>"; };
+		E5D3EF5D2C58B77C00ECF9CF /* FindAccountResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountResponseDTO.swift; sourceTree = "<group>"; };
+		E5D3EF5F2C58B7AA00ECF9CF /* FindAccountVerifyResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountVerifyResponseDTO.swift; sourceTree = "<group>"; };
+		E5D3EF612C58B7D100ECF9CF /* FindNewPasswordResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindNewPasswordResponseDTO.swift; sourceTree = "<group>"; };
+		E5D3EF632C58BB7C00ECF9CF /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
+		E5D3EF652C58BB8E00ECF9CF /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
+		E5D3EF672C58BBFC00ECF9CF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		E5D3EF692C58BD7000ECF9CF /* EatCook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EatCook.entitlements; sourceTree = "<group>"; };
+		E5D3EF6A2C58BEEF00ECF9CF /* EmailValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationViewModel.swift; sourceTree = "<group>"; };
+		E5D3EF6C2C58BF3D00ECF9CF /* PasswordChcekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChcekViewModel.swift; sourceTree = "<group>"; };
+		E5D3EF6E2C58BFBC00ECF9CF /* FindAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountView.swift; sourceTree = "<group>"; };
+		E5D3EF702C58BFCA00ECF9CF /* FindAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountViewModel.swift; sourceTree = "<group>"; };
+		E5D3EF722C58C00600ECF9CF /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
+		E5D3EF742C58C02500ECF9CF /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		E5D3EF762C58C03C00ECF9CF /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		E5D3EF782C58C4D700ECF9CF /* CreateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewModel.swift; sourceTree = "<group>"; };
+		E5D3EF7A2C58C6E100ECF9CF /* FoodThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodThemeViewModel.swift; sourceTree = "<group>"; };
+		E5D3EF7C2C58C72700ECF9CF /* HouseholdCompositionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseholdCompositionViewModel.swift; sourceTree = "<group>"; };
 		F69410382C57B4B600ECA302 /* CookTalkFollowResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookTalkFollowResponse.swift; sourceTree = "<group>"; };
 		F69410392C57B4B600ECA302 /* CookTalkFeedResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookTalkFeedResponse.swift; sourceTree = "<group>"; };
 		F694103B2C57B4B600ECA302 /* RecipeReadResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeReadResponse.swift; sourceTree = "<group>"; };
@@ -374,6 +427,8 @@
 				E59D7C502C58808B007702C2 /* EmailAuthView.swift */,
 				E59D7C512C58808B007702C2 /* PasswordCheckView.swift */,
 				E59D7C522C58808B007702C2 /* StartPopupView.swift */,
+				E5D3EF6E2C58BFBC00ECF9CF /* FindAccountView.swift */,
+				E5D3EF742C58C02500ECF9CF /* ChangePasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -382,6 +437,10 @@
 			isa = PBXGroup;
 			children = (
 				E59D7C542C58808B007702C2 /* AuthViewModel.swift */,
+				E5D3EF6A2C58BEEF00ECF9CF /* EmailValidationViewModel.swift */,
+				E5D3EF6C2C58BF3D00ECF9CF /* PasswordChcekViewModel.swift */,
+				E5D3EF702C58BFCA00ECF9CF /* FindAccountViewModel.swift */,
+				E5D3EF762C58C03C00ECF9CF /* ChangePasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -469,6 +528,7 @@
 			isa = PBXGroup;
 			children = (
 				E59D7C742C5880D8007702C2 /* LoginView.swift */,
+				E5D3EF632C58BB7C00ECF9CF /* EmailLoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -477,6 +537,7 @@
 			isa = PBXGroup;
 			children = (
 				E59D7C762C5880D8007702C2 /* LoginViewModel.swift */,
+				E5D3EF652C58BB8E00ECF9CF /* EmailLoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -505,6 +566,9 @@
 			isa = PBXGroup;
 			children = (
 				E59D7C802C5880F3007702C2 /* ProfileViewModel.swift */,
+				E5D3EF782C58C4D700ECF9CF /* CreateProfileViewModel.swift */,
+				E5D3EF7A2C58C6E100ECF9CF /* FoodThemeViewModel.swift */,
+				E5D3EF7C2C58C72700ECF9CF /* HouseholdCompositionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -698,6 +762,30 @@
 				E59D7CCF2C588143007702C2 /* ViewModel */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		E5D3EF4D2C58B49F00ECF9CF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E5D3EF4E2C58B4B000ECF9CF /* UserService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		E5D3EF502C58B57C00ECF9CF /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E5D3EF512C58B5A900ECF9CF /* EmailRequestResponseDTO.swift */,
+				E5D3EF532C58B5F100ECF9CF /* EmailVerifyResponseDTO.swift */,
+				E5D3EF552C58B61D00ECF9CF /* PasswordCheckResponseDTO.swift */,
+				E5D3EF572C58B69700ECF9CF /* LoginResponseDTO.swift */,
+				E5D3EF592C58B6E700ECF9CF /* AddSignUpResponse.swift */,
+				E5D3EF5B2C58B75000ECF9CF /* CheckNickNameResponse.swift */,
+				E5D3EF5D2C58B77C00ECF9CF /* FindAccountResponseDTO.swift */,
+				E5D3EF5F2C58B7AA00ECF9CF /* FindAccountVerifyResponseDTO.swift */,
+				E5D3EF612C58B7D100ECF9CF /* FindNewPasswordResponseDTO.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		F69410342C57B4B600ECA302 /* Domain */ = {
@@ -895,6 +983,8 @@
 			children = (
 				F69410622C57B4B600ECA302 /* Util.swift */,
 				F69410632C57B4B600ECA302 /* TabCase.swift */,
+				E5D3EF672C58BBFC00ECF9CF /* Toast.swift */,
+				E5D3EF722C58C00600ECF9CF /* ShakeEffect.swift */,
 			);
 			path = Utillites;
 			sourceTree = "<group>";
@@ -904,6 +994,7 @@
 			children = (
 				F69410652C57B4B600ECA302 /* ScrollOffset.swift */,
 				F69410662C57B4B600ECA302 /* Ex.swift */,
+				E5D3EF472C58ACF200ECF9CF /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -929,6 +1020,7 @@
 			isa = PBXGroup;
 			children = (
 				F69410732C57B4B600ECA302 /* NavigationPathFinder.swift */,
+				E5D3EF4B2C58B0DF00ECF9CF /* DataStorage.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -944,6 +1036,7 @@
 		F69410762C57B4B700ECA302 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E5D3EF4D2C58B49F00ECF9CF /* Service */,
 				F69410772C57B4B700ECA302 /* NetworkManager */,
 				F69410792C57B4B700ECA302 /* Foundation */,
 				F69410812C57B4B700ECA302 /* NetworkProvider */,
@@ -957,6 +1050,7 @@
 			isa = PBXGroup;
 			children = (
 				F69410782C57B4B700ECA302 /* NetworkManager.swift */,
+				E5D3EF492C58B09E00ECF9CF /* APIClient.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -1038,6 +1132,7 @@
 		F69410952C57B4B700ECA302 /* ResponseDTO */ = {
 			isa = PBXGroup;
 			children = (
+				E5D3EF502C58B57C00ECF9CF /* Auth */,
 				F69410962C57B4B700ECA302 /* CookTalk */,
 				F69410992C57B4B700ECA302 /* Recipe */,
 				F694109B2C57B4B700ECA302 /* MyPage */,
@@ -1155,6 +1250,7 @@
 		F6E1C0952B722EE500A05703 /* EatCook */ = {
 			isa = PBXGroup;
 			children = (
+				E5D3EF692C58BD7000ECF9CF /* EatCook.entitlements */,
 				E59C92C82C588B0200F9EC83 /* Info.plist */,
 				F69410742C57B4B700ECA302 /* Applications */,
 				F69410672C57B4B600ECA302 /* Component */,
@@ -1265,12 +1361,17 @@
 				E59D7CD52C588143007702C2 /* UserProfileTopView.swift in Sources */,
 				E59D7C682C5880A8007702C2 /* FeedRowView.swift in Sources */,
 				E59D7CD92C588143007702C2 /* UserProfileView.swift in Sources */,
+				E5D3EF4F2C58B4B000ECF9CF /* UserService.swift in Sources */,
+				E5D3EF602C58B7AA00ECF9CF /* FindAccountVerifyResponseDTO.swift in Sources */,
+				E5D3EF4A2C58B09E00ECF9CF /* APIClient.swift in Sources */,
 				E59D7C842C5880F3007702C2 /* FoodThemeView.swift in Sources */,
 				F69411152C57B4B700ECA302 /* RecipeReadResponse.swift in Sources */,
 				E59D7CD32C588143007702C2 /* UserProfileRowView.swift in Sources */,
 				E59D7C572C58808B007702C2 /* AuthView.swift in Sources */,
 				E59D7CA92C588110007702C2 /* ImagePicker.swift in Sources */,
+				E5D3EF792C58C4D700ECF9CF /* CreateProfileViewModel.swift in Sources */,
 				E59D7C6C2C5880A8007702C2 /* FeedViewModel.swift in Sources */,
+				E5D3EF712C58BFCA00ECF9CF /* FindAccountViewModel.swift in Sources */,
 				F69411442C57B4B700ECA302 /* LoginAPI.swift in Sources */,
 				F694112C2C57B4B700ECA302 /* TabCase.swift in Sources */,
 				F69411232C57B4B700ECA302 /* CookTalkUseCase.swift in Sources */,
@@ -1290,12 +1391,16 @@
 				E59D7CBD2C58813D007702C2 /* SettingView.swift in Sources */,
 				F694113D2C57B4B700ECA302 /* URLRequestable.swift in Sources */,
 				F69411552C57B4B700ECA302 /* MyPageMyRecipeResponseDTO.swift in Sources */,
+				E5D3EF482C58ACF200ECF9CF /* Color+Extension.swift in Sources */,
+				E5D3EF6F2C58BFBC00ECF9CF /* FindAccountView.swift in Sources */,
 				F69411212C57B4B700ECA302 /* MyPageProfileEditRequestResponse.swift in Sources */,
 				E59D7C7A2C5880D8007702C2 /* LoginViewModel.swift in Sources */,
 				F69411292C57B4B700ECA302 /* EatCookRepositoryType.swift in Sources */,
+				E5D3EF7D2C58C72700ECF9CF /* HouseholdCompositionViewModel.swift in Sources */,
 				F69411312C57B4B700ECA302 /* ChipLayout.swift in Sources */,
 				F69411522C57B4B700ECA302 /* CookTalkFeedResponseDTO.swift in Sources */,
 				F694112D2C57B4B700ECA302 /* ScrollOffset.swift in Sources */,
+				E5D3EF662C58BB8E00ECF9CF /* EmailLoginViewModel.swift in Sources */,
 				F69411422C57B4B700ECA302 /* EndPoint.swift in Sources */,
 				F69411462C57B4B700ECA302 /* FollowAPI.swift in Sources */,
 				F69411202C57B4B700ECA302 /* RecipeUpdateRequest.swift in Sources */,
@@ -1317,15 +1422,19 @@
 				E59D7CAA2C588110007702C2 /* TagField.swift in Sources */,
 				F694115C2C57B4B700ECA302 /* RecipeDeleteRequestDTO.swift in Sources */,
 				E59D7C832C5880F3007702C2 /* CreateProfileView.swift in Sources */,
+				E5D3EF5C2C58B75000ECF9CF /* CheckNickNameResponse.swift in Sources */,
 				E59D7CD42C588143007702C2 /* UserProfileStorageView.swift in Sources */,
 				E59D7C872C5880F3007702C2 /* ProfileViewModel.swift in Sources */,
 				F69411302C57B4B700ECA302 /* BadgeTitleView.swift in Sources */,
+				E5D3EF5A2C58B6E700ECF9CF /* AddSignUpResponse.swift in Sources */,
 				F69411272C57B4B700ECA302 /* MyPageUseCase.swift in Sources */,
+				E5D3EF542C58B5F100ECF9CF /* EmailVerifyResponseDTO.swift in Sources */,
 				E59D7CDE2C588143007702C2 /* UserProfileViewModel.swift in Sources */,
 				F69411362C57B4B700ECA302 /* CameraImageView.swift in Sources */,
 				F69411342C57B4B700ECA302 /* EmptyProfileImageView.swift in Sources */,
 				F69411512C57B4B700ECA302 /* CookTalkFollowResponseDTO.swift in Sources */,
 				E59D7C6A2C5880A8007702C2 /* FollowRowView.swift in Sources */,
+				E5D3EF732C58C00600ECF9CF /* ShakeEffect.swift in Sources */,
 				F69411162C57B4B700ECA302 /* MyPageResponse.swift in Sources */,
 				F69411402C57B4B700ECA302 /* HTTPMethod.swift in Sources */,
 				F69411382C57B4B700ECA302 /* FollowButton.swift in Sources */,
@@ -1335,6 +1444,7 @@
 				F69411182C57B4B700ECA302 /* MyPageMyRecipeResponse.swift in Sources */,
 				F69411432C57B4B700ECA302 /* NetworkProviderImpl.swift in Sources */,
 				E59D7CA52C588110007702C2 /* RecipeView.swift in Sources */,
+				E5D3EF6D2C58BF3D00ECF9CF /* PasswordChcekViewModel.swift in Sources */,
 				F69411282C57B4B700ECA302 /* OtherUserUseCase.swift in Sources */,
 				F694115D2C57B4B700ECA302 /* RecipeCreateRequestDTO.swift in Sources */,
 				F69411412C57B4B700ECA302 /* NetworkProvider.swift in Sources */,
@@ -1342,26 +1452,33 @@
 				F69411562C57B4B700ECA302 /* MyPageResponseDTO.swift in Sources */,
 				F69411332C57B4B700ECA302 /* CheckImageTitleButton.swift in Sources */,
 				F69411142C57B4B700ECA302 /* CookTalkFeedResponse.swift in Sources */,
+				E5D3EF682C58BBFC00ECF9CF /* Toast.swift in Sources */,
 				F694111C2C57B4B700ECA302 /* LikedCheckRequestResponse.swift in Sources */,
 				E59D7CAC2C588110007702C2 /* TimerPickerView.swift in Sources */,
 				E59D7CD22C588143007702C2 /* UserProfileContainerView.swift in Sources */,
 				F69411452C57B4B700ECA302 /* ArchiveAPI.swift in Sources */,
+				E5D3EF6B2C58BEEF00ECF9CF /* EmailValidationViewModel.swift in Sources */,
 				F69411352C57B4B700ECA302 /* CustomTextFieldModifier.swift in Sources */,
 				F69411392C57B4B700ECA302 /* NavigationPathFinder.swift in Sources */,
 				E59D7CAE2C588110007702C2 /* RecipeStepView.swift in Sources */,
 				F69411262C57B4B700ECA302 /* FollowUseCase.swift in Sources */,
 				F694112E2C57B4B700ECA302 /* Ex.swift in Sources */,
 				E59D7CDD2C588143007702C2 /* UserProfileEditViewModel.swift in Sources */,
+				E5D3EF642C58BB7C00ECF9CF /* EmailLoginView.swift in Sources */,
 				F69411252C57B4B700ECA302 /* RecipeUseCase.swift in Sources */,
 				F694112B2C57B4B700ECA302 /* Util.swift in Sources */,
 				E59D7C692C5880A8007702C2 /* FeedTabIndicatorView.swift in Sources */,
 				E59D7CA72C588110007702C2 /* DropdownView.swift in Sources */,
+				E5D3EF4C2C58B0DF00ECF9CF /* DataStorage.swift in Sources */,
+				E5D3EF582C58B69700ECF9CF /* LoginResponseDTO.swift in Sources */,
 				E59D7CA12C588110007702C2 /* IngredientsContainerView.swift in Sources */,
 				E59D7CDC2C588143007702C2 /* UserFavoriteTagViewModel.swift in Sources */,
 				F69411592C57B4B700ECA302 /* OtherUserPostsResponseDTO.swift in Sources */,
 				E59D7C472C58802E007702C2 /* SplashView.swift in Sources */,
+				E5D3EF562C58B61D00ECF9CF /* PasswordCheckResponseDTO.swift in Sources */,
 				E59D7CB02C588110007702C2 /* RecipeCreateViewModel.swift in Sources */,
 				F694114D2C57B4B700ECA302 /* CookTalkAPI.swift in Sources */,
+				E5D3EF7B2C58C6E100ECF9CF /* FoodThemeViewModel.swift in Sources */,
 				E59D7C5A2C58808B007702C2 /* StartPopupView.swift in Sources */,
 				E59D7C792C5880D8007702C2 /* LoginView.swift in Sources */,
 				E59D7C452C588001007702C2 /* ContentView.swift in Sources */,
@@ -1370,9 +1487,12 @@
 				E59D7CD12C588143007702C2 /* OtherUserProfileTopView.swift in Sources */,
 				F694113E2C57B4B700ECA302 /* HTTPTask.swift in Sources */,
 				F694115F2C57B4B700ECA302 /* MyFavoriteTagRequestDTO.swift in Sources */,
+				E5D3EF522C58B5A900ECF9CF /* EmailRequestResponseDTO.swift in Sources */,
 				F69411572C57B4B700ECA302 /* MyFavoriteCookResponseDTO.swift in Sources */,
 				F69411582C57B4B700ECA302 /* OtherUserInfoResponseDTO.swift in Sources */,
+				E5D3EF5E2C58B77C00ECF9CF /* FindAccountResponseDTO.swift in Sources */,
 				E59D7CB72C588134007702C2 /* SearchViewModel.swift in Sources */,
+				E5D3EF622C58B7D100ECF9CF /* FindNewPasswordResponseDTO.swift in Sources */,
 				E59D7C722C5880C5007702C2 /* HomeView.swift in Sources */,
 				F69411372C57B4B700ECA302 /* CustomImageTitleButton.swift in Sources */,
 				F694111E2C57B4B700ECA302 /* RecipeCreateRequest.swift in Sources */,
@@ -1382,8 +1502,10 @@
 				E59D7CBE2C58813D007702C2 /* SettingViewModel.swift in Sources */,
 				E59D7C582C58808B007702C2 /* EmailAuthView.swift in Sources */,
 				E59D7CD82C588143007702C2 /* UserProfileEditView.swift in Sources */,
+				E5D3EF752C58C02500ECF9CF /* ChangePasswordView.swift in Sources */,
 				E59D7CAB2C588110007702C2 /* TagLayout.swift in Sources */,
 				F69411132C57B4B700ECA302 /* CookTalkFollowResponse.swift in Sources */,
+				E5D3EF772C58C03C00ECF9CF /* ChangePasswordViewModel.swift in Sources */,
 				F694115B2C57B4B700ECA302 /* RecipeUpdateRequestDTO.swift in Sources */,
 				F69411542C57B4B700ECA302 /* MyPageArchiveResponseDTO.swift in Sources */,
 				F694111F2C57B4B700ECA302 /* RecipeDeleteRequestResponse.swift in Sources */,
@@ -1524,6 +1646,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EatCook/EatCook.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1562,6 +1685,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EatCook/EatCook.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
