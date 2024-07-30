@@ -6,10 +6,19 @@
 //
 
 import SwiftUI
+import KakaoSDKCommon
+
+//import KakaoSDKCommon
 
 @main
 struct EatCookApp: App {
     @StateObject private var loginUserInfo = LoginUserInfoManager.shared
+    
+    init() {
+          // Kakao SDK 초기화
+          KakaoSDK.initSDK(appKey: "f6e57755979be3cac29156b4ca677fcb")
+      }
+    
     
     var body: some Scene {
         WindowGroup {
