@@ -27,28 +27,24 @@ struct HomeView: View {
 //        NavigationStack {
             ZStack(alignment : .top) {
                 GeometryReader { geometry in
-                    
+
                     Color.primary7.opacity(scrollOffset > 50 ? 1 : 0).edgesIgnoringSafeArea(.top).animation(.easeInOut)
                     ScrollViewReader { ScrollViewProxy in
-                        
+                      
                         ScrollView(.vertical, showsIndicators: false) {
                             
+                                
                             HomeMenuTopView()
-                
-                            
-                           
-                          
-                            
                             GeometryReader { scrollViewGeometry in
-                                   Color.clear.onAppear {
-                                       scrollOffset = scrollViewGeometry.frame(in: .global).minY
-                                   }
-                                   .onChange(of: scrollViewGeometry.frame(in: .global).minY) { newValue in
-                                       withAnimation {
-                                           scrollOffset = newValue
-                                       }
-                                   }
-                               }
+                                Color.clear.onAppear {
+                                    scrollOffset = scrollViewGeometry.frame(in: .global).minY
+                                }
+                                .onChange(of: scrollViewGeometry.frame(in: .global).minY) { newValue in
+                                    withAnimation {
+                                        scrollOffset = newValue
+                                    }
+                                }
+                            }
        
                             VStack(spacing: 20) {
                                 HomeInterestingView()
@@ -73,7 +69,12 @@ struct HomeView: View {
                             }
                             
                         }
+                        .refreshable {
+                            homeViewModel.fetchItems()
+                        }
+
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+               
                         .background(.white)
                         .padding(.top)
                         
@@ -201,7 +202,10 @@ struct HomeInterestingView : View {
                             ForEach(Array(homeViewModel.userCookingTheme), id: \.key) { key , value in
                                 let tab = homeViewModel.userCookingTheme[key]!
                                 Button(action: {
-                                    homeViewModel.interestCurrentTab = key
+                                    withAnimation {
+                                        homeViewModel.interestCurrentTab = key
+                                    }
+                           
                     
                                 }) {
                                     Text(tab)
@@ -217,18 +221,31 @@ struct HomeInterestingView : View {
                         .padding(.leading, 0)
                     }.padding(.horizontal, 12)
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        if let foods = homeViewModel.interestingFoods[homeViewModel.userCookingTheme[homeViewModel.interestCurrentTab] ?? ""] {
-                            VStack(alignment: .leading) {
-                                LazyHStack(alignment: .top) {
-                                    ForEach(foods) { interestingFood in
-                                        interestingRowView(postId: interestingFood.postId, postImagePath: interestingFood.postImagePath, recipeName: interestingFood.recipeName, recipeTime: interestingFood.recipeTime, profile: interestingFood.profile, nickName: interestingFood.nickName, likedCounts: interestingFood.likedCounts, likedCheck: interestingFood.likedCheck, archiveCheck: interestingFood.archiveCheck)
+                    ScrollViewReader { proxy in
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            if let foods = homeViewModel.interestingFoods[homeViewModel.userCookingTheme[homeViewModel.interestCurrentTab] ?? ""] {
+                                VStack(alignment: .leading) {
+                                    LazyHStack(alignment: .top) {
+                                        ForEach(foods) { interestingFood in
+                                            interestingRowView(postId: interestingFood.postId, postImagePath: interestingFood.postImagePath, recipeName: interestingFood.recipeName, recipeTime: interestingFood.recipeTime, profile: interestingFood.profile, nickName: interestingFood.nickName, likedCounts: interestingFood.likedCounts, likedCheck: interestingFood.likedCheck, archiveCheck: interestingFood.archiveCheck).id(interestingFood.postId)
+                                            
+                                        }
                                     }
                                 }
+                                .padding()
+                                
                             }
-                            .padding()
+                        }.onChange(of: homeViewModel.interestCurrentTab) { _ in
+                            if let firstFood = homeViewModel.interestingFoods[homeViewModel.userCookingTheme[homeViewModel.interestCurrentTab] ?? ""]?.first {
+                                withAnimation {
+                                    proxy.scrollTo(firstFood.postId, anchor: .center)
+                                }
+                            }
                         }
                     }
+                    
+                    
+                  
                     
                 }
                 
@@ -408,7 +425,7 @@ struct HomeRecommendView : View {
            }
        }
        .tabViewStyle(PageTabViewStyle())
-       .frame(height: CGFloat(homeViewModel.recommendTabViewCount) * 300 > 0 ? CGFloat(homeViewModel.recommendTabViewCount) * 300 : 1200)
+       .frame(height: CGFloat(homeViewModel.recommendTabViewCount) * 240 > 0 ? CGFloat(homeViewModel.recommendTabViewCount) * 240 : 500)
    }
     
     

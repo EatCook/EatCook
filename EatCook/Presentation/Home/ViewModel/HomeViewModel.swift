@@ -7,7 +7,8 @@
 
 import Foundation
 import SwiftUI
-
+import Combine
+import UIKit
 
 class HomeViewModel : ObservableObject {
     
@@ -67,8 +68,8 @@ class HomeViewModel : ObservableObject {
     @Published var recommendSelectedIndex: Int = 0
     @Published var recommendTabViewCount : Int = 0
     @Published var recommendTabViewHeightHeight : Int = 240
-    
-    
+    @Published var isFetching: Bool = false
+    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
 //    DIET("다이어트만 n번째")
 //    HEALTH_DIET("건강한 식단관리")
 //    CONVENIENCE_STORE("편의점은 내 구역")
@@ -79,6 +80,11 @@ class HomeViewModel : ObservableObject {
     
     init() {
      
+        getUserInfo()
+        
+    }
+    
+    private func getUserInfo() {
         MainService.shard.getUserInfo(success: { result in
             print("getUserInfo" ,result)
             DispatchQueue.main.async {
@@ -107,9 +113,9 @@ class HomeViewModel : ObservableObject {
         })
         
         
-
-        
     }
+    
+    
     
     
     private func getUserInterest(type : String) {
@@ -122,7 +128,9 @@ class HomeViewModel : ObservableObject {
             }else{
                 DispatchQueue.main.async {
                     let key = self.userCookingTheme[type]
-                    self.interestingFoods[key ?? ""] = result.data.homeInterestDtoList.map { InterestingFoods(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, recipeTime: $0.recipeTime, profile: $0.profile, nickName: $0.nickName, likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)}
+                    if let key = key {
+                        self.interestingFoods[key] = result.data.homeInterestDtoList.map { InterestingFoods(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, recipeTime: $0.recipeTime, profile: $0.profile, nickName: $0.nickName, likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)}
+                    }
                 }
                 
                 
@@ -160,6 +168,16 @@ class HomeViewModel : ObservableObject {
         
         
         
+    }
+    
+    func fetchItems(){
+        guard !isFetching else { return }
+        isFetching = true
+        feedbackGenerator.impactOccurred()
+        getUserInfo()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.isFetching = false
+        }
     }
     
     
