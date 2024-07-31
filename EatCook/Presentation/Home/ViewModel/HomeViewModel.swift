@@ -36,7 +36,23 @@ class HomeViewModel : ObservableObject {
     @Published var recommendCookingTheme : [String : String] = ["DIET" : "다이어트만 n번째", "HEALTH_DIET" : "건강한 식단관리", "CONVENIENCE_STORE" : "편의점은 내 구역", "DELIVERY_FOOD" : "배달음식 단골고객", "MEAL_KIT" : "밀키트 lover"]
     
     var recommendType : [String] = ["DIET", "HEALTH_DIET" , "CONVENIENCE_STORE", "DELIVERY_FOOD", "MEAL_KIT"]
-    @Published var recommendFoods : [String : [RecommendFoods]] = ["다이어트만 n번째" : [] , "건강한 식단관리" : [] , "편의점은 내 구역" : [] , "배달음식 단골고객" : [], "밀키트 lover" : []]
+//    @Published var recommendFoods : [String : [RecommendFoods]] = [:]
+    @Published var recommendFoods: [String: [RecommendFoods]] = [
+        "건강한 식단관리": [
+            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 79, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "오므라이스", recipeTime: 15, likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 78, postImagePath: "image/post/9/78/cc7f2f5d-df47-4a26-823e-294df07cbcda.jpeg", recipeName: "ㅇㅇㅇㅇ", recipeTime: 10, likedCounts: 0, likedCheck: false, archiveCheck: false)
+        ] ,
+        "다이어트만 n번째": [
+            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, likedCounts: 0, likedCheck: false, archiveCheck: false)
+        ]
+        
+    ]
+    
+    @Published var recommendSelectedIndex: Int = 0
+    
     
     
 //    DIET("다이어트만 n번째")
@@ -111,14 +127,19 @@ class HomeViewModel : ObservableObject {
             print("getUserSpecial" ,result)
             DispatchQueue.main.async {
                 let key = self.recommendCookingTheme[type]
-                self.recommendFoods[key ?? ""] = result.data?.homeInterestDtoList.map { RecommendFoods(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, recipeTime: $0.recipeTime, likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)}
+                
+                if result.data?.homeInterestDtoList.count != 0 {
+                    self.recommendFoods[key ?? ""] = result.data?.homeInterestDtoList.map { RecommendFoods(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, recipeTime: $0.recipeTime, likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)}
+                }
+                
+                
             }
             
             
         }, failure: { error in
             print(error)
         })
-
+        
         
         
     }
