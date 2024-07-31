@@ -36,16 +36,7 @@ struct HomeView: View {
                             HomeMenuTopView()
                 
                             
-                            NavigationLink(destination: LoginView().toolbarRole(.editor)) {
-                                Text("로그인 뷰")
-                                    .bold()
-                                    .foregroundColor(.white)
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 55)
-                                    .background(Color.bdActive)
-                                    .cornerRadius(10)
-                                    .padding(.horizontal, 24)
-                            }
+                           
                           
                             
                             GeometryReader { scrollViewGeometry in
@@ -69,6 +60,16 @@ struct HomeView: View {
                                 }
                                 
 
+                            }
+                            NavigationLink(destination: LoginView().toolbarRole(.editor)) {
+                                Text("로그인 뷰")
+                                    .bold()
+                                    .foregroundColor(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 55)
+                                    .background(Color.bdActive)
+                                    .cornerRadius(10)
+                                    .padding(.horizontal, 24)
                             }
                             
                         }

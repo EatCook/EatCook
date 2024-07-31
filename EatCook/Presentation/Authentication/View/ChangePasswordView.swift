@@ -20,7 +20,7 @@ struct ChangePasswordView: View {
     
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack {
                 
                 Spacer()
@@ -154,7 +154,7 @@ struct ChangePasswordView: View {
             
             
         }
-    }
+//    }
 }
 
 #Preview {

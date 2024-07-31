@@ -32,7 +32,7 @@ struct HouseholdCompositionView: View {
     @State private var selectedItem: String? = nil
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack {
                 Text("주로 어떤 식사를 하나요?")
                     .bold()
@@ -103,7 +103,7 @@ struct HouseholdCompositionView: View {
             .background(.gray1)
             .navigationBarTitleDisplayMode(.inline)
         }
-    }
+//    }
 }
 
 extension HouseholdCompositionView {

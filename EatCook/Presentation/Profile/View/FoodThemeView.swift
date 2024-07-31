@@ -18,7 +18,7 @@ struct FoodThemeView: View {
     @State var isButtonEnabled = false
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack {
                 Text("어떤 요리에 관심 있으신가요?")
                     .bold()
@@ -90,7 +90,7 @@ struct FoodThemeView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.gray1)
             .navigationBarTitleDisplayMode(.inline)
-        }
+//        }
     }
 }
 

@@ -15,7 +15,7 @@ struct FindAccountView: View {
 
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             
             VStack {
                 Text("이메일을 인증해 주세요")
@@ -141,7 +141,7 @@ struct FindAccountView: View {
         }
         
 
-    }
+//    }
 }
 
 #Preview {
