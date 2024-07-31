@@ -359,30 +359,44 @@ struct HomeRecommendView : View {
 
     
     private var headerSection: some View {
-       Section(header:
-                   ScrollView(.horizontal, showsIndicators: false) {
-           HStack {
-               ForEach(Array(homeViewModel.recommendFoods.keys.enumerated()), id: \.offset) { index, element in
-                   Button(action: {
-                       withAnimation(.easeInOut) {
-                           homeViewModel.recommendSelectedIndex = index
-                           selectedString = element
-                       }
-                   }) {
-                       Text(element)
-                           .padding(.vertical, 4)
-                           .fontWeight(.bold)
-                           .foregroundColor(homeViewModel.recommendSelectedIndex == index ? .white : .gray)
-                   }
-                   .buttonStyle(.borderedProminent)
-                   .tint(homeViewModel.recommendSelectedIndex == index ? .primary7 : .gray2)
-                   .animation(.easeInOut, value: homeViewModel.recommendSelectedIndex)
-               }
-           }
-       }.padding(.bottom, 24)
+        Section(header:
+                    ScrollViewReader { proxy in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(Array(homeViewModel.recommendFoods.keys.enumerated()), id: \.offset) { index, element in
+                        Button(action: {
+                            withAnimation(.easeInOut) {
+                                homeViewModel.recommendSelectedIndex = index
+                                selectedString = element
+                                proxy.scrollTo(index, anchor: .center)
+                            }
+                        }) {
+                            Text(element)
+                                .padding(.vertical, 4)
+                                .fontWeight(.bold)
+                                .foregroundColor(homeViewModel.recommendSelectedIndex == index ? .white : .gray)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(homeViewModel.recommendSelectedIndex == index ? .primary7 : .gray2)
+                        .animation(.easeInOut, value: homeViewModel.recommendSelectedIndex)
+                        .id(index)
+                    }
+                }
+            }.padding(.bottom, 24)
+                .onChange(of: homeViewModel.recommendSelectedIndex) { index in
+                    withAnimation {
+                        proxy.scrollTo(index, anchor: .center)
+                    }
+                }
+            
+        }
+                
+    
+
        ) {
            tabViewSection
        }
+        
    }
 
     private var tabViewSection: some View {
@@ -393,7 +407,6 @@ struct HomeRecommendView : View {
                    .tag(index)
            }
        }
-      
        .tabViewStyle(PageTabViewStyle())
        .frame(height: CGFloat(homeViewModel.recommendTabViewCount) * 300 > 0 ? CGFloat(homeViewModel.recommendTabViewCount) * 300 : 1200)
    }

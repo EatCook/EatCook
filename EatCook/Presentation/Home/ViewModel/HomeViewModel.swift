@@ -47,13 +47,26 @@ class HomeViewModel : ObservableObject {
         "다이어트만 n번째": [
             RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, likedCounts: 0, likedCheck: false, archiveCheck: false),
             RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, likedCounts: 0, likedCheck: false, archiveCheck: false)
+        ],
+        "편의점은 내 구역": [
+            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, likedCounts: 0, likedCheck: false, archiveCheck: false)
+        ],
+        
+        "밀키트 lover": [
+            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, likedCounts: 0, likedCheck: false, archiveCheck: false)
+        ] ,
+        "배달음식 단골고객": [
+            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, likedCounts: 0, likedCheck: false, archiveCheck: false)
         ]
         
     ]
     
     @Published var recommendSelectedIndex: Int = 0
     @Published var recommendTabViewCount : Int = 0
-    @Published var recommendTabViewHeightHeight : Int = 300
+    @Published var recommendTabViewHeightHeight : Int = 240
     
     
 //    DIET("다이어트만 n번째")
