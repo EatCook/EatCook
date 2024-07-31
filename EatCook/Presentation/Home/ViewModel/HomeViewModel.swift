@@ -52,7 +52,8 @@ class HomeViewModel : ObservableObject {
     ]
     
     @Published var recommendSelectedIndex: Int = 0
-    
+    @Published var recommendTabViewCount : Int = 0
+    @Published var recommendTabViewHeightHeight : Int = 300
     
     
 //    DIET("다이어트만 n번째")
@@ -129,6 +130,10 @@ class HomeViewModel : ObservableObject {
                 let key = self.recommendCookingTheme[type]
                 
                 if result.data?.homeInterestDtoList.count != 0 {
+                    if self.recommendTabViewCount < result.data?.homeInterestDtoList.count ?? 0 {
+                        self.recommendTabViewCount = result.data?.homeInterestDtoList.count ?? 0
+                    }
+                    
                     self.recommendFoods[key ?? ""] = result.data?.homeInterestDtoList.map { RecommendFoods(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, recipeTime: $0.recipeTime, likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)}
                 }
                 

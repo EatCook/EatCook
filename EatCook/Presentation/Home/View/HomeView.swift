@@ -34,14 +34,7 @@ struct HomeView: View {
                         ScrollView(.vertical, showsIndicators: false) {
                             
                             HomeMenuTopView()
-                            Button(action: {
-                                print(homeViewModel.recommendFoods)
-                            }) {
-                                Image(.bgHome)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 24, height: 24)
-                            }
+                
                             
                             NavigationLink(destination: LoginView().toolbarRole(.editor)) {
                                 Text("로그인 뷰")
@@ -53,6 +46,8 @@ struct HomeView: View {
                                     .cornerRadius(10)
                                     .padding(.horizontal, 24)
                             }
+                          
+                            
                             GeometryReader { scrollViewGeometry in
                                    Color.clear.onAppear {
                                        scrollOffset = scrollViewGeometry.frame(in: .global).minY
@@ -66,6 +61,7 @@ struct HomeView: View {
        
                             VStack(spacing: 20) {
                                 HomeInterestingView()
+                                Color.gray2.frame(height : 10)
                                 HomeRecommendView().onChange(of: homeViewModel.recommendSelectedIndex) { _ in
                                     withAnimation {
                                         ScrollViewProxy.scrollTo("TabViewSection", anchor: .top)
@@ -263,21 +259,34 @@ struct interestingRowView : View {
     
     var body: some View {
         VStack(alignment : .leading) {
+  
+            
    
             ZStack(alignment: .topLeading) {
                 ZStack(alignment : .bottomTrailing) {
-                    ZStack(alignment : .topLeading) {
-                        if let uiImage = mainloader.image {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width : 220 , height: 165) // 원하는 높이 설정
-                                .clipped()
-                                .cornerRadius(10)
-                        } else {
-                            ProgressView().frame(width : 220 , height: 165)
+                    if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(postImagePath)") {
+                        ZStack(alignment: .bottomTrailing) {
+                            AsyncImage(url: imageUrl) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                        .frame(height: 165)
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width : 220 , height: 165) // 원하는 높이 설정
+                                        .clipped()
+                                        .cornerRadius(10)
+                                case .failure:
+                                    LoadFailImageView().frame(width : 220 , height: 165)
+                                @unknown default:
+                                    EmptyView()
+                                }
+                            }   
                         }
                     }
+
                     if archiveCheck {
                         Image(.bookMark).resizable().frame(width: 20 , height:  24).padding()
                     }
@@ -294,8 +303,6 @@ struct interestingRowView : View {
                 .background(Color.black.opacity(0.2))
                     .cornerRadius(5)
                     .padding(12)
-            }.onAppear {
-                mainloader.loadImage(from: "\(Environment.AwsBaseURL)/\(postImagePath)")
             }
     
             HStack {
@@ -311,23 +318,30 @@ struct interestingRowView : View {
      
             }
             HStack {
-                if let uiImage = userLoader.image {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width : 20 , height: 20)
-                        .clipped()
-                        .cornerRadius(10)
-                } else {
-                    ProgressView().frame(width : 20 , height: 20)
+                if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(profile)") {
+                    ZStack(alignment: .bottomTrailing) {
+                        AsyncImage(url: imageUrl) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                                    .frame(width : 20 , height: 20)
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width : 20 , height: 20)
+                                    .clipped()
+                                    .cornerRadius(10)
+                            case .failure:
+                                LoadFailImageView() .frame(width : 20 , height: 20)
+                            @unknown default:
+                                EmptyView()
+                            }
+                        }
+                    }
                 }
                 Text(nickName).foregroundColor(.black)
-            }.onAppear {
-                userLoader.loadImage(from: "\(Environment.AwsBaseURL)/\(profile)")
             }
-            
-            
-          
         }
         .frame(width: 220 , height: 220)
         .padding(.horizontal, 6)
@@ -339,13 +353,9 @@ struct HomeRecommendView : View {
     
     @EnvironmentObject var homeViewModel : HomeViewModel
     
-    //TODO : 서버값 연결
-    @State var recommendTabs = ["다이어트만 n번째", "건강한 식단관리" , "편의점은 내 구역", "배달음식 단골고객", "밀키트 lover"]
     @State var selectedString = ""
     
-    @State private var tabHeight: CGFloat = 1
-    @State var initialHeight: CGFloat = 0
-    @State var sizeArray: [CGSize] = [CGSize(width: 300, height: 5 * 230), CGSize(width: 300, height: 10 * 230), CGSize(width: 300, height: 3 * 230), CGSize(width: 300, height: 15 * 230), CGSize(width: 300, height: 20 * 230)]
+
     
     private var headerSection: some View {
        Section(header:
@@ -384,7 +394,7 @@ struct HomeRecommendView : View {
        }
       
        .tabViewStyle(PageTabViewStyle())
-       .frame(height: 1500)
+       .frame(height: CGFloat(homeViewModel.recommendTabViewCount) * 300 > 0 ? CGFloat(homeViewModel.recommendTabViewCount) * 300 : 1200)
    }
     
     
@@ -443,6 +453,7 @@ struct RecommendColArrView : View {
 
 
 struct RecommendColView : View {
+    @StateObject private var mainloader = ImageLoader()
     
     let postId : Int
     let postImagePath : String
@@ -457,13 +468,34 @@ struct RecommendColView : View {
 //            이미지
             ZStack(alignment: .topLeading){
                 ZStack(alignment : .bottomTrailing){
-                    Image(.testFood2).resizable().frame(height:  160)
-                    Image(.bookMark).resizable().frame(width: 20 , height:  24).padding()
+                    if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(postImagePath)") {
+                        ZStack(alignment: .bottomTrailing) {
+                            AsyncImage(url: imageUrl) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                        .frame(height: 160) // 원하는 높이 설정
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(height: 160) // 원하는 높이 설정
+                                        .clipped()
+                                        .cornerRadius(10)
+                                case .failure:
+                                    LoadFailImageView().frame(height: 160)
+                                @unknown default:
+                                    EmptyView()
+                                }
+                            }
+                        }
+                    }
+                    Image(archiveCheck ? .bookMarkChecked : .bookMark).resizable().frame(width: 18 , height:  24).padding()
                 }
                
                 HStack {
                     Image(.whiteHeart).resizable().frame(width: 20 , height: 20)
-                    Text("120").font(.callout).foregroundColor(.white)
+                    Text(String(likedCounts)).font(.callout).foregroundColor(.white)
                 }
                 .padding(.vertical, 3)
                 .padding(.horizontal, 5)
@@ -473,21 +505,30 @@ struct RecommendColView : View {
                     
             }
             
-//            타이틀 시간
-            HStack {
-                Text("음식 이름")
-                    .bold()
-                    .font(.system(size: 24))
+
+            VStack(alignment : .leading) {
+                //            타이틀 시간
+                HStack {
+                    Text(recipeName)
+                        .bold()
+                        .font(.system(size: 24))
+                    
+                    Image(.stopwatch).resizable().frame(width : 20, height: 20)
+                    Text("\(recipeTime)분").font(.system(size : 14)).font(.callout)
+                    
+                        .foregroundColor(.gray5)
+                    
+                    Spacer()
+                }
+                //            설명
+                VStack{
+                    Text("간장을 끓이지않고 냉동새우로 간장 새우장 만드는 법을 알려줄게요 :)")
+                        .lineLimit(2)
+                        .font(.system(size : 14)).font(.callout).foregroundColor(.gray8)
+                }
                 
-                Image(.stopwatch).resizable().frame(width : 20, height: 20)
-                Text("시간").font(.system(size : 14)).font(.callout).foregroundColor(.gray5)
-                
-                Spacer()
-            }
-//            설명
-            VStack{
-                Text("간장을 끓이지않고 냉동새우로 간장 새우장 만드는 법을 알려줄게요 :)").font(.system(size : 14)).font(.callout).foregroundColor(.gray8)
-            }
+            }.padding(.horizontal, 5)
+
             
         }
 
