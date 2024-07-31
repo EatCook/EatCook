@@ -39,27 +39,27 @@ class HomeViewModel : ObservableObject {
 //    @Published var recommendFoods : [String : [RecommendFoods]] = [:]
     @Published var recommendFoods: [String: [RecommendFoods]] = [
         "건강한 식단관리": [
-            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, likedCounts: 0, likedCheck: false, archiveCheck: false),
-            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, likedCounts: 0, likedCheck: false, archiveCheck: false),
-            RecommendFoods(postId: 79, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "오므라이스", recipeTime: 15, likedCounts: 0, likedCheck: false, archiveCheck: false),
-            RecommendFoods(postId: 78, postImagePath: "image/post/9/78/cc7f2f5d-df47-4a26-823e-294df07cbcda.jpeg", recipeName: "ㅇㅇㅇㅇ", recipeTime: 10, likedCounts: 0, likedCheck: false, archiveCheck: false)
+            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, introduction : "테스트", likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, introduction : "테스트", likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 79, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "오므라이스", recipeTime: 15, introduction : "테스트", likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 78, postImagePath: "image/post/9/78/cc7f2f5d-df47-4a26-823e-294df07cbcda.jpeg", recipeName: "ㅇㅇㅇㅇ", recipeTime: 10, introduction : "테스트", likedCounts: 0, likedCheck: false, archiveCheck: false)
         ] ,
         "다이어트만 n번째": [
-            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, likedCounts: 0, likedCheck: false, archiveCheck: false),
-            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, likedCounts: 0, likedCheck: false, archiveCheck: false)
+            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, introduction : "테스트", likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, introduction : "테스트", likedCounts: 0, likedCheck: false, archiveCheck: false)
         ],
         "편의점은 내 구역": [
-            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, likedCounts: 0, likedCheck: false, archiveCheck: false),
-            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, likedCounts: 0, likedCheck: false, archiveCheck: false)
+            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, introduction : "테스트", likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, introduction : "테스트", likedCounts: 0, likedCheck: false, archiveCheck: false)
         ],
         
         "밀키트 lover": [
-            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, likedCounts: 0, likedCheck: false, archiveCheck: false),
-            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, likedCounts: 0, likedCheck: false, archiveCheck: false)
+            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, introduction : "테스트", likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, introduction : "테스트", likedCounts: 0, likedCheck: false, archiveCheck: false)
         ] ,
         "배달음식 단골고객": [
-            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, likedCounts: 0, likedCheck: false, archiveCheck: false),
-            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, likedCounts: 0, likedCheck: false, archiveCheck: false)
+            RecommendFoods(postId: 81, postImagePath: "image/post/10/81/ec5e566f-89f0-4e06-a9e6-a1045722bc44.jpeg", recipeName: "파스타아아아아", recipeTime: 204, introduction : "테스트", likedCounts: 0, likedCheck: false, archiveCheck: false),
+            RecommendFoods(postId: 80, postImagePath: "image/post/9/80/6c4d7e7b-78d1-48e6-a241-abd8fe4d5714.jpeg", recipeName: "한식체고다", recipeTime: 60, introduction : "테스트", likedCounts: 0, likedCheck: false, archiveCheck: false)
         ]
         
     ]
@@ -147,7 +147,7 @@ class HomeViewModel : ObservableObject {
                         self.recommendTabViewCount = result.data?.homeInterestDtoList.count ?? 0
                     }
                     
-                    self.recommendFoods[key ?? ""] = result.data?.homeInterestDtoList.map { RecommendFoods(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, recipeTime: $0.recipeTime, likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)}
+                    self.recommendFoods[key ?? ""] = result.data?.homeInterestDtoList.map { RecommendFoods(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, recipeTime: $0.recipeTime, introduction: $0.introduction ,likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)}
                 }
                 
                 
@@ -197,6 +197,7 @@ struct RecommendFoods : Identifiable, Hashable  {
     let postImagePath : String
     let recipeName : String
     let recipeTime : Int
+    let introduction : String
     let likedCounts : Int
     let likedCheck : Bool
     let archiveCheck : Bool

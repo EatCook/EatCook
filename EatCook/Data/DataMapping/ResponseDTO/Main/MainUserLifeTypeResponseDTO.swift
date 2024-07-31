@@ -26,6 +26,7 @@ struct HomeLifeTypeDtoListData : Codable {
     let postId : Int
     let postImagePath : String
     let recipeName : String
+    let introduction : String
     let recipeTime : Int
     let likedCounts : Int
     let likedCheck : Bool

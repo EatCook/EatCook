@@ -454,7 +454,7 @@ struct RecommendColArrView : View {
     var body: some View {
         VStack(alignment : .leading){
             ForEach(foods) {
-                RecommendColView(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, recipeTime: $0.recipeTime, likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)
+                RecommendColView(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, introduction: $0.introduction , recipeTime: $0.recipeTime, likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)
             }
             Spacer()
             
@@ -472,6 +472,7 @@ struct RecommendColView : View {
     let postId : Int
     let postImagePath : String
     let recipeName : String
+    let introduction : String
     let recipeTime : Int
     let likedCounts : Int
     let likedCheck : Bool
@@ -536,7 +537,7 @@ struct RecommendColView : View {
                 }
                 //            설명
                 VStack{
-                    Text("간장을 끓이지않고 냉동새우로 간장 새우장 만드는 법을 알려줄게요 :)")
+                    Text(introduction)
                         .lineLimit(2)
                         .font(.system(size : 14)).font(.callout).foregroundColor(.gray8)
                 }
@@ -550,37 +551,6 @@ struct RecommendColView : View {
     
 }
 
-
-
-
-
-
-extension HomeView {
-    static let testFoodThemeData = ["한식", "일식", "중식", "양식", "안주"]
-    static let menuRecommend = ["실시간 인기🔥", "만원의 행복", "본격 자취요리", "편의점"]
-    
-    struct cookTalk {
-        var id = UUID()
-        var title: String
-        var user: String
-        var userImage = Image(.food)
-        var image: Image
-        var time = "15분"
-        var description = "오늘 냉장고 재료로 만든 요리. 치킨과 바질의 어마어마한 조합이 만들어진다. 너무 맛있어서 소분해놓았다! 이렇게 저렇게 글이 길어지면 잘리나 보자. 배고프다 배고파. 오늘 저녁은 카레다!"
-        
-        static let testFoodData: [cookTalk] = [
-            cookTalk(title: "까르보나라 파스타", user: "꽁꽁꽁", image: Image(.food)),
-            cookTalk(title: "마라샹궈", user: "손시려", image: Image(.food)),
-            cookTalk(title: "계란볶음밥", user: "발시려", image: Image(.food)),
-            cookTalk(title: "토마토 파스타", user: "당근당근", image: Image(.food)),
-            cookTalk(title: "마라탕", user: "문고리", image: Image(.food)),
-            cookTalk(title: "짜장볶음밥", user: "김치냉장고", image: Image(.food))
-        ]
-    }
-    
-
-
-}
 
 struct SizePreferenceKey: PreferenceKey {
   static var defaultValue: CGSize = .zero
