@@ -244,9 +244,6 @@ struct HomeInterestingView : View {
                         }
                     }
                     
-                    
-                  
-                    
                 }
                 
             }.padding(.bottom, 22)
