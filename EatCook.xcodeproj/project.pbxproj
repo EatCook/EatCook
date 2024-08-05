@@ -187,6 +187,7 @@
 		F69411B02C59060800ECA302 /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = F69411AF2C59060800ECA302 /* KakaoSDKTalk */; };
 		F69411B22C59060800ECA302 /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = F69411B12C59060800ECA302 /* KakaoSDKTemplate */; };
 		F69411B42C59060800ECA302 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = F69411B32C59060800ECA302 /* KakaoSDKUser */; };
+		F69411B62C610A8E00ECA302 /* LoadingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69411B52C610A8E00ECA302 /* LoadingImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -360,6 +361,7 @@
 		F69410AC2C57B4B700ECA302 /* MyFavoriteTagRequestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFavoriteTagRequestDTO.swift; sourceTree = "<group>"; };
 		F69410AE2C57B4B700ECA302 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F69410B02C57B4B700ECA302 /* LoginUserInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUserInfoManager.swift; sourceTree = "<group>"; };
+		F69411B52C610A8E00ECA302 /* LoadingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingImageView.swift; sourceTree = "<group>"; };
 		F6E1C0932B722EE500A05703 /* EatCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -647,8 +649,8 @@
 			children = (
 				E59D7C982C588110007702C2 /* Components */,
 				E59D7C992C588110007702C2 /* RecipeCreateView.swift */,
-				E59D7C9A2C588110007702C2 /* RecipeStepView.swift */,
 				E59D7C9B2C588110007702C2 /* RecipeTagView.swift */,
+				E59D7C9A2C588110007702C2 /* RecipeStepView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1034,6 +1036,7 @@
 				F694106F2C57B4B600ECA302 /* CameraImageView.swift */,
 				F69410702C57B4B600ECA302 /* CustomImageTitleButton.swift */,
 				F69410712C57B4B600ECA302 /* FollowButton.swift */,
+				F69411B52C610A8E00ECA302 /* LoadingImageView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1425,6 +1428,7 @@
 				F694112D2C57B4B700ECA302 /* ScrollOffset.swift in Sources */,
 				E5D3EF662C58BB8E00ECF9CF /* EmailLoginViewModel.swift in Sources */,
 				F69411422C57B4B700ECA302 /* EndPoint.swift in Sources */,
+				F69411B62C610A8E00ECA302 /* LoadingImageView.swift in Sources */,
 				F69411462C57B4B700ECA302 /* FollowAPI.swift in Sources */,
 				F69411202C57B4B700ECA302 /* RecipeUpdateRequest.swift in Sources */,
 				F69411472C57B4B700ECA302 /* AuthAPI.swift in Sources */,

@@ -121,12 +121,17 @@ struct RecipeStepView: View {
         }
         .overlay {
             if viewModel.isUpLoading {
-                VStack {
-                    ProgressView("업로딩 중...")
-                        .padding()
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .shadow(radius: 10)
+                VStack(spacing: 8) {
+                    LoadingImageView()
+                    
+                    Text("레시피 굽는중...")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundStyle(.white)
+//                    ProgressView("업로딩 중...")
+//                        .padding()
+//                        .background(.white)
+//                        .clipShape(RoundedRectangle(cornerRadius: 10))
+//                        .shadow(radius: 10)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.black.opacity(0.4))

@@ -17,7 +17,7 @@ enum HTTPHeaderField: String {
 enum ContentType: String {
     case urlEncoded = "application/x-www-form-urlencoded"
     case json = "application/json"
-    case jwtToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJlYXRjb29rIiwic3ViIjoiYWNjZXNzLXRva2VuIiwiaWF0IjoxNzIyMzQ0NTk2LCJ1c2VybmFtZSI6Iml0Y29vazFAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImV4cCI6MTcyMjQzMDk5Nn0.SHz4jOYKch0vxftWXzulnvlsMu6bHm-aLMulf_JXghN9LnlK9gFNkxMoRUExP1CPWkU-hEKUi0WEMQfP2KpGug"
+    case jwtToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJlYXRjb29rIiwic3ViIjoiYWNjZXNzLXRva2VuIiwiaWF0IjoxNzIyODY1OTIzLCJ1c2VybmFtZSI6Iml0Y29vazFAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImV4cCI6MTcyMjk1MjMyM30.JuUaDNNpH0yPMk-SiPDP3etl-VquXTi61Xf-9cXoEIPHjJTDANjU3IIMu1MONGFcHPPmzMOky_uOXIehTPMgog"
     case multipart = "multipart/form-data"
     case jpg = "image/jpeg" // jpg, jpeg
     case png = "image/png"
@@ -29,6 +29,7 @@ extension HTTPHeaderField {
         var dict: [String: String] = [:]
         dict[HTTPHeaderField.contentType.rawValue] = ContentType.json.rawValue
         dict[HTTPHeaderField.authorization.rawValue] = DataStorage.shared.getString(forKey: DataStorageKey.Authorization)
+//        dict[HTTPHeaderField.authorization.rawValue] = ContentType.jwtToken.rawValue
         return dict
     }
     
