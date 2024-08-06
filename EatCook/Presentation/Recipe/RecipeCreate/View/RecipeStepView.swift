@@ -323,9 +323,9 @@ struct CreateChatView: View {
     
 }
 
-//#Preview {
-//    NavigationStack {
-//        RecipeStepView()
-//            .environmentObject(NavigationPathFinder.shared)
-//    }
-//}
+#Preview {
+    NavigationStack {
+        RecipeStepView(viewModel: RecipeCreateViewModel(cookTalkUseCase: RecipeUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager())))))
+            .environmentObject(NavigationPathFinder.shared)
+    }
+}

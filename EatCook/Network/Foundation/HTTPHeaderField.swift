@@ -28,8 +28,8 @@ extension HTTPHeaderField {
     static var `default`: [String: String] {
         var dict: [String: String] = [:]
         dict[HTTPHeaderField.contentType.rawValue] = ContentType.json.rawValue
-        dict[HTTPHeaderField.authorization.rawValue] = DataStorage.shared.getString(forKey: DataStorageKey.Authorization)
-//        dict[HTTPHeaderField.authorization.rawValue] = ContentType.jwtToken.rawValue
+//        dict[HTTPHeaderField.authorization.rawValue] = DataStorage.shared.getString(forKey: DataStorageKey.Authorization)
+        dict[HTTPHeaderField.authorization.rawValue] = ContentType.jwtToken.rawValue
         return dict
     }
     
