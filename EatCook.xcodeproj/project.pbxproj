@@ -70,6 +70,9 @@
 		E59D7CDE2C588143007702C2 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D7CCE2C588143007702C2 /* UserProfileViewModel.swift */; };
 		E5BBA0302C5B125F00895377 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BBA02F2C5B125F00895377 /* CustomAlertView.swift */; };
 		E5BBA0322C5B129700895377 /* CustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BBA0312C5B129700895377 /* CustomPopUpView.swift */; };
+		E5BBA0362C61A18200895377 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BBA0352C61A18200895377 /* GoogleService-Info.plist */; };
+		E5BBA0392C61C48D00895377 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E5BBA0382C61C48D00895377 /* FirebaseAnalytics */; };
+		E5BBA03B2C61C48D00895377 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = E5BBA03A2C61C48D00895377 /* FirebaseMessaging */; };
 		E5D3EF482C58ACF200ECF9CF /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF472C58ACF200ECF9CF /* Color+Extension.swift */; };
 		E5D3EF4A2C58B09E00ECF9CF /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF492C58B09E00ECF9CF /* APIClient.swift */; };
 		E5D3EF4C2C58B0DF00ECF9CF /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D3EF4B2C58B0DF00ECF9CF /* DataStorage.swift */; };
@@ -260,6 +263,7 @@
 		E59D7CCE2C588143007702C2 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		E5BBA02F2C5B125F00895377 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		E5BBA0312C5B129700895377 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
+		E5BBA0352C61A18200895377 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5D3EF472C58ACF200ECF9CF /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		E5D3EF492C58B09E00ECF9CF /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		E5D3EF4B2C58B0DF00ECF9CF /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
@@ -382,8 +386,10 @@
 			files = (
 				F69411AA2C59060800ECA302 /* KakaoSDKFriendCore in Frameworks */,
 				F69411A42C59060800ECA302 /* KakaoSDKCertCore in Frameworks */,
+				E5BBA03B2C61C48D00895377 /* FirebaseMessaging in Frameworks */,
 				F69411A22C59060800ECA302 /* KakaoSDKCert in Frameworks */,
 				F69411B22C59060800ECA302 /* KakaoSDKTemplate in Frameworks */,
+				E5BBA0392C61C48D00895377 /* FirebaseAnalytics in Frameworks */,
 				F69411AC2C59060800ECA302 /* KakaoSDKNavi in Frameworks */,
 				F694119E2C59060800ECA302 /* KakaoSDK in Frameworks */,
 				F69411A62C59060800ECA302 /* KakaoSDKCommon in Frameworks */,
@@ -1300,6 +1306,7 @@
 			isa = PBXGroup;
 			children = (
 				E5D3EF692C58BD7000ECF9CF /* EatCook.entitlements */,
+				E5BBA0352C61A18200895377 /* GoogleService-Info.plist */,
 				E59C92C82C588B0200F9EC83 /* Info.plist */,
 				F69410742C57B4B700ECA302 /* Applications */,
 				F69410672C57B4B600ECA302 /* Component */,
@@ -1346,6 +1353,8 @@
 				F69411AF2C59060800ECA302 /* KakaoSDKTalk */,
 				F69411B12C59060800ECA302 /* KakaoSDKTemplate */,
 				F69411B32C59060800ECA302 /* KakaoSDKUser */,
+				E5BBA0382C61C48D00895377 /* FirebaseAnalytics */,
+				E5BBA03A2C61C48D00895377 /* FirebaseMessaging */,
 			);
 			productName = EatCook;
 			productReference = F6E1C0932B722EE500A05703 /* EatCook.app */;
@@ -1377,6 +1386,7 @@
 			mainGroup = F6E1C08A2B722EE500A05703;
 			packageReferences = (
 				F694119C2C59060800ECA302 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				E5BBA0372C61C48D00895377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = F6E1C0942B722EE500A05703 /* Products */;
 			projectDirPath = "";
@@ -1394,6 +1404,7 @@
 			files = (
 				F69411602C57B4B700ECA302 /* Assets.xcassets in Resources */,
 				F694112A2C57B4B700ECA302 /* Preview Assets.xcassets in Resources */,
+				E5BBA0362C61A18200895377 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1803,6 +1814,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E5BBA0372C61C48D00895377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
 		F694119C2C59060800ECA302 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao/kakao-ios-sdk.git";
@@ -1814,6 +1833,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E5BBA0382C61C48D00895377 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5BBA0372C61C48D00895377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		E5BBA03A2C61C48D00895377 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5BBA0372C61C48D00895377 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		F694119D2C59060800ECA302 /* KakaoSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F694119C2C59060800ECA302 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;

@@ -59,7 +59,7 @@ struct EmailLoginView: View {
                 
                 NavigationLink(destination: ContentView() , isActive: $navigate) {
                     Button(action: {
-                        UserService.shared.login(parameters: ["email": emailLoginViewModel.email, "password" : emailLoginViewModel.password], success: { (data) in
+                        UserService.shared.login(parameters: ["email": emailLoginViewModel.email, "password" : emailLoginViewModel.password, "deviceToken" : ""], success: { (data) in
                            
                             print("data : " , data)
                             // Hidden NavigationLink that becomes active based on the state

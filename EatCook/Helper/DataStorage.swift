@@ -84,7 +84,7 @@ class DataStorageKey {
     static let IS_MARKETING = "isMarketing"
     static let IS_NOTIFICATION = "isNotification"
     static let Authorization = "Authorization"
-    
+    static let Authorization_REFRESH = "Authorization-refresh"
     
 }
 

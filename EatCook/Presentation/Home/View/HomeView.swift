@@ -12,6 +12,8 @@ struct HomeView: View {
     @State private var scrollOffset: CGFloat = 0
     @StateObject private var homeViewModel = HomeViewModel()
 
+    
+    
     init() {
         //기본
         UISegmentedControl.appearance().backgroundColor = .clear
@@ -25,7 +27,10 @@ struct HomeView: View {
     var body: some View {
 
 //        NavigationStack {
-            ZStack(alignment : .top) {
+            VStack {
+
+
+                
                 GeometryReader { geometry in
 
                     Color.primary7.opacity(scrollOffset > 50 ? 1 : 0).edgesIgnoringSafeArea(.top).animation(.easeInOut)
@@ -422,6 +427,7 @@ struct HomeRecommendView : View {
            }
        }
        .tabViewStyle(PageTabViewStyle())
+//       .frame(height: homeViewModel.frameSize)
        .frame(height: CGFloat(homeViewModel.recommendTabViewCount) * 240 > 0 ? CGFloat(homeViewModel.recommendTabViewCount) * 240 : 500)
    }
     
