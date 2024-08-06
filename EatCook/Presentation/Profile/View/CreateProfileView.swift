@@ -12,6 +12,7 @@ struct CreateProfileView: View {
     var email: String = ""
     
     @StateObject private var createProfileViewModel = CreateProfileViewModel()
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     @State private var showImagePicker = false
     @State private var navigateToFoodThemeView = false
     @State private var isNickNameError = false
@@ -110,5 +111,5 @@ struct CreateProfileView: View {
 }
 
 #Preview {
-    CreateProfileView()
+    CreateProfileView().environmentObject(NavigationPathFinder.shared)
 }

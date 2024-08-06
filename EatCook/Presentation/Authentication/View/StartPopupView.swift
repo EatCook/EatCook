@@ -28,7 +28,9 @@ struct StartPopupView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: CreateProfileView().toolbarRole(.editor)) {
+                    Button {
+//                        createProfileView
+                    } label: {
                         Text("시작하기")
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -37,7 +39,8 @@ struct StartPopupView: View {
                             .cornerRadius(10)
                             .padding(.horizontal, 24)
                     }
-                    
+
+
                     Spacer()
                 }.background(.white)
                     .cornerRadius(10)

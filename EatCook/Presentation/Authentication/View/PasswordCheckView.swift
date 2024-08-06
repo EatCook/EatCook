@@ -14,6 +14,7 @@ struct PasswordCheckView: View {
     @State private var isSecure = false
     
     @StateObject private var passwordCheckViewModel = PasswordChcekViewModel()
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
     var body: some View {
 //        NavigationStack {
@@ -114,6 +115,7 @@ struct PasswordCheckView: View {
                         //    성공시
                         isPresented = true
                         
+                        
          
                         
                     }, failure: { (error) in
@@ -132,7 +134,47 @@ struct PasswordCheckView: View {
                         .cornerRadius(10)
                         .padding(.horizontal, 24)
                 }).fullScreenCover(isPresented: $isPresented) {
-                    StartPopupView()
+                    VStack {
+                        VStack {
+                            Image(.check)
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .padding(.top, 40)
+                                .padding(.bottom, 25)
+                            
+                            Text("회원가입 완료")
+                                .font(.title2).bold()
+                                .padding(.bottom, 2)
+                            
+                            Text("내 냉장고 속 재료들로 요리를 하러 가볼까요?")
+                                .font(.callout)
+                                .foregroundColor(.gray)
+                            
+                            Spacer()
+                            
+                            Button {
+        //                        createProfileView
+//                                naviPathFinder.addPath()
+                            } label: {
+                                Text("시작하기")
+                                    .foregroundColor(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 55)
+                                    .background(Color.bdActive)
+                                    .cornerRadius(10)
+                                    .padding(.horizontal, 24)
+                            }
+
+
+                            Spacer()
+                        }.background(.white)
+                            .cornerRadius(10)
+                            .clipped()
+                            .frame(maxHeight: 285)
+                            .padding(.horizontal, 24)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black.opacity(0.3))
                 }
                 
                 Spacer()
@@ -148,6 +190,6 @@ struct PasswordCheckView: View {
 }
 
 #Preview {
-    PasswordCheckView(email: "")
+    PasswordCheckView(email: "").environmentObject(NavigationPathFinder.shared)
 }
 

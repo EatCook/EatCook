@@ -95,7 +95,6 @@ class APIClient {
                 
                 switch response.statusCode {
                 case 200 :
-                    print("토큰 리프레시 통신 200")
                     guard let data = data else {
                         print("DATA ERROR")
                         return
@@ -108,7 +107,6 @@ class APIClient {
                     successHandler(decode)
                     
                 case 401 :
-                    print("토큰 에러에러에러")
                     self.refreshToken(url: url , parameters: parameters , method: method) { success in
                         if success {
                             self.request(strURL, method: method, parameters: parameters, responseType: responseType, successHandler: successHandler, failureHandler: failureHandler)

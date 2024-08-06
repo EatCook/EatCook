@@ -11,18 +11,8 @@ struct HomeView: View {
 
     @State private var scrollOffset: CGFloat = 0
     @StateObject private var homeViewModel = HomeViewModel()
-
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
-    
-    init() {
-        //기본
-        UISegmentedControl.appearance().backgroundColor = .clear
-        UISegmentedControl.appearance().setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
-        
-        //선택
-        UISegmentedControl.appearance().selectedSegmentTintColor = .black
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-    }
     
     var body: some View {
 
@@ -62,7 +52,10 @@ struct HomeView: View {
                                 
 
                             }
-                            NavigationLink(destination: LoginView().toolbarRole(.editor)) {
+                            Button {
+                                naviPathFinder.addPath(.login)
+                            } label: {
+
                                 Text("로그인 뷰")
                                     .bold()
                                     .foregroundColor(.white)
@@ -72,6 +65,7 @@ struct HomeView: View {
                                     .cornerRadius(10)
                                     .padding(.horizontal, 24)
                             }
+
                             
                         }
                         .refreshable {
@@ -90,6 +84,7 @@ struct HomeView: View {
                 }
 
             }.environmentObject(homeViewModel)
+            .environmentObject(naviPathFinder)
 
 //        }
 //        .toolbar(.hidden, for: .navigationBar)
@@ -97,6 +92,8 @@ struct HomeView: View {
 }
 
 struct HomeMenuTopView : View {
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    
     var body: some View {
         
             ZStack {
@@ -121,7 +118,9 @@ struct HomeMenuTopView : View {
                     
                     VStack {
                         Spacer()
-                        NavigationLink(destination: SearchView().toolbarRole(.editor)) {
+                        Button(action: {
+                            naviPathFinder.addPath(.search)
+                        }, label: {
                             HStack {
                                 Text("재료 또는 레시피를 검색해 보세요")
                                     .font(.callout)
@@ -140,7 +139,7 @@ struct HomeMenuTopView : View {
                                 .background(Color.white)
                                 .cornerRadius(10)
                                 .padding(.horizontal, 22)
-                        }
+                        })
                     }.padding(.bottom, 24)
                     .padding(.top, 12)
                 }.background{
@@ -592,5 +591,5 @@ extension View {
 
 
 #Preview {
-    HomeView()
+    HomeView().environmentObject(NavigationPathFinder.shared)
 }
