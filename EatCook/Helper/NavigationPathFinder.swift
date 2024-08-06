@@ -28,6 +28,8 @@ enum ViewOptions: Hashable {
     case createProfile(_ email : String)
     case foodTheme(_ email : String, _ nickName : String, _ userImage : UIImage)
     case householdComposition(_ email : String, _ nickName : String , cookingType : [String], userImage : UIImage)
+    case findAccount
+    case changePassword(_ email : String)
     
     @ViewBuilder
     func view() -> some View {
@@ -60,7 +62,10 @@ enum ViewOptions: Hashable {
         case .foodTheme(let email, let nickName, let userImage) : FoodThemeView(email : email, nickName : nickName, userImage : userImage).toolbarRole(.editor)
             
         case .householdComposition(let email, let nickName, let cookingType, let userImage) : HouseholdCompositionView(email : email, nickName : nickName, cookingType : cookingType  ,userImage : userImage).toolbarRole(.editor)
+         
+        case .findAccount : FindAccountView().toolbarRole(.editor)
             
+        case .changePassword(let email) : ChangePasswordView(email : email).toolbarRole(.editor)
         }
     }
     
@@ -104,6 +109,13 @@ enum ViewOptions: Hashable {
         
         case (.householdComposition, .householdComposition):
             return true
+            
+        case (.findAccount , .findAccount):
+            return true
+            
+        case (.changePassword , .changePassword):
+            return true
+            
             
         default:
             return false
@@ -166,10 +178,19 @@ enum ViewOptions: Hashable {
             hasher.combine(nickName)
             hasher.combine(cookingType)
             hasher.combine(userImage)
+            
+        case .findAccount:
+            hasher.combine("findAccount")
+            
+        case .changePassword(let email):
+            hasher.combine("changePassword")
+            hasher.combine(email)
         
-        }
-          
 
+        }
+        
+
+        
     }
 }
 

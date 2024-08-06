@@ -91,10 +91,11 @@ class APIClient {
             }
             
             if let response = response as? HTTPURLResponse {
+                print("response.statusCode::", response.statusCode)
                 self.receiveHeader(response: response)
                 
                 switch response.statusCode {
-                case 200 :
+                case 200 , 400 :
                     guard let data = data else {
                         print("DATA ERROR")
                         return

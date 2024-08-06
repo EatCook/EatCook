@@ -253,7 +253,9 @@ struct LoginView: View {
             }.padding(.top)
             
             HStack(spacing: 10) {
-                NavigationLink(destination: FindAccountView().toolbarRole(.editor)) {
+                Button {
+                    naviPathFinder.addPath(.findAccount)
+                } label: {
                     Text("계정찾기")
                         .font(.body)
                         .foregroundStyle(.gray)
@@ -262,7 +264,10 @@ struct LoginView: View {
                 Divider()
                     .background(Color.gray)
                     .frame(height: 10)
-                NavigationLink(destination: EmailAuthView().toolbarRole(.editor)) {
+                
+                Button {
+                    naviPathFinder.addPath(.emailAuth)
+                } label: {
                     Text("회원가입")
                         .font(.body)
                         .foregroundStyle(.gray)
@@ -272,7 +277,9 @@ struct LoginView: View {
                     .frame(height: 10)
                 
                 //               TODO : 테스트 후 제거
-                NavigationLink(destination: CreateProfileView().toolbarRole(.editor)) {
+                Button {
+                    naviPathFinder.addPath(.createProfile("rkdtlscks123@naver.com"))
+                } label: {
                     Text("계정프로필 등록 테스트")
                         .font(.body)
                         .foregroundStyle(.gray)
