@@ -11,21 +11,16 @@ struct HomeView: View {
 
     @State private var scrollOffset: CGFloat = 0
     @StateObject private var homeViewModel = HomeViewModel()
-
-    init() {
-        //기본
-        UISegmentedControl.appearance().backgroundColor = .clear
-        UISegmentedControl.appearance().setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
-        
-        //선택
-        UISegmentedControl.appearance().selectedSegmentTintColor = .black
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-    }
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    
     
     var body: some View {
 
 //        NavigationStack {
-            ZStack(alignment : .top) {
+            VStack {
+
+
+                
                 GeometryReader { geometry in
 
                     Color.primary7.opacity(scrollOffset > 50 ? 1 : 0).edgesIgnoringSafeArea(.top).animation(.easeInOut)
@@ -57,7 +52,10 @@ struct HomeView: View {
                                 
 
                             }
-                            NavigationLink(destination: LoginView().toolbarRole(.editor)) {
+                            Button {
+                                naviPathFinder.addPath(.login)
+                            } label: {
+
                                 Text("로그인 뷰")
                                     .bold()
                                     .foregroundColor(.white)
@@ -67,6 +65,7 @@ struct HomeView: View {
                                     .cornerRadius(10)
                                     .padding(.horizontal, 24)
                             }
+
                             
                         }
                         .refreshable {
@@ -85,6 +84,7 @@ struct HomeView: View {
                 }
 
             }.environmentObject(homeViewModel)
+            .environmentObject(naviPathFinder)
 
 //        }
 //        .toolbar(.hidden, for: .navigationBar)
@@ -92,6 +92,8 @@ struct HomeView: View {
 }
 
 struct HomeMenuTopView : View {
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    
     var body: some View {
         
             ZStack {
@@ -116,7 +118,9 @@ struct HomeMenuTopView : View {
                     
                     VStack {
                         Spacer()
-                        NavigationLink(destination: SearchView().toolbarRole(.editor)) {
+                        Button(action: {
+                            naviPathFinder.addPath(.search)
+                        }, label: {
                             HStack {
                                 Text("재료 또는 레시피를 검색해 보세요")
                                     .font(.callout)
@@ -135,7 +139,7 @@ struct HomeMenuTopView : View {
                                 .background(Color.white)
                                 .cornerRadius(10)
                                 .padding(.horizontal, 22)
-                        }
+                        })
                     }.padding(.bottom, 24)
                     .padding(.top, 12)
                 }.background{
@@ -422,6 +426,7 @@ struct HomeRecommendView : View {
            }
        }
        .tabViewStyle(PageTabViewStyle())
+//       .frame(height: homeViewModel.frameSize)
        .frame(height: CGFloat(homeViewModel.recommendTabViewCount) * 240 > 0 ? CGFloat(homeViewModel.recommendTabViewCount) * 240 : 500)
    }
     
@@ -586,5 +591,5 @@ extension View {
 
 
 #Preview {
-    HomeView()
+    HomeView().environmentObject(NavigationPathFinder.shared)
 }

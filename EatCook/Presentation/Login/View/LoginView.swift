@@ -104,7 +104,7 @@ struct LoginView: View {
     
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ZStack(alignment: .bottom) {
                 HStack(spacing: 10) {
                     Image(.food1)
@@ -159,27 +159,24 @@ struct LoginView: View {
             VStack(spacing: 10) {
                 
                 
-                NavigationLink(destination: ContentView() , isActive: $navigate) {
-                    Button(action: {
-                        // 카카오톡 실행 가능 여부 확인
-                        handleKakaLogin()
+                Button(action: {
+                    // 카카오톡 실행 가능 여부 확인
+                    handleKakaLogin()
 
-                    }, label: {
-                        ZStack {
-                            Image(.kakao1).resizable() .frame(width: 20, height: 20).offset(x: -125,y: 0)
-                            Text("카카오 로그인").offset(x : 10 , y : 0)
-                        }  .frame(width : 300, height : 52)
-                            .background{
-                                Color.kakaoBackground
-                            }.cornerRadius(10)
-                    })
-                    .frame(width : 300, height : 52)
-                    .padding(.horizontal, 24)
-                }
-                
+                }, label: {
+                    ZStack {
+                        Image(.kakao1).resizable() .frame(width: 20, height: 20).offset(x: -125,y: 0)
+                        Text("카카오 로그인").offset(x : 10 , y : 0)
+                    }  .frame(width : 300, height : 52)
+                        .background{
+                            Color.kakaoBackground
+                        }.cornerRadius(10)
+                })
+                .frame(width : 300, height : 52)
+                .padding(.horizontal, 24)
                 
                 Button(action: {
-
+                    
                 }, label: {
                     ZStack {
                         Image(.apple1).resizable() .frame(width: 20, height: 20).offset(x: -125,y: 0)
@@ -238,8 +235,9 @@ struct LoginView: View {
                 }
     
 
-
-                NavigationLink(destination: EmailLoginView().toolbarRole(.editor)) {
+                Button {
+                    naviPathFinder.addPath(.emailLogin)
+                } label: {
                     ZStack {
                         Image(.email1).resizable() .frame(width: 20, height: 20).offset(x: -125,y: 0)
                         Text("이메일 로그인").offset(x : 10 , y : 0)
@@ -248,12 +246,16 @@ struct LoginView: View {
                             Color.bgPrimary
                         }.cornerRadius(10)
                 }
-                .padding(.horizontal, 24)
+
+                
+    
 
             }.padding(.top)
             
             HStack(spacing: 10) {
-                NavigationLink(destination: FindAccountView().toolbarRole(.editor)) {
+                Button {
+                    naviPathFinder.addPath(.findAccount)
+                } label: {
                     Text("계정찾기")
                         .font(.body)
                         .foregroundStyle(.gray)
@@ -262,7 +264,10 @@ struct LoginView: View {
                 Divider()
                     .background(Color.gray)
                     .frame(height: 10)
-                NavigationLink(destination: EmailAuthView().toolbarRole(.editor)) {
+                
+                Button {
+                    naviPathFinder.addPath(.emailAuth)
+                } label: {
                     Text("회원가입")
                         .font(.body)
                         .foregroundStyle(.gray)
@@ -272,7 +277,9 @@ struct LoginView: View {
                     .frame(height: 10)
                 
                 //               TODO : 테스트 후 제거
-                NavigationLink(destination: CreateProfileView().toolbarRole(.editor)) {
+                Button {
+                    naviPathFinder.addPath(.createProfile("rkdtlscks123@naver.com"))
+                } label: {
                     Text("계정프로필 등록 테스트")
                         .font(.body)
                         .foregroundStyle(.gray)
@@ -284,17 +291,14 @@ struct LoginView: View {
  
             }.padding(.vertical, 30)
             
-//            NavigationLink(destination: ContentView() , isActive: $navigate) {
-//                EmptyView()
-//            }
             
         }
-        .toolbar(.hidden, for: .navigationBar)
+    
     }
-}
+//}
 
 #Preview {
-    LoginView()
+    LoginView().environmentObject(NavigationPathFinder.shared)
 }
 
 /// JWTToken -> dictionary

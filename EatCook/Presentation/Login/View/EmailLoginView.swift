@@ -18,7 +18,7 @@ struct EmailLoginView: View {
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack{
                 Image(.food1).resizable().frame(width : 340 ,height: 200)
                 TextField("아이디 입력", text: $emailLoginViewModel.email).modifier(CustomTextFieldModifier())
@@ -56,45 +56,39 @@ struct EmailLoginView: View {
                 }
                 
                 
-                
-                NavigationLink(destination: ContentView() , isActive: $navigate) {
-                    Button(action: {
-                        UserService.shared.login(parameters: ["email": emailLoginViewModel.email, "password" : emailLoginViewModel.password], success: { (data) in
-                           
-                            print("data : " , data)
-                            // Hidden NavigationLink that becomes active based on the state
-                           
-                            // NavigationLink activated by the state variable
-                            self.navigate = true
-                            
-                            
-                        }, failure: { (error) in
-                            withAnimation {
-                                toastManager.displayToast(
-                                    message: error.message,
-                                    duration: 3.0
-                                )
-                            }
-                        })
-                        
-                    }, label: {
-                        Text("로그인")
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 55)
-                        .background {
-                            Color.primary7
+                Button(action: {
+                    UserService.shared.login(parameters: ["email": emailLoginViewModel.email, "password" : emailLoginViewModel.password, "deviceToken" : ""], success: { (data) in
+                       
+                        print("data : " , data)
+                        if data.success {
+                            naviPathFinder.popToRoot()
                         }
-                        .foregroundColor(.white)
-                        .background()
-                        .cornerRadius(10)
-                        .padding(.horizontal, 24)
-                        .bold()
                         
+                        
+                    }, failure: { (error) in
+                        withAnimation {
+                            toastManager.displayToast(
+                                message: error.message,
+                                duration: 3.0
+                            )
+                        }
                     })
-                }
-                
+                    
+                }, label: {
+                    Text("로그인")
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 55)
+                    .background {
+                        Color.primary7
+                    }
+                    .foregroundColor(.white)
+                    .background()
+                    .cornerRadius(10)
+                    .padding(.horizontal, 24)
+                    .bold()
+                    
+                })
 
-                
                 Spacer()
                 
                 if toastManager.isShowing {
@@ -111,11 +105,11 @@ struct EmailLoginView: View {
         
         
     }
-}
+//}
 
 
 
 #Preview {
-    EmailLoginView()
+    EmailLoginView().environmentObject(NavigationPathFinder.shared)
 }
 

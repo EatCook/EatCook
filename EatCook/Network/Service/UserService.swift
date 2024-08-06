@@ -15,7 +15,7 @@ class UserService {
     private let API_USER_EMAIL_REQUEST = "/api/v1/emails/request"
     private let API_USER_EMAIL_VERIFY = "/api/v1/emails/verify"
     private let API_USER_PASSWORD_CHECK = "/api/v1/users"
-    private let API_USER_EMAIL_LOGIN = "/login"
+    private let API_USER_EMAIL_LOGIN = "/api/v1/auth/login"
     private let API_USER_OAUTH_LOGIN = "/oauth2/login"
     private let API_USER_ADD_SIGNUP = "/api/v1/users/add-signup"
     private let API_USER_NICKNAME_CHECK = "/api/v1/users/add-signup/check-nick"

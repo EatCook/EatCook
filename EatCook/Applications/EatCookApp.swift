@@ -8,7 +8,7 @@
 import SwiftUI
 import KakaoSDKCommon
 import KakaoSDKAuth
-
+import Firebase
 
 @main
 struct EatCookApp: App {
@@ -16,7 +16,10 @@ struct EatCookApp: App {
     
     init() {
           // Kakao SDK 초기화
+          // TODO : API KEY HIDE
           KakaoSDK.initSDK(appKey: "f6e57755979be3cac29156b4ca677fcb")
+          FirebaseApp.configure()
+        
       }
     
     
