@@ -92,18 +92,24 @@ struct UserProfileView: View {
                     
                     VStack(spacing: 12) {
                         if let imageUrlString = viewModel.myPageUserInfo.userImagePath {
-                            let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(imageUrlString)")
-                            AsyncImage(url: imageUrl) { image in
-                                image
-                                    .resizable()
+                            if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(imageUrlString)") {
+                                AutoRetryImage(url: imageUrl)
                                     .frame(width: 96, height: 96)
                                     .scaledToFit()
                                     .clipShape(Circle())
-//                                    .padding(.top, 24)
-                            } placeholder: {
-                                ProgressView()
-                                    .frame(width: 96, height: 96)
+                                    .padding(.top, 24)
                             }
+//                            AsyncImage(url: imageUrl) { image in
+//                                image
+//                                    .resizable()
+//                                    .frame(width: 96, height: 96)
+//                                    .scaledToFit()
+//                                    .clipShape(Circle())
+//                                //                                    .padding(.top, 24)
+//                            } placeholder: {
+//                                ProgressView()
+//                                    .frame(width: 96, height: 96)
+//                            }
                         } else {
                             Image(systemName: "person.crop.circle.fill")
                                 .resizable()

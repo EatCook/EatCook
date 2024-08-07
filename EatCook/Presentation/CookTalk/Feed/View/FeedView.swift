@@ -119,7 +119,7 @@ struct FeedView: View {
                     .background(.gray1)
                     .onAppear {
                         viewModel.responseCookTalkFeed()
-//                        viewModel.responseCookTalkFollow()
+                        viewModel.responseCookTalkFollow()
                     }
                 }
                 

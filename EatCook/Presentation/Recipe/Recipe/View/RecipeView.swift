@@ -85,21 +85,23 @@ struct RecipeView: View {
                         .padding(.vertical, 20)
                         
                         if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(data.postImagePath)") {
-                            AsyncImage(url: imageUrl) { phase in
-                                switch phase {
-                                case .empty:
-                                    ProgressView()
-                                case .success(let image):
-                                    image
-                                        .resizable()
-                                        .aspectRatio(4/3, contentMode: .fit)
-//                                        .scaledToFit()
-                                case .failure:
-                                    LoadFailImageView()
-                                @unknown default:
-                                    EmptyView()
-                                }
-                            }
+                            AutoRetryImage(url: imageUrl)
+                                .aspectRatio(4/3, contentMode: .fit)
+//                            AsyncImage(url: imageUrl) { phase in
+//                                switch phase {
+//                                case .empty:
+//                                    ProgressView()
+//                                case .success(let image):
+//                                    image
+//                                        .resizable()
+//                                        .aspectRatio(4/3, contentMode: .fit)
+////                                        .scaledToFit()
+//                                case .failure:
+//                                    LoadFailImageView()
+//                                @unknown default:
+//                                    EmptyView()
+//                                }
+//                            }
                         }
                         
                         VStack(alignment: .leading, spacing: 16) {
@@ -291,22 +293,26 @@ struct RecipeView: View {
                 }
                 
                 if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(data.image)") {
-                    AsyncImage(url: imageUrl) { phase in
-                        switch phase {
-                        case .empty:
-                            ProgressView()
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .frame(maxWidth: .infinity)
-                                .aspectRatio(4/3, contentMode: .fit)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                        case .failure:
-                            LoadFailImageView()
-                        @unknown default:
-                            EmptyView()
-                        }
-                    }
+                    AutoRetryImage(url: imageUrl)
+                        .frame(maxWidth: .infinity)
+                        .aspectRatio(4/3, contentMode: .fit)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+//                    AsyncImage(url: imageUrl) { phase in
+//                        switch phase {
+//                        case .empty:
+//                            ProgressView()
+//                        case .success(let image):
+//                            image
+//                                .resizable()
+//                                .frame(maxWidth: .infinity)
+//                                .aspectRatio(4/3, contentMode: .fit)
+//                                .clipShape(RoundedRectangle(cornerRadius: 10))
+//                        case .failure:
+//                            LoadFailImageView()
+//                        @unknown default:
+//                            EmptyView()
+//                        }
+//                    }
                 }
             }
         }

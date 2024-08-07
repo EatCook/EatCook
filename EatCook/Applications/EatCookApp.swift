@@ -22,7 +22,7 @@ struct EatCookApp: App {
           // TODO : API KEY HIDE
           KakaoSDK.initSDK(appKey: "f6e57755979be3cac29156b4ca677fcb")
 //          FirebaseApp.configure()
-        
+//        DataStorage.shared.setString("Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJlYXRjb29rIiwic3ViIjoiYWNjZXNzLXRva2VuIiwiaWF0IjoxNzIzMDM0MTk4LCJ1c2VybmFtZSI6Iml0Y29vazFAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImV4cCI6MTcyMzAzNDI1OH0.axrTR5Uk1vHUiRkbHS7B8zWRQAcmgG3g1sBo1aMj05eSiolGNpwwCNLCJmmbyBFrCbeGJLCillhNV4e2QOrWhQ", forKey: DataStorageKey.Authorization)
       }
     
     

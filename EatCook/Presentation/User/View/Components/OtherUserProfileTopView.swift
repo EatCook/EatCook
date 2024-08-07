@@ -15,9 +15,13 @@ struct OtherUserProfileTopView: View {
     var body: some View {
         VStack {
             HStack(alignment: .top, spacing: 10) {
-                Circle()
-                    .fill(.gray3)
-                    .frame(width: 52, height: 52)
+                if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(otherUserData.userImagePath)") {
+                    AutoRetryImage(url: imageUrl)
+                        .frame(width: 52, height: 52)
+                }
+//                Circle()
+//                    .fill(.gray3)
+//                    .frame(width: 52, height: 52)
                 
                 VStack(alignment: .leading) {
                     Text(otherUserData.nickName)

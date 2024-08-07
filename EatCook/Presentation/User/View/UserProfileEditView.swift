@@ -37,19 +37,25 @@ struct UserProfileEditView: View {
                                 .padding(.top, 24)
                         } else {
                             if let imageUrlString = viewModel.userProfileImagePath {
-                                let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(imageUrlString)")
-                                AsyncImage(url: imageUrl) { image in
-                                    image
-                                        .resizable()
+                                if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(imageUrlString)") {
+                                    AutoRetryImage(url: imageUrl)
                                         .frame(width: 130, height: 130)
                                         .scaledToFit()
                                         .clipShape(Circle())
                                         .padding(.top, 24)
-                                } placeholder: {
-                                    ProgressView()
-                                        .frame(width: 130, height: 130)
-                                        .padding(.top, 24)
                                 }
+//                                AsyncImage(url: imageUrl) { image in
+//                                    image
+//                                        .resizable()
+//                                        .frame(width: 130, height: 130)
+//                                        .scaledToFit()
+//                                        .clipShape(Circle())
+//                                        .padding(.top, 24)
+//                                } placeholder: {
+//                                    ProgressView()
+//                                        .frame(width: 130, height: 130)
+//                                        .padding(.top, 24)
+//                                }
                             } else {
                                 Image(systemName: "person.crop.circle.fill")
                                     .resizable()
