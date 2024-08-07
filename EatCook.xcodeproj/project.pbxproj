@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		E55B79E12C62F394001C6B4E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E55B79E02C62F394001C6B4E /* FirebaseAnalytics */; };
 		E55B79E32C62F394001C6B4E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = E55B79E22C62F394001C6B4E /* FirebaseMessaging */; };
-		E55B79E52C62F685001C6B4E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E55B79E42C62F685001C6B4E /* GoogleService-Info.plist */; };
+		E55B79E82C6306C6001C6B4E /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B79E72C6306C6001C6B4E /* LoginUseCase.swift */; };
+		E55B79EB2C6308CA001C6B4E /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B79EA2C6308CA001C6B4E /* LoginResponse.swift */; };
+		E55B79EE2C6346E8001C6B4E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E55B79ED2C6346E8001C6B4E /* GoogleService-Info.plist */; };
+		E55B79F02C635E2C001C6B4E /* ModifiableEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B79EF2C635E2C001C6B4E /* ModifiableEndPoint.swift */; };
 		E59AF1B32C5A0E5F004AF236 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AF1B22C5A0E5F004AF236 /* SearchService.swift */; };
 		E59AF1B82C5A0E94004AF236 /* SearchRankingResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AF1B72C5A0E94004AF236 /* SearchRankingResponseDTO.swift */; };
 		E59AF1BA2C5A0EBE004AF236 /* SearchMenuResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AF1B92C5A0EBE004AF236 /* SearchMenuResponseDTO.swift */; };
@@ -199,7 +202,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E55B79E42C62F685001C6B4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E55B79E72C6306C6001C6B4E /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		E55B79EA2C6308CA001C6B4E /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		E55B79ED2C6346E8001C6B4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E55B79EF2C635E2C001C6B4E /* ModifiableEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiableEndPoint.swift; sourceTree = "<group>"; };
 		E59AF1B22C5A0E5F004AF236 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		E59AF1B72C5A0E94004AF236 /* SearchRankingResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankingResponseDTO.swift; sourceTree = "<group>"; };
 		E59AF1B92C5A0EBE004AF236 /* SearchMenuResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMenuResponseDTO.swift; sourceTree = "<group>"; };
@@ -404,6 +410,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E55B79E62C6306B0001C6B4E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E55B79E72C6306C6001C6B4E /* LoginUseCase.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E55B79E92C6308BE001C6B4E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E55B79EA2C6308CA001C6B4E /* LoginResponse.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E55B79EC2C630A7D001C6B4E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E5D3EF572C58B69700ECF9CF /* LoginResponseDTO.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		E59AF1B42C5A0E71004AF236 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -817,7 +847,6 @@
 				E5D3EF512C58B5A900ECF9CF /* EmailRequestResponseDTO.swift */,
 				E5D3EF532C58B5F100ECF9CF /* EmailVerifyResponseDTO.swift */,
 				E5D3EF552C58B61D00ECF9CF /* PasswordCheckResponseDTO.swift */,
-				E5D3EF572C58B69700ECF9CF /* LoginResponseDTO.swift */,
 				E5D3EF592C58B6E700ECF9CF /* AddSignUpResponse.swift */,
 				E5D3EF5B2C58B75000ECF9CF /* CheckNickNameResponse.swift */,
 				E5D3EF5D2C58B77C00ECF9CF /* FindAccountResponseDTO.swift */,
@@ -859,6 +888,7 @@
 		F69410362C57B4B600ECA302 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				E55B79E92C6308BE001C6B4E /* Login */,
 				F69410372C57B4B600ECA302 /* CookTalk */,
 				F694103A2C57B4B600ECA302 /* Recipe */,
 				F694103C2C57B4B600ECA302 /* MyPage */,
@@ -953,6 +983,7 @@
 		F69410502C57B4B600ECA302 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				E55B79E62C6306B0001C6B4E /* Login */,
 				F69410512C57B4B600ECA302 /* CookTalk */,
 				F69410532C57B4B600ECA302 /* Archive */,
 				F69410552C57B4B600ECA302 /* Recipe */,
@@ -1118,6 +1149,7 @@
 				F694107E2C57B4B700ECA302 /* HTTPMethod.swift */,
 				F694107F2C57B4B700ECA302 /* NetworkProvider.swift */,
 				F69410802C57B4B700ECA302 /* EndPoint.swift */,
+				E55B79EF2C635E2C001C6B4E /* ModifiableEndPoint.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -1185,6 +1217,7 @@
 		F69410952C57B4B700ECA302 /* ResponseDTO */ = {
 			isa = PBXGroup;
 			children = (
+				E55B79EC2C630A7D001C6B4E /* Login */,
 				E59AF1B42C5A0E71004AF236 /* Search */,
 				E5D3EF802C58CEEC00ECF9CF /* Main */,
 				E5D3EF502C58B57C00ECF9CF /* Auth */,
@@ -1306,7 +1339,7 @@
 			isa = PBXGroup;
 			children = (
 				E5D3EF692C58BD7000ECF9CF /* EatCook.entitlements */,
-				E55B79E42C62F685001C6B4E /* GoogleService-Info.plist */,
+				E55B79ED2C6346E8001C6B4E /* GoogleService-Info.plist */,
 				E59C92C82C588B0200F9EC83 /* Info.plist */,
 				F69410742C57B4B700ECA302 /* Applications */,
 				F69410672C57B4B600ECA302 /* Component */,
@@ -1404,7 +1437,7 @@
 			files = (
 				F69411602C57B4B700ECA302 /* Assets.xcassets in Resources */,
 				F694112A2C57B4B700ECA302 /* Preview Assets.xcassets in Resources */,
-				E55B79E52C62F685001C6B4E /* GoogleService-Info.plist in Resources */,
+				E55B79EE2C6346E8001C6B4E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1433,6 +1466,7 @@
 				E5D3EF792C58C4D700ECF9CF /* CreateProfileViewModel.swift in Sources */,
 				E59D7C6C2C5880A8007702C2 /* FeedViewModel.swift in Sources */,
 				E5D3EF712C58BFCA00ECF9CF /* FindAccountViewModel.swift in Sources */,
+				E55B79E82C6306C6001C6B4E /* LoginUseCase.swift in Sources */,
 				F69411442C57B4B700ECA302 /* LoginAPI.swift in Sources */,
 				F694112C2C57B4B700ECA302 /* TabCase.swift in Sources */,
 				F69411232C57B4B700ECA302 /* CookTalkUseCase.swift in Sources */,
@@ -1566,6 +1600,7 @@
 				E5D3EF7F2C58CEDC00ECF9CF /* MainService.swift in Sources */,
 				F694111E2C57B4B700ECA302 /* RecipeCreateRequest.swift in Sources */,
 				F694113C2C57B4B700ECA302 /* Environment.swift in Sources */,
+				E55B79EB2C6308CA001C6B4E /* LoginResponse.swift in Sources */,
 				E59D7CA22C588110007702C2 /* RecipeContainerRowView.swift in Sources */,
 				E59D7C672C5880A8007702C2 /* FeedContainerView.swift in Sources */,
 				E59D7CBE2C58813D007702C2 /* SettingViewModel.swift in Sources */,
@@ -1585,6 +1620,7 @@
 				E59D7C5B2C58808B007702C2 /* AuthViewModel.swift in Sources */,
 				F694113A2C57B4B700ECA302 /* EatCookApp.swift in Sources */,
 				F69411492C57B4B700ECA302 /* MyPageSettingAPI.swift in Sources */,
+				E55B79F02C635E2C001C6B4E /* ModifiableEndPoint.swift in Sources */,
 				E59D7CA62C588110007702C2 /* RecipeViewModel.swift in Sources */,
 				F69411192C57B4B700ECA302 /* MyPageArchiveResponse.swift in Sources */,
 			);

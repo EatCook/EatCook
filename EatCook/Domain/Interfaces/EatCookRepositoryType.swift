@@ -41,4 +41,10 @@ protocol EatCookRepositoryType: AnyObject {
     
     /// Archive
     func requestArchiveAdd(of endpoint: EndPoint) -> Future<ArchiveAddRequestResponse, NetworkError>
+    
+    
+    // Login
+    func login(of endpoint: EndPoint) -> Future<LoginResponse, NetworkError>
+    
+    
 }

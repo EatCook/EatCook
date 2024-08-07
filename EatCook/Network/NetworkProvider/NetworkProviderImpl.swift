@@ -39,12 +39,39 @@ final class NetworkProviderImpl: NetworkProvider {
         }
     }
     
-    private func loadData(of endpoint: EndPoint) async throws -> (Data, HTTPURLResponse) {
+    private func loadData(of endpoint: EndPoint , retrying: Bool = false) async throws -> (Data, HTTPURLResponse) {
         do {
             let urlRequest = try await requestManager.makeURLRequest(of: endpoint)
             let (data, response) = try await session.data(for: urlRequest)
             
             guard let httpResponse = response as? HTTPURLResponse else { throw NetworkError.noResponse }
+            
+            //          JWT Access Token, Refesh Token Setting
+            self.receiveHeader(response: httpResponse)
+
+            
+            
+            
+            
+            //          Error 400 처리
+            
+            
+            
+            
+            //          Error 401 리프래시 토큰
+            if httpResponse.statusCode == 401 {
+                if !retrying {
+                    try await refreshToken(endpoint: endpoint)
+                    return try await loadData(of: endpoint, retrying: true)
+                } else {
+                    // 리프래시 토큰 세팅후 안되었다면은 로그인 다시하도록
+                    throw HTTPError.unauthorized
+                }
+            }
+            
+            
+            
+            
             
             guard 200..<300 ~= httpResponse.statusCode else { throw httpResponseError(httpResponse) }
             
@@ -64,6 +91,36 @@ final class NetworkProviderImpl: NetworkProvider {
         default: return .unknown
         }
     }
+    
+    private func receiveHeader(response: HTTPURLResponse) {
+        
+        print("Header Check :",response.allHeaderFields )
+        if let refreshToken = response.allHeaderFields[DataStorageKey.Authorization_REFRESH] as? String {
+            DataStorage.shared.setString(refreshToken, forKey: DataStorageKey.Authorization_REFRESH)
+        }
+        
+        if let accessToken = response.allHeaderFields[DataStorageKey.Authorization] as? String {
+            DataStorage.shared.setString(accessToken, forKey: DataStorageKey.Authorization)
+        }
+    }
+    
+    private func refreshToken(endpoint : EndPoint) async throws {
+        let refreshEndpoint = ModifiableEndPoint(endpoint: endpoint, additionalHeaders: HTTPHeaderField.refreshTokenHeader)
+        
+        let urlRequest = try await requestManager.makeURLRequest(of: refreshEndpoint)
+        let (data, response) = try await session.data(for: urlRequest)
+        
+        guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
+            throw HTTPError.unauthorized
+        }
+        
+        self.receiveHeader(response: httpResponse)
+    }
+    
+    
 }
+
+
+
 
 struct EmptyResponse: Codable { }

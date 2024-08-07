@@ -17,6 +17,8 @@ struct LoginView: View {
     @State var navigate = false
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
+    @StateObject private var viewModel = LoginViewModel(loginUseCase: LoginUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))
+    
     
     func handleKakaLogin() {
         print("KakaoAuthVM - handleKakaoLogin() called")

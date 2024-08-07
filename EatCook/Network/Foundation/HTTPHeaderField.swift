@@ -11,6 +11,7 @@ import UIKit
 enum HTTPHeaderField: String {
     case contentType = "Content-Type"
     case authorization = "Authorization"
+    case authorizationRefresh = "Authorization-refresh"
     case apikey = "api_key"
 }
 
@@ -28,8 +29,17 @@ extension HTTPHeaderField {
     static var `default`: [String: String] {
         var dict: [String: String] = [:]
         dict[HTTPHeaderField.contentType.rawValue] = ContentType.json.rawValue
-//        dict[HTTPHeaderField.authorization.rawValue] = DataStorage.shared.getString(forKey: DataStorageKey.Authorization)
-        dict[HTTPHeaderField.authorization.rawValue] = ContentType.jwtToken.rawValue
+        dict[HTTPHeaderField.authorization.rawValue] = DataStorage.shared.getString(forKey: DataStorageKey.Authorization)
+//        dict[HTTPHeaderField.authorization.rawValue] = ContentType.jwtToken.rawValue
+        return dict
+    }
+    
+    
+    static var `refreshTokenHeader`: [String: String] {
+        var dict: [String: String] = [:]
+        dict[HTTPHeaderField.contentType.rawValue] = ContentType.json.rawValue
+        dict[HTTPHeaderField.authorization.rawValue] = DataStorage.shared.getString(forKey: DataStorageKey.Authorization)
+        dict[HTTPHeaderField.authorizationRefresh.rawValue] = DataStorage.shared.getString(forKey: DataStorageKey.Authorization_REFRESH)
         return dict
     }
     

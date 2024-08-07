@@ -10,7 +10,15 @@ import SwiftUI
 
 struct EmailLoginView: View {
     
-    @StateObject private var emailLoginViewModel = EmailLoginViewModel()
+//    @StateObject private var emailLoginViewModel = EmailLoginViewModel()
+    
+    @StateObject private var emailLoginViewModel = EmailLoginViewModel(
+        loginUseCase : LoginUseCase(
+            eatCookRepository: EatCookRepository(
+                networkProvider: NetworkProviderImpl(
+                    requestManager: NetworkManager()))), loginUserInfo: LoginUserInfoManager.shared)
+    
+    
     @State private var isSecure = true
     @StateObject private var toastManager = ToastManager()
     @State private var navigate = false
@@ -58,23 +66,19 @@ struct EmailLoginView: View {
                 
                 Button(action: {
                   
-                    let deviceToken =  DataStorage.shared.getString(forKey: DataStorageKey.PUSH_TOKEN)
-                    UserService.shared.login(parameters: ["email": emailLoginViewModel.email, "password" : emailLoginViewModel.password, "deviceToken" : deviceToken], success: { (data) in
-                       
-                        print("data : " , data)
-                        if data.success {
+                    emailLoginViewModel.emailLogin { LoginResponse in
+                        if LoginResponse.success {
                             naviPathFinder.popToRoot()
+                            emailLoginViewModel.loginUserInfo.responseUserInfo()
+                        }else {
+                            withAnimation {
+                                toastManager.displayToast(
+                                    message: LoginResponse.message,
+                                    duration: 3.0
+                                )
+                            }
                         }
-                        
-                        
-                    }, failure: { (error) in
-                        withAnimation {
-                            toastManager.displayToast(
-                                message: error.message,
-                                duration: 3.0
-                            )
-                        }
-                    })
+                    }
                     
                 }, label: {
                     Text("로그인")

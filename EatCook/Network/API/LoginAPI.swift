@@ -8,12 +8,17 @@
 import Foundation
 
 enum LoginAPI: EndPoint {
-    case login
+    case login(_ email : String , _ password : String , _ deviceToken : String)
+//    case socialLogin
     
     var path: String {
         switch self {
         case .login:
-            return "login"
+            return "/api/v1/auth/login"
+            
+        
+            
+            
         }
     }
     
@@ -26,14 +31,18 @@ enum LoginAPI: EndPoint {
     
     var httpTask: HTTPTask {
         switch self {
-        case .login:
-            return .requestWithParameters(parameters: [:], encoding: .urlEncoding)
+        case .login(let email , let password , let deviceToken):
+            return .requestWithParameters(parameters: ["email": email , "password" : password , "deviceToken" : deviceToken], encoding: .jsonEncoding)
         }
     }
     
     var headers: [String : String]? {
         switch self {
-        case .login: return ["Content-Type" : "application/json"]
+        case .login: return HTTPHeaderField.default
+            
+            
+            
+            
         }
     }
     

@@ -1,13 +1,13 @@
 //
-//  LoginResponseDTO.swift
+//  LoginResponse.swift
 //  EatCook
 //
-//  Created by 강신규 on 7/30/24.
+//  Created by 강신규 on 8/7/24.
 //
 
 import Foundation
 
-struct LoginResponseDTO: Codable {
+struct LoginResponse: Codable {
     let success: Bool
     let code: String
     let message: String

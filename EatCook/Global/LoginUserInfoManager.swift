@@ -26,7 +26,7 @@ final class LoginUserInfoManager: ObservableObject {
         responseUserInfo()
     }
     
-    private func responseUserInfo() {
+    func responseUserInfo() {
         
         self.eatCookRepository
             .responseMyPageUserInfo(of: MyPageAPI.mypageUserInfo)

@@ -6,3 +6,33 @@
 //
 
 import Foundation
+import Combine
+
+
+final class LoginViewModel : ObservableObject   {
+    
+    private let loginUseCase : LoginUseCase
+    
+    
+    
+    init(loginUseCase: LoginUseCase) {
+        self.loginUseCase = loginUseCase
+        
+    }
+    
+    
+    
+    
+}
+
+extension LoginViewModel {
+    
+    func socialLogin() {
+        
+        
+        
+        
+    }
+    
+    
+}
