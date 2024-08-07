@@ -57,7 +57,9 @@ struct EmailLoginView: View {
                 
                 
                 Button(action: {
-                    UserService.shared.login(parameters: ["email": emailLoginViewModel.email, "password" : emailLoginViewModel.password, "deviceToken" : ""], success: { (data) in
+                  
+                    let deviceToken =  DataStorage.shared.getString(forKey: DataStorageKey.PUSH_TOKEN)
+                    UserService.shared.login(parameters: ["email": emailLoginViewModel.email, "password" : emailLoginViewModel.password, "deviceToken" : deviceToken], success: { (data) in
                        
                         print("data : " , data)
                         if data.success {
