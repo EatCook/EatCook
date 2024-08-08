@@ -52,22 +52,7 @@ struct HomeView: View {
                                 }
                                 
 
-                            }
-                            Button {
-                                naviPathFinder.addPath(.login)
-                            } label: {
-
-                                Text("로그인 뷰")
-                                    .bold()
-                                    .foregroundColor(.white)
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 55)
-                                    .background(Color.bdActive)
-                                    .cornerRadius(10)
-                                    .padding(.horizontal, 24)
-                            }
-
-                            
+                            }                            
                         }
                         .refreshable {
                             homeViewModel.fetchItems()
@@ -85,6 +70,13 @@ struct HomeView: View {
                 }
 
             }
+            .fullScreenCover(isPresented: $homeViewModel.isTokenError){
+                CustomPopUpView(title: "토큰이 만료되었습니다", message: "로그인을 진행해주세요", confirmTitle: "이동") {
+                    homeViewModel.isTokenError = false
+                    naviPathFinder.addPath(.login)
+                }
+            }
+
             .onAppear {
                 homeViewModel.fetchItems()
             }

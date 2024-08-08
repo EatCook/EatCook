@@ -76,6 +76,14 @@ class HomeViewModel : ObservableObject {
                     print("메인페이지 UserInfo Setting Finished")
                     
                 case .failure(let error):
+                    print("error:", error)
+                    switch error {
+                    case .unauthorized:
+                        print("로그인 경로로")
+                        self.isTokenError = true
+                    default:
+                        print("기본 에러처리")
+                    }
                     
                     print("MainUserInfoResponse Error: \(error)")
                 }

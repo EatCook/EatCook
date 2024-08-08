@@ -34,7 +34,10 @@ final class NetworkProviderImpl: NetworkProvider {
             
             let decodedData = try await requestManager.decode(object, data)
             return .success(decodedData)
-        } catch let error {
+        }catch let error as NetworkError {
+            throw error
+        }
+        catch let error {
             throw NetworkError.decoding(error)
         }
     }
@@ -66,7 +69,7 @@ final class NetworkProviderImpl: NetworkProvider {
                     return try await loadData(of: endpoint, retrying: true)
                 } else {
                     // 리프래시 토큰 세팅후 안되었다면은 로그인 다시하도록
-                    throw HTTPError.unauthorized
+                    throw NetworkError.unauthorized
                 }
             }
             
@@ -78,7 +81,7 @@ final class NetworkProviderImpl: NetworkProvider {
             //          JWT Access Token, Refesh Token Setting
             self.receiveHeader(response: httpResponse)
             return (data, httpResponse)
-        }catch let error as HTTPError {
+        }catch let error as NetworkError {
             throw error
         }
         catch {
@@ -117,7 +120,7 @@ final class NetworkProviderImpl: NetworkProvider {
         
         guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
             print("리프래쉬 실패 로그인 페이지로 넘겨")
-            throw HTTPError.unauthorized
+            throw NetworkError.unauthorized
         }
         print("리프레쉬 토큰 성공!!!!!!!!!!")
         self.receiveHeader(response: httpResponse)
