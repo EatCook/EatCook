@@ -6,19 +6,8 @@
 	objectVersion = 56;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		F6E1C0972B722EE500A05703 /* EatCookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0962B722EE500A05703 /* EatCookApp.swift */; };
-		F6E1C0992B722EE500A05703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E1C0982B722EE500A05703 /* ContentView.swift */; };
-		F6E1C09B2B722EE800A05703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6E1C09A2B722EE800A05703 /* Assets.xcassets */; };
-		F6E1C09E2B722EE800A05703 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6E1C09D2B722EE800A05703 /* Preview Assets.xcassets */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		F6E1C0932B722EE500A05703 /* EatCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6E1C0962B722EE500A05703 /* EatCookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatCookApp.swift; sourceTree = "<group>"; };
-		F6E1C0982B722EE500A05703 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F6E1C09A2B722EE800A05703 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F6E1C09D2B722EE800A05703 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,228 +40,8 @@
 		F6E1C0952B722EE500A05703 /* EatCook */ = {
 			isa = PBXGroup;
 			children = (
-				F6E1C0B72B73C62900A05703 /* Applications */,
-				F6E1C0B52B73C62000A05703 /* Extensions */,
-				F6E1C0B62B73C62200A05703 /* Utillites */,
-				F6E1C0B42B73C61F00A05703 /* Domain */,
-				F6E1C0B32B73C61E00A05703 /* Data */,
-				F6E1C0B22B73C61D00A05703 /* Presentation */,
-				F6E1C0B12B73C61A00A05703 /* Infrastructure */,
-				F6E1C09C2B722EE800A05703 /* Preview Content */,
-				F6E1C0B02B73C61600A05703 /* Resources */,
 			);
 			path = EatCook;
-			sourceTree = "<group>";
-		};
-		F6E1C09C2B722EE800A05703 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C09D2B722EE800A05703 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		F6E1C0B02B73C61600A05703 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0BC2B73C70400A05703 /* Font */,
-				F6E1C09A2B722EE800A05703 /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		F6E1C0B12B73C61A00A05703 /* Infrastructure */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0BB2B73C6DA00A05703 /* Network */,
-			);
-			path = Infrastructure;
-			sourceTree = "<group>";
-		};
-		F6E1C0B22B73C61D00A05703 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0982B722EE500A05703 /* ContentView.swift */,
-				F6E1C0C22B73C71900A05703 /* Login */,
-				F6E1C0C12B73C71800A05703 /* Authentication */,
-				F6E1C0C02B73C71700A05703 /* Home */,
-				F6E1C0BF2B73C71600A05703 /* Search */,
-				F6E1C0BE2B73C71400A05703 /* CookTalk */,
-				F6E1C0C72B73C7FC00A05703 /* User */,
-				F6E1C0BD2B73C71200A05703 /* Profile */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		F6E1C0B32B73C61E00A05703 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0BA2B73C6B800A05703 /* Repository */,
-				F6E1C0B92B73C6B400A05703 /* DataMapping */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		F6E1C0B42B73C61F00A05703 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0B82B73C69D00A05703 /* Model */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		F6E1C0B52B73C62000A05703 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		F6E1C0B62B73C62200A05703 /* Utillites */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utillites;
-			sourceTree = "<group>";
-		};
-		F6E1C0B72B73C62900A05703 /* Applications */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0962B722EE500A05703 /* EatCookApp.swift */,
-			);
-			path = Applications;
-			sourceTree = "<group>";
-		};
-		F6E1C0B82B73C69D00A05703 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		F6E1C0B92B73C6B400A05703 /* DataMapping */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataMapping;
-			sourceTree = "<group>";
-		};
-		F6E1C0BA2B73C6B800A05703 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
-		F6E1C0BB2B73C6DA00A05703 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		F6E1C0BC2B73C70400A05703 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Font;
-			sourceTree = "<group>";
-		};
-		F6E1C0BD2B73C71200A05703 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		F6E1C0BE2B73C71400A05703 /* CookTalk */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0C32B73C7BB00A05703 /* Feed */,
-				F6E1C0C42B73C7BE00A05703 /* Recipe */,
-			);
-			path = CookTalk;
-			sourceTree = "<group>";
-		};
-		F6E1C0BF2B73C71600A05703 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		F6E1C0C02B73C71700A05703 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		F6E1C0C12B73C71800A05703 /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Authentication;
-			sourceTree = "<group>";
-		};
-		F6E1C0C22B73C71900A05703 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		F6E1C0C32B73C7BB00A05703 /* Feed */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0C92B73C81500A05703 /* View */,
-				F6E1C0C82B73C81400A05703 /* ViewModel */,
-			);
-			path = Feed;
-			sourceTree = "<group>";
-		};
-		F6E1C0C42B73C7BE00A05703 /* Recipe */ = {
-			isa = PBXGroup;
-			children = (
-				F6E1C0CB2B73C81800A05703 /* View */,
-				F6E1C0CA2B73C81700A05703 /* ViewModel */,
-			);
-			path = Recipe;
-			sourceTree = "<group>";
-		};
-		F6E1C0C72B73C7FC00A05703 /* User */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		F6E1C0C82B73C81400A05703 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		F6E1C0C92B73C81500A05703 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		F6E1C0CA2B73C81700A05703 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		F6E1C0CB2B73C81800A05703 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,8 +102,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6E1C09E2B722EE800A05703 /* Preview Assets.xcassets in Resources */,
-				F6E1C09B2B722EE800A05703 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,8 +112,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6E1C0992B722EE500A05703 /* ContentView.swift in Sources */,
-				F6E1C0972B722EE500A05703 /* EatCookApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
