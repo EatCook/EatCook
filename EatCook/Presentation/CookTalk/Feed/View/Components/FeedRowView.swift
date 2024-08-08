@@ -16,28 +16,10 @@ struct FeedRowView: View {
         VStack(alignment: .leading, spacing: 16) {
             if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(cookTalkFeedData.postImagePath)") {
                 ZStack(alignment: .bottomTrailing) {
-                    AutoRetryImage(url: imageUrl)
+                    AutoRetryImage(url: imageUrl, failImageType: .recipeMain)
                         .frame(maxWidth: .infinity)
                         .aspectRatio(4/3, contentMode: .fit)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
-//                    AsyncImage(url: imageUrl) { phase in
-//                        switch phase {
-//                        case .empty:
-//                            ProgressView()
-//                                .frame(height: 196)
-////                                .aspectRatio(contentMode: .fit)
-//                        case .success(let image):
-//                            image
-//                                .resizable()
-//                                .frame(maxWidth: .infinity)
-//                                .aspectRatio(4/3, contentMode: .fit)
-//                                .clipShape(RoundedRectangle(cornerRadius: 10))
-//                        case .failure:
-//                            LoadFailImageView()
-//                        @unknown default:
-//                            EmptyView()
-//                        }
-//                    }
                     
                     HStack(spacing: 4) {
                         Text("\(cookTalkFeedData.likeCounts)")
@@ -61,25 +43,9 @@ struct FeedRowView: View {
 //                .foregroundStyle(.gray4)
             if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(cookTalkFeedData.writerProfile ?? "")") {
                 HStack(spacing: 8) {
-                    AutoRetryImage(url: imageUrl)
+                    AutoRetryImage(url: imageUrl, failImageType: .userProfileSmall)
                         .frame(width: 25, height: 25)
                         .clipShape(Circle())
-//                    AsyncImage(url: imageUrl) { phase in
-//                        switch phase {
-//                        case .empty:
-//                            ProgressView()
-//                                .frame(width: 25, height: 25)
-//                        case .success(let image):
-//                            image
-//                                .resizable()
-//                                .frame(width: 25, height: 25)
-//                                .clipShape(Circle())
-//                        case .failure:
-//                            EmptyProfileImageView()
-//                        @unknown default:
-//                            EmptyView()
-//                        }
-//                    }
                     
                     Text(cookTalkFeedData.writerNickname)
                         .font(.system(size: 14, weight: .semibold))

@@ -88,28 +88,16 @@ struct UserProfileView: View {
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .offset(y: -12)
-                    //                .background(.gray)
                     
                     VStack(spacing: 12) {
                         if let imageUrlString = viewModel.myPageUserInfo.userImagePath {
                             if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(imageUrlString)") {
-                                AutoRetryImage(url: imageUrl)
+                                AutoRetryImage(url: imageUrl, failImageType: .userProfileLarge)
                                     .frame(width: 96, height: 96)
                                     .scaledToFit()
                                     .clipShape(Circle())
                                     .padding(.top, 24)
                             }
-//                            AsyncImage(url: imageUrl) { image in
-//                                image
-//                                    .resizable()
-//                                    .frame(width: 96, height: 96)
-//                                    .scaledToFit()
-//                                    .clipShape(Circle())
-//                                //                                    .padding(.top, 24)
-//                            } placeholder: {
-//                                ProgressView()
-//                                    .frame(width: 96, height: 96)
-//                            }
                         } else {
                             Image(systemName: "person.crop.circle.fill")
                                 .resizable()
@@ -119,10 +107,6 @@ struct UserProfileView: View {
                                 .padding(.top, 24)
                                 .foregroundStyle(.gray3)
                         }
-//                        Rectangle()
-//                            .frame(width: 96, height: 96)
-//                            .foregroundStyle(.gray5)
-//                            .clipShape(Circle())
                         
                         Text(viewModel.myPageUserInfo.nickName)
                             .font(.title3)

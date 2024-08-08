@@ -295,7 +295,7 @@ struct interestingRowView : View {
                                         .clipped()
                                         .cornerRadius(10)
                                 case .failure:
-                                    LoadFailImageView().frame(width : 220 , height: 165)
+                                    LoadFailImageView(imageType: .recipeMain).frame(width : 220 , height: 165)
                                 @unknown default:
                                     EmptyView()
                                 }
@@ -349,7 +349,7 @@ struct interestingRowView : View {
                                     .clipped()
                                     .cornerRadius(10)
                             case .failure:
-                                LoadFailImageView() .frame(width : 20 , height: 20)
+                                LoadFailImageView(imageType: .userProfileSmall) .frame(width : 20 , height: 20)
                             @unknown default:
                                 EmptyView()
                             }
@@ -514,7 +514,7 @@ struct RecommendColView : View {
                                         .clipped()
                                         .cornerRadius(10)
                                 case .failure:
-                                    LoadFailImageView().frame(height: 160)
+                                    LoadFailImageView(imageType: .recipeMain).frame(height: 160)
                                 @unknown default:
                                     EmptyView()
                                 }

@@ -23,28 +23,10 @@ struct UserProfileStorageView: View {
                 ForEach(viewModel.myPageArchiveData, id: \.id) { item in
                     ZStack(alignment: .bottomTrailing) {
                         if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(item.postImagePath)") {
-                            AutoRetryImage(url: imageUrl)
+                            AutoRetryImage(url: imageUrl, failImageType: .recipeMain)
                                 .frame(width: 110, height: 110)
                                 .scaledToFill()
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                            
-//                            AsyncImage(url: imageUrl) { phase in
-//                                switch phase {
-//                                case .empty:
-//                                    ProgressView()
-//                                case .success(let image):
-//                                    image
-//                                        .resizable()
-//                                        .frame(width: 110, height: 110)
-//                                        .scaledToFill()
-//                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-//                                case .failure:
-//                                    LoadFailImageView()
-//                                        .frame(width: 150, height: 110)
-//                                @unknown default:
-//                                    EmptyView()
-//                                }
-//                            }
                         }
                         
                         Image(systemName: "bookmark.fill")

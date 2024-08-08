@@ -62,9 +62,13 @@ struct RecipeView: View {
                     LazyVStack {
                         HStack(spacing: 6) {
                             HStack {
-                                Circle()
-                                    .fill(.gray3)
-                                    .frame(width: 25, height: 25)
+                                if let profilePath = data.profile {
+                                    if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(profilePath)") {
+                                        AutoRetryImage(url: imageUrl, failImageType: .userProfileSmall)
+                                            .frame(width: 25, height: 25)
+                                            .clipShape(Circle())
+                                    }
+                                }
                                 
                                 Text(data.nickName)
                                     .font(.system(size: 16, weight: .semibold))
@@ -85,23 +89,8 @@ struct RecipeView: View {
                         .padding(.vertical, 20)
                         
                         if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(data.postImagePath)") {
-                            AutoRetryImage(url: imageUrl)
+                            AutoRetryImage(url: imageUrl, failImageType: .recipeMain)
                                 .aspectRatio(4/3, contentMode: .fit)
-//                            AsyncImage(url: imageUrl) { phase in
-//                                switch phase {
-//                                case .empty:
-//                                    ProgressView()
-//                                case .success(let image):
-//                                    image
-//                                        .resizable()
-//                                        .aspectRatio(4/3, contentMode: .fit)
-////                                        .scaledToFit()
-//                                case .failure:
-//                                    LoadFailImageView()
-//                                @unknown default:
-//                                    EmptyView()
-//                                }
-//                            }
                         }
                         
                         VStack(alignment: .leading, spacing: 16) {
@@ -293,26 +282,10 @@ struct RecipeView: View {
                 }
                 
                 if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(data.image)") {
-                    AutoRetryImage(url: imageUrl)
+                    AutoRetryImage(url: imageUrl, failImageType: .recipeMain)
                         .frame(maxWidth: .infinity)
                         .aspectRatio(4/3, contentMode: .fit)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
-//                    AsyncImage(url: imageUrl) { phase in
-//                        switch phase {
-//                        case .empty:
-//                            ProgressView()
-//                        case .success(let image):
-//                            image
-//                                .resizable()
-//                                .frame(maxWidth: .infinity)
-//                                .aspectRatio(4/3, contentMode: .fit)
-//                                .clipShape(RoundedRectangle(cornerRadius: 10))
-//                        case .failure:
-//                            LoadFailImageView()
-//                        @unknown default:
-//                            EmptyView()
-//                        }
-//                    }
                 }
             }
         }

@@ -16,7 +16,7 @@ struct OtherUserProfileTopView: View {
         VStack {
             HStack(alignment: .top, spacing: 10) {
                 if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(otherUserData.userImagePath)") {
-                    AutoRetryImage(url: imageUrl)
+                    AutoRetryImage(url: imageUrl, failImageType: .userProfileMedium)
                         .frame(width: 52, height: 52)
                 }
 //                Circle()
