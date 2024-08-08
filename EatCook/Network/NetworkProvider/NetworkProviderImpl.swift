@@ -67,7 +67,6 @@ final class NetworkProviderImpl: NetworkProvider {
                 } else {
                     // 리프래시 토큰 세팅후 안되었다면은 로그인 다시하도록
                     throw HTTPError.unauthorized
-                    print("Refresh Token ??????????????????????????")
                 }
             }
             
@@ -77,9 +76,12 @@ final class NetworkProviderImpl: NetworkProvider {
             
             guard 200..<300 ~= httpResponse.statusCode else { throw httpResponseError(httpResponse) }
             //          JWT Access Token, Refesh Token Setting
-//            self.receiveHeader(response: httpResponse)
+            self.receiveHeader(response: httpResponse)
             return (data, httpResponse)
-        } catch {
+        }catch let error as HTTPError {
+            throw error
+        }
+        catch {
             throw HTTPError.requestFail
         }
         
@@ -114,6 +116,7 @@ final class NetworkProviderImpl: NetworkProvider {
         let (data, response) = try await session.data(for: urlRequest)
         
         guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
+            print("리프래쉬 실패 로그인 페이지로 넘겨")
             throw HTTPError.unauthorized
         }
         print("리프레쉬 토큰 성공!!!!!!!!!!")

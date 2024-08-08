@@ -15,8 +15,10 @@ enum NetworkError: Error {
     case noResponse
     case server(InternalError)
     case emptyData
+    case unauthorized
     case parsing
     case decoding(Error)
+    
 }
 
 enum InternalError: Int {

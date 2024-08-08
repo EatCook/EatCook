@@ -12,6 +12,18 @@ import UIKit
 
 class HomeViewModel : ObservableObject {
     
+    private let homeUseCase : HomeUseCase
+    private var cancellables = Set<AnyCancellable>()
+    
+    
+    init(homeUseCase: HomeUseCase) {
+        self.homeUseCase = homeUseCase
+        getUserInfo()
+    }
+    
+    @Published var isTokenError : Bool = false
+    
+    
     @Published var interestingFoods : [String : [InterestingFoods]] = [:
 //        "양식" :  [
 //            InterestingFoods(postId: 79, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "오므라이스", recipeTime: 15, profile: "image/user/9/26934479-074d-4eb6-a004-00eb6455c7ef.jpeg", nickName: "버럭이", likedCounts: 0, likedCheck: false, archiveCheck: false)
@@ -54,27 +66,31 @@ class HomeViewModel : ObservableObject {
     
     
     
-    init() {
-     
-        getUserInfo()
-        
-    }
-    
+
     private func getUserInfo() {
-        MainService.shard.getUserInfo(success: { result in
-            print("getUserInfo" ,result)
-            DispatchQueue.main.async {
-                if let userCookingTheme = result.data?.userCookingTheme{
+        homeUseCase.userInfo()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("메인페이지 UserInfo Setting Finished")
+                    
+                case .failure(let error):
+                    
+                    print("MainUserInfoResponse Error: \(error)")
+                }
+                
+            } receiveValue: { response in
+                print("메인페이지 UserInfo response:" , response)
+                if let userCookingTheme = response.data?.userCookingTheme {
                     self.userCookingTheme = userCookingTheme
-                    self.userNickName = result.data?.nickName
+                    self.userNickName = response.data?.nickName
                     if userCookingTheme.count > 0 {
                         self.interestCurrentTab = userCookingTheme.first?.key ?? ""
                     }
-                    
                     for type in userCookingTheme.keys {
                         self.getUserInterest(type: type)
                     }
-                    
                     for type in self.recommendType {
                         self.getUserSpecial(type: type)
                     }
@@ -82,11 +98,8 @@ class HomeViewModel : ObservableObject {
                 }
                 
             }
-            
-            
-        }, failure: { error in
-            print(error)
-        })
+            .store(in: &cancellables)
+        
         
         
     }
@@ -95,54 +108,60 @@ class HomeViewModel : ObservableObject {
     
     
     private func getUserInterest(type : String) {
-        MainService.shard.getUserInterest(type : type ,success: { result in
-            print("getUserInterest" ,result)
-            
-            if let _ = self.interestingFoods[type] {
-                
-                
-            }else{
-                DispatchQueue.main.async {
-                    let key = self.userCookingTheme[type]
-                    if let key = key {
-                        self.interestingFoods[key] = result.data.homeInterestDtoList.map { InterestingFoods(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, recipeTime: $0.recipeTime, profile: $0.profile, nickName: $0.nickName, likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)}
-                    }
+        homeUseCase.cookingTheme(type)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("메인페이지 cookingTheme Setting Finished")
+                    
+                case .failure(let error):
+                    print("cookingTheme Error: \(error)")
                 }
                 
-                
-            }
-            
-            
-        }, failure: { error in
-            print(error)
-        })
-        
-        
+            } receiveValue: { response in
+                if let _ = self.interestingFoods[type] {
+                }else{
+                    DispatchQueue.main.async {
+                        let key = self.userCookingTheme[type]
+                        if let key = key {
+                            self.interestingFoods[key] = response.data.homeInterestDtoList.map { InterestingFoods(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, recipeTime: $0.recipeTime, profile: $0.profile, nickName: $0.nickName, likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)}
+                        }
+                    }
+                }
+                }
+            .store(in: &cancellables)
     }
     
     private func getUserSpecial(type : String) {
-        MainService.shard.getUserSpecial(type : type , success: { result in
-            print("getUserSpecial" ,result)
-            DispatchQueue.main.async {
-                let key = self.recommendCookingTheme[type]
-                
-                if result.data?.homeInterestDtoList.count != 0 {
-                    if self.recommendTabViewCount < result.data?.homeInterestDtoList.count ?? 0 {
-                        self.recommendTabViewCount = result.data?.homeInterestDtoList.count ?? 0
-                    }
+        homeUseCase.lifeType(type)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("메인페이지 lifeType Setting Finished")
                     
-                    self.recommendFoods[key ?? ""] = result.data?.homeInterestDtoList.map { RecommendFoods(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, recipeTime: $0.recipeTime, introduction: $0.introduction ,likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)}
+                case .failure(let error):
+                    print("메인페이지 lifeType Error: \(error)")
                 }
                 
+            } receiveValue: { response in
+                DispatchQueue.main.async {
+                    let key = self.recommendCookingTheme[type]
+                    
+                    if response.data?.homeInterestDtoList.count != 0 {
+                        if self.recommendTabViewCount < response.data?.homeInterestDtoList.count ?? 0 {
+                            self.recommendTabViewCount = response.data?.homeInterestDtoList.count ?? 0
+                        }
+                        
+                        self.recommendFoods[key ?? ""] = response.data?.homeInterestDtoList.map { RecommendFoods(postId: $0.postId, postImagePath: $0.postImagePath, recipeName: $0.recipeName, recipeTime: $0.recipeTime, introduction: $0.introduction ,likedCounts: $0.likedCounts, likedCheck: $0.likedCheck, archiveCheck: $0.archiveCheck)}
+                    }
+                    
+                    
+                }
                 
             }
-            
-            
-        }, failure: { error in
-            print(error)
-        })
-        
-        
+            .store(in: &cancellables)
         
     }
     

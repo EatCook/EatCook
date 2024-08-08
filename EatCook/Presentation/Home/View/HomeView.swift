@@ -10,8 +10,9 @@ import SwiftUI
 struct HomeView: View {
 
     @State private var scrollOffset: CGFloat = 0
-    @StateObject private var homeViewModel = HomeViewModel()
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    @StateObject private var homeViewModel = HomeViewModel(homeUseCase: HomeUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))
+ 
     
     
     var body: some View {
@@ -83,7 +84,11 @@ struct HomeView: View {
                     
                 }
 
-            }.environmentObject(homeViewModel)
+            }
+            .onAppear {
+                homeViewModel.fetchItems()
+            }
+            .environmentObject(homeViewModel)
             .environmentObject(naviPathFinder)
 
 //        }

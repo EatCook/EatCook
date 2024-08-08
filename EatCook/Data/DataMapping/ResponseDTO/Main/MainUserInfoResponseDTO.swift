@@ -11,11 +11,28 @@ struct MainUserInfoResponseDTO: Codable {
     let success: Bool
     let code: String
     let message: String
-    let data: UserInfoData?
+    let data: MainUserInfoDataDTO?
 }
 
-struct UserInfoData : Codable {
+struct MainUserInfoDataDTO : Codable {
     let nickName: String?
     let userCookingTheme: [String : String]
     let lifeType : [String : String]
+}
+
+
+extension MainUserInfoResponseDTO {
+    func toDomain() -> MainUserInfoResponse {
+        return .init(success: success, code: code, message: message, data: data?.toDomain())
+    }
+}
+
+
+
+extension MainUserInfoDataDTO {
+    func toDomain() -> MainUserInfoData {
+        return .init(nickName: nickName, userCookingTheme: userCookingTheme, lifeType: lifeType)
+    }
+    
+    
 }

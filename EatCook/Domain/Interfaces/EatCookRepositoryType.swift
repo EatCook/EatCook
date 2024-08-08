@@ -47,4 +47,9 @@ protocol EatCookRepositoryType: AnyObject {
     func login(of endpoint: EndPoint) -> Future<LoginResponse, NetworkError>
     
     
+    //Home
+    func userInfo(of endpoint: EndPoint) -> Future<MainUserInfoResponse, NetworkError>
+    func cookingTheme(of endpoint: EndPoint) -> Future<MainUserInfoInterestResponse, NetworkError>
+    func lifeType(of endpoint: EndPoint) -> Future<MainUserLifeTypeResponse, NetworkError>
+    
 }
