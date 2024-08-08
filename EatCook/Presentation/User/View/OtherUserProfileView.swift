@@ -25,30 +25,34 @@ struct OtherUserProfileView: View {
     
     var body: some View {
         ScrollView {
-            OtherUserProfileTopView(
-                otherUserData: $viewModel.otherUserInfo,
-                isFollowed: $viewModel.isFollowed
-            ) {
-                viewModel.requestFollowOrUnFollow()
-            }
-            
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("레시피")
-                        .font(.title2)
-                        .fontWeight(.semibold)
+            if viewModel.isLoading {
+                ProgressView()
+            } else {
+                OtherUserProfileTopView(
+                    otherUserData: $viewModel.otherUserInfo,
+                    isFollowed: $viewModel.isFollowed
+                ) {
+                    viewModel.requestFollowOrUnFollow()
+                }
+                
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("레시피")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal, 16)
                     
-                    Spacer()
+                    ForEach(viewModel.otherUserPosts, id: \.id) { item in
+                        OtherUserProfileRowView(otherUserPageContentData: item)
+                    }
+                    
                 }
-                .padding(.horizontal, 16)
-                
-                ForEach(1..<20) { index in
-                    UserProfileRowView()
-                }
-                
+                .padding(.top, 32)
+                .padding(.bottom, 60)
             }
-            .padding(.top, 32)
-            .padding(.bottom, 60)
         }
         .onAppear {
             Task {

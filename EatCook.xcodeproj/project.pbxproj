@@ -206,6 +206,7 @@
 		F69411B62C610A8E00ECA302 /* LoadingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69411B52C610A8E00ECA302 /* LoadingImageView.swift */; };
 		F6A554702C63B8A300EFA72F /* ImageLoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A5546F2C63B8A300EFA72F /* ImageLoadManager.swift */; };
 		F6A554722C63BB6100EFA72F /* AutoRetryImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A554712C63BB6100EFA72F /* AutoRetryImage.swift */; };
+		F6A554742C6503A300EFA72F /* OtherUserProfileRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A554732C6503A300EFA72F /* OtherUserProfileRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -396,6 +397,7 @@
 		F69411B52C610A8E00ECA302 /* LoadingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingImageView.swift; sourceTree = "<group>"; };
 		F6A5546F2C63B8A300EFA72F /* ImageLoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadManager.swift; sourceTree = "<group>"; };
 		F6A554712C63BB6100EFA72F /* AutoRetryImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRetryImage.swift; sourceTree = "<group>"; };
+		F6A554732C6503A300EFA72F /* OtherUserProfileRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserProfileRowView.swift; sourceTree = "<group>"; };
 		F6E1C0932B722EE500A05703 /* EatCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -804,6 +806,7 @@
 			isa = PBXGroup;
 			children = (
 				E59D7CBF2C588143007702C2 /* OtherUserProfileTopView.swift */,
+				F6A554732C6503A300EFA72F /* OtherUserProfileRowView.swift */,
 				E59D7CC02C588143007702C2 /* UserProfileContainerView.swift */,
 				E59D7CC12C588143007702C2 /* UserProfileRowView.swift */,
 				E59D7CC22C588143007702C2 /* UserProfileStorageView.swift */,
@@ -1639,6 +1642,7 @@
 				E59D7CB72C588134007702C2 /* SearchViewModel.swift in Sources */,
 				E5D3EF622C58B7D100ECF9CF /* FindNewPasswordResponseDTO.swift in Sources */,
 				E59D7C722C5880C5007702C2 /* HomeView.swift in Sources */,
+				F6A554742C6503A300EFA72F /* OtherUserProfileRowView.swift in Sources */,
 				F69411372C57B4B700ECA302 /* CustomImageTitleButton.swift in Sources */,
 				E5D3EF7F2C58CEDC00ECF9CF /* MainService.swift in Sources */,
 				F694111E2C57B4B700ECA302 /* RecipeCreateRequest.swift in Sources */,

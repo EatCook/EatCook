@@ -33,4 +33,6 @@ struct OtherUserPostsResponseList: Codable {
     var likedCounts: Int = 0
     var likedCheck: Bool = false
     var archiveCheck: Bool = false
+    
+    var id: String = UUID().uuidString
 }

@@ -18,10 +18,8 @@ struct OtherUserProfileTopView: View {
                 if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(otherUserData.userImagePath)") {
                     AutoRetryImage(url: imageUrl, failImageType: .userProfileMedium)
                         .frame(width: 52, height: 52)
+                        .clipShape(Circle())
                 }
-//                Circle()
-//                    .fill(.gray3)
-//                    .frame(width: 52, height: 52)
                 
                 VStack(alignment: .leading) {
                     Text(otherUserData.nickName)
