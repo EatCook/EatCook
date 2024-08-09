@@ -73,6 +73,8 @@ struct HomeView: View {
             .fullScreenCover(isPresented: $homeViewModel.isTokenError){
                 CustomPopUpView(title: "토큰이 만료되었습니다", message: "로그인을 진행해주세요", confirmTitle: "이동") {
                     homeViewModel.isTokenError = false
+                    DataStorage.shared.setString("", forKey: DataStorageKey.Authorization)
+                    DataStorage.shared.setString("", forKey: DataStorageKey.Authorization_REFRESH)
                     naviPathFinder.addPath(.login)
                 }
             }

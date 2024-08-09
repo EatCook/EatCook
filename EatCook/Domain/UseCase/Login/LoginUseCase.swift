@@ -29,6 +29,12 @@ extension LoginUseCase {
             .eraseToAnyPublisher()
     }
     
+    func socialLogin(_ providerType : String , _ token : String , _ email : String , _ deviceToken : String) -> AnyPublisher<SocialLoginResponse, NetworkError> {
+        return eatCookRepository
+            .socialLogin(of: LoginAPI.socialLogin(providerType, token, email, deviceToken))
+            .eraseToAnyPublisher()
+    }
+    
     
     
 }

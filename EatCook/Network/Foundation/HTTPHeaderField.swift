@@ -42,6 +42,12 @@ extension HTTPHeaderField {
         return dict
     }
     
+    static var `loginHeader` : [String : String] {
+        var dict : [String : String] = [:]
+        dict[HTTPHeaderField.contentType.rawValue] = ContentType.json.rawValue
+        return dict
+    }
+    
     static var jpgImageUpload: [String: String] {
         var dict: [String: String] = [:]
         dict[HTTPHeaderField.contentType.rawValue] = ContentType.jpg.rawValue

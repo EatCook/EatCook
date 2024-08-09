@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import KakaoSDKAuth
-import KakaoSDKUser
 import AuthenticationServices
 
 struct LoginView: View {
@@ -19,90 +17,6 @@ struct LoginView: View {
     
     @StateObject private var viewModel = LoginViewModel(loginUseCase: LoginUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))
     
-    
-    func handleKakaLogin() {
-        print("KakaoAuthVM - handleKakaoLogin() called")
-        // 카카오톡 실행 가능 여부 확인
-        if (UserApi.isKakaoTalkLoginAvailable()) {
-            // 카카오 앱으로 로그인
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let error = error {
-                    print("KAKAO LOGIN ERROR:::" , error)
-                }
-                else {
-                    // 카카오 계정으로 로그인
-                    print("loginWithKakaoTalk() success.")
-                    print("oauthToken :" ,oauthToken)
-                    
-                    UserApi.shared.me { user, error in
-                        
-                        
-                        guard let user = user , let id = user.id else {
-                            print("KAKAO USER 정보 에러")
-                            return
-                        }
-                        
-                        guard let email = user.kakaoAccount?.email else {
-                            print("KAKAO 계정 이메일 오류")
-                            return
-                        }
-                        
-                        guard let token = oauthToken?.accessToken else {
-                            print("카카오 oAuth Token 오류")
-                            return
-                        }
-                        
-                        print("email :", email)
-                        print("token :", "Bearer \(token)")
-
-                        UserService.shared.oAuthlogin(parameters: ["email": email , "providerType" : "KAKAO", "token" : "Bearer \(token)"], success: { (data) in
-                            
-                            print("data : " , data)
-                            
-                            if data.success {
-                                self.navigate = true
-                            }
-                        
-                            
-                        }, failure: { (error) in
-                            
-                            print(error)
-                        })
-                    }
-                    _ = oauthToken
-
-                    
-                }
-            }
-        }else {// 카카오톡 미설치 상태 -> 웹으로 이동해 로그인
-
-            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-                    if let error = error {
-                        print(error)
-                    }
-                    else {
-                        print("loginWithKakaoAccount() success.")
-
-                        //do something
-                        _ = oauthToken
-                    }
-                }
-            
-        }
-    }
-    
-    func kakaoLogOut() {
-           UserApi.shared.logout {(error) in
-               if let error = error {
-                   print(error)
-               }
-               else {
-                   print("logout() success.")
-               }
-           }
-       }
-    
-
     
     
     var body: some View {
@@ -163,7 +77,14 @@ struct LoginView: View {
                 
                 Button(action: {
                     // 카카오톡 실행 가능 여부 확인
-                    handleKakaLogin()
+                    viewModel.handleKakaLogin { successResult in
+                        if successResult {
+//                            navigate
+                            naviPathFinder.popToRoot()
+                        }else{
+//                            error message
+                        }
+                    }
 
                 }, label: {
                     ZStack {
