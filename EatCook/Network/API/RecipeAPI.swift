@@ -8,7 +8,7 @@
 import Foundation
 
 enum RecipeAPI: EndPoint {
-    case recipeRead(_ postId: Int)
+    case recipeRead(_ recipeId: Int)
     case recipeCreate(_ query: RecipeCreateRequestDTO)
     case recipeUpdate(_ query: RecipeCreateRequestDTO)
     case recipeDelete(_ postId: Int)
@@ -21,8 +21,8 @@ enum RecipeAPI: EndPoint {
             return "/api/v1/recipe/update"
         case .recipeDelete:
             return "/api/v1/recipe/delete"
-        case .recipeRead:
-            return "/api/v1/recipe/read"
+        case .recipeRead(let recipeId):
+            return "/api/v1/recipes/\(recipeId)"
         }
     }
     
@@ -52,9 +52,9 @@ enum RecipeAPI: EndPoint {
                 parameters: ["postId": postId],
                 encoding: .jsonEncoding
             )
-        case .recipeRead(let postId):
+        case .recipeRead(let recipeId):
             return .requestWithParameters(
-                parameters: ["postId": postId],
+                parameters: ["recipeId": recipeId],
                 encoding: .urlEncoding)
         }
     }

@@ -22,7 +22,7 @@ struct OtherUserProfileRowView: View {
                 Text(otherUserPageContentData.recipeName)
                     .font(.system(size: 14, weight: .semibold))
                 
-                Text("????????????")
+                Text(otherUserPageContentData.introduction)
                     .font(.system(size: 14))
                     .foregroundStyle(Color.gray6)
                     .lineLimit(2)

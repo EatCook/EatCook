@@ -62,11 +62,11 @@ final class RecipeViewModel: ObservableObject {
 }
 
 extension RecipeViewModel {
-    func responseRecipeRead(_ postId: Int) {
+    func responseRecipeRead(_ recipeId: Int) {
         isLoading = true
         error = nil
         
-        recipeUseCase.responseRecipeRead(postId)
+        recipeUseCase.responseRecipeRead(recipeId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -82,11 +82,11 @@ extension RecipeViewModel {
                 guard let self = self else { return }
                 
                 self.recipeReadData = response.data
-                self.userId = response.data.userID
+                self.userId = response.data.writerUserId
                 self.isFollowed = response.data.followCheck
                 self.isArchived = response.data.archiveCheck
                 self.isLiked = response.data.likedCheck
-                self.postId = response.data.postID
+                self.postId = response.data.postId
                 
                 let recipe = response.data.recipeProcess.map { RecipeData(type: .recipe,
                                                                           image: $0.recipeProcessImagePath,

@@ -28,8 +28,11 @@ struct OtherUserPostsResponseListDTO: Codable {
     let postImagePath: String
     let recipeName: String
     let recipeTime: Int
-    let profile: String
-    let nickName: String
+    let writerProfile: String
+    let writerNickName: String
+    let writerUserId: Int
+    let writerUserEmail: String
+    let introduction: String
     let likedCounts: Int
     let likedCheck: Bool
     let archiveCheck: Bool
@@ -66,8 +69,11 @@ extension OtherUserPostsResponseListDTO {
             postImagePath: postImagePath,
             recipeName: recipeName,
             recipeTime: recipeTime,
-            profile: profile,
-            nickName: nickName,
+            writerProfile: writerProfile,
+            writerNickName: writerNickName,
+            writerUserId: writerUserId,
+            writerUserEmail: writerUserEmail,
+            introduction: introduction,
             likedCounts: likedCounts,
             likedCheck: likedCheck,
             archiveCheck: archiveCheck

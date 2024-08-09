@@ -22,7 +22,7 @@ final class NetworkProviderImpl: NetworkProvider {
     
     func excute<T: Decodable>(_ object: T.Type, of endpoint: EndPoint) async throws -> Result<T, NetworkError> {
         do {
-            let (data, httpResponse) = try await self.loadData(of: endpoint)
+            let (data, _) = try await self.loadData(of: endpoint)
             
             if data.isEmpty {
                 if let emptyResponse = EmptyResponse() as? T {
@@ -34,10 +34,9 @@ final class NetworkProviderImpl: NetworkProvider {
             
             let decodedData = try await requestManager.decode(object, data)
             return .success(decodedData)
-        }catch let error as NetworkError {
+        } catch let error as NetworkError {
             throw error
-        }
-        catch let error {
+        } catch let error {
             throw NetworkError.decoding(error)
         }
     }
@@ -79,10 +78,9 @@ final class NetworkProviderImpl: NetworkProvider {
             //          JWT Access Token, Refesh Token Setting
             self.receiveHeader(response: httpResponse)
             return (data, httpResponse)
-        }catch let error as NetworkError {
+        } catch let error as NetworkError {
             throw error
-        }
-        catch {
+        } catch {
             throw HTTPError.requestFail
         }
         
@@ -100,7 +98,7 @@ final class NetworkProviderImpl: NetworkProvider {
     
     private func receiveHeader(response: HTTPURLResponse) {
         
-        print("Header Check :",response.allHeaderFields )
+//        print("Header Check :",response.allHeaderFields )
         if let refreshToken = response.allHeaderFields[DataStorageKey.Authorization_REFRESH] as? String {
             DataStorage.shared.setString(refreshToken, forKey: DataStorageKey.Authorization_REFRESH)
         }

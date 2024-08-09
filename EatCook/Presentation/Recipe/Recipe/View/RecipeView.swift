@@ -42,7 +42,7 @@ struct RecipeView: View {
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
     var postId: Int
-    var userId: String = "itcook"
+//    var userId: String = "itcook"
     
     @StateObject private var viewModel = RecipeViewModel(
         recipeUseCase: RecipeUseCase(
@@ -62,7 +62,7 @@ struct RecipeView: View {
                     LazyVStack {
                         HStack(spacing: 6) {
                             HStack {
-                                if let profilePath = data.profile {
+                                if let profilePath = data.writerProfile {
                                     if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(profilePath)") {
                                         AutoRetryImage(url: imageUrl, failImageType: .userProfileSmall)
                                             .frame(width: 25, height: 25)
@@ -70,7 +70,7 @@ struct RecipeView: View {
                                     }
                                 }
                                 
-                                Text(data.nickName)
+                                Text(data.writerNickName)
                                     .font(.system(size: 16, weight: .semibold))
                             }
                             .onTapGesture {
@@ -120,7 +120,7 @@ struct RecipeView: View {
                                     .scaledToFit()
                                     .foregroundStyle(.gray5)
                                 
-                                Text("\(data.followerCount)")
+                                Text("\(data.likedCount)")
                                     .font(.system(size: 12, weight: .regular))
                                     .foregroundStyle(.gray5)
                             }

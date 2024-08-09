@@ -28,8 +28,11 @@ struct OtherUserPostsResponseList: Codable {
     var postImagePath: String = ""
     var recipeName: String = ""
     var recipeTime: Int = 0
-    var profile: String = ""
-    var nickName: String = ""
+    var writerProfile: String = ""
+    var writerNickName: String = ""
+    var writerUserId: Int = 0
+    var writerUserEmail: String = ""
+    var introduction: String = ""
     var likedCounts: Int = 0
     var likedCheck: Bool = false
     var archiveCheck: Bool = false

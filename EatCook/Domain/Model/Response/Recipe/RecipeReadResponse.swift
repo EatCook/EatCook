@@ -14,27 +14,22 @@ struct RecipeReadResponse: Codable {
 }
 
 struct RecipeReadResponseData: Codable, Identifiable, Hashable {
-    let postID: Int
+    let postId: Int
     let recipeName: String
     let recipeTime: Int
     let introduction, postImagePath: String
     let foodIngredients, cookingType: [String]
     let recipeProcess: [RecipeReadProcess]
-    let createdAt, lastModifiedAt: String
-    let userID: Int
-    let nickName: String
-    let profile: String?
-    let followerCount, likedCount: Int
+    let lastModifiedAt: String
+    let writerUserId: Int
+    let writerUserEmail: String
+    let writerNickName: String
+    let writerProfile: String?
+    let likedCount: Int
     let followCheck, likedCheck, archiveCheck: Bool
     
     var id: String = UUID().uuidString
 
-    enum CodingKeys: String, CodingKey {
-        case postID = "postId"
-        case recipeName, recipeTime, introduction, postImagePath, foodIngredients, cookingType, recipeProcess, createdAt, lastModifiedAt
-        case userID = "userId"
-        case nickName, profile, followerCount, likedCount, followCheck, likedCheck, archiveCheck
-    }
 }
 
 struct RecipeReadProcess: Codable, Identifiable, Hashable {
