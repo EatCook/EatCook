@@ -428,5 +428,43 @@ extension EatCookRepository {
         }
     }
     
+    //    Auth
+    func requestEmail(of endpoint: any EndPoint) -> Future<EmailRequestResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(EmailRequestResponseDTO.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data.toDomain()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
+    func emailVerify(of endpoint: any EndPoint) -> Future<EmailVerifyResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(EmailVerifyResponseDTO.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data.toDomain()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
+    
     
 }

@@ -14,3 +14,8 @@ struct EmailRequestResponseDTO: Codable {
     let data: String?
 }
 
+extension EmailRequestResponseDTO {
+    func toDomain() -> EmailRequestResponse {
+        return .init(success: success, code: code, message: message, data: data)
+    }
+}

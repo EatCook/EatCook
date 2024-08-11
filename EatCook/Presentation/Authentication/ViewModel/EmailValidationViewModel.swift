@@ -9,6 +9,9 @@ import Foundation
 import Combine
 
 class EmailValidationViewModel: ObservableObject {
+    
+    private let authUseCase : AuthUseCase
+    private var cancellables = Set<AnyCancellable>()
     @Published var email: String = ""
     @Published var isEmailValid: Bool = false
     
@@ -17,6 +20,9 @@ class EmailValidationViewModel: ObservableObject {
     
     @Published var authCode = ""
     @Published var authCodeValidation : Bool = false
+    
+    @Published var emailTextFieldDisabled : Bool = false
+    
 
     private var emailValidationSubscriber: AnyCancellable?
     private var verificationSubscriber: AnyCancellable?
@@ -24,8 +30,9 @@ class EmailValidationViewModel: ObservableObject {
     
     let emailValidationPublisher = PassthroughSubject<String, Never>()
     
-
-    init() {
+    
+    init(authUseCase: AuthUseCase) {
+        self.authUseCase = authUseCase
         emailValidationSubscriber = $email
             .debounce(for: 0.5, scheduler: RunLoop.main) // 입력이 멈출 때마다 발행을 지연시킴
             .removeDuplicates() // 중복된 값 제거
@@ -52,7 +59,12 @@ class EmailValidationViewModel: ObservableObject {
                 self?.authCodeValidation = false
             }
         }
+        
     }
+    
+
+    
+
 
     // 이메일 유효성 검사 함수
     private func isValidEmail(_ email: String) -> Bool {
@@ -69,5 +81,79 @@ class EmailValidationViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }
 
+    
+}
+
+extension EmailValidationViewModel {
+    
+    func requestEmail(email : String , completion :  @escaping (Bool) -> Void) {
+        authUseCase.requestEmail(email)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("EmailValidationViewModel  requestEmail Finished")
+                    
+                case .failure(let error):
+                    print("error:", error)
+                    switch error {
+                    case .unauthorized:
+                        print("EmailValidationViewModel token Error")
+                        
+                    default:
+                        print("기본 에러처리")
+                    }
+                    
+                    print("EmailValidationViewModel Error: \(error)")
+                }
+                
+            } receiveValue: { response in
+                print("AuthView requestEmail response:" , response)
+                if response.success {
+                    self.emailTextFieldDisabled = true
+                    return completion(true)
+                }else{
+                    return completion(false)
+                }
+                
+            }
+            .store(in: &cancellables)
+        
+    }
+    
+    func emailVerify(email : String , authCode : String , completion :  @escaping (Bool) -> Void) {
+        authUseCase.emailVerify(email, authCode)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("EmailValidationViewModel authCode Finished")
+                    
+                case .failure(let error):
+                    print("error:", error)
+                    switch error {
+                    case .unauthorized:
+                        print("EmailValidationViewModel authCode Token Error")
+                        
+                    default:
+                        print("기본 에러처리")
+                    }
+                    
+                    print("EmailValidationViewModel Error: \(error)")
+                }
+                
+            } receiveValue: { response in
+                print("AuthView authCode response:" , response)
+                if response.success {
+                    return completion(true)
+                }else{
+                    return completion(false)
+                }
+                
+            }
+            .store(in: &cancellables)
+        
+    }
+    
     
 }

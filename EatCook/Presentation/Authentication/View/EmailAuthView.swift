@@ -12,7 +12,11 @@ struct EmailAuthView: View {
 //    @State private var email: String = ""
 //    @State private var isEmailValid: Bool = false
   
-    @StateObject private var emailValViewModel = EmailValidationViewModel()
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    
+//    @StateObject private var emailValViewModel = EmailValidationViewModel()
+    @StateObject private var emailValViewModel = EmailValidationViewModel(authUseCase:  AuthUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))
+    
 
     @State var authNumber = ""
     @State var isAuthRequest = false
@@ -53,7 +57,7 @@ struct EmailAuthView: View {
                     .padding(.vertical, 28)
                 
                 HStack {
-                    TextField("이메일", text: $emailValViewModel.email).modifier(CustomTextFieldModifier())
+                    TextField("이메일", text: $emailValViewModel.email).modifier(CustomTextFieldModifier()).disabled(emailValViewModel.emailTextFieldDisabled)
                     
                     Button(action: {
                         emailValViewModel.isLoading = true
@@ -61,20 +65,14 @@ struct EmailAuthView: View {
                         
                         print("fetchStart")
                         
-                        UserService.shared.requestEmail(parameters: ["email" : emailValViewModel.email], success: { (data) in
-                            if data.success {
+                        emailValViewModel.requestEmail(email: emailValViewModel.email) { resultSuccess in
+                            if resultSuccess {
                                 self.startTimer()
                             }else{
-//                                TODO : Alert
+//                                Alert
                             }
-                            
-                            
-
-                            print("data : " , data)
-                            
-                        }, failure: { (error) in
-                            
-                        })
+                        }
+                        
                         
                             
                         
@@ -128,16 +126,14 @@ struct EmailAuthView: View {
                 
                 Button(action: {
                     
-                    UserService.shared.requestEmailVerify(parameters: ["email": emailValViewModel.email, "authCode" : emailValViewModel.authCode], success: { (data) in
-                       
-                        print("data : " , data)
-                        // Hidden NavigationLink that becomes active based on the state
-                        self.tag = 1
-         
-                        
-                    }, failure: { (error) in
-                        print(error)
-                    })
+                    emailValViewModel.emailVerify(email: emailValViewModel.email, authCode: emailValViewModel.authCode) { successResult in
+                        if successResult {
+                            naviPathFinder.addPath(.passwordCheck(emailValViewModel.email))
+                        }else{
+//                            Error Alert
+                        }
+                    }
+                    
                     
                 }, label: {
                     Text("다음")
@@ -150,9 +146,9 @@ struct EmailAuthView: View {
                 })
                 .disabled(!emailValViewModel.authCodeValidation)
                 
-                NavigationLink(destination:  PasswordCheckView(email: emailValViewModel.email).toolbarRole(.editor), tag: 1, selection: self.$tag) {
-                    EmptyView()
-                }
+//                NavigationLink(destination:  PasswordCheckView(email: emailValViewModel.email).toolbarRole(.editor), tag: 1, selection: self.$tag) {
+//                    EmptyView()
+//                }
 
                 Spacer()
             }

@@ -52,4 +52,7 @@ protocol EatCookRepositoryType: AnyObject {
     func cookingTheme(of endpoint: EndPoint) -> Future<MainUserInfoInterestResponse, NetworkError>
     func lifeType(of endpoint: EndPoint) -> Future<MainUserLifeTypeResponse, NetworkError>
     
+    //Auth
+    func requestEmail(of endpoint: EndPoint) -> Future<EmailRequestResponse, NetworkError>
+    func emailVerify(of endpoint: EndPoint) -> Future<EmailVerifyResponse, NetworkError>
 }

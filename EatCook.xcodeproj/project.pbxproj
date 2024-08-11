@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E51F15692C689AF500F66885 /* EmailRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51F15682C689AF500F66885 /* EmailRequestResponse.swift */; };
+		E51F156B2C689B8200F66885 /* EmailVerifyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51F156A2C689B8200F66885 /* EmailVerifyResponse.swift */; };
+		E51F156E2C689D5800F66885 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51F156D2C689D5800F66885 /* AuthUseCase.swift */; };
 		E55B79E12C62F394001C6B4E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E55B79E02C62F394001C6B4E /* FirebaseAnalytics */; };
 		E55B79E32C62F394001C6B4E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = E55B79E22C62F394001C6B4E /* FirebaseMessaging */; };
 		E55B79E82C6306C6001C6B4E /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B79E72C6306C6001C6B4E /* LoginUseCase.swift */; };
@@ -212,6 +215,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E51F15682C689AF500F66885 /* EmailRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequestResponse.swift; sourceTree = "<group>"; };
+		E51F156A2C689B8200F66885 /* EmailVerifyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerifyResponse.swift; sourceTree = "<group>"; };
+		E51F156D2C689D5800F66885 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		E55B79E72C6306C6001C6B4E /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		E55B79EA2C6308CA001C6B4E /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		E55B79EF2C635E2C001C6B4E /* ModifiableEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiableEndPoint.swift; sourceTree = "<group>"; };
@@ -430,6 +436,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E51F15672C689ACB00F66885 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E51F15682C689AF500F66885 /* EmailRequestResponse.swift */,
+				E51F156A2C689B8200F66885 /* EmailVerifyResponse.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		E51F156C2C689D4D00F66885 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E51F156D2C689D5800F66885 /* AuthUseCase.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		E55B79E62C6306B0001C6B4E /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -929,6 +952,7 @@
 		F69410362C57B4B600ECA302 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				E51F15672C689ACB00F66885 /* Auth */,
 				E5C74D6A2C64599C005A4A81 /* Home */,
 				E55B79E92C6308BE001C6B4E /* Login */,
 				F69410372C57B4B600ECA302 /* CookTalk */,
@@ -1025,6 +1049,7 @@
 		F69410502C57B4B600ECA302 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				E51F156C2C689D4D00F66885 /* Auth */,
 				E5C74D672C6458A6005A4A81 /* Home */,
 				E55B79E62C6306B0001C6B4E /* Login */,
 				F69410512C57B4B600ECA302 /* CookTalk */,
@@ -1513,6 +1538,7 @@
 				E59D7CA92C588110007702C2 /* ImagePicker.swift in Sources */,
 				E5D3EF792C58C4D700ECF9CF /* CreateProfileViewModel.swift in Sources */,
 				E59D7C6C2C5880A8007702C2 /* FeedViewModel.swift in Sources */,
+				E51F156E2C689D5800F66885 /* AuthUseCase.swift in Sources */,
 				E5D3EF712C58BFCA00ECF9CF /* FindAccountViewModel.swift in Sources */,
 				E55B79E82C6306C6001C6B4E /* LoginUseCase.swift in Sources */,
 				F69411442C57B4B700ECA302 /* LoginAPI.swift in Sources */,
@@ -1549,6 +1575,7 @@
 				F69411462C57B4B700ECA302 /* FollowAPI.swift in Sources */,
 				F69411202C57B4B700ECA302 /* RecipeUpdateRequest.swift in Sources */,
 				F69411472C57B4B700ECA302 /* AuthAPI.swift in Sources */,
+				E51F15692C689AF500F66885 /* EmailRequestResponse.swift in Sources */,
 				F69411612C57B4B700ECA302 /* LoginUserInfoManager.swift in Sources */,
 				E59D7C862C5880F3007702C2 /* ProfileView.swift in Sources */,
 				F694113F2C57B4B700ECA302 /* HTTPHeaderField.swift in Sources */,
@@ -1666,6 +1693,7 @@
 				E59D7CAB2C588110007702C2 /* TagLayout.swift in Sources */,
 				F69411132C57B4B700ECA302 /* CookTalkFollowResponse.swift in Sources */,
 				E5C74D722C647747005A4A81 /* MainUserLifeTypeResponse.swift in Sources */,
+				E51F156B2C689B8200F66885 /* EmailVerifyResponse.swift in Sources */,
 				E5D3EF772C58C03C00ECF9CF /* ChangePasswordViewModel.swift in Sources */,
 				F694115B2C57B4B700ECA302 /* RecipeUpdateRequestDTO.swift in Sources */,
 				F69411542C57B4B700ECA302 /* MyPageArchiveResponseDTO.swift in Sources */,

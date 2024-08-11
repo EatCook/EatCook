@@ -13,3 +13,11 @@ struct EmailVerifyResponseDTO: Codable {
     let message: String
     let data: String?
 }
+
+
+extension EmailVerifyResponseDTO {
+    func toDomain() -> EmailVerifyResponse {
+        return .init(success: success, code: code, message: message, data: data)
+    }
+    
+}

@@ -12,7 +12,6 @@ struct LoginView: View {
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height / 2 - 80
     
-    @State var navigate = false
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
     @StateObject private var viewModel = LoginViewModel(loginUseCase: LoginUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))

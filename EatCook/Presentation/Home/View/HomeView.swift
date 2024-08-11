@@ -119,6 +119,7 @@ struct HomeMenuTopView : View {
                         Spacer()
                         Button(action: {
                             naviPathFinder.addPath(.search)
+//                            naviPathFinder.addPath(.login)
                         }, label: {
                             HStack {
                                 Text("재료 또는 레시피를 검색해 보세요")
