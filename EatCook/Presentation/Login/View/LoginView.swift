@@ -76,7 +76,6 @@ struct LoginView: View {
                 
                 
                 Button(action: {
-                    // 카카오톡 실행 가능 여부 확인
                     viewModel.handleKakaLogin { successResult in
                         if successResult {
 //                            navigate
@@ -137,15 +136,14 @@ struct LoginView: View {
                                     
                                     print("email : " , email)
                                     
-                                    UserService.shared.oAuthlogin(parameters: ["email": email ?? ""  , "providerType" : "APPLE"], success: { (data) in
-                                        
-                                        print("data : " , data)
-                                        
-                                    }, failure: { (error) in
-                                        
-                                        print(error)
-                                    })
-
+                                    viewModel.socialLogin(providerType: "APPLE", token: "", email: email) { successResult in
+                                        if successResult {
+                                            naviPathFinder.popToRoot()
+                                        }else{
+//                                            error Message
+                                        }
+                                    }
+                                    
                                 default:
                                     break
                                 }
