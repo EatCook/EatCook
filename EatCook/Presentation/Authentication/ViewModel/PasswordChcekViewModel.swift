@@ -10,6 +10,8 @@ import Combine
 
 class PasswordChcekViewModel : ObservableObject {
     
+    private let authUseCase : AuthUseCase
+    
     @Published var password: String = ""
     @Published var passwordCheck: String = ""
     @Published var isValidPassword : Bool = false
@@ -22,7 +24,9 @@ class PasswordChcekViewModel : ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     
-    init() {
+    init(authUseCase: AuthUseCase) {
+        self.authUseCase = authUseCase
+        
         // Check length validity
         $password
             .map { $0.count >= 8 }
@@ -64,5 +68,45 @@ class PasswordChcekViewModel : ObservableObject {
     }
     
     
+    
+}
+
+extension PasswordChcekViewModel {
+    
+    func signUp(email : String , password : String , completion :  @escaping (Bool) -> Void) {
+        authUseCase.signUp(email, password)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("PasswordChcekViewModel SignUp Finished")
+                    
+                case .failure(let error):
+                    print("error:", error)
+                    switch error {
+                    case .unauthorized:
+                        print("PasswordChcekViewModel SignUp Token Error")
+                        
+                    default:
+                        print("기본 에러처리")
+                    }
+                    
+                    print("PasswordChcekViewModel SignUp : \(error)")
+                }
+                
+            } receiveValue: { response in
+                print("PasswordChcekViewModel SignUp response:" , response)
+                if response.success {
+                    return completion(true)
+                }else{
+                    return completion(false)
+                }
+                
+            }
+            .store(in: &cancellables)
+        
+        
+        
+    }
     
 }

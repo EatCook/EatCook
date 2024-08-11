@@ -13,8 +13,9 @@ struct PasswordCheckView: View {
     @State var isPasswordError = false
     @State private var isSecure = false
     
-    @StateObject private var passwordCheckViewModel = PasswordChcekViewModel()
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    @StateObject private var passwordCheckViewModel = PasswordChcekViewModel(authUseCase:  AuthUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))
+    
     
     var body: some View {
 //        NavigationStack {
@@ -108,19 +109,27 @@ struct PasswordCheckView: View {
                         return
                     }
                     
-                    UserService.shared.passwordCheck(parameters: ["email": email, "password" : passwordCheckViewModel.password], success: { (data) in
-                       
-                        print("data : " , data)
-                        
-                        //    성공시
-                        isPresented = true
-                        
-                        
-         
-                        
-                    }, failure: { (error) in
-
-                    })
+                    passwordCheckViewModel.signUp(email: email, password:  passwordCheckViewModel.password) { successResult in
+                        if successResult {
+                            isPresented = true
+                        }else{
+//                           TODO : Error Message
+                        }
+                    }
+                    
+//                    UserService.shared.passwordCheck(parameters: ["email": email, "password" : passwordCheckViewModel.password], success: { (data) in
+//                       
+//                        print("data : " , data)
+//                        
+//                        //    성공시
+//                        isPresented = true
+//                        
+//                        
+//         
+//                        
+//                    }, failure: { (error) in
+//
+//                    })
                     
                     
 
@@ -154,7 +163,7 @@ struct PasswordCheckView: View {
                             
                             Button {
         //                        createProfileView
-//                                naviPathFinder.addPath()
+                                naviPathFinder.addPath(.createProfile(email))
                             } label: {
                                 Text("시작하기")
                                     .foregroundColor(.white)

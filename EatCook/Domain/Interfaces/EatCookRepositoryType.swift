@@ -55,4 +55,5 @@ protocol EatCookRepositoryType: AnyObject {
     //Auth
     func requestEmail(of endpoint: EndPoint) -> Future<EmailRequestResponse, NetworkError>
     func emailVerify(of endpoint: EndPoint) -> Future<EmailVerifyResponse, NetworkError>
+    func signUp(of endpoint: EndPoint) -> Future<SignUpResponse, NetworkError>
 }

@@ -10,6 +10,8 @@
 		E51F15692C689AF500F66885 /* EmailRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51F15682C689AF500F66885 /* EmailRequestResponse.swift */; };
 		E51F156B2C689B8200F66885 /* EmailVerifyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51F156A2C689B8200F66885 /* EmailVerifyResponse.swift */; };
 		E51F156E2C689D5800F66885 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51F156D2C689D5800F66885 /* AuthUseCase.swift */; };
+		E51F15702C68B64A00F66885 /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51F156F2C68B64A00F66885 /* SignUpResponse.swift */; };
+		E51F15722C68B66A00F66885 /* SignUpResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51F15712C68B66A00F66885 /* SignUpResponseDTO.swift */; };
 		E55B79E12C62F394001C6B4E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E55B79E02C62F394001C6B4E /* FirebaseAnalytics */; };
 		E55B79E32C62F394001C6B4E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = E55B79E22C62F394001C6B4E /* FirebaseMessaging */; };
 		E55B79E82C6306C6001C6B4E /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B79E72C6306C6001C6B4E /* LoginUseCase.swift */; };
@@ -218,6 +220,8 @@
 		E51F15682C689AF500F66885 /* EmailRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequestResponse.swift; sourceTree = "<group>"; };
 		E51F156A2C689B8200F66885 /* EmailVerifyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerifyResponse.swift; sourceTree = "<group>"; };
 		E51F156D2C689D5800F66885 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		E51F156F2C68B64A00F66885 /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
+		E51F15712C68B66A00F66885 /* SignUpResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseDTO.swift; sourceTree = "<group>"; };
 		E55B79E72C6306C6001C6B4E /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		E55B79EA2C6308CA001C6B4E /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		E55B79EF2C635E2C001C6B4E /* ModifiableEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiableEndPoint.swift; sourceTree = "<group>"; };
@@ -441,6 +445,7 @@
 			children = (
 				E51F15682C689AF500F66885 /* EmailRequestResponse.swift */,
 				E51F156A2C689B8200F66885 /* EmailVerifyResponse.swift */,
+				E51F156F2C68B64A00F66885 /* SignUpResponse.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -916,6 +921,7 @@
 				E5D3EF5D2C58B77C00ECF9CF /* FindAccountResponseDTO.swift */,
 				E5D3EF5F2C58B7AA00ECF9CF /* FindAccountVerifyResponseDTO.swift */,
 				E5D3EF612C58B7D100ECF9CF /* FindNewPasswordResponseDTO.swift */,
+				E51F15712C68B66A00F66885 /* SignUpResponseDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1653,6 +1659,7 @@
 				E59D7CA12C588110007702C2 /* IngredientsContainerView.swift in Sources */,
 				E59D7CDC2C588143007702C2 /* UserFavoriteTagViewModel.swift in Sources */,
 				F69411592C57B4B700ECA302 /* OtherUserPostsResponseDTO.swift in Sources */,
+				E51F15722C68B66A00F66885 /* SignUpResponseDTO.swift in Sources */,
 				E59D7C472C58802E007702C2 /* SplashView.swift in Sources */,
 				E5D3EF842C58CF7E00ECF9CF /* MainUserInfoInterestResponseDTO.swift in Sources */,
 				E5D3EF562C58B61D00ECF9CF /* PasswordCheckResponseDTO.swift in Sources */,
@@ -1682,6 +1689,7 @@
 				E5D3EF7F2C58CEDC00ECF9CF /* MainService.swift in Sources */,
 				F694111E2C57B4B700ECA302 /* RecipeCreateRequest.swift in Sources */,
 				F694113C2C57B4B700ECA302 /* Environment.swift in Sources */,
+				E51F15702C68B64A00F66885 /* SignUpResponse.swift in Sources */,
 				E55B79EB2C6308CA001C6B4E /* LoginResponse.swift in Sources */,
 				E59D7CA22C588110007702C2 /* RecipeContainerRowView.swift in Sources */,
 				E59D7C672C5880A8007702C2 /* FeedContainerView.swift in Sources */,

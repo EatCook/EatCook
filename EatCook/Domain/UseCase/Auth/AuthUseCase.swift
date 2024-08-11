@@ -36,6 +36,11 @@ extension AuthUseCase {
             .eraseToAnyPublisher()
     }
     
+    func signUp(_ email : String , _ password : String) -> AnyPublisher<SignUpResponse, NetworkError> {
+        return eatCookRepository
+            .signUp(of: AuthAPI.signUp(email, password))
+            .eraseToAnyPublisher()
+    }
     
     
 }
