@@ -483,6 +483,42 @@ extension EatCookRepository {
         }
     }
     
+    func checkNickName(of endpoint: any EndPoint) -> Future<CheckNickNameResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(CheckNickNameResponseDTO.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data.toDomain()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
+    func addSignUp(of endpoint: any EndPoint) -> Future<AddSignUpResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(AddSignUpResponseDTO.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data.toDomain()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
     
     
 }

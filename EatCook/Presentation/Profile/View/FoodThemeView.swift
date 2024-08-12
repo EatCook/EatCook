@@ -13,6 +13,8 @@ struct FoodThemeView: View {
     var userImage: UIImage?
     
     @StateObject private var foodThemeViewModel = FoodThemeViewModel()
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    
     
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
     @State var isButtonEnabled = false
@@ -73,8 +75,11 @@ struct FoodThemeView: View {
                     .padding(.vertical, 65)
                 
                 Spacer()
-//
-                NavigationLink(destination: HouseholdCompositionView(email: email , nickName : nickName ,cookingType: foodThemeViewModel.cookingType , userImage: userImage).toolbarRole(.editor)) {
+
+//                    TODO : Button disalbed 무조건 선택해야하는지 확인
+                Button {
+                    naviPathFinder.addPath(.householdComposition(email, nickName, cookingType: foodThemeViewModel.cookingType, userImage: userImage))
+                } label: {
                     Text("다음")
                         .bold()
                         .foregroundColor(.white)
@@ -85,6 +90,21 @@ struct FoodThemeView: View {
                         .padding(.horizontal, 24)
                         .padding(.vertical, 46)
                 }
+                .disabled(foodThemeViewModel.cookingType.count == 0)
+                
+
+                
+//                NavigationLink(destination: HouseholdCompositionView(email: email , nickName : nickName ,cookingType: foodThemeViewModel.cookingType , userImage: userImage).toolbarRole(.editor)) {
+//                    Text("다음")
+//                        .bold()
+//                        .foregroundColor(.white)
+//                        .frame(maxWidth: .infinity)
+//                        .frame(height: 55)
+//                        .background(.primary7)
+//                        .cornerRadius(10)
+//                        .padding(.horizontal, 24)
+//                        .padding(.vertical, 46)
+//                }
             }
             .padding(.top, 30)
             .frame(maxWidth: .infinity, maxHeight: .infinity)

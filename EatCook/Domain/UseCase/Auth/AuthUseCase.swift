@@ -42,5 +42,16 @@ extension AuthUseCase {
             .eraseToAnyPublisher()
     }
     
+    func checkNickName(_ nickName : String) -> AnyPublisher<CheckNickNameResponse, NetworkError> {
+        return eatCookRepository
+            .checkNickName(of: AuthAPI.checkNickName(nickName))
+            .eraseToAnyPublisher()
+    }
+    
+    func addSignUp(_ email : String , _ fileExtension : String, _ nickName : String , _ cookingType : [String] , _ lifeType : String) -> AnyPublisher<AddSignUpResponse, NetworkError> {
+        return eatCookRepository
+            .addSignUp(of: AuthAPI.addSignUp(email, fileExtension, nickName, cookingType, lifeType))
+            .eraseToAnyPublisher()
+    }
     
 }

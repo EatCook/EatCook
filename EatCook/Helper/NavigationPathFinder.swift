@@ -26,8 +26,8 @@ enum ViewOptions: Hashable {
     case emailAuth
     case passwordCheck(_ email : String)
     case createProfile(_ email : String)
-    case foodTheme(_ email : String, _ nickName : String, _ userImage : UIImage)
-    case householdComposition(_ email : String, _ nickName : String , cookingType : [String], userImage : UIImage)
+    case foodTheme(_ email : String, _ nickName : String, _ userImage : UIImage?)
+    case householdComposition(_ email : String, _ nickName : String , cookingType : [String], userImage : UIImage?)
     case findAccount
     case changePassword(_ email : String)
     

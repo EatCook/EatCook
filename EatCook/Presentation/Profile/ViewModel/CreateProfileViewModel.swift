@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import Combine
 import SwiftUI
 
 class CreateProfileViewModel : ObservableObject {
+    
+    private let authUseCase : AuthUseCase
+    private var cancellables = Set<AnyCancellable>()
+    
     @Published var nickname: String = "" {
         didSet {
             validate()
@@ -26,6 +31,11 @@ class CreateProfileViewModel : ObservableObject {
     @Published var userImageExtension: String?
     
     
+    init(authUseCase: AuthUseCase) {
+        self.authUseCase = authUseCase
+        
+    }
+    
     
     
 
@@ -42,13 +52,53 @@ class CreateProfileViewModel : ObservableObject {
         return regex?.firstMatch(in: nickname, options: [], range: range) != nil
     }
     
-    func checkNickName(completion: @escaping (CheckNickNameResponse) -> Void) {
-        UserService.shared.checkNickName(parameters: ["nickName" : nickname]) { result in
-            print("result :", result)
-            completion(result)
-        } failure: { errorResult in
-            print("Error result")
-            completion(errorResult)
-        }
+ 
+}
+
+extension CreateProfileViewModel {
+    
+    func checkNickName(completion: @escaping (Bool) -> Void) {
+        
+        authUseCase.checkNickName(nickname)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("CreateProfileViewModel CheckNickName Finished")
+                    
+                case .failure(let error):
+                    print("error:", error)
+                    switch error {
+                    case .unauthorized:
+                        print("소셜 로그인 토큰 에러")
+                        
+                    default:
+                        print("기본 에러처리")
+                    }
+                    
+                    print("CreateProfileViewModel CheckNickName Error \(error)")
+                }
+                
+            } receiveValue: { response in
+                print("CreateProfileViewModel CheckNickNamel response:" , response)
+                if response.success {
+                    return completion(true)
+                }else{
+                    return completion(false)
+                }
+                
+            }
+            .store(in: &cancellables)
+        
+          
+//        UserService.shared.checkNickName(parameters: ["nickName" : nickname]) { result in
+//            print("result :", result)
+//            completion(result)
+//        } failure: { errorResult in
+//            print("Error result")
+//            completion(errorResult)
+//        }
     }
+    
+    
 }

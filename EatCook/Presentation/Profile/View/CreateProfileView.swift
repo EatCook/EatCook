@@ -10,8 +10,9 @@ import SwiftUI
 struct CreateProfileView: View {
 //    회원가입 완료시 받아올 email
     var email: String = ""
+        
+    @StateObject private var createProfileViewModel = CreateProfileViewModel(authUseCase: AuthUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))
     
-    @StateObject private var createProfileViewModel = CreateProfileViewModel()
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     @State private var showImagePicker = false
     @State private var navigateToFoodThemeView = false
@@ -68,10 +69,11 @@ struct CreateProfileView: View {
                 }
 
                 Button(action: {
-                    createProfileViewModel.checkNickName { result in
-                        if result.success {
+                    createProfileViewModel.checkNickName { successResult in
+                        if successResult {
                             navigateToFoodThemeView = true
                             isNickNameError = false
+                            naviPathFinder.addPath(.foodTheme(email, createProfileViewModel.nickname, createProfileViewModel.userImage))
                         }else{
                             withAnimation {
                                 isNickNameError = true
@@ -92,9 +94,9 @@ struct CreateProfileView: View {
                 }).disabled(!createProfileViewModel.isNickNameImageValid)
                 
                 
-                NavigationLink(destination:  FoodThemeView(email: email, nickName : createProfileViewModel.nickname, userImage: createProfileViewModel.userImage).toolbarRole(.editor), isActive: $navigateToFoodThemeView) {
-                    EmptyView()
-                }
+//                NavigationLink(destination:  FoodThemeView(email: email, nickName : createProfileViewModel.nickname, userImage: createProfileViewModel.userImage).toolbarRole(.editor), isActive: $navigateToFoodThemeView) {
+//                    EmptyView()
+//                }
     
                 Spacer()
             }

@@ -19,6 +19,8 @@
 		E55B79F02C635E2C001C6B4E /* ModifiableEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B79EF2C635E2C001C6B4E /* ModifiableEndPoint.swift */; };
 		E561606A2C65AB1C0099EF8A /* SocialLoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56160692C65AB1C0099EF8A /* SocialLoginResponseDTO.swift */; };
 		E561606C2C65AB550099EF8A /* SocialLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561606B2C65AB550099EF8A /* SocialLoginResponse.swift */; };
+		E598FA152C69D4EE00636F23 /* CheckNickNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598FA142C69D4EE00636F23 /* CheckNickNameResponseDTO.swift */; };
+		E598FA172C69EF1400636F23 /* AddSignUpResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598FA162C69EF1400636F23 /* AddSignUpResponseDTO.swift */; };
 		E59AF1B32C5A0E5F004AF236 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AF1B22C5A0E5F004AF236 /* SearchService.swift */; };
 		E59AF1B82C5A0E94004AF236 /* SearchRankingResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AF1B72C5A0E94004AF236 /* SearchRankingResponseDTO.swift */; };
 		E59AF1BA2C5A0EBE004AF236 /* SearchMenuResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AF1B92C5A0EBE004AF236 /* SearchMenuResponseDTO.swift */; };
@@ -227,6 +229,8 @@
 		E55B79EF2C635E2C001C6B4E /* ModifiableEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiableEndPoint.swift; sourceTree = "<group>"; };
 		E56160692C65AB1C0099EF8A /* SocialLoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginResponseDTO.swift; sourceTree = "<group>"; };
 		E561606B2C65AB550099EF8A /* SocialLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginResponse.swift; sourceTree = "<group>"; };
+		E598FA142C69D4EE00636F23 /* CheckNickNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNickNameResponseDTO.swift; sourceTree = "<group>"; };
+		E598FA162C69EF1400636F23 /* AddSignUpResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSignUpResponseDTO.swift; sourceTree = "<group>"; };
 		E59AF1B22C5A0E5F004AF236 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		E59AF1B72C5A0E94004AF236 /* SearchRankingResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankingResponseDTO.swift; sourceTree = "<group>"; };
 		E59AF1B92C5A0EBE004AF236 /* SearchMenuResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMenuResponseDTO.swift; sourceTree = "<group>"; };
@@ -443,6 +447,7 @@
 		E51F15672C689ACB00F66885 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				E5D3EF5B2C58B75000ECF9CF /* CheckNickNameResponse.swift */,
 				E51F15682C689AF500F66885 /* EmailRequestResponse.swift */,
 				E51F156A2C689B8200F66885 /* EmailVerifyResponse.swift */,
 				E51F156F2C68B64A00F66885 /* SignUpResponse.swift */,
@@ -917,11 +922,12 @@
 				E5D3EF532C58B5F100ECF9CF /* EmailVerifyResponseDTO.swift */,
 				E5D3EF552C58B61D00ECF9CF /* PasswordCheckResponseDTO.swift */,
 				E5D3EF592C58B6E700ECF9CF /* AddSignUpResponse.swift */,
-				E5D3EF5B2C58B75000ECF9CF /* CheckNickNameResponse.swift */,
 				E5D3EF5D2C58B77C00ECF9CF /* FindAccountResponseDTO.swift */,
 				E5D3EF5F2C58B7AA00ECF9CF /* FindAccountVerifyResponseDTO.swift */,
 				E5D3EF612C58B7D100ECF9CF /* FindNewPasswordResponseDTO.swift */,
 				E51F15712C68B66A00F66885 /* SignUpResponseDTO.swift */,
+				E598FA142C69D4EE00636F23 /* CheckNickNameResponseDTO.swift */,
+				E598FA162C69EF1400636F23 /* AddSignUpResponseDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1535,6 +1541,7 @@
 				E5D3EF4F2C58B4B000ECF9CF /* UserService.swift in Sources */,
 				E5D3EF602C58B7AA00ECF9CF /* FindAccountVerifyResponseDTO.swift in Sources */,
 				E5D3EF4A2C58B09E00ECF9CF /* APIClient.swift in Sources */,
+				E598FA172C69EF1400636F23 /* AddSignUpResponseDTO.swift in Sources */,
 				E59D7C842C5880F3007702C2 /* FoodThemeView.swift in Sources */,
 				E5C74D6E2C645B81005A4A81 /* MainUserInfoResponse.swift in Sources */,
 				E5C74D702C647737005A4A81 /* MainUserInfoInterestResponse.swift in Sources */,
@@ -1612,6 +1619,7 @@
 				F69411362C57B4B700ECA302 /* CameraImageView.swift in Sources */,
 				F69411342C57B4B700ECA302 /* EmptyProfileImageView.swift in Sources */,
 				F69411512C57B4B700ECA302 /* CookTalkFollowResponseDTO.swift in Sources */,
+				E598FA152C69D4EE00636F23 /* CheckNickNameResponseDTO.swift in Sources */,
 				E59D7C6A2C5880A8007702C2 /* FollowRowView.swift in Sources */,
 				E5D3EF732C58C00600ECF9CF /* ShakeEffect.swift in Sources */,
 				F69411162C57B4B700ECA302 /* MyPageResponse.swift in Sources */,

@@ -11,6 +11,8 @@ enum AuthAPI: EndPoint {
     case emailRequest(_ email : String)
     case emailVerify(_ email : String , _ authCode : String)
     case signUp(_ email : String , _ password : String)
+    case checkNickName(_ nickName : String)
+    case addSignUp(_ email : String , _ fileExtension : String , _ nickName : String , _ cookingType : [String] , _ lifeType : String)
     
     var path: String {
         switch self {
@@ -20,12 +22,17 @@ enum AuthAPI: EndPoint {
             return "/api/v1/emails/verify"
         case .signUp :
             return "/api/v1/users"
+        case .checkNickName:
+            return "/api/v1/users/add-signup/check-nick"
+        case .addSignUp:
+            return "/api/v1/users/add-signup"
+            
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .emailRequest , .emailVerify , .signUp :
+        case .emailRequest , .emailVerify , .signUp , .checkNickName , .addSignUp:
             return .post
             
             
@@ -42,13 +49,16 @@ enum AuthAPI: EndPoint {
         
         case .signUp(let email, let password):
             return .requestWithParameters(parameters: ["email": email , "password" : password], encoding: .jsonEncoding)
-        
+        case .checkNickName(let nickName):
+            return .requestWithParameters(parameters: ["nickName": nickName], encoding: .jsonEncoding)
+        case .addSignUp(let email, let fileExtension, let nickName, let cookingType, let lifeType):
+            return .requestWithParameters(parameters: ["email": email , "fileExtension" : fileExtension , "nickName" : nickName , "cookingType" : cookingType , "lifeType" : lifeType], encoding: .jsonEncoding)
         }
     }
     
     var headers: [String : String]? {
         switch self {
-        case .emailRequest , .emailVerify , .signUp : return HTTPHeaderField.loginHeader
+        case .emailRequest , .emailVerify , .signUp , .checkNickName , .addSignUp : return HTTPHeaderField.loginHeader
             
             
             
