@@ -61,8 +61,8 @@ extension CreateProfileViewModel {
         
         authUseCase.checkNickName(nickname)
             .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
+            .sink { completionStatus in
+                switch completionStatus {
                 case .finished:
                     print("CreateProfileViewModel CheckNickName Finished")
                     
@@ -72,11 +72,14 @@ extension CreateProfileViewModel {
                     case .unauthorized:
                         print("소셜 로그인 토큰 에러")
                         
+                    case .customError(let message):
+                        print("Custom error message : \(message)")
+                        completion(false)
+                        
                     default:
                         print("기본 에러처리")
                     }
                     
-                    print("CreateProfileViewModel CheckNickName Error \(error)")
                 }
                 
             } receiveValue: { response in

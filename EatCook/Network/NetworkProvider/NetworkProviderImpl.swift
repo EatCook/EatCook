@@ -55,7 +55,10 @@ final class NetworkProviderImpl: NetworkProvider {
             
             
             //          Error 400 처리
-            
+            if httpResponse.statusCode == 400 {
+                let errorMessage = extractErrorMessage(from: data) // 서버에서 전달된 에러 메시지를 추출하는 메소드
+                throw NetworkError.customError(errorMessage)
+            }
             
             
             
@@ -112,7 +115,7 @@ final class NetworkProviderImpl: NetworkProvider {
         let refreshEndpoint = ModifiableEndPoint(endpoint: endpoint, additionalHeaders: HTTPHeaderField.refreshTokenHeader)
         
         let urlRequest = try await requestManager.makeURLRequest(of: refreshEndpoint)
-        let (data, response) = try await session.data(for: urlRequest)
+        let (_, response) = try await session.data(for: urlRequest)
         
         guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
             print("리프래쉬 실패 로그인 페이지로 넘겨")
@@ -120,6 +123,22 @@ final class NetworkProviderImpl: NetworkProvider {
         }
         print("리프레쉬 토큰 성공!!!!!!!!!!")
         self.receiveHeader(response: httpResponse)
+    }
+    
+    private func extractErrorMessage(from data: Data) -> String {
+        // 서버에서 전송하는 메세지를 받음
+        let defaultErrorMessage = "Unknown error occurred"
+        
+        do {
+            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let message = json["message"] as? String {
+                return message
+            }
+        } catch {
+            print("Failed to extract error message: \(error)")
+        }
+        
+        return defaultErrorMessage
     }
     
     

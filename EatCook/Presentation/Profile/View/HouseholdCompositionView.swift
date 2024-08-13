@@ -79,6 +79,7 @@ struct HouseholdCompositionView: View {
                         await householdCompositionViewModel.uploadImage()
                         
                         if !householdCompositionViewModel.isUpLoading && householdCompositionViewModel.isUpLoadingError == nil  {
+//                            회원 가입 추가 완료 
                             naviPathFinder.popToRoot()
                         } else if let error = householdCompositionViewModel.isUpLoadingError {
                             print(error)

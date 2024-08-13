@@ -71,8 +71,10 @@ extension HouseholdCompositionViewModel {
                             print("회원가입 추가신청 토큰 에러")
                             
                         default:
-                            self.isUpLoading = false
-                            self.isUpLoadingError = error.localizedDescription
+                            DispatchQueue.main.async {
+                                self.isUpLoading = false
+                                self.isUpLoadingError = error.localizedDescription
+                            }
                             print("기본 에러처리")
                         }
                         
@@ -81,29 +83,16 @@ extension HouseholdCompositionViewModel {
                     
                 } receiveValue: { response in
                     print("HouseholdCompositionViewModel addSignUp response:" , response)
-                    self.isUpLoading = false
-                    self.addSignUpImageUpdateResponse = response.data
+                    DispatchQueue.main.async {
+                        self.isUpLoading = false
+                        self.addSignUpImageUpdateResponse = response.data
+                    }
                    
                     
                 }
                 .store(in: &cancellables)
         }
         
-
-        
-//        UserService.shared.addSignUp(parameters: [
-//            "email" : email,
-//            "fileExtension" : "jpg",
-//            "nickName" : nickName,
-//            "cookingType" : cookingType,
-//            "lifeType" : lifeType
-//        ]) { result in
-//            print("check result ::", result)
-//            completion()
-//        } failure: { error in
-//            print(error)
-//            completion()
-//        }
     }
     
     
@@ -125,10 +114,14 @@ extension HouseholdCompositionViewModel {
             
             print("회원 가입 추가요청 Upload Response: \(response), \(data)")
             
-            self.isUpLoading = false
+            DispatchQueue.main.async {
+                self.isUpLoading = false
+            }
         } catch {
-            self.isUpLoading = false
-            self.isUpLoadingError = error.localizedDescription
+            DispatchQueue.main.async {
+                self.isUpLoading = false
+                self.isUpLoadingError = error.localizedDescription
+            }
             throw UploadError.fileExtension
         }
     }

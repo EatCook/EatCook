@@ -17,6 +17,7 @@ enum NetworkError: Error {
     case emptyData
     case unauthorized
     case parsing
+    case customError(String)
     case decoding(Error)
     
 }

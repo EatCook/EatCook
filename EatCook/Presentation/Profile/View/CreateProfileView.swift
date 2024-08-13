@@ -62,7 +62,7 @@ struct CreateProfileView: View {
                 if isNickNameError {
                     HStack() {
                         Image(.error).resizable().frame(width : 20, height: 20)
-                        Text("이미 존재하는 닉네임입니다").font(.system(size : 14)).font(.callout).foregroundColor(.error4)
+                        Text("앗! 이미 사용 중인 닉네임이에요.").font(.system(size : 14)).font(.callout).foregroundColor(.error4)
                         Spacer()
                     }.padding(.horizontal, 24)
                     .modifier(ShakeEffect(animatableData: CGFloat(shake ? 1 : 0)))
