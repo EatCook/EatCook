@@ -28,14 +28,14 @@ enum CookTalkTabCase: CaseIterable {
         return CookTalkTabCase.allCases.count
     }
     
-    @ViewBuilder
-    func tabCaseContainerView(_ viewModel: FeedViewModel) -> some View {
-        switch self {
-        case .cooktalk: FeedContainerView(viewModel: viewModel, feedType: .cooktalk)
-        case .follow: FeedContainerView(viewModel: viewModel, feedType: .follow)
-        }
-        
-    }
+//    @ViewBuilder
+//    func tabCaseContainerView(_ viewModel: FeedViewModel) -> some View {
+//        switch self {
+//        case .cooktalk: FeedContainerView(viewModel: viewModel, feedType: .cooktalk)
+//        case .follow: FeedContainerView(viewModel: viewModel, feedType: .follow)
+//        }
+//        
+//    }
 }
 
 struct FeedView: View {
@@ -104,22 +104,47 @@ struct FeedView: View {
                     
                     /// TabView
                     TabView(selection: $activeTab) {
-                        ForEach(CookTalkTabCase.allCases, id: \.self) { tabCase in
-                            ScrollView(.vertical) {
-                                tabCase.tabCaseContainerView(viewModel)
-                                    .tag(tabCase)
-                                    .padding(.horizontal, 16)
-                                    .padding(.vertical, 24)
+                        ScrollView(.vertical, showsIndicators: true) {
+                            LazyVStack {
+                                ForEach(viewModel.feedData, id: \.postId) { item in
+                                    FeedRowView(cookTalkFeedData: item)
+                                        .onTapGesture {
+                                            naviPathFinder.addPath(.recipeDetail(item.postId))
+                                        }
+                                }
+                                if viewModel.feedDataHasNextPage {
+                                    ProgressView()
+                                        .onAppear {
+                                            viewModel.responseCookTalkFeed(viewModel.feedDataCurrentPage + 1)
+                                        }
+                                }
                             }
-                            .scrollIndicators(.never)
-                            
                         }
+                        .tag(CookTalkTabCase.cooktalk)
+                        
+                        ScrollView(.vertical, showsIndicators: true) {
+                            LazyVStack {
+                                ForEach(viewModel.followData, id: \.postId) { item in
+                                    FollowRowView(cookTalkFollowData: item)
+                                        .onTapGesture {
+                                            naviPathFinder.addPath(.recipeDetail(item.postId))
+                                        }
+                                }
+                                if viewModel.followDataHasNextPage {
+                                    ProgressView()
+                                        .onAppear {
+                                            viewModel.responseCookTalkFollow(viewModel.followDataCurrentPage + 1)
+                                        }
+                                }
+                            }
+                        }
+                        .tag(CookTalkTabCase.follow)
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .background(.gray1)
                     .onAppear {
-                        viewModel.responseCookTalkFeed()
-                        viewModel.responseCookTalkFollow()
+                        viewModel.responseCookTalkFeed(viewModel.feedDataCurrentPage)
+                        viewModel.responseCookTalkFollow(viewModel.followDataCurrentPage)
                     }
                 }
                 

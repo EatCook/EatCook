@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FollowRowView: View {
     @State private var isExpended: Bool = false
-    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+//    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     var cookTalkFollowData: CookTalkFollowResponseList
     
     var body: some View {
@@ -82,9 +82,9 @@ struct FollowRowView: View {
                 .fill(.white)
                 .shadow(color: .black.opacity(0.05), radius: 10, y: 5)
         }
-        .onTapGesture {
-            naviPathFinder.addPath(.recipeDetail(cookTalkFollowData.postId))
-        }
+//        .onTapGesture {
+//            naviPathFinder.addPath(.recipeDetail(cookTalkFollowData.postId))
+//        }
     }
 }
 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FeedRowView: View {
     @State private var isExpended: Bool = false
-    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+//    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     var cookTalkFeedData: CookTalkFeedResponseList
     
     var body: some View {
@@ -38,9 +38,7 @@ struct FeedRowView: View {
                 .frame(maxWidth: .infinity)
                 
             }
-//            RoundedRectangle(cornerRadius: 10)
-//                .frame(width: 311, height: 196)
-//                .foregroundStyle(.gray4)
+            
             if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(cookTalkFeedData.writerProfile ?? "")") {
                 HStack(spacing: 8) {
                     AutoRetryImage(url: imageUrl, failImageType: .userProfileSmall)
@@ -84,9 +82,9 @@ struct FeedRowView: View {
                 .fill(.white)
                 .shadow(color: .black.opacity(0.05), radius: 10, y: 5)
         }
-        .onTapGesture {
-            naviPathFinder.addPath(.recipeDetail(cookTalkFeedData.postId))
-        }
+//        .onTapGesture {
+//            naviPathFinder.addPath(.recipeDetail(cookTalkFeedData.postId))
+//        }
     }
 }
 

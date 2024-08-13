@@ -21,15 +21,15 @@ final class CookTalkUseCase {
 
 extension CookTalkUseCase {
     
-    func responseCookTalkFeed() -> AnyPublisher<CookTalkFeedResponse, NetworkError> {
+    func responseCookTalkFeed(_ page: Int) -> AnyPublisher<CookTalkFeedResponse, NetworkError> {
         return eatCookRepository
-            .responseCookTalkFeed(of: CookTalkAPI.cookTalkFeed)
+            .responseCookTalkFeed(of: CookTalkAPI.cookTalkFeed(page))
             .eraseToAnyPublisher()
     }
     
-    func responseCookTalkFollow() -> AnyPublisher<CookTalkFollowResponse, NetworkError> {
+    func responseCookTalkFollow(_ page: Int) -> AnyPublisher<CookTalkFollowResponse, NetworkError> {
         return eatCookRepository
-            .responseCookTalkFollow(of: CookTalkAPI.cookTalkFollow)
+            .responseCookTalkFollow(of: CookTalkAPI.cookTalkFollow(page))
             .eraseToAnyPublisher()
     }
 }

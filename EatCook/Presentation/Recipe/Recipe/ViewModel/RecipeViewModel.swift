@@ -51,12 +51,6 @@ final class RecipeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-//        loginUserInfo.$userInfo
-//                    .combineLatest($userId)
-//                    .map { userInfo, userId in
-//                        return userInfo.userId == userId
-//                    }
-//                    .assign(to: &$isMyRecipe)
     }
     
 }
@@ -165,6 +159,24 @@ extension RecipeViewModel {
             }
             .store(in: &cancellables)
 
+    }
+    
+    func requestFollowOrUnFollow() {
+        
+        recipeUseCase.requestFollowOrUnFollow(userId, isFollowed)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("팔로우 언팔로우 완료!!!!!!!!")
+                    self.isFollowed.toggle()
+                case .failure(let error):
+                    print("팔로우 언팔로우 에러!!! \(error.localizedDescription)")
+                }
+            } receiveValue: { response in
+                
+            }
+            .store(in: &cancellables)
     }
     
 }

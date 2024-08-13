@@ -53,4 +53,11 @@ extension RecipeUseCase {
             .eraseToAnyPublisher()
     }
     
+    func requestFollowOrUnFollow(_ toUserId: Int, _ isFollowed: Bool) -> AnyPublisher<EmptyResponse, NetworkError> {
+        let endPoint: EndPoint = isFollowed ? FollowAPI.unfollow(toUserId) : FollowAPI.follow(toUserId)
+        return eatCookRepository
+            .requestFollowOrUnFollow(of: endPoint)
+            .eraseToAnyPublisher()
+    }
+    
 }

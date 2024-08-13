@@ -12,15 +12,15 @@ struct FeedContainerView: View {
     var feedType: CookTalkTabCase = .cooktalk
     
     var body: some View {
-        VStack(spacing: 16) {
+        LazyVStack(spacing: 16) {
             switch feedType {
             case .cooktalk:
                 if viewModel.feedDataIsLoading {
                     ProgressView()
                 } else if let error = viewModel.feedError {
                     Text(error)
-                } else if let feedData = viewModel.feedData {
-                    ForEach(feedData.content, id: \.id) { data in
+                } else {
+                    ForEach(viewModel.feedData, id: \.id) { data in
                         FeedRowView(cookTalkFeedData: data)
                     }
                 }
@@ -29,8 +29,8 @@ struct FeedContainerView: View {
                     ProgressView()
                 } else if let error = viewModel.followError {
                     Text(error)
-                } else if let followData = viewModel.followData {
-                    ForEach(followData.content, id: \.id) { data in
+                } else {
+                    ForEach(viewModel.followData, id: \.postId) { data in
                         FollowRowView(cookTalkFollowData: data)
                     }
                 }

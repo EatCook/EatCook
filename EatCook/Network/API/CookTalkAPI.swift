@@ -8,8 +8,8 @@
 import Foundation
 
 enum CookTalkAPI: EndPoint {
-    case cookTalkFeed
-    case cookTalkFollow
+    case cookTalkFeed(_ page: Int)
+    case cookTalkFollow(_ page: Int)
     
     var path: String {
         switch self {
@@ -29,8 +29,16 @@ enum CookTalkAPI: EndPoint {
     
     var httpTask: HTTPTask {
         switch self {
-        case .cookTalkFeed, .cookTalkFollow:
-            return .requestWithParameters(parameters: [:], encoding: .urlEncoding)
+        case .cookTalkFeed(let page):
+            return .requestWithParameters(
+                parameters: ["page": page],
+                encoding: .urlEncoding
+            )
+        case .cookTalkFollow(let page):
+            return .requestWithParameters(
+                parameters: ["page": page],
+                encoding: .urlEncoding
+            )
         }
     }
     

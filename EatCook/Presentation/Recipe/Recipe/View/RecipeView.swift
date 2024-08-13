@@ -42,7 +42,6 @@ struct RecipeView: View {
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
     var postId: Int
-//    var userId: String = "itcook"
     
     @StateObject private var viewModel = RecipeViewModel(
         recipeUseCase: RecipeUseCase(
@@ -81,7 +80,7 @@ struct RecipeView: View {
                             
                             if !viewModel.isMyRecipe {
                                 FollowButton(isFollowed: $viewModel.isFollowed) {
-                                    viewModel.isFollowed.toggle()
+                                    viewModel.requestFollowOrUnFollow()
                                 }
                             }
                         }
