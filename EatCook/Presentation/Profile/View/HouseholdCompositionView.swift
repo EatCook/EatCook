@@ -11,19 +11,22 @@ struct HouseholdCompositionView: View {
     var email: String
     var nickName : String
     var cookingType: [String]
-    var userImage: UIImage?
-
+    var imageURL: URL?
+    var userImageExtension : String?
+    
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     @StateObject private var householdCompositionViewModel : HouseholdCompositionViewModel
-    @State private var navigateToHomeView = false
+    @State private var showUploadingAlert: Bool = false
 
-    init(email: String, nickName : String ,cookingType: [String], userImage: UIImage?) {
+    init(email: String, nickName : String ,cookingType: [String], imageURL: URL? , userImageExtension : String?) {
         self.email = email
         self.nickName = nickName
         self.cookingType = cookingType
-        self.userImage = userImage
+        self.imageURL = imageURL
+        self.userImageExtension = userImageExtension
         
         // Initialize the StateObject with the wrapped value
-        _householdCompositionViewModel = StateObject(wrappedValue: HouseholdCompositionViewModel(email: email,nickName: nickName ,cookingType: cookingType, userImage: userImage))
+        _householdCompositionViewModel = StateObject(wrappedValue: HouseholdCompositionViewModel(authUseCase : AuthUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))) , email: email,nickName: nickName ,cookingType: cookingType, imageURL: imageURL , userImageExtension : userImageExtension))
     }
     
 
@@ -71,14 +74,26 @@ struct HouseholdCompositionView: View {
                 Spacer()
                 
                 Button(action: {
-                    householdCompositionViewModel.addSignUp { result in
-                        if result.success {
-                            navigateToHomeView = true
-//                            TODO : 이미지 URL 받아서 전송
-                        }else{
-//                            TODO : Alert 추가
+                    Task {
+                        await householdCompositionViewModel.addSignUp()
+                        await householdCompositionViewModel.uploadImage()
+                        
+                        if !householdCompositionViewModel.isUpLoading && householdCompositionViewModel.isUpLoadingError == nil  {
+                            naviPathFinder.popToRoot()
+                        } else if let error = householdCompositionViewModel.isUpLoadingError {
+                            print(error)
+                            showUploadingAlert = true
                         }
+                        
                     }
+//                    householdCompositionViewModel.addSignUp { result in
+//                        if result.success {
+//                            navigateToHomeView = true
+////                            TODO : 이미지 URL 받아서 전송
+//                        }else{
+////                            TODO : Alert 추가
+//                        }
+//                    }
 
                 }) {
                     Text("다음")
@@ -93,9 +108,9 @@ struct HouseholdCompositionView: View {
                 }.disabled(householdCompositionViewModel.lifeType == "")
                 
         
-                NavigationLink(destination: HomeView().toolbarRole(.editor), isActive: $navigateToHomeView) {
-                    EmptyView()
-                }
+//                NavigationLink(destination: HomeView().toolbarRole(.editor), isActive: $navigateToHomeView) {
+//                    EmptyView()
+//                }
                 
             }
             .padding(.top, 30)
@@ -117,11 +132,11 @@ extension HouseholdCompositionView {
             Household(img : "🥦" , title: "건강한 식단관리"),
             Household(img : "🍙" ,  title: "편의점은 내 구역"),
             Household(img : "🍕" , title: "배달음식 단골고객"),
-            Household(img : "🍱" , title: " 밀키트 lover"),
+            Household(img : "🍱" , title: "밀키트 lover"),
         ]
     }
 }
 
 #Preview {
-    HouseholdCompositionView(email: "rkdtlscks123@naver.com", nickName: "신규" ,cookingType: ["일식", "한식"], userImage: .food)
+    HouseholdCompositionView(email: "rkdtlscks123@naver.com", nickName: "신규" ,cookingType: ["일식", "한식"], imageURL: nil , userImageExtension: "jpg")
 }

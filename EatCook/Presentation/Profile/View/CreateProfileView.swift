@@ -73,7 +73,7 @@ struct CreateProfileView: View {
                         if successResult {
                             navigateToFoodThemeView = true
                             isNickNameError = false
-                            naviPathFinder.addPath(.foodTheme(email, createProfileViewModel.nickname, createProfileViewModel.userImage))
+                            naviPathFinder.addPath(.foodTheme(email, createProfileViewModel.nickname, createProfileViewModel.userImageURL, createProfileViewModel.userImageExtension))
                         }else{
                             withAnimation {
                                 isNickNameError = true
@@ -93,16 +93,11 @@ struct CreateProfileView: View {
                     .padding(.horizontal, 24)
                 }).disabled(!createProfileViewModel.isNickNameImageValid)
                 
-                
-//                NavigationLink(destination:  FoodThemeView(email: email, nickName : createProfileViewModel.nickname, userImage: createProfileViewModel.userImage).toolbarRole(.editor), isActive: $navigateToFoodThemeView) {
-//                    EmptyView()
-//                }
-    
                 Spacer()
             }
             .padding(.top, 30)
             .sheet(isPresented: $showImagePicker) {
-                ImagePicker(image: self.$createProfileViewModel.userImage, imageURL: $createProfileViewModel.userImageURL, imageExtension: $createProfileViewModel.userImageExtension, isPresented:  $showImagePicker)
+                ImagePicker(image: $createProfileViewModel.userImage, imageURL: $createProfileViewModel.userImageURL, imageExtension: $createProfileViewModel.userImageExtension, isPresented:  $showImagePicker)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.bgPrimary)

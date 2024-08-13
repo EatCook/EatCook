@@ -447,6 +447,7 @@
 		E51F15672C689ACB00F66885 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				E5D3EF592C58B6E700ECF9CF /* AddSignUpResponse.swift */,
 				E5D3EF5B2C58B75000ECF9CF /* CheckNickNameResponse.swift */,
 				E51F15682C689AF500F66885 /* EmailRequestResponse.swift */,
 				E51F156A2C689B8200F66885 /* EmailVerifyResponse.swift */,
@@ -921,7 +922,6 @@
 				E5D3EF512C58B5A900ECF9CF /* EmailRequestResponseDTO.swift */,
 				E5D3EF532C58B5F100ECF9CF /* EmailVerifyResponseDTO.swift */,
 				E5D3EF552C58B61D00ECF9CF /* PasswordCheckResponseDTO.swift */,
-				E5D3EF592C58B6E700ECF9CF /* AddSignUpResponse.swift */,
 				E5D3EF5D2C58B77C00ECF9CF /* FindAccountResponseDTO.swift */,
 				E5D3EF5F2C58B7AA00ECF9CF /* FindAccountVerifyResponseDTO.swift */,
 				E5D3EF612C58B7D100ECF9CF /* FindNewPasswordResponseDTO.swift */,

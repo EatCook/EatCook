@@ -26,8 +26,8 @@ enum ViewOptions: Hashable {
     case emailAuth
     case passwordCheck(_ email : String)
     case createProfile(_ email : String)
-    case foodTheme(_ email : String, _ nickName : String, _ userImage : UIImage?)
-    case householdComposition(_ email : String, _ nickName : String , cookingType : [String], userImage : UIImage?)
+    case foodTheme(_ email : String, _ nickName : String, _ imageURL: URL? , _ userImageExtension : String?)
+    case householdComposition(_ email : String, _ nickName : String , _ cookingType : [String], _ imageURL: URL? , _ userImageExtension : String?)
     case findAccount
     case changePassword(_ email : String)
     
@@ -59,9 +59,9 @@ enum ViewOptions: Hashable {
             
         case .createProfile(let email) : CreateProfileView(email: email).toolbarRole(.editor)
         
-        case .foodTheme(let email, let nickName, let userImage) : FoodThemeView(email : email, nickName : nickName, userImage : userImage).toolbarRole(.editor)
+        case .foodTheme(let email, let nickName, let imageURL , let userImageExtension) : FoodThemeView(email : email, nickName : nickName, imageURL : imageURL , userImageExtension : userImageExtension).toolbarRole(.editor)
             
-        case .householdComposition(let email, let nickName, let cookingType, let userImage) : HouseholdCompositionView(email : email, nickName : nickName, cookingType : cookingType  ,userImage : userImage).toolbarRole(.editor)
+        case .householdComposition(let email, let nickName, let cookingType, let imageURL, let userImageExtension) : HouseholdCompositionView(email : email, nickName : nickName, cookingType : cookingType  , imageURL : imageURL , userImageExtension : userImageExtension ).toolbarRole(.editor)
          
         case .findAccount : FindAccountView().toolbarRole(.editor)
             
@@ -166,19 +166,20 @@ enum ViewOptions: Hashable {
             hasher.combine("createProfile")
             hasher.combine(email)
             
-        case .foodTheme(let email, let nickName, let userImage):
+        case .foodTheme(let email, let nickName, let imageURL , let userImageExtension):
             hasher.combine("foodTheme")
             hasher.combine(email)
             hasher.combine(nickName)
-            hasher.combine(userImage)
+            hasher.combine(imageURL)
+            hasher.combine(userImageExtension)
             
-        case .householdComposition(let email, let nickName, let cookingType, let userImage):
+        case .householdComposition(let email, let nickName, let cookingType, let userImage , let userImageExtension):
             hasher.combine("householdComposition")
             hasher.combine(email)
             hasher.combine(nickName)
             hasher.combine(cookingType)
             hasher.combine(userImage)
-            
+            hasher.combine(userImageExtension)
         case .findAccount:
             hasher.combine("findAccount")
             

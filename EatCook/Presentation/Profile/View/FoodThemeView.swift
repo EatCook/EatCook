@@ -10,7 +10,8 @@ import SwiftUI
 struct FoodThemeView: View {
     var email: String = ""
     var nickName : String = ""
-    var userImage: UIImage?
+    var imageURL: URL?
+    var userImageExtension : String?
     
     @StateObject private var foodThemeViewModel = FoodThemeViewModel()
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
@@ -78,7 +79,7 @@ struct FoodThemeView: View {
 
 //                    TODO : Button disalbed 무조건 선택해야하는지 확인
                 Button {
-                    naviPathFinder.addPath(.householdComposition(email, nickName, cookingType: foodThemeViewModel.cookingType, userImage: userImage))
+                    naviPathFinder.addPath(.householdComposition(email, nickName, foodThemeViewModel.cookingType, imageURL , userImageExtension))
                 } label: {
                     Text("다음")
                         .bold()
