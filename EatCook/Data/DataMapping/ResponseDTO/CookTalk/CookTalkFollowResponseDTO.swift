@@ -21,8 +21,8 @@ struct CookTalkFollowResponseDataDTO: Codable {
 
 struct CookTalkFollowResponseListDTO: Codable {
     let writerUserId: Int
-    let writerUserEmail: String
-    let writerProfile: String
+    let writerUserEmail: String?
+    let writerProfile: String?
     let writerNickname: String
     let postId: Int
     let recipeName: String

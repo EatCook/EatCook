@@ -21,7 +21,7 @@ struct CookTalkFollowResponseData: Codable {
 
 struct CookTalkFollowResponseList: Codable, Identifiable, Hashable {
     var writerUserId: Int = 0
-    var writerUserEmail: String = ""
+    var writerUserEmail: String? = ""
     var writerProfile: String? = ""
     var writerNickname: String = ""
     var postId: Int = 0

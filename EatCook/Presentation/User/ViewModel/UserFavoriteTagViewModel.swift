@@ -60,7 +60,7 @@ final class UserFavoriteTagViewModel: ObservableObject {
         let selectedFoodTheme = self.foodThemeTag.filter { $0.isSelected }
         
         var selectedFoodTagTitle = selectedFoodTag.map { $0.title }
-        var selectedFoodThemeTitle = selectedFoodTheme.map { $0.title }
+        var selectedFoodThemeTitle = selectedFoodTheme.isEmpty ? [""] : selectedFoodTheme.map { $0.title }
         
         return (selectedFoodTagTitle, selectedFoodThemeTitle[0])
     }
