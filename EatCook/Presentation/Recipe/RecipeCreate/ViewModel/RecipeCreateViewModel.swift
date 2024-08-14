@@ -23,7 +23,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     @Published var selectedTheme: String = "테마 선택"
     @Published var titleImage: UIImage?
     @Published var titleImageURL: URL?
-    @Published var titleImageExtension: String?
+    @Published var titleImageExtension: String = ""
     
     /// 두번째
     @Published var ingredientsInputText: String = ""
@@ -33,7 +33,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     @Published var recipeStepData: [RecipeStep] = []
     @Published var recipeStepImage: UIImage?
     @Published var recipeStepImageURL: URL?
-    @Published var recipeStepImageExtension: String?
+    @Published var recipeStepImageExtension: String = ""
     
     /// 레시피 생성 과정 담긴 모델 -> 요청시 DTO로 변경함.
     @Published var recipeCreateData = RecipeCreateRequest()
@@ -89,7 +89,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
         $recipeStepData
             .sink { [weak self] newValue in
                 self?.recipeCreateData.recipeProcess = newValue.enumerated().map { index, data in
-                    RecipeProcess(stepNum: index + 1, recipeWriting: data.description, fileExtension: "jpeg")
+                    RecipeProcess(stepNum: index + 1, recipeWriting: data.description, fileExtension: data.imageExtension)
                 }
             }
             .store(in: &cancellables)

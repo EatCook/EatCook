@@ -33,9 +33,9 @@ extension MyPageUseCase {
             .eraseToAnyPublisher()
     }
     
-    func requestMyPageProfileImageEdit(_ fileExtention: String) -> AnyPublisher<MyPageProfileImageEditResponse, NetworkError> {
+    func requestMyPageProfileImageEdit(_ fileExtension: String) -> AnyPublisher<MyPageProfileImageEditResponse, NetworkError> {
         return eatCookRepository
-            .requestMyPageProfileImageEdit(of: MyPageAPI.mypageProfileImageEdit(fileExtention))
+            .requestMyPageProfileImageEdit(of: MyPageAPI.mypageProfileImageEdit(fileExtension))
             .eraseToAnyPublisher()
     }
     

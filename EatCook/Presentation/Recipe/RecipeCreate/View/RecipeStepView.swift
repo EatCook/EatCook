@@ -18,6 +18,7 @@ struct RecipeStep: Identifiable, Hashable {
     var description: String
     var image: UIImage?
     var imageURL: URL?
+    var imageExtension: String
     var isEditing: Bool = false
 }
 
@@ -281,10 +282,6 @@ struct CreateChatView: View {
                     .padding(.leading, 10)
                     .lineLimit(5)
                 
-                //                TextEditor(text: $textEditorText)
-                //                    .frame(height: 40)
-                //                    .padding(4)
-                
                 Button {
                     addStep()
                 } label: {
@@ -312,7 +309,8 @@ struct CreateChatView: View {
                 viewModel.recipeStepImageURL != nil else { return }
         let stepData = RecipeStep(description: textEditorText,
                                   image: selectedImage,
-                                  imageURL: viewModel.recipeStepImageURL)
+                                  imageURL: viewModel.recipeStepImageURL,
+                                  imageExtension: viewModel.recipeStepImageExtension)
         withAnimation(.easeInOut(duration: 0.3)) {
             viewModel.addStep(stepData)
             textEditorText = ""

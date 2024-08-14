@@ -28,7 +28,7 @@ class CreateProfileViewModel : ObservableObject {
     }
 
     @Published var userImageURL: URL?
-    @Published var userImageExtension: String?
+    @Published var userImageExtension: String = ""
     
     
     init(authUseCase: AuthUseCase) {

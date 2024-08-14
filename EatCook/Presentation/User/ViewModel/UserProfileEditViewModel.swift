@@ -20,7 +20,7 @@ final class UserProfileEditViewModel: ObservableObject {
     @Published var userNickName: String = ""
     @Published var userEmail: String = ""
     @Published var userProfileImagePath: String?
-    @Published var userProfileImageExtension: String?
+    @Published var userProfileImageExtension: String = ""
     @Published var userProfileImage: UIImage?
     @Published var userProfileImageURL: URL?
     
@@ -81,12 +81,12 @@ extension UserProfileEditViewModel {
         guard userProfileImage != nil else { return }
 //        guard let info = loginUserInfo.userInfo else { return }
 //        if info.profileImagePath == self.userProfileImageURL { return }
-        guard let fileExtension = userProfileImageExtension else { return }
+//        guard let fileExtension = userProfileImageExtension else { return }
         isLoading = true
         error = nil
         
         return await withCheckedContinuation { continuation in
-            myPageUseCase.requestMyPageProfileImageEdit(fileExtension)
+            myPageUseCase.requestMyPageProfileImageEdit(userProfileImageExtension)
                 .receive(on: DispatchQueue.main)
                 .sink { completion in
                     switch completion {

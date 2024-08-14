@@ -11,7 +11,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     
     @Binding var image: UIImage?
     @Binding var imageURL: URL?
-    @Binding var imageExtension: String?
+    @Binding var imageExtension: String
     @Binding var isPresented: Bool
     
     func makeCoordinator() -> Coordinator {
