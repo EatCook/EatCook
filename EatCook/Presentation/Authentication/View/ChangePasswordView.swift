@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ChangePasswordView: View {
         
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     @StateObject private var changePasswordViewModel: ChangePasswordViewModel
     
     init(email: String) {
-        _changePasswordViewModel = StateObject(wrappedValue: ChangePasswordViewModel(email: email))
+        _changePasswordViewModel = StateObject(wrappedValue: ChangePasswordViewModel(email: email , authUseCase:  AuthUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager())))))
     }
     @State private var shake = false
     
@@ -112,9 +113,10 @@ struct ChangePasswordView: View {
                         return
                     }
                     
-                    changePasswordViewModel.changePassword { result in
-                        if result.success {
+                    changePasswordViewModel.changePassword { successResult in
+                        if successResult {
 //                            TODO : navigation First Page
+                            naviPathFinder.addPath(.login)
                             print("비밀번호 변경 성공")
                             
                         }else {
@@ -122,11 +124,7 @@ struct ChangePasswordView: View {
                             print("비밀번호 변경 실패")
                         }
                     }
-                    
-                    
-                    
-
-                    
+                              
                 }, label: {
                     Text("다음")
                         .foregroundColor(.white)

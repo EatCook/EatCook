@@ -82,6 +82,9 @@
 		E59D7CDC2C588143007702C2 /* UserFavoriteTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D7CCC2C588143007702C2 /* UserFavoriteTagViewModel.swift */; };
 		E59D7CDD2C588143007702C2 /* UserProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D7CCD2C588143007702C2 /* UserProfileEditViewModel.swift */; };
 		E59D7CDE2C588143007702C2 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D7CCE2C588143007702C2 /* UserProfileViewModel.swift */; };
+		E5A5ED2F2C6C8B1B003693D0 /* FindAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5ED2E2C6C8B1B003693D0 /* FindAccountResponse.swift */; };
+		E5A5ED312C6C8B6C003693D0 /* FindAccountVerifyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5ED302C6C8B6C003693D0 /* FindAccountVerifyResponse.swift */; };
+		E5A5ED332C6C8C04003693D0 /* FindNewPasswordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5ED322C6C8C04003693D0 /* FindNewPasswordResponse.swift */; };
 		E5BBA0302C5B125F00895377 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BBA02F2C5B125F00895377 /* CustomAlertView.swift */; };
 		E5BBA0322C5B129700895377 /* CustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BBA0312C5B129700895377 /* CustomPopUpView.swift */; };
 		E5C74D642C64464E005A4A81 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5C74D632C64464E005A4A81 /* GoogleService-Info.plist */; };
@@ -293,6 +296,9 @@
 		E59D7CCC2C588143007702C2 /* UserFavoriteTagViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFavoriteTagViewModel.swift; sourceTree = "<group>"; };
 		E59D7CCD2C588143007702C2 /* UserProfileEditViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEditViewModel.swift; sourceTree = "<group>"; };
 		E59D7CCE2C588143007702C2 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		E5A5ED2E2C6C8B1B003693D0 /* FindAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountResponse.swift; sourceTree = "<group>"; };
+		E5A5ED302C6C8B6C003693D0 /* FindAccountVerifyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountVerifyResponse.swift; sourceTree = "<group>"; };
+		E5A5ED322C6C8C04003693D0 /* FindNewPasswordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindNewPasswordResponse.swift; sourceTree = "<group>"; };
 		E5BBA02F2C5B125F00895377 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		E5BBA0312C5B129700895377 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
 		E5C74D632C64464E005A4A81 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -452,6 +458,9 @@
 				E51F15682C689AF500F66885 /* EmailRequestResponse.swift */,
 				E51F156A2C689B8200F66885 /* EmailVerifyResponse.swift */,
 				E51F156F2C68B64A00F66885 /* SignUpResponse.swift */,
+				E5A5ED2E2C6C8B1B003693D0 /* FindAccountResponse.swift */,
+				E5A5ED302C6C8B6C003693D0 /* FindAccountVerifyResponse.swift */,
+				E5A5ED322C6C8C04003693D0 /* FindNewPasswordResponse.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1600,6 +1609,7 @@
 				E5C74D692C6458B3005A4A81 /* HomeUseCase.swift in Sources */,
 				F694115A2C57B4B700ECA302 /* ArchiveAddRequestResponseDTO.swift in Sources */,
 				F694111A2C57B4B700ECA302 /* OtherUserInfoResponse.swift in Sources */,
+				E5A5ED2F2C6C8B1B003693D0 /* FindAccountResponse.swift in Sources */,
 				F694114C2C57B4B700ECA302 /* LikeCheckAPI.swift in Sources */,
 				E59D7CAD2C588110007702C2 /* RecipeCreateView.swift in Sources */,
 				F694114B2C57B4B700ECA302 /* MyPageAPI.swift in Sources */,
@@ -1648,6 +1658,7 @@
 				E5D3EF6B2C58BEEF00ECF9CF /* EmailValidationViewModel.swift in Sources */,
 				E59AF1B82C5A0E94004AF236 /* SearchRankingResponseDTO.swift in Sources */,
 				F69411352C57B4B700ECA302 /* CustomTextFieldModifier.swift in Sources */,
+				E5A5ED332C6C8C04003693D0 /* FindNewPasswordResponse.swift in Sources */,
 				E5D3EF882C58D6D400ECF9CF /* ImageLoader.swift in Sources */,
 				F69411392C57B4B700ECA302 /* NavigationPathFinder.swift in Sources */,
 				E59D7CAE2C588110007702C2 /* RecipeStepView.swift in Sources */,
@@ -1692,6 +1703,7 @@
 				E5D3EF622C58B7D100ECF9CF /* FindNewPasswordResponseDTO.swift in Sources */,
 				E561606A2C65AB1C0099EF8A /* SocialLoginResponseDTO.swift in Sources */,
 				E59D7C722C5880C5007702C2 /* HomeView.swift in Sources */,
+				E5A5ED312C6C8B6C003693D0 /* FindAccountVerifyResponse.swift in Sources */,
 				F6A554742C6503A300EFA72F /* OtherUserProfileRowView.swift in Sources */,
 				F69411372C57B4B700ECA302 /* CustomImageTitleButton.swift in Sources */,
 				E5D3EF7F2C58CEDC00ECF9CF /* MainService.swift in Sources */,

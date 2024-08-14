@@ -9,12 +9,9 @@ import SwiftUI
 import Combine
 
 struct EmailAuthView: View {
-//    @State private var email: String = ""
-//    @State private var isEmailValid: Bool = false
   
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
-//    @StateObject private var emailValViewModel = EmailValidationViewModel()
     @StateObject private var emailValViewModel = EmailValidationViewModel(authUseCase:  AuthUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))
     
 

@@ -54,4 +54,22 @@ extension AuthUseCase {
             .eraseToAnyPublisher()
     }
     
+    func findPasswordRequestEmail(_ email : String) -> AnyPublisher<FindAccountResponse, NetworkError> {
+        return eatCookRepository
+            .findPasswordRequestEmail(of: AuthAPI.findPasswordRequestEmail(email))
+            .eraseToAnyPublisher()
+    }
+    
+    func findPasswordEmailVerify(_ email : String , _ authCode : String) -> AnyPublisher<FindAccountVerifyResponse, NetworkError> {
+        return eatCookRepository
+            .findPasswordEmailVerify(of: AuthAPI.findPasswordEmailVerify(email, authCode))
+            .eraseToAnyPublisher()
+    }
+    
+    func setNewPassword(_ email : String , _ password : String) -> AnyPublisher<FindNewPasswordResponse, NetworkError> {
+        return eatCookRepository
+            .setNewPassword(of: AuthAPI.setNewPassword(email, password))
+            .eraseToAnyPublisher()
+    }
+    
 }

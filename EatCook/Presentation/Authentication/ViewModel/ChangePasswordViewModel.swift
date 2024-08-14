@@ -10,6 +10,11 @@ import Combine
 
 
 class ChangePasswordViewModel : ObservableObject {
+    
+    private let authUseCase : AuthUseCase
+    private var cancellables = Set<AnyCancellable>()
+    
+    
     @Published var email: String
     
     @Published var newPassword: String = ""
@@ -22,12 +27,9 @@ class ChangePasswordViewModel : ObservableObject {
     @Published var containsNumber = false
     @Published var isPasswordError = false
     
-    private var cancellables = Set<AnyCancellable>()
     
-    
-    
-    
-    init(email : String){
+    init(email : String , authUseCase: AuthUseCase){
+        self.authUseCase = authUseCase
         self.email = email
         
         // 8자리 이상 확인
@@ -59,11 +61,7 @@ class ChangePasswordViewModel : ObservableObject {
         
     }
     
-    
-    
-    
-    
-    
+
     func passwordValidationCheck() -> Bool {
         
         return newPassword == newPasswordCheck ? true : false
@@ -71,22 +69,42 @@ class ChangePasswordViewModel : ObservableObject {
     }
     
     
-    func changePassword(completion: @escaping (FindNewPasswordResponseDTO) -> Void) {
-        UserService.shared.findNewPassword(parameters: ["email": email, "password" : newPassword], success: { (data) in
-            print("data : " , data)
-            DispatchQueue.main.async {
-                completion(data)
+}
+
+extension ChangePasswordViewModel {
+    
+    func changePassword(completion: @escaping (Bool) -> Void) {
+        authUseCase.setNewPassword(email, newPassword)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("ChangePasswordViewModel setNewPassword Finished")
+                    
+                case .failure(let error):
+                    print("error:", error)
+                    switch error {
+                    case .unauthorized:
+                        print("ChangePasswordViewModel setNewPasswordToken Error")
+                        
+                    default:
+                        print("기본 에러처리")
+                    }
+                    
+                    print("ChangePasswordViewModel setNewPassword Error: \(error)")
+                }
+                
+            } receiveValue: { response in
+                print("ChangePasswordViewModel setNewPassword response:" , response)
+                if response.success {
+                    return completion(true)
+                }else{
+                    return completion(false)
+                }
+                
             }
-        }, failure: { (errorData) in
-            DispatchQueue.main.async {
-                completion(errorData)
-            }
-        })
-        
+            .store(in: &cancellables)
         
     }
-    
-    
-    
     
 }

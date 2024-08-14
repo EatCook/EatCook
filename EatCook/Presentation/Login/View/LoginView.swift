@@ -196,21 +196,7 @@ struct LoginView: View {
                         .font(.body)
                         .foregroundStyle(.gray)
                 }
-                
-                Divider().background(Color.gray)
-                    .frame(height: 10)
-                
-                //               TODO : 테스트 후 제거
-                Button {
-                    naviPathFinder.addPath(.createProfile("rkdtlscks123@naver.com"))
-                } label: {
-                    Text("계정프로필 등록 테스트")
-                        .font(.body)
-                        .foregroundStyle(.gray)
-                }
-                
 
-                
                 
  
             }.padding(.vertical, 30)

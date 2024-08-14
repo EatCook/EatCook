@@ -9,8 +9,9 @@ import SwiftUI
 
 struct FindAccountView: View {
     
-    @StateObject private var findAccountViewModel = FindAccountViewModel()
-    @State private var navigateToChangePasswordView = false
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
+    
+    @StateObject private var findAccountViewModel = FindAccountViewModel(authUseCase:  AuthUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))
     @State private var shake = false
 
     
@@ -28,9 +29,11 @@ struct FindAccountView: View {
                     Button(action: {
                         findAccountViewModel.isLoading = true
                         findAccountViewModel.emailValidationPublisher.send(findAccountViewModel.email)
-                        findAccountViewModel.sendEmail { result in
-                            if result.success {
+                        findAccountViewModel.sendEmail { successResult in
+                            if successResult {
                                 findAccountViewModel.startTimer()
+                            }else{
+//                                ERROR Alert
                             }
                             
                         }
@@ -100,10 +103,10 @@ struct FindAccountView: View {
                 
                 
                 Button(action: {
-                    findAccountViewModel.verify { result in
-                        if result.success {
+                    findAccountViewModel.verify { successResult in
+                        if successResult {
                             print("SUCCESS")
-                            navigateToChangePasswordView = true
+                            naviPathFinder.addPath(.changePassword(findAccountViewModel.email))
                         }else{
                             withAnimation {
                                 findAccountViewModel.emailAuthError = true
@@ -123,9 +126,7 @@ struct FindAccountView: View {
                 })
                 .disabled(!findAccountViewModel.authCodeValidation)
                 
-                NavigationLink(destination: ChangePasswordView(email: findAccountViewModel.email).toolbarRole(.editor), isActive: $navigateToChangePasswordView) {
-                    EmptyView()
-                }
+   
 
                 Spacer()
             }

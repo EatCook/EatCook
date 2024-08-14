@@ -13,3 +13,10 @@ struct FindAccountVerifyResponseDTO : Codable {
     let message: String
     let data: String?
 }
+
+extension FindAccountVerifyResponseDTO {
+    func toDomain() -> FindAccountVerifyResponse {
+        return .init(success: success, code: code, message: message, data: data)
+    }
+}
+ 

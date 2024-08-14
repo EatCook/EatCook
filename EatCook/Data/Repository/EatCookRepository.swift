@@ -9,6 +9,8 @@ import Foundation
 import Combine
 
 final class EatCookRepository: EatCookRepositoryType {
+
+    
     
     private let networkProvider: NetworkProvider
     
@@ -519,6 +521,59 @@ extension EatCookRepository {
         }
     }
     
+    func findPasswordRequestEmail(of endpoint: any EndPoint) -> Future<FindAccountResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(FindAccountResponseDTO.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data.toDomain()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
+    func findPasswordEmailVerify(of endpoint: any EndPoint) -> Future<FindAccountVerifyResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(FindAccountVerifyResponseDTO.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data.toDomain()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
+    func setNewPassword(of endpoint: any EndPoint) -> Future<FindNewPasswordResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(FindNewPasswordResponseDTO.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data.toDomain()))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
     
     
 }

@@ -9,6 +9,10 @@ import Foundation
 import Combine
 
 class FindAccountViewModel : ObservableObject {
+    
+    private let authUseCase : AuthUseCase
+    private var cancellables = Set<AnyCancellable>()
+    
     @Published var email: String = ""
     @Published var emailText : String = "인증요청"
     @Published var authCode : String = ""
@@ -31,7 +35,8 @@ class FindAccountViewModel : ObservableObject {
     let emailValidationPublisher = PassthroughSubject<String, Never>()
     
     
-    init() {
+    init(authUseCase: AuthUseCase) {
+        self.authUseCase = authUseCase
         emailValidationSubscriber = $email
             .debounce(for: 0.5, scheduler: RunLoop.main) // 입력이 멈출 때마다 발행을 지연시킴
             .removeDuplicates() // 중복된 값 제거
@@ -60,7 +65,6 @@ class FindAccountViewModel : ObservableObject {
         }
     }
     
-
     func counterToMinutesAndSeconds(_ count: Int) -> String {
         let minutes = count / 60
         let seconds = count % 60
@@ -92,44 +96,80 @@ class FindAccountViewModel : ObservableObject {
             .eraseToAnyPublisher()
     }
     
-    func sendEmail(completion: @escaping (FindAccountResponseDTO) -> Void) {
-        
-        UserService.shared.findAccountSendMail(parameters: ["email" : email], success: { (data) in
-            
-            DispatchQueue.main.async {
-                completion(data)
-            }
-            
-        }, failure: { (errorData) in
-            DispatchQueue.main.async {
-                completion(errorData)
-            }
-        })
-        
-        
-    }
-    
-    func verify(completion: @escaping (FindAccountVerifyResponseDTO) -> Void) {
-        
-        UserService.shared.findAccountVerify(parameters: ["email" : email, "authCode" : authCode], success: { [weak self] (data) in
-            DispatchQueue.main.async {
-                completion(data)
-                print("data : ", data)
-            }
-        }, failure: { (errorData) in
-            DispatchQueue.main.async {
-                completion(errorData)
-            }
-        })
-        
-        
-    }
 
-    
-    
-    
-    
-    
     
 }
 
+extension FindAccountViewModel {
+    
+    func sendEmail(completion: @escaping (Bool) -> Void) {
+        authUseCase.findPasswordRequestEmail(email)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("FindAccountViewModel findPasswordRequestEmail Finished")
+                    
+                case .failure(let error):
+                    print("error:", error)
+                    switch error {
+                    case .unauthorized:
+                        print("FindAccountViewModel findPasswordRequestEmail Token Error")
+                        
+                    default:
+                        print("기본 에러처리")
+                    }
+                    
+                    print("FindAccountViewModel findPasswordRequestEmail Error: \(error)")
+                }
+                
+            } receiveValue: { response in
+                print("FindAccountViewModel findPasswordRequestEmail response:" , response)
+                if response.success {
+                    return completion(true)
+                }else{
+                    return completion(false)
+                }
+                
+            }
+            .store(in: &cancellables)
+                
+        
+    }
+    
+    func verify(completion: @escaping (Bool) -> Void) {
+        authUseCase.findPasswordEmailVerify(email, authCode)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("FindAccountViewModel findPasswordEmailVerify Finished")
+                    
+                case .failure(let error):
+                    print("error:", error)
+                    switch error {
+                    case .unauthorized:
+                        print("FindAccountViewModel findPasswordEmailVerify Token Error")
+                        
+                    default:
+                        print("기본 에러처리")
+                    }
+                    
+                    print("FindAccountViewModel findPasswordEmailVerify Error: \(error)")
+                }
+                
+            } receiveValue: { response in
+                print("FindAccountViewModel findPasswordEmailVerify response:" , response)
+                if response.success {
+                    return completion(true)
+                }else{
+                    return completion(false)
+                }
+                
+            }
+            .store(in: &cancellables)
+
+    }
+    
+    
+}

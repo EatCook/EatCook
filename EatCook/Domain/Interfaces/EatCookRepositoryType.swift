@@ -58,6 +58,7 @@ protocol EatCookRepositoryType: AnyObject {
     func signUp(of endpoint: EndPoint) -> Future<SignUpResponse, NetworkError>
     func checkNickName(of endpoint: EndPoint) -> Future<CheckNickNameResponse, NetworkError>
     func addSignUp(of endpoint: EndPoint) -> Future<AddSignUpResponse, NetworkError>
-    
-    
+    func findPasswordRequestEmail(of endpoint: EndPoint) -> Future<FindAccountResponse, NetworkError>
+    func findPasswordEmailVerify(of endpoint: EndPoint) -> Future<FindAccountVerifyResponse, NetworkError>
+    func setNewPassword(of endpoint: EndPoint) -> Future<FindNewPasswordResponse, NetworkError>
 }
