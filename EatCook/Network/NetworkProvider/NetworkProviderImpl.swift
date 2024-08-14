@@ -51,6 +51,12 @@ final class NetworkProviderImpl: NetworkProvider {
             
             guard let httpResponse = response as? HTTPURLResponse else { throw NetworkError.noResponse }
             
+            
+            if let dataString = String(data: data, encoding: .utf8) {
+                print("Response Data: \(dataString)")
+            } else {
+                print("Unable to convert data to a String")
+            }
 
             
             

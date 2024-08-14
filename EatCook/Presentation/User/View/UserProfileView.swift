@@ -108,7 +108,7 @@ struct UserProfileView: View {
                                 .foregroundStyle(.gray3)
                         }
                         
-                        Text(viewModel.myPageUserInfo.nickName)
+                        Text(viewModel.myPageUserInfo.nickName ?? "")
                             .font(.title3)
                             .fontWeight(.bold)
                         

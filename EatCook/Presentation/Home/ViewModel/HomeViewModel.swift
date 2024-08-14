@@ -15,13 +15,17 @@ class HomeViewModel : ObservableObject {
     private let homeUseCase : HomeUseCase
     private var cancellables = Set<AnyCancellable>()
     
+    let loginUserInfo: LoginUserInfoManager
     
-    init(homeUseCase: HomeUseCase) {
+    
+    init(homeUseCase: HomeUseCase , loginUserInfo: LoginUserInfoManager) {
         self.homeUseCase = homeUseCase
+        self.loginUserInfo = loginUserInfo
         getUserInfo()
     }
     
     @Published var isTokenError : Bool = false
+    @Published var addSignUpNavigate : Bool = false
     
     
     @Published var interestingFoods : [String : [InterestingFoods]] = [:
@@ -64,6 +68,15 @@ class HomeViewModel : ObservableObject {
 //    DELIVERY_FOOD("배달음식 단골고객")
 //    MEAL_KIT("밀키트 lover")
     
+    private func getUserData(){
+        loginUserInfo.responseUserInfo { userInfo in
+            print("userInfo ::::" , userInfo)
+            if userInfo.nickName == "" {
+                self.addSignUpNavigate = true
+            }
+        }
+    }
+    
     
     
 
@@ -99,6 +112,8 @@ class HomeViewModel : ObservableObject {
                     for type in userCookingTheme.keys {
                         self.getUserInterest(type: type)
                     }
+                    
+//                    Type들을 다 쏴서(DIET , HEALTH_DIET , CONVENIENCE_STORE ... ) 빈값이 없는것만 세팅해줌
                     for type in self.recommendType {
                         self.getUserSpecial(type: type)
                     }
@@ -177,6 +192,7 @@ class HomeViewModel : ObservableObject {
         guard !isFetching else { return }
         isFetching = true
         feedbackGenerator.impactOccurred()
+        getUserData()
         getUserInfo()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.isFetching = false

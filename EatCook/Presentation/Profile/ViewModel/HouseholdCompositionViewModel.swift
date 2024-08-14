@@ -100,7 +100,9 @@ extension HouseholdCompositionViewModel {
         do {
             try await self.uploadImages(addSignUpImageUpdateResponse)
         } catch {
-            self.isUpLoadingError = error.localizedDescription
+            DispatchQueue.main.async {
+                self.isUpLoadingError = error.localizedDescription
+            }
         }
     }
     

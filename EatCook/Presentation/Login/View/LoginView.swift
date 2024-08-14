@@ -14,7 +14,7 @@ struct LoginView: View {
     
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
-    @StateObject private var viewModel = LoginViewModel(loginUseCase: LoginUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))
+    @StateObject private var viewModel = LoginViewModel(loginUseCase: LoginUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))), loginUserInfo: LoginUserInfoManager.shared)
     
     
     
@@ -78,6 +78,7 @@ struct LoginView: View {
                     viewModel.handleKakaLogin { successResult in
                         if successResult {
 //                            navigate
+                            viewModel.loginUserInfo.responseUserInfo{  _ in }
                             naviPathFinder.popToRoot()
                         }else{
 //                            error message
@@ -137,7 +138,10 @@ struct LoginView: View {
                                     
                                     viewModel.socialLogin(providerType: "APPLE", token: "", email: email) { successResult in
                                         if successResult {
-                                            naviPathFinder.popToRoot()
+                                            viewModel.loginUserInfo.responseUserInfo{  _ in
+                                                naviPathFinder.popToRoot()
+                                            }
+                                            
                                         }else{
 //                                            error Message
                                         }
@@ -197,13 +201,13 @@ struct LoginView: View {
                     .frame(height: 10)
                 
                 //               TODO : 테스트 후 제거
-//                Button {
-//                    naviPathFinder.addPath(.createProfile("rkdtlscks123@naver.com"))
-//                } label: {
-//                    Text("계정프로필 등록 테스트")
-//                        .font(.body)
-//                        .foregroundStyle(.gray)
-//                }
+                Button {
+                    naviPathFinder.addPath(.createProfile("rkdtlscks123@naver.com"))
+                } label: {
+                    Text("계정프로필 등록 테스트")
+                        .font(.body)
+                        .foregroundStyle(.gray)
+                }
                 
 
                 

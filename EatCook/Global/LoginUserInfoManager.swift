@@ -23,10 +23,10 @@ final class LoginUserInfoManager: ObservableObject {
     
     private init(eatCookRepository: EatCookRepositoryType) {
         self.eatCookRepository = eatCookRepository
-        responseUserInfo()
+        responseUserInfo{  _ in }
     }
     
-    func responseUserInfo() {
+    func responseUserInfo(completion: @escaping (UserInfo) -> Void) {
         
         self.eatCookRepository
             .responseMyPageUserInfo(of: MyPageAPI.mypageUserInfo)
@@ -43,6 +43,7 @@ final class LoginUserInfoManager: ObservableObject {
                 print(response.data)
                 self.userInfoData = response.data
                 self.setupUserInfo()
+                completion(self.userInfo)
             }
             .store(in: &cancellables)
     }
@@ -51,7 +52,7 @@ final class LoginUserInfoManager: ObservableObject {
         let userInfo = UserInfo(
             userId: userInfoData.userId,
             email: userInfoData.email,
-            nickName: userInfoData.nickName,
+            nickName: userInfoData.nickName ?? "",
             badge: userInfoData.badge,
             followerCounts: userInfoData.followerCounts,
             followingCounts: userInfoData.followingCounts,

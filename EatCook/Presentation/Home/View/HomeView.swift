@@ -11,7 +11,7 @@ struct HomeView: View {
 
     @State private var scrollOffset: CGFloat = 0
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
-    @StateObject private var homeViewModel = HomeViewModel(homeUseCase: HomeUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))
+    @StateObject private var homeViewModel = HomeViewModel(homeUseCase: HomeUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))), loginUserInfo: LoginUserInfoManager.shared)
  
     
     
@@ -69,6 +69,12 @@ struct HomeView: View {
                     
                 }
 
+            }
+            .fullScreenCover(isPresented: $homeViewModel.addSignUpNavigate){
+                CustomPopUpView(title: "잇쿡에 오신거를 환영합니다", message: "회원가입 추가 진행을 해주세요", confirmTitle: "이동") {
+                    homeViewModel.addSignUpNavigate = false
+                    naviPathFinder.addPath(.createProfile(homeViewModel.loginUserInfo.userInfo.email))
+                }
             }
             .fullScreenCover(isPresented: $homeViewModel.isTokenError){
                 CustomPopUpView(title: "토큰이 만료되었습니다", message: "로그인을 진행해주세요", confirmTitle: "이동") {

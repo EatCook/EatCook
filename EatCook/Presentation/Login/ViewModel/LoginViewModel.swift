@@ -18,11 +18,11 @@ final class LoginViewModel : ObservableObject   {
     private var cancellables = Set<AnyCancellable>()
     
     @Published var errorMessage : String = ""
+    let loginUserInfo: LoginUserInfoManager
     
-    
-    init(loginUseCase: LoginUseCase) {
+    init(loginUseCase: LoginUseCase , loginUserInfo: LoginUserInfoManager) {
         self.loginUseCase = loginUseCase
-        
+        self.loginUserInfo = loginUserInfo
     }
     
     

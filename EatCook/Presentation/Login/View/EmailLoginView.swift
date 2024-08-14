@@ -68,8 +68,10 @@ struct EmailLoginView: View {
                   
                     emailLoginViewModel.emailLogin { LoginResponse in
                         if LoginResponse.success {
-                            naviPathFinder.popToRoot()
-                            emailLoginViewModel.loginUserInfo.responseUserInfo()
+                            
+                            emailLoginViewModel.loginUserInfo.responseUserInfo{  _ in
+                                naviPathFinder.popToRoot()
+                            }
                         }else {
                             withAnimation {
                                 toastManager.displayToast(

@@ -33,7 +33,7 @@ final class UserProfileViewModel: ObservableObject {
         let userInfo = UserInfo(
             userId: myPageUserInfo.userId,
             email: myPageUserInfo.email,
-            nickName: myPageUserInfo.nickName,
+            nickName: myPageUserInfo.nickName ?? "",
             badge: myPageUserInfo.badge,
             followerCounts: myPageUserInfo.followerCounts,
             followingCounts: myPageUserInfo.followingCounts,
