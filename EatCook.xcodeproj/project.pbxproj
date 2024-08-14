@@ -85,6 +85,7 @@
 		E5A5ED2F2C6C8B1B003693D0 /* FindAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5ED2E2C6C8B1B003693D0 /* FindAccountResponse.swift */; };
 		E5A5ED312C6C8B6C003693D0 /* FindAccountVerifyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5ED302C6C8B6C003693D0 /* FindAccountVerifyResponse.swift */; };
 		E5A5ED332C6C8C04003693D0 /* FindNewPasswordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5ED322C6C8C04003693D0 /* FindNewPasswordResponse.swift */; };
+		E5A5ED352C6C9F75003693D0 /* BaseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5ED342C6C9F75003693D0 /* BaseAlertView.swift */; };
 		E5BBA0302C5B125F00895377 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BBA02F2C5B125F00895377 /* CustomAlertView.swift */; };
 		E5BBA0322C5B129700895377 /* CustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BBA0312C5B129700895377 /* CustomPopUpView.swift */; };
 		E5C74D642C64464E005A4A81 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5C74D632C64464E005A4A81 /* GoogleService-Info.plist */; };
@@ -299,6 +300,7 @@
 		E5A5ED2E2C6C8B1B003693D0 /* FindAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountResponse.swift; sourceTree = "<group>"; };
 		E5A5ED302C6C8B6C003693D0 /* FindAccountVerifyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountVerifyResponse.swift; sourceTree = "<group>"; };
 		E5A5ED322C6C8C04003693D0 /* FindNewPasswordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindNewPasswordResponse.swift; sourceTree = "<group>"; };
+		E5A5ED342C6C9F75003693D0 /* BaseAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAlertView.swift; sourceTree = "<group>"; };
 		E5BBA02F2C5B125F00895377 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		E5BBA0312C5B129700895377 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
 		E5C74D632C64464E005A4A81 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1186,6 +1188,7 @@
 				E5BBA0312C5B129700895377 /* CustomPopUpView.swift */,
 				F69411B52C610A8E00ECA302 /* LoadingImageView.swift */,
 				F6A554712C63BB6100EFA72F /* AutoRetryImage.swift */,
+				E5A5ED342C6C9F75003693D0 /* BaseAlertView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1592,6 +1595,7 @@
 				F69411522C57B4B700ECA302 /* CookTalkFeedResponseDTO.swift in Sources */,
 				F694112D2C57B4B700ECA302 /* ScrollOffset.swift in Sources */,
 				E5D3EF662C58BB8E00ECF9CF /* EmailLoginViewModel.swift in Sources */,
+				E5A5ED352C6C9F75003693D0 /* BaseAlertView.swift in Sources */,
 				F69411422C57B4B700ECA302 /* EndPoint.swift in Sources */,
 				F69411B62C610A8E00ECA302 /* LoadingImageView.swift in Sources */,
 				F69411462C57B4B700ECA302 /* FollowAPI.swift in Sources */,

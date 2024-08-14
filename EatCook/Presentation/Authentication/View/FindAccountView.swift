@@ -13,7 +13,7 @@ struct FindAccountView: View {
     
     @StateObject private var findAccountViewModel = FindAccountViewModel(authUseCase:  AuthUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))
     @State private var shake = false
-
+    @State private var showingAlert = false
     
     var body: some View {
 //        NavigationStack {
@@ -31,7 +31,12 @@ struct FindAccountView: View {
                         findAccountViewModel.emailValidationPublisher.send(findAccountViewModel.email)
                         findAccountViewModel.sendEmail { successResult in
                             if successResult {
-                                findAccountViewModel.startTimer()
+                                withAnimation {
+                                    showingAlert = true
+                                    findAccountViewModel.baseAlertInfo = BaseAlertInfo(title: "알림", message: "이메일에 인증코드를 발송하였습니다")
+                                    findAccountViewModel.startTimer()
+                                }
+                       
                             }else{
 //                                ERROR Alert
                             }
@@ -136,14 +141,31 @@ struct FindAccountView: View {
             .background(.bgPrimary)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("계정찾기").bold()
+            .overlay(
+                Group {
+                    if showingAlert {
+                        BaseAlertView(
+                            title: findAccountViewModel.baseAlertInfo.title,
+                            message: findAccountViewModel.baseAlertInfo.message,
+                            confirmTitle: "확인",
+                            onConfirm: {
+                                showingAlert = false
+                            }
+                        )
+                       
+                    }
+                }
+            )
+
+             
             
             
-            
-        }
+    }
+    }
         
 
 //    }
-}
+
 
 #Preview {
     FindAccountView()

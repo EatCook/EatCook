@@ -24,6 +24,7 @@ class FindAccountViewModel : ObservableObject {
     @Published var isLoading: Bool = false
     
     @Published var verificationResult: Bool?
+    @Published var baseAlertInfo = BaseAlertInfo(title: "", message: "")
     
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
