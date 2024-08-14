@@ -63,4 +63,10 @@ extension MyPageUseCase {
             .eraseToAnyPublisher()
     }
     
+    func requestUserWithDraw() -> AnyPublisher<UserWithDrawResponse, NetworkError> {
+        return eatCookRepository
+            .requestUserWithDraw(of: MyPageSettingAPI.leaveEatCook)
+            .eraseToAnyPublisher()
+    }
+    
 }

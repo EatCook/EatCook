@@ -22,10 +22,10 @@ struct CustomAlertView: View {
     var onConfirm: () -> Void
 
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 16) {
             Text(title)
-                .font(.headline)
-                .padding()
+                .font(.system(size: 20, weight: .semibold))
+                .padding(.horizontal)
             
             Text(message)
                 .font(.subheadline)
@@ -35,12 +35,12 @@ struct CustomAlertView: View {
             
             
             if layoutMode == .vertical {
-                VStack(spacing: 20) {
+                VStack(spacing: 15) {
                     alertButtons
                 }
                 .padding([.leading, .trailing], 20)
             } else {
-                HStack(spacing: 20) {
+                HStack(spacing: 15) {
                     alertButtons
                 }
                 .padding([.leading, .trailing], 20)
@@ -49,10 +49,12 @@ struct CustomAlertView: View {
 
         }
         .frame(width: 300)
-        .padding(.vertical , 24)
+        .padding(.vertical , 32)
         .background(Color.white)
         .cornerRadius(20)
         .shadow(radius: 10)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.black.opacity(0.3))
     }
     
     
@@ -89,7 +91,7 @@ struct CustomAlertView_Previews: PreviewProvider {
     static var previews: some View {
         CustomAlertView(
             title: "작성중인 글이있어요!",
-            message: "임시 저장된 텍스트가 있어요",
+            message: "임시 저장된 텍스트가 있어요임시 저장된 텍스트가 있어요임시 저장된 텍스트가 있어요임시 저장된 텍스트가 있어요",
             layoutMode: .horizontal,
             leftTitle: "새로 쓰기",
             rightTitle: "이어서 쓰기",

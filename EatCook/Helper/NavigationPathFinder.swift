@@ -219,4 +219,10 @@ final class NavigationPathFinder: ObservableObject {
             self.path = .init()
         }
     }
+    
+    func resetPathAndSetRoot(_ option: ViewOptions) {
+        self.path = NavigationPath()
+        self.path.append(option)
+    }
+    
 }

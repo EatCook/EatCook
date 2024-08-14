@@ -282,6 +282,24 @@ extension EatCookRepository {
         }
     }
     
+    func requestUserWithDraw(of endpoint: EndPoint) -> Future<UserWithDrawResponse, NetworkError> {
+        return Future { promise in
+            Task {
+                do {
+                    let response = try await self.networkProvider.excute(UserWithDrawResponse.self, of: endpoint)
+                    switch response {
+                    case .success(let data):
+                        promise(.success(data))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+    }
+    
     /// OtherUser
     func responseOtherUserInfo(of endpoint: EndPoint) -> Future<OtherUserInfoResponse, NetworkError> {
         return Future { promise in

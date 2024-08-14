@@ -34,6 +34,7 @@ protocol EatCookRepositoryType: AnyObject {
     /// MyPageSetting
     func responseMyFavoriteTag(of endpoint: EndPoint) -> Future<MyFavoriteCookResponse, NetworkError>
     func requestMyFavoriteTagUpdate(of endpoint: EndPoint) -> Future<MyFavoriteTagRequestResponse, NetworkError>
+    func requestUserWithDraw(of endpoint: EndPoint) -> Future<UserWithDrawResponse, NetworkError>
     
     /// OtherUser
     func responseOtherUserInfo(of endpoint: EndPoint) -> Future<OtherUserInfoResponse, NetworkError>

@@ -102,7 +102,7 @@ extension RecipeViewModel {
         
         return await withCheckedContinuation { continuation in
             recipeUseCase.requestRecipeDelete(postId)
-    //            .receive(on: DispatchQueue.main)
+                .receive(on: DispatchQueue.main)
                 .sink { completion in
                     switch completion {
                     case .finished:

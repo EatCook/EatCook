@@ -137,6 +137,7 @@
 		F6137DB42C611D6F00007202 /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = F6137DB32C611D6F00007202 /* KakaoSDKTalk */; };
 		F6137DB62C611D6F00007202 /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = F6137DB52C611D6F00007202 /* KakaoSDKTemplate */; };
 		F6137DB82C611D6F00007202 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = F6137DB72C611D6F00007202 /* KakaoSDKUser */; };
+		F67B5CCB2C6CED6C00C8658C /* UserWithDrawViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67B5CCA2C6CED6C00C8658C /* UserWithDrawViewModel.swift */; };
 		F69411132C57B4B700ECA302 /* CookTalkFollowResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410382C57B4B600ECA302 /* CookTalkFollowResponse.swift */; };
 		F69411142C57B4B700ECA302 /* CookTalkFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69410392C57B4B600ECA302 /* CookTalkFeedResponse.swift */; };
 		F69411152C57B4B700ECA302 /* RecipeReadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694103B2C57B4B600ECA302 /* RecipeReadResponse.swift */; };
@@ -341,6 +342,7 @@
 		E5D3EF832C58CF7E00ECF9CF /* MainUserInfoInterestResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserInfoInterestResponseDTO.swift; sourceTree = "<group>"; };
 		E5D3EF852C58CFD200ECF9CF /* MainUserLifeTypeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserLifeTypeResponseDTO.swift; sourceTree = "<group>"; };
 		E5D3EF872C58D6D400ECF9CF /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		F67B5CCA2C6CED6C00C8658C /* UserWithDrawViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWithDrawViewModel.swift; sourceTree = "<group>"; };
 		F69410382C57B4B600ECA302 /* CookTalkFollowResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookTalkFollowResponse.swift; sourceTree = "<group>"; };
 		F69410392C57B4B600ECA302 /* CookTalkFeedResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookTalkFeedResponse.swift; sourceTree = "<group>"; };
 		F694103B2C57B4B600ECA302 /* RecipeReadResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeReadResponse.swift; sourceTree = "<group>"; };
@@ -886,6 +888,7 @@
 				E59D7CCC2C588143007702C2 /* UserFavoriteTagViewModel.swift */,
 				E59D7CCD2C588143007702C2 /* UserProfileEditViewModel.swift */,
 				E59D7CCE2C588143007702C2 /* UserProfileViewModel.swift */,
+				F67B5CCA2C6CED6C00C8658C /* UserWithDrawViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1581,6 +1584,7 @@
 				E59D7CDB2C588143007702C2 /* OtherUserProfileViewModel.swift in Sources */,
 				E59D7C4E2C588071007702C2 /* AlarmViewModel.swift in Sources */,
 				E59D7CD62C588143007702C2 /* OtherUserProfileView.swift in Sources */,
+				F67B5CCB2C6CED6C00C8658C /* UserWithDrawViewModel.swift in Sources */,
 				E59D7C852C5880F3007702C2 /* HouseholdCompositionView.swift in Sources */,
 				E59D7CBD2C58813D007702C2 /* SettingView.swift in Sources */,
 				F694113D2C57B4B700ECA302 /* URLRequestable.swift in Sources */,

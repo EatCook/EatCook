@@ -141,7 +141,7 @@ struct UserProfileEditView: View {
                     }
                     
                     Button {
-                        
+                        naviPathFinder.resetPathAndSetRoot(.login)
                     } label: {
                         HStack {
                             Text("로그아웃")

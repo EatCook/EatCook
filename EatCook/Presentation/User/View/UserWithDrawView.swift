@@ -6,14 +6,24 @@
 //
 
 import SwiftUI
+import Combine
 
 struct UserWithDrawView: View {
-    @State private var button1: Bool = false
-    @State private var button2: Bool = false
-    @State private var button3: Bool = false
-    @State private var button4: Bool = false
+    @StateObject private var viewModel: UserWithDrawViewModel
+    
+    @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
     @State private var allCheckButton: Bool = false
+    @State private var showRequestAlertView: Bool = false
+    
+    init() {
+        _viewModel = StateObject(
+            wrappedValue: UserWithDrawViewModel(
+                myPageUseCase: MyPageUseCase(
+                    eatCookRepository: EatCookRepository(
+                        networkProvider: NetworkProviderImpl(
+                            requestManager: NetworkManager())))))
+    }
     
     var body: some View {
         VStack(spacing: 36) {
@@ -32,22 +42,22 @@ struct UserWithDrawView: View {
                 CheckImageTitleButton(isSelected: $allCheckButton,
                                       buttonTitle: "계정정보",
                                       buttonImage: "checkmark") {
-//                    button1.toggle()
+                    
                 }
                 CheckImageTitleButton(isSelected: $allCheckButton,
                                       buttonTitle: "작성한 모든 피드 및 게시물",
                                       buttonImage: "checkmark") {
-//                    button2.toggle()
+                    
                 }
                 CheckImageTitleButton(isSelected: $allCheckButton,
                                       buttonTitle: "개인 소식, 알림 내역",
                                       buttonImage: "checkmark") {
-//                    button3.toggle()
+                    
                 }
                 CheckImageTitleButton(isSelected: $allCheckButton,
                                       buttonTitle: "레시피 북마크 및 팔로우 내역",
                                       buttonImage: "checkmark") {
-//                    button4.toggle()
+                    
                 }
             }
             .padding(.vertical, 16)
@@ -78,7 +88,7 @@ struct UserWithDrawView: View {
             
             HStack(spacing: 15) {
                 Button {
-                    
+                    naviPathFinder.pop()
                 } label: {
                     Text("더 써볼래요")
                         .font(.system(size: 16, weight: .semibold))
@@ -92,7 +102,9 @@ struct UserWithDrawView: View {
                 }
                 
                 Button {
-                    
+                    withAnimation(.easeIn(duration: 0.1)) {
+                        showRequestAlertView = true
+                    }
                 } label: {
                     Text("떠날래요")
                         .font(.system(size: 16, weight: .semibold))
@@ -110,16 +122,42 @@ struct UserWithDrawView: View {
             .padding(.horizontal, 16)
             .padding(.bottom, 32)
         }
+        .overlay {
+            if showRequestAlertView {
+                CustomAlertView(
+                    title: "정말 탈퇴하실건가요?",
+                    message: "회원정보가 모두 삭제됩니다.",
+                    layoutMode: .horizontal,
+                    leftTitle: "네",
+                    rightTitle: "아니요") {
+                        withAnimation(.easeIn(duration: 0.1)) {
+                            showRequestAlertView = false
+                            viewModel.requestWithDraw()
+                        }
+                    } onConfirm: {
+                        withAnimation(.easeIn(duration: 0.1)) {
+                            showRequestAlertView = false
+                        }
+                    }
+            }
+            
+            if viewModel.withDrawCompleted {
+                CustomPopUpView(
+                    title: "회원탈퇴 완료",
+                    message: "다음에 또 만나요!",
+                    confirmTitle: "확인"
+                ) {
+                    naviPathFinder.resetPathAndSetRoot(.login)
+                }
+            }
+        }
         .navigationTitle("회원탈퇴")
         .navigationBarTitleDisplayMode(.inline)
         
-        
-        
     }
+    
 }
 
 #Preview {
-//    NavigationStack {
-        UserWithDrawView()
-//    }
+    UserWithDrawView()
 }

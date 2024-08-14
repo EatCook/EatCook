@@ -21,3 +21,13 @@ struct MyFavoriteCookResponseData: Codable, Identifiable {
     var id: String = UUID().uuidString
 }
 
+struct UserWithDrawResponse: Codable {
+    var success: Bool = false
+    var code: String = ""
+    var message: String = ""
+    var data = UserWithDrawResponseData()
+}
+
+struct UserWithDrawResponseData: Codable {
+    
+}
