@@ -14,27 +14,32 @@ struct RecipeReadResponse: Codable {
 }
 
 struct RecipeReadResponseData: Codable, Identifiable, Hashable {
-    let postId: Int
-    let recipeName: String
-    let recipeTime: Int
-    let introduction, postImagePath: String
-    let foodIngredients, cookingType: [String]
-    let recipeProcess: [RecipeReadProcess]
-    let lastModifiedAt: String
-    let writerUserId: Int
-    let writerUserEmail: String
-    let writerNickName: String
-    let writerProfile: String?
-    let likedCount: Int
-    let followCheck, likedCheck, archiveCheck: Bool
+    var postId: Int = 0
+    var recipeName: String = ""
+    var recipeTime: Int = 0
+    var introduction: String = ""
+    var postImagePath: String = ""
+    var foodIngredients: [String] = []
+    var cookingType: [String] = []
+    var recipeProcess: [RecipeReadProcess] = []
+    var lastModifiedAt: String = ""
+    var writerUserId: Int = 0
+    var writerUserEmail: String? = ""
+    var writerNickName: String = ""
+    var writerProfile: String? = ""
+    var likedCount: Int = 0
+    var followCheck: Bool = false
+    var likedCheck: Bool = false
+    var archiveCheck: Bool = false
     
     var id: String = UUID().uuidString
 
 }
 
 struct RecipeReadProcess: Codable, Identifiable, Hashable {
-    let stepNum: Int
-    let recipeWriting, recipeProcessImagePath: String
+    var stepNum: Int = 0
+    var recipeWriting: String = ""
+    var recipeProcessImagePath: String = ""
     
     var id: String = UUID().uuidString
 }

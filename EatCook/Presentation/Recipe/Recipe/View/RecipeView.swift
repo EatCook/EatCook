@@ -57,11 +57,11 @@ struct RecipeView: View {
                     
                 } else if let error = viewModel.error {
                     Text(error)
-                } else if let data = viewModel.recipeReadData {
+                } else {
                     LazyVStack {
                         HStack(spacing: 6) {
                             HStack {
-                                if let profilePath = data.writerProfile {
+                                if let profilePath = viewModel.recipeReadData.writerProfile {
                                     if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(profilePath)") {
                                         AutoRetryImage(url: imageUrl, failImageType: .userProfileSmall)
                                             .frame(width: 25, height: 25)
@@ -69,7 +69,7 @@ struct RecipeView: View {
                                     }
                                 }
                                 
-                                Text(data.writerNickName)
+                                Text(viewModel.recipeReadData.writerNickName)
                                     .font(.system(size: 16, weight: .semibold))
                             }
                             .onTapGesture {
@@ -87,14 +87,14 @@ struct RecipeView: View {
                         .padding(.horizontal, 16)
                         .padding(.vertical, 20)
                         
-                        if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(data.postImagePath)") {
+                        if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(viewModel.recipeReadData.postImagePath)") {
                             AutoRetryImage(url: imageUrl, failImageType: .recipeMain)
                                 .aspectRatio(4/3, contentMode: .fit)
                         }
                         
                         VStack(alignment: .leading, spacing: 16) {
                             HStack {
-                                Text(data.recipeName)
+                                Text(viewModel.recipeReadData.recipeName)
                                     .font(.system(size: 24, weight: .semibold))
                                 
                                 Spacer()
@@ -108,7 +108,7 @@ struct RecipeView: View {
                                     .scaledToFit()
                                     .foregroundStyle(.gray5)
                                 
-                                Text("\(data.recipeTime)")
+                                Text("\(viewModel.recipeReadData.recipeTime)")
                                     .font(.system(size: 12, weight: .regular))
                                     .foregroundStyle(.gray5)
                                     .padding(.trailing, 8)
@@ -119,12 +119,12 @@ struct RecipeView: View {
                                     .scaledToFit()
                                     .foregroundStyle(.gray5)
                                 
-                                Text("\(data.likedCount)")
+                                Text("\(viewModel.recipeReadData.likedCount)")
                                     .font(.system(size: 12, weight: .regular))
                                     .foregroundStyle(.gray5)
                             }
                             
-                            Text(data.introduction)
+                            Text(viewModel.recipeReadData.introduction)
                                 .font(.system(size: 16, weight: .regular))
                                 .foregroundStyle(.gray8)
                         }
@@ -211,7 +211,7 @@ struct RecipeView: View {
                     if viewModel.isMyRecipe {
                         Menu {
                             Button {
-                                naviPathFinder.addPath(.recipeCreate(""))
+                                naviPathFinder.addPath(.recipeCreate(postId))
                             } label: {
                                 Label("편집", systemImage: "pencil")
                             }

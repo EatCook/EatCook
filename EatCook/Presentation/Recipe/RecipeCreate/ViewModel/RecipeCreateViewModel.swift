@@ -13,6 +13,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     private let cookTalkUseCase: RecipeUseCase
     
     private var cancellables = Set<AnyCancellable>()
+    private var imageLoader = ImageLoadManager()
     
     /// 첫번째
     @Published var recipeTitle: String = ""
@@ -44,9 +45,46 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     /// Response 모델
     @Published var recipeCreateResponse = ResponseData()
     
+    /// 편집 Response 모델
+    @Published var recipeReadResponseData = RecipeReadResponseData()
+    
     init(cookTalkUseCase: RecipeUseCase) {
         self.cookTalkUseCase = cookTalkUseCase
         setupBinding()
+    }
+    
+    private func setupPreviousRecipe() {
+        /// 첫번째
+        self.recipeTitle = self.recipeReadResponseData.recipeName
+        self.recipeDescription = self.recipeReadResponseData.introduction
+        if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(recipeReadResponseData.postImagePath)") {
+            imageLoader.load(url: imageUrl)
+            guard let image = imageLoader.image else { return }
+            self.titleImage = image
+        }
+        self.selectedTime = self.recipeReadResponseData.recipeTime
+        self.selectedTheme = self.recipeReadResponseData.cookingType.first ?? "테마 선택"
+        
+        /// 두번째
+        var ingredientsTagArr: [Tag] = []
+        for ingredient in recipeReadResponseData.foodIngredients {
+            let tag = Tag(value: ingredient)
+            ingredientsTagArr.append(tag)
+            self.ingredientsTags = ingredientsTagArr
+        }
+        
+        /// 세번째
+        var recipeStepArr: [RecipeStep] = []
+        for step in recipeReadResponseData.recipeProcess {
+            if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(step.recipeProcessImagePath)") {
+                imageLoader.load(url: imageUrl)
+                guard let image = imageLoader.image else { return }
+                let step = RecipeStep(description: step.recipeWriting, image: image, imageExtension: "")
+                recipeStepArr.append(step)
+                self.recipeStepData = recipeStepArr
+            }
+        }
+        
     }
     
     private func setupBinding() {
@@ -76,7 +114,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
         
         $titleImageExtension
             .sink { [weak self] newValue in
-                self?.recipeCreateData.mainFileExtension = newValue ?? ""
+                self?.recipeCreateData.mainFileExtension = newValue
             }
             .store(in: &cancellables)
         
@@ -155,6 +193,26 @@ extension RecipeCreateViewModel {
                 .store(in: &cancellables)
         }
         
+    }
+    
+    func responseRecipeRead(_ postId: Int) {
+        
+        cookTalkUseCase.responseRecipeRead(postId)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("✅")
+                case .failure(let error):
+                    print("\(error.localizedDescription)")
+                }
+            } receiveValue: { response in
+                print(response.data)
+                self.recipeReadResponseData = response.data
+                self.setupPreviousRecipe()
+            }
+            .store(in: &cancellables)
+
     }
     
     func uploadImage() async {

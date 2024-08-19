@@ -15,7 +15,7 @@ final class RecipeViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     
-    @Published var recipeReadData: RecipeReadResponseData?
+    @Published var recipeReadData = RecipeReadResponseData()
     @Published var recipeProcessData: [RecipeData] = []
     @Published var postId: Int = 0
     @Published var isLoading: Bool = false
@@ -88,8 +88,7 @@ extension RecipeViewModel {
                                                                           description: $0.recipeWriting)}
                 let ingredients = response.data.foodIngredients.map { RecipeData(type: .ingredients,
                                                                                  description: $0) }
-                self.recipeProcessData.append(contentsOf: recipe)
-                self.recipeProcessData.append(contentsOf: ingredients)
+                self.recipeProcessData = recipe + ingredients
                 self.setupBinding()
             }
             .store(in: &cancellables)

@@ -14,26 +14,22 @@ struct RecipeCreateView: View {
                 networkProvider: NetworkProviderImpl(
                     requestManager: NetworkManager()))))
     
-    @State private var progressValue: Float = 0.2
-    
     @FocusState private var titleTextFieldFocused: Bool
     @FocusState private var recipeTextEditorFocused: Bool
     
     @State private var showTimerPicker = false
     @State private var showDropdownTheme = false
     @State private var showImagePicker = false
-//    @State private var selectedImage: UIImage?
-//    @State private var imageExtension: String?
     
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
     let characterLimit = 100
     
+    var postId: Int?
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 20) {
-                //            ProgressView(value: progressValue)
-                //                .progressViewStyle(CustomProgressBarStyle())
                 
                 Text("레시피 내용")
                     .font(.title2.bold())
@@ -52,8 +48,6 @@ struct RecipeCreateView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 60, height: 50)
-                            //                                .padding()
-                            //                                .foregroundStyle(.gray5)
                                 .modifier(CustomBorderModifier())
                         } else {
                             Image(systemName: "camera.fill")
@@ -132,24 +126,14 @@ struct RecipeCreateView: View {
                     .frame(maxWidth: .infinity)
                     .modifier(CustomBorderModifier())
                     
-                    //                Divider()
-                    //                    .frame(width: 1, height: 30)
-                    //                    .background(.gray3)
-                    
                     Button {
                         showDropdownTheme.toggle()
                     } label: {
                         DropdownView(showDropDown: $showDropdownTheme, selectedTheme: $viewModel.selectedTheme)
                             .frame(height: showDropdownTheme ? 260 : 60)
                     }
-                    //                    .padding()
-                    //                    .frame(maxWidth: .infinity)
-                    //                    .modifier(CustomBorderModifier())
                 }
                 .frame(height: showDropdownTheme ? 260 : 60)
-                //                .frame(maxWidth: .infinity)
-                //            .padding()
-                //            .modifier(CustomBorderModifier())
                 
                 Button {
                     naviPathFinder.addPath(.recipeTag(viewModel))
@@ -196,9 +180,12 @@ struct RecipeCreateView: View {
             }
             .presentationDetents([.fraction(0.42)])
         }
-//        .navigationDestination(for: ViewOptions.self) { viewCase in
-//            viewCase.view()
-//        }
+        .onAppear {
+            if let postId = postId {
+                viewModel.responseRecipeRead(postId)
+            }
+        }
+        
     }
     
 }
@@ -206,25 +193,6 @@ struct RecipeCreateView: View {
 #Preview {
     NavigationStack {
         RecipeCreateView()
-            .environmentObject(NavigationPathFinder.shared)        
+            .environmentObject(NavigationPathFinder.shared)
     }
 }
-
-//struct CustomProgressBarStyle: ProgressViewStyle {
-//    var progressBarThickness: CGFloat = 10.0
-//
-//    func makeBody(configuration: Configuration) -> some View {
-//
-//        return ZStack(alignment: .leading) {
-//            RoundedRectangle(cornerRadius: 8)
-//                .frame(height: progressBarThickness)
-//                .foregroundColor(Color("bgPrimary"))
-//
-//            RoundedRectangle(cornerRadius: 8)
-//                .frame(width: CGFloat(configuration.fractionCompleted ?? 0.0) * UIScreen.main.bounds.width,
-//                       height: progressBarThickness)
-//                .foregroundColor(.orange)
-//        }
-//        //        .animation(.linear)
-//    }
-//}

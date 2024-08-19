@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum ViewOptions: Hashable {
-    case recipeCreate(_ data: String)
+    case recipeCreate(_ postId: Int?)
     case recipeTag(_ data: RecipeCreateViewModel)
     case recipeStep(_ data: RecipeCreateViewModel)
     case recipeDetail(_ postId: Int)
@@ -35,7 +35,7 @@ enum ViewOptions: Hashable {
     func view() -> some View {
         switch self {
         case .recipeDetail(let postId): RecipeView(postId: postId).toolbarRole(.editor)
-        case .recipeCreate: RecipeCreateView().toolbarRole(.editor)
+        case .recipeCreate(let postId): RecipeCreateView(postId: postId).toolbarRole(.editor)
         case .recipeTag(let viewModel): RecipeTagView(viewModel: viewModel).toolbarRole(.editor)
         case .recipeStep(let viewModel): RecipeStepView(viewModel: viewModel).toolbarRole(.editor)
             

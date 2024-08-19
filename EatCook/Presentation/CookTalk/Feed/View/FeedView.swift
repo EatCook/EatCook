@@ -149,7 +149,7 @@ struct FeedView: View {
                 }
                 
                 Button {
-                    naviPathFinder.addPath(.recipeCreate(""))
+                    naviPathFinder.addPath(.recipeCreate(nil))
                 } label: {
                     Image("plusbutton")
                         .resizable()
