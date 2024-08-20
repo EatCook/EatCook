@@ -54,8 +54,8 @@ class HomeViewModel : ObservableObject {
     
     var recommendType : [String] = ["DIET", "HEALTH_DIET" , "CONVENIENCE_STORE", "DELIVERY_FOOD", "MEAL_KIT"]
     @Published var recommendFoods : [String : [RecommendFoods]] = [
-//        :
-        "DIET" : [RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true), RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true), RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true), RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true)]
+        :
+//        "DIET" : [RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true), RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true), RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true), RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true)]
     
     
     ]
