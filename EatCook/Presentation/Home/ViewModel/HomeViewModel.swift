@@ -58,15 +58,22 @@ class HomeViewModel : ObservableObject {
     
     @Published var recommendSelectedIndex: Int = 0
     @Published var recommendTabViewCount : Int = 0
-    @Published var recommendTabViewHeightHeight : Int = 240
     @Published var isFetching: Bool = false
-    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+   
     @State var frameSize: CGFloat = 500
+    
+    
+    @Published var currentTabIndex: Int = 0
+    @Published var currentTabHeight: CGFloat = 500 // 초기 높이 설정
+    
+    
 //    DIET("다이어트만 n번째")
 //    HEALTH_DIET("건강한 식단관리")
 //    CONVENIENCE_STORE("편의점은 내 구역")
 //    DELIVERY_FOOD("배달음식 단골고객")
 //    MEAL_KIT("밀키트 lover")
+    
+    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
     
     private func getUserData(){
         loginUserInfo.responseUserInfo { userInfo in
@@ -197,6 +204,15 @@ class HomeViewModel : ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.isFetching = false
         }
+    }
+    
+    // 해당 탭에 있는 아이템 수를 기반으로 높이 계산
+    func calculateHeight(for foods: [RecommendFoods]) -> CGFloat {
+        let itemHeight: CGFloat = 240 // 각 아이템이 차지하는 높이
+        let calculatedHeight = CGFloat(foods.count) * itemHeight
+        let defaultHeight: CGFloat = 500 // 기본 높이
+        
+        return calculatedHeight > 0 ? calculatedHeight : defaultHeight
     }
     
     

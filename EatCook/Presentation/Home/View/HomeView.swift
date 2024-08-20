@@ -415,8 +415,6 @@ struct HomeRecommendView : View {
             
         }
                 
-    
-
        ) {
            tabViewSection
        }
@@ -429,12 +427,19 @@ struct HomeRecommendView : View {
                let foods = homeViewModel.recommendFoods[key]
                RecommendColArrView(foods: foods ?? [])
                    .tag(index)
+                   .overlay(GeometryReader { proxy in
+                       Color.clear.onAppear {
+                           homeViewModel.currentTabIndex = index
+                           homeViewModel.currentTabHeight = homeViewModel.calculateHeight(for: foods ?? [])
+                       }
+                   })
            }
        }
        .tabViewStyle(PageTabViewStyle())
-//       .frame(height: homeViewModel.frameSize)
-       .frame(height: CGFloat(homeViewModel.recommendTabViewCount) * 240 > 0 ? CGFloat(homeViewModel.recommendTabViewCount) * 240 : 500)
+       .frame(height: homeViewModel.currentTabHeight)
    }
+    
+
     
     
     
@@ -530,7 +535,7 @@ struct RecommendColView : View {
                             }
                         }
                     }
-                    Image(archiveCheck ? .bookMarkChecked : .bookMark).resizable().frame(width: 18 , height:  24).padding()
+                    Image(archiveCheck ? .bookMarkChecked : .bookMark).frame(width: 18 , height:  24).padding()
                 }
                
                 HStack {
