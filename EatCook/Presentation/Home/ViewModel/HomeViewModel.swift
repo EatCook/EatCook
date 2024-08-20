@@ -53,20 +53,32 @@ class HomeViewModel : ObservableObject {
     @Published var recommendCookingTheme : [String : String] = ["DIET" : "다이어트만 n번째", "HEALTH_DIET" : "건강한 식단관리", "CONVENIENCE_STORE" : "편의점은 내 구역", "DELIVERY_FOOD" : "배달음식 단골고객", "MEAL_KIT" : "밀키트 lover"]
     
     var recommendType : [String] = ["DIET", "HEALTH_DIET" , "CONVENIENCE_STORE", "DELIVERY_FOOD", "MEAL_KIT"]
-    @Published var recommendFoods : [String : [RecommendFoods]] = [:]
+    @Published var recommendFoods : [String : [RecommendFoods]] = [
+        :
+//        "DIET" : [RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true), RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true), RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true), RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true)]
+    
+    
+    ]
 
     
     @Published var recommendSelectedIndex: Int = 0
     @Published var recommendTabViewCount : Int = 0
-    @Published var recommendTabViewHeightHeight : Int = 240
     @Published var isFetching: Bool = false
-    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+   
     @State var frameSize: CGFloat = 500
+    
+    
+    @Published var currentTabIndex: Int = 0
+    @Published var currentTabHeight: CGFloat = 500 // 초기 높이 설정
+    
+    
 //    DIET("다이어트만 n번째")
 //    HEALTH_DIET("건강한 식단관리")
 //    CONVENIENCE_STORE("편의점은 내 구역")
 //    DELIVERY_FOOD("배달음식 단골고객")
 //    MEAL_KIT("밀키트 lover")
+    
+    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
     
     private func getUserData(){
         loginUserInfo.responseUserInfo { userInfo in
@@ -197,6 +209,15 @@ class HomeViewModel : ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.isFetching = false
         }
+    }
+    
+    // 해당 탭에 있는 아이템 수를 기반으로 높이 계산
+    func calculateHeight(for foods: [RecommendFoods]) -> CGFloat {
+        let itemHeight: CGFloat = 240 // 각 아이템이 차지하는 높이
+        let calculatedHeight = CGFloat(foods.count) * itemHeight
+        let defaultHeight: CGFloat = 500 // 기본 높이
+        
+        return calculatedHeight > 0 ? calculatedHeight : defaultHeight
     }
     
     

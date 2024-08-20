@@ -19,6 +19,7 @@
 		E55B79F02C635E2C001C6B4E /* ModifiableEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B79EF2C635E2C001C6B4E /* ModifiableEndPoint.swift */; };
 		E561606A2C65AB1C0099EF8A /* SocialLoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56160692C65AB1C0099EF8A /* SocialLoginResponseDTO.swift */; };
 		E561606C2C65AB550099EF8A /* SocialLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561606B2C65AB550099EF8A /* SocialLoginResponse.swift */; };
+		E58644B52C743C37007692D4 /* TrackableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58644B42C743C37007692D4 /* TrackableScrollView.swift */; };
 		E598FA152C69D4EE00636F23 /* CheckNickNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598FA142C69D4EE00636F23 /* CheckNickNameResponseDTO.swift */; };
 		E598FA172C69EF1400636F23 /* AddSignUpResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598FA162C69EF1400636F23 /* AddSignUpResponseDTO.swift */; };
 		E59AF1B32C5A0E5F004AF236 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AF1B22C5A0E5F004AF236 /* SearchService.swift */; };
@@ -234,6 +235,7 @@
 		E55B79EF2C635E2C001C6B4E /* ModifiableEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiableEndPoint.swift; sourceTree = "<group>"; };
 		E56160692C65AB1C0099EF8A /* SocialLoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginResponseDTO.swift; sourceTree = "<group>"; };
 		E561606B2C65AB550099EF8A /* SocialLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginResponse.swift; sourceTree = "<group>"; };
+		E58644B42C743C37007692D4 /* TrackableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableScrollView.swift; sourceTree = "<group>"; };
 		E598FA142C69D4EE00636F23 /* CheckNickNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNickNameResponseDTO.swift; sourceTree = "<group>"; };
 		E598FA162C69EF1400636F23 /* AddSignUpResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSignUpResponseDTO.swift; sourceTree = "<group>"; };
 		E59AF1B22C5A0E5F004AF236 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
@@ -1192,6 +1194,7 @@
 				F69411B52C610A8E00ECA302 /* LoadingImageView.swift */,
 				F6A554712C63BB6100EFA72F /* AutoRetryImage.swift */,
 				E5A5ED342C6C9F75003693D0 /* BaseAlertView.swift */,
+				E58644B42C743C37007692D4 /* TrackableScrollView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1591,6 +1594,7 @@
 				F69411552C57B4B700ECA302 /* MyPageMyRecipeResponseDTO.swift in Sources */,
 				E5D3EF482C58ACF200ECF9CF /* Color+Extension.swift in Sources */,
 				E5D3EF6F2C58BFBC00ECF9CF /* FindAccountView.swift in Sources */,
+				E58644B52C743C37007692D4 /* TrackableScrollView.swift in Sources */,
 				F69411212C57B4B700ECA302 /* MyPageProfileEditRequestResponse.swift in Sources */,
 				E59D7C7A2C5880D8007702C2 /* LoginViewModel.swift in Sources */,
 				F69411292C57B4B700ECA302 /* EatCookRepositoryType.swift in Sources */,
