@@ -11,12 +11,11 @@ struct RecipeUpdateRequestDTO: Codable {
     
     var toDictionary: [String: Any] {
         let dict: [String: Any] = [
-            "postId": postId,
             "recipeName": recipeName,
             "recipeTime": recipeTime,
             "introduction": introduction,
             "mainFileExtension": mainFileExtension,
-            "userId": userId,
+//            "postId": postId,
             "foodIngredients": foodIngredients,
             "cookingType": cookingType,
             "recipeProcess": recipeProcess.map { $0.toDictionary }
@@ -24,43 +23,39 @@ struct RecipeUpdateRequestDTO: Codable {
         return dict
     }
     
-    let postId: Int
     let recipeName: String
     let recipeTime: Int
     let introduction, mainFileExtension: String
-    let userId: Int
+//    let postId: Int
     let foodIngredients, cookingType: [String]
     let recipeProcess: [RecipeProcessDTO]
     
     init(query: RecipeUpdateRequest) {
-        self.postId = query.postId
         self.recipeName = query.recipeName
         self.recipeTime = query.recipeTime
         self.introduction = query.introduction
         self.mainFileExtension = query.mainFileExtension
-        self.userId = query.userId
+//        self.postId = query.postId
         self.foodIngredients = query.foodIngredients
         self.cookingType = query.cookingType
         self.recipeProcess = query.recipeProcess.map { $0.toData() }
     }
     
     init(
-        postId: Int,
         recipeName: String,
         recipeTime: Int,
         introduction: String,
         mainFileExtension: String,
-        userId: Int,
+//        postId: Int,
         foodIngredients: [String],
         cookingType: [String],
         recipeProcess: [RecipeProcessDTO]
     ) {
-        self.postId = postId
         self.recipeName = recipeName
         self.recipeTime = recipeTime
         self.introduction = introduction
         self.mainFileExtension = mainFileExtension
-        self.userId = userId
+//        self.postId = postId
         self.foodIngredients = foodIngredients
         self.cookingType = cookingType
         self.recipeProcess = recipeProcess

@@ -10,7 +10,7 @@ import Foundation
 enum RecipeAPI: EndPoint {
     case recipeRead(_ recipeId: Int)
     case recipeCreate(_ query: RecipeCreateRequestDTO)
-    case recipeUpdate(_ query: RecipeCreateRequestDTO, _ recipeId: Int)
+    case recipeUpdate(_ query: RecipeUpdateRequestDTO, _ recipeId: Int)
     case recipeDelete(_ recipeId: Int)
     
     var path: String {

@@ -20,7 +20,8 @@ struct RecipeCreateRequest: Codable {
 // 레시피 생성, 업데이트 동일
 struct RecipeProcess: Codable {
     var stepNum: Int
-    var recipeWriting, fileExtension: String
+    var recipeWriting: String
+    var fileExtension: String
 }
 
 extension RecipeCreateRequest {

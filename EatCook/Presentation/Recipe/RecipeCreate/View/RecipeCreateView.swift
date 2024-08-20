@@ -190,9 +190,9 @@ struct RecipeCreateView: View {
     
 }
 
-#Preview {
-    NavigationStack {
-        RecipeCreateView()
-            .environmentObject(NavigationPathFinder.shared)
-    }
-}
+//#Preview {
+//    NavigationStack {
+//        RecipeCreateView()
+//            .environmentObject(NavigationPathFinder.shared)
+//    }
+//}

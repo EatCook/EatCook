@@ -33,6 +33,12 @@ extension RecipeUseCase {
             .eraseToAnyPublisher()
     }
     
+    func requestRecipeUpdate(_ query: RecipeUpdateRequestDTO, _ recipeId: Int) -> AnyPublisher<RecipeCreateResponse, NetworkError> {
+        return eatCookRepository
+            .requestRecipeUpdate(of: RecipeAPI.recipeUpdate(query, recipeId))
+            .eraseToAnyPublisher()
+    }
+    
     func requestRecipeDelete(_ postId: Int) -> AnyPublisher<RecipeDeleteRequestResponse, NetworkError> {
         return eatCookRepository
             .requestRecipeDelete(of: RecipeAPI.recipeDelete(postId))

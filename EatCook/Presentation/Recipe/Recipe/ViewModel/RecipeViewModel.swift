@@ -11,7 +11,7 @@ import Combine
 final class RecipeViewModel: ObservableObject {
     
     private let recipeUseCase: RecipeUseCase
-    let loginUserInfo: LoginUserInfoManager
+    private let loginUserInfo: LoginUserInfoManager
     
     private var cancellables = Set<AnyCancellable>()
     

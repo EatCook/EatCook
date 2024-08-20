@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-/*
- - 선택된 이미지를 하나의 변수에서 상태관리를 해서 글쓰기랑 편집이 같이 변경됨.
- - 디바이스에서 실행시 List 배경색 적용이 안됨.
- - 이미지 등록시 버튼에 맞게 레이아웃 다시 잡아야 됨.
- */
-
 struct RecipeStep: Identifiable, Hashable {
     let id = UUID().uuidString
     var description: String
@@ -118,8 +112,13 @@ struct RecipeStepView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     Task {
-                        await viewModel.requestRecipeCreate()
-                        await viewModel.uploadImage()
+                        if viewModel.isEditType {
+                            await viewModel.requestRecipeUpdate(viewModel.postId)
+                            await viewModel.uploadImage()
+                        } else {
+                            await viewModel.requestRecipeCreate()
+                            await viewModel.uploadImage()
+                        }
                         
                         if !viewModel.isUpLoading && viewModel.isUpLoadingError == nil  {
                             naviPathFinder.popToRoot()

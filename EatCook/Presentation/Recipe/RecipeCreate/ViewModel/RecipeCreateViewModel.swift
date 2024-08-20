@@ -49,8 +49,12 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     
     /// 편집 Response 모델
     @Published var recipeReadResponseData = RecipeReadResponseData()
+    @Published var isEditType: Bool = false
+    @Published var postId: Int = 0
     
-    init(cookTalkUseCase: RecipeUseCase) {
+    init(
+        cookTalkUseCase: RecipeUseCase
+    ) {
         self.cookTalkUseCase = cookTalkUseCase
         setupBinding()
     }
@@ -129,7 +133,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
         $recipeStepData
             .sink { [weak self] newValue in
                 self?.recipeCreateData.recipeProcess = newValue.enumerated().map { index, data in
-                    RecipeProcess(stepNum: index + 1, recipeWriting: data.description, fileExtension: data.imageExtension)
+                    RecipeProcess(stepNum: index + 1, recipeWriting: data.description, fileExtension: data.imageExtension == "" ? "default" : data.imageExtension)
                 }
             }
             .store(in: &cancellables)
@@ -142,11 +146,15 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     func updateStep(_ index: Int) {
         if let image = recipeStepUpdateImage {
             recipeStepData[index].image = image
+            recipeStepData[index].imageURL = recipeStepImageURL
+            recipeStepData[index].imageExtension = recipeStepImageExtension
             recipeStepData[index].isEditing.toggle()
         } else {
             recipeStepData[index].isEditing.toggle()
         }
         recipeStepUpdateImage = nil
+        recipeStepImageURL = nil
+        recipeStepImageExtension = ""
     }
     
     func deleteStep() {
@@ -198,7 +206,45 @@ extension RecipeCreateViewModel {
         
     }
     
+    func requestRecipeUpdate(_ recipeId: Int) async {
+        isUpLoading = true
+        isUpLoadingError = nil
+        
+        let recipeUpdateDTO = RecipeUpdateRequestDTO(
+            recipeName: recipeCreateData.recipeName,
+            recipeTime: recipeCreateData.recipeTime,
+            introduction: recipeCreateData.introduction,
+            mainFileExtension: recipeCreateData.mainFileExtension == "" ? "default" : recipeCreateData.mainFileExtension,
+//            postId: recipeId,
+            foodIngredients: recipeCreateData.foodIngredients,
+            cookingType: recipeCreateData.cookingType,
+            recipeProcess: recipeCreateData.recipeProcess.map { $0.toData() }
+        )
+        
+        
+        return await withCheckedContinuation { continuation in
+            cookTalkUseCase.requestRecipeUpdate(recipeUpdateDTO, recipeId)
+                .receive(on: DispatchQueue.main)
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        continuation.resume()
+                    case .failure(let error):
+                        self.isUpLoading = false
+                        self.isUpLoadingError = error.localizedDescription
+                        continuation.resume()
+                    }
+                } receiveValue: { response in
+                    print(response.data)
+                    self.recipeCreateResponse = response.data
+                }
+                .store(in: &cancellables)
+        }
+    }
+    
     func responseRecipeRead(_ postId: Int) {
+        self.isEditType = true
+        self.postId = postId
         
         cookTalkUseCase.responseRecipeRead(postId)
             .receive(on: DispatchQueue.main)

@@ -299,7 +299,7 @@ struct ViewOffsetKey: PreferenceKey {
     }
 }
 
-#Preview {
-    RecipeView(postId: 10)
-        .environmentObject(NavigationPathFinder.shared)
-}
+//#Preview {
+//    RecipeView(postId: 10)
+//        .environmentObject(NavigationPathFinder.shared)
+//}
