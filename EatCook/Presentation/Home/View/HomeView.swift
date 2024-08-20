@@ -12,7 +12,8 @@ struct HomeView: View {
     @State private var scrollOffset: CGFloat = 0
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     @StateObject private var homeViewModel = HomeViewModel(homeUseCase: HomeUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))), loginUserInfo: LoginUserInfoManager.shared)
- 
+    
+    @State private var headerShow = true
     
     
     var body: some View {
@@ -24,26 +25,28 @@ struct HomeView: View {
                 
                 GeometryReader { geometry in
 
-                    Color.primary7.opacity(scrollOffset > 50 ? 1 : 0).edgesIgnoringSafeArea(.top).animation(.easeInOut)
+                    Color.primary7.opacity(headerShow ? 1 : 0).edgesIgnoringSafeArea(.top).animation(.easeInOut)
                     ScrollViewReader { ScrollViewProxy in
-                      
-                        ScrollView(.vertical, showsIndicators: false) {
-                            
-                                
-                            HomeMenuTopView()
-                            GeometryReader { scrollViewGeometry in
-                                Color.clear.onAppear {
-                                    scrollOffset = scrollViewGeometry.frame(in: .global).minY
-                                }
-                                .onChange(of: scrollViewGeometry.frame(in: .global).minY) { newValue in
-                                    withAnimation {
-                                        scrollOffset = newValue
-                                    }
-                                }
+                        TrackableScrollView(canShowHeader: $headerShow) {
+                            VStack{
+                                HomeMenuTopView()
                             }
-       
+                        } content: {
                             VStack(spacing: 20) {
                                 HomeInterestingView()
+                                GeometryReader { scrollViewGeometry in
+                                    Color.clear.onAppear {
+                                        print("Initial scrollOffset: \(scrollOffset)") // 초기 값 출력
+                                        scrollOffset = scrollViewGeometry.frame(in: .global).minY
+                                    }
+                                    .onChange(of: scrollViewGeometry.frame(in: .global).minY) { newValue in
+//                                        print("Updated scrollOffset: \(scrollOffset)") // 값 변경 시 출력
+                                        withAnimation {
+                                            scrollOffset = newValue
+                                        }
+                                    }
+                                }.frame(height: 0) // GeometryReader 자체는 공간을 차지하지 않게 설정
+                                
                                 Color.gray2.frame(height : 10)
                                 HomeRecommendView().onChange(of: homeViewModel.recommendSelectedIndex) { _ in
                                     withAnimation {
@@ -51,19 +54,16 @@ struct HomeView: View {
                                     }
                                 }
                                 
-
-                            }                            
-                        }
-                        .refreshable {
+                                
+                            }
+                        } refreshable: {
                             homeViewModel.fetchItems()
                         }
-
+                        
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-               
-                        .background(.white)
-                        .padding(.top)
-                        
-                        
+                            .background(.white)
+                            .padding(.top)
+         
                     }
                 
                     
@@ -120,12 +120,10 @@ struct HomeMenuTopView : View {
                         }
                     }.padding(.horizontal, 24)
                     .padding(.top, 15)
-                    
+                    .padding(.bottom, 12)
                     VStack {
-                        Spacer()
                         Button(action: {
                             naviPathFinder.addPath(.search)
-//                            naviPathFinder.addPath(.login)
                         }, label: {
                             HStack {
                                 Text("재료 또는 레시피를 검색해 보세요")
@@ -146,7 +144,8 @@ struct HomeMenuTopView : View {
                                 .cornerRadius(10)
                                 .padding(.horizontal, 22)
                         })
-                    }.padding(.bottom, 24)
+                    }
+                    .padding(.bottom, 24)
                     .padding(.top, 12)
                 }.background{
                     Color.primary7

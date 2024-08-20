@@ -53,7 +53,12 @@ class HomeViewModel : ObservableObject {
     @Published var recommendCookingTheme : [String : String] = ["DIET" : "다이어트만 n번째", "HEALTH_DIET" : "건강한 식단관리", "CONVENIENCE_STORE" : "편의점은 내 구역", "DELIVERY_FOOD" : "배달음식 단골고객", "MEAL_KIT" : "밀키트 lover"]
     
     var recommendType : [String] = ["DIET", "HEALTH_DIET" , "CONVENIENCE_STORE", "DELIVERY_FOOD", "MEAL_KIT"]
-    @Published var recommendFoods : [String : [RecommendFoods]] = [:]
+    @Published var recommendFoods : [String : [RecommendFoods]] = [
+//        :
+        "DIET" : [RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true), RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true), RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true), RecommendFoods(postId: 10, postImagePath: "image/post/9/79/c0ddc92b-94cd-445c-90cf-294973c35755.jpeg", recipeName: "test", recipeTime: 10, introduction: "test", likedCounts: 10, likedCheck: true, archiveCheck: true)]
+    
+    
+    ]
 
     
     @Published var recommendSelectedIndex: Int = 0
