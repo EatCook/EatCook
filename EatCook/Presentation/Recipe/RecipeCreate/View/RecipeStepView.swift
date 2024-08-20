@@ -27,6 +27,8 @@ struct RecipeStepView: View {
     
     @State private var showImagePicker: Bool = false
     @State private var showUploadingAlert: Bool = false
+    @State private var isEditingMode: Bool = false
+    @State private var scrollToEnd = false
     
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
@@ -37,55 +39,67 @@ struct RecipeStepView: View {
                 .fontWeight(.semibold)
                 .padding()
             
-            List {
-                ForEach(viewModel.recipeStepData.indices, id: \.self) { index in
-                    if !viewModel.recipeStepData[index].isEditing {
-                        StepRowView(viewModel: viewModel, index: index)
-                            .listRowBackground(Color.gray1)
-                            .listRowSeparator(.hidden)
-                            .swipeActions {
-                                Button {
-                                    
-                                } label: {
-                                    Image(systemName: "trash.fill")
-                                        .tint(.primary2)
-                                }
-                                
-                                Button {
-                                    withAnimation(.easeInOut(duration: 0.4)) {
-                                        viewModel.recipeStepData[index].isEditing = true
+            ScrollViewReader { proxy in
+                List {
+                    ForEach(viewModel.recipeStepData.indices, id: \.self) { index in
+                        if !viewModel.recipeStepData[index].isEditing {
+                            StepRowView(viewModel: viewModel, index: index)
+                                .listRowBackground(Color.gray1)
+                                .listRowSeparator(.hidden)
+                                .swipeActions {
+                                    Button {
+                                        
+                                    } label: {
+                                        Image(systemName: "trash.fill")
+                                            .foregroundStyle(.white)
                                     }
-                                } label: {
-                                    Image(systemName: "pencil")
-                                        .tint(.primary4)
+                                    .tint(.primary4)
+                                    
+                                    Button {
+                                        withAnimation(.easeInOut(duration: 0.4)) {
+                                            viewModel.recipeStepData[index].isEditing = true
+                                        }
+                                        isEditingMode = true
+                                    } label: {
+                                        Image(systemName: "pencil")
+                                            .foregroundStyle(.primary4)
+                                    }
+                                    .tint(.primary2)
+                                    
                                 }
-                            }
-                    } else {
-                        StepEditorView(viewModel: viewModel,
-                                       showImagePicker: $showImagePicker,
-                                       selectedImage: $viewModel.recipeStepImage,
-                                       index: index)
+                                .id(index)
+                        } else {
+                            StepEditorView(viewModel: viewModel,
+                                           showImagePicker: $showImagePicker,
+                                           isEditingMode: $isEditingMode,
+                                           index: index)
                             .listRowBackground(Color.gray1)
                             .listRowSeparator(.hidden)
-//                        StepEditorView(viewModel: viewModel, index: index)
                             
+                        }
+                    }
+                    .onChange(of: scrollToEnd) { newValue in
+                        if newValue {
+                            proxy.scrollTo(viewModel.recipeStepData.indices.last, anchor: .bottom)
+                            scrollToEnd = false
+                        }
                     }
                 }
+                .listStyle(.plain)
+                
             }
-            .listStyle(.plain)
-//            .onTapGesture {
-//                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-//            }
             
             CreateChatView(viewModel: viewModel,
                            showImagePicker: $showImagePicker,
-                           selectedImage: $viewModel.recipeStepImage)
-                .sheet(isPresented: $showImagePicker) {
-                    ImagePicker(image: $viewModel.recipeStepImage,
-                                imageURL: $viewModel.recipeStepImageURL,
-                                imageExtension: $viewModel.recipeStepImageExtension,
-                                isPresented: $showImagePicker)
-                }
+                           selectedImage: $viewModel.recipeStepImage,
+                           scrollToEnd: $scrollToEnd)
+            
+        }
+        .sheet(isPresented: $showImagePicker) {
+            ImagePicker(image: isEditingMode ? $viewModel.recipeStepUpdateImage : $viewModel.recipeStepImage,
+                        imageURL: $viewModel.recipeStepImageURL,
+                        imageExtension: $viewModel.recipeStepImageExtension,
+                        isPresented: $showImagePicker)
         }
         .background(.gray1)
         .navigationTitle("글쓰기")
@@ -128,11 +142,6 @@ struct RecipeStepView: View {
                     Text("레시피 굽는중...")
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundStyle(.white)
-//                    ProgressView("업로딩 중...")
-//                        .padding()
-//                        .background(.white)
-//                        .clipShape(RoundedRectangle(cornerRadius: 10))
-//                        .shadow(radius: 10)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.black.opacity(0.4))
@@ -158,8 +167,9 @@ struct StepRowView: View {
             if let image = viewModel.recipeStepData[index].image {
                 Image(uiImage: image)
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 60, height: 80)
+                    .scaledToFill()
+                    .frame(width: 60, height: 70)
+                    .modifier(CustomBorderModifier())
             }
             
             VStack(alignment: .leading) {
@@ -185,16 +195,17 @@ struct StepRowView: View {
 struct StepEditorView: View {
     @ObservedObject var viewModel: RecipeCreateViewModel
     @Binding var showImagePicker: Bool
-    @Binding var selectedImage: UIImage?
+    @Binding var isEditingMode: Bool
     var index: Int
     
     var body: some View {
         HStack(alignment: .top) {
-            if let image = viewModel.recipeStepData[index].image {
+            if let image = viewModel.recipeStepUpdateImage ?? viewModel.recipeStepData[index].image {
                 Image(uiImage: image)
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 60, height: 80)
+                    .scaledToFill()
+                    .frame(width: 60, height: 70)
+                    .modifier(CustomBorderModifier())
                     .overlay {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(.black.opacity(0.5))
@@ -205,9 +216,6 @@ struct StepEditorView: View {
                     .onTapGesture {
                         showImagePicker.toggle()
                     }
-//                    .sheet(isPresented: $showImagePicker) {
-//                        ImagePicker(selectedImage: selectedImage)
-//                    }
             }
             
             VStack(alignment: .leading) {
@@ -224,8 +232,9 @@ struct StepEditorView: View {
                     
                     Button {
                         withAnimation(.easeInOut(duration: 0.4)) {
-                            viewModel.updateStep(index, selectedImage)
+                            viewModel.updateStep(index)
                         }
+                        isEditingMode = false
                     } label: {
                         Text("완료")
                             .font(.caption)
@@ -252,6 +261,7 @@ struct CreateChatView: View {
     @State private var textEditorText: String = ""
     @Binding var showImagePicker: Bool
     @Binding var selectedImage: UIImage?
+    @Binding var scrollToEnd: Bool
     
     var body: some View {
         HStack(alignment: .bottom) {
@@ -261,7 +271,7 @@ struct CreateChatView: View {
                 if let image = selectedImage {
                     Image(uiImage: image)
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                         .frame(width: 60, height: 50)
                         .modifier(CustomBorderModifier())
                 } else {
@@ -284,6 +294,8 @@ struct CreateChatView: View {
                 
                 Button {
                     addStep()
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    scrollToEnd = true
                 } label: {
                     Image(systemName: "arrow.up")
                         .resizable()
@@ -321,9 +333,9 @@ struct CreateChatView: View {
     
 }
 
-#Preview {
-    NavigationStack {
-        RecipeStepView(viewModel: RecipeCreateViewModel(cookTalkUseCase: RecipeUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager())))))
-            .environmentObject(NavigationPathFinder.shared)
-    }
-}
+//#Preview {
+//    NavigationStack {
+//        RecipeStepView(viewModel: RecipeCreateViewModel(cookTalkUseCase: RecipeUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager())))))
+//            .environmentObject(NavigationPathFinder.shared)
+//    }
+//}

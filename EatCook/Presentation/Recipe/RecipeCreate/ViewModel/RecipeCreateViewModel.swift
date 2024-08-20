@@ -36,6 +36,8 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     @Published var recipeStepImageURL: URL?
     @Published var recipeStepImageExtension: String = ""
     
+    @Published var recipeStepUpdateImage: UIImage?
+    
     /// 레시피 생성 과정 담긴 모델 -> 요청시 DTO로 변경함.
     @Published var recipeCreateData = RecipeCreateRequest()
     
@@ -137,13 +139,14 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
         recipeStepData.append(data)
     }
     
-    func updateStep(_ index: Int, _ selectedImage: UIImage?) {
-        if let image = selectedImage {
+    func updateStep(_ index: Int) {
+        if let image = recipeStepUpdateImage {
             recipeStepData[index].image = image
             recipeStepData[index].isEditing.toggle()
         } else {
             recipeStepData[index].isEditing.toggle()
         }
+        recipeStepUpdateImage = nil
     }
     
     func deleteStep() {
