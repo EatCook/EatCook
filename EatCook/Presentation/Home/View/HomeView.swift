@@ -25,7 +25,7 @@ struct HomeView: View {
                 
                 GeometryReader { geometry in
 
-                    Color.primary7.opacity(headerShow ? 1 : 0).edgesIgnoringSafeArea(.top).animation(.easeInOut)
+                    Color.primary7.opacity(headerShow ? 1 : 0).edgesIgnoringSafeArea(.top).animation(.easeInOut , value: headerShow)
                     ScrollViewReader { ScrollViewProxy in
                         TrackableScrollView(canShowHeader: $headerShow) {
                             VStack{
@@ -208,26 +208,36 @@ struct HomeInterestingView : View {
                             .padding(.bottom, 8)
                         
                         HStack {
-                            ForEach(Array(homeViewModel.userCookingTheme), id: \.key) { key , value in
-                                let tab = homeViewModel.userCookingTheme[key]!
+                            ForEach(Array(homeViewModel.userCookingTheme.enumerated()), id: \.element.key) { index, element in
+                                let (key, value) = element
+                                let tab = value
+                                let isLast = index == homeViewModel.userCookingTheme.count - 1
+                                
                                 Button(action: {
                                     withAnimation {
                                         homeViewModel.interestCurrentTab = key
                                     }
-                           
-                    
                                 }) {
                                     Text(tab)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(homeViewModel.userCookingTheme[homeViewModel.interestCurrentTab] == tab ? .white : .gray)
+                                        .font(.system(size: 16))
+                                        .fontWeight(.medium)
+                                        .foregroundColor(homeViewModel.userCookingTheme[homeViewModel.interestCurrentTab] == tab ? .primary7 : .gray5)
                                 }
-                                .buttonStyle(.borderedProminent)
-                                .tint(homeViewModel.userCookingTheme[homeViewModel.interestCurrentTab] == tab ? .primary7 : .gray2)
+                                
+                                if !isLast {
+                                    Divider()
+                                }
                             }
+                            .padding(.horizontal , 3)
                             Spacer()
                         }
+                        .padding(.horizontal , 12)
                         .padding(.top, 12)
                         .padding(.leading, 0)
+                        
+                    
+ 
+                        
                     }.padding(.horizontal, 12)
                     
                     ScrollViewReader { proxy in
