@@ -18,15 +18,14 @@ struct ContentView: View {
                     .tabItem {
                         Image(systemName: "house")
                         
-                        Text("홈")
+                        Text("홈").foregroundColor(.gray5)
                     }
                     .tag(0)
                 
                 FeedView()
                     .tabItem {
-                        Image(systemName: "fork.knife")
-                        
-                        Text("쿡Talk")
+                        Image(.tabViewCookTalk).renderingMode(.template)
+                        Text("쿡Talk").foregroundColor(.gray5)
                     }
                     .tag(1)
                 
@@ -34,7 +33,7 @@ struct ContentView: View {
                     .tabItem {
                         Image(systemName: "person")
                         
-                        Text("마이페이지")
+                        Text("마이페이지").foregroundColor(.gray5)
                     }
                     .tag(2)
             }
