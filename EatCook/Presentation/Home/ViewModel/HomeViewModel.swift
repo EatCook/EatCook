@@ -116,15 +116,18 @@ class HomeViewModel : ObservableObject {
             } receiveValue: { response in
                 print("메인페이지 UserInfo response:" , response)
                 if let userCookingTheme = response.data?.userCookingTheme {
+                    print("userCookingThemeTest")
                     self.userCookingTheme = userCookingTheme
                     self.userNickName = response.data?.nickName
                     if userCookingTheme.count > 0 {
                         self.interestCurrentTab = userCookingTheme.first?.key ?? ""
+                        for type in userCookingTheme.keys {
+                            self.getUserInterest(type: type)
+                        }
+                    }else{
+                        self.interestingFoods = [:]
                     }
-                    for type in userCookingTheme.keys {
-                        self.getUserInterest(type: type)
-                    }
-                    
+
 //                    Type들을 다 쏴서(DIET , HEALTH_DIET , CONVENIENCE_STORE ... ) 빈값이 없는것만 세팅해줌
                     for type in self.recommendType {
                         self.getUserSpecial(type: type)
@@ -134,6 +137,7 @@ class HomeViewModel : ObservableObject {
                 
             }
             .store(in: &cancellables)
+        
         
         
         
