@@ -14,7 +14,6 @@ struct SearchView: View {
     @State private var isSearching = false
     @State var recentSearchData: [[String]] = [["홍고추"], ["계란덮밥", "덮밥"], ["감바스", "마늘", "고추"], ["감바스", "마늘", "고추", "양배추"], ["감바스", "마늘", "고추", "양배추", "닭갈비"]]
     
-    @State private var navigationPath = NavigationPath()
     @SwiftUI.Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
 
@@ -24,7 +23,7 @@ struct SearchView: View {
                 VStack {
                     HStack {
                         Button {
-                            dismiss()
+                            naviPathFinder.pop()
                         } label: {
                             Image(.backButton).resizable()
                                 .frame(width: 20, height: 20)
@@ -131,12 +130,9 @@ struct SearchView: View {
                         }
                         
                     }
-                    
-            
                     .padding(.top, 15)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .navigationBarTitle("", displayMode: .inline)
-                    .navigationBarHidden(true)
                     .background(Color.white)
                 } else {
                     VStack {
@@ -150,12 +146,18 @@ struct SearchView: View {
                         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     }
                     .navigationBarTitle("", displayMode: .inline)
-                    .navigationBarHidden(true)
                     .background(Color.white)
                 }
             }
+            .onAppear {
+                SwipeState.shared.swipeEnabled = true
+            }
+            .onDisappear {
+                SwipeState.shared.swipeEnabled = false
+            }
             .environmentObject(searchViewModel)
             .navigationBarTitle("", displayMode: .inline)
+            .navigationBarHidden(true)
         
         }
        

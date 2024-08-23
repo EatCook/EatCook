@@ -87,6 +87,7 @@
 		E5A5ED312C6C8B6C003693D0 /* FindAccountVerifyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5ED302C6C8B6C003693D0 /* FindAccountVerifyResponse.swift */; };
 		E5A5ED332C6C8C04003693D0 /* FindNewPasswordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5ED322C6C8C04003693D0 /* FindNewPasswordResponse.swift */; };
 		E5A5ED352C6C9F75003693D0 /* BaseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5ED342C6C9F75003693D0 /* BaseAlertView.swift */; };
+		E5AFDC612C787B2900BE2E54 /* NavigationControllerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFDC602C787B2900BE2E54 /* NavigationControllerModifier.swift */; };
 		E5BBA0302C5B125F00895377 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BBA02F2C5B125F00895377 /* CustomAlertView.swift */; };
 		E5BBA0322C5B129700895377 /* CustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BBA0312C5B129700895377 /* CustomPopUpView.swift */; };
 		E5C74D642C64464E005A4A81 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5C74D632C64464E005A4A81 /* GoogleService-Info.plist */; };
@@ -304,6 +305,7 @@
 		E5A5ED302C6C8B6C003693D0 /* FindAccountVerifyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountVerifyResponse.swift; sourceTree = "<group>"; };
 		E5A5ED322C6C8C04003693D0 /* FindNewPasswordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindNewPasswordResponse.swift; sourceTree = "<group>"; };
 		E5A5ED342C6C9F75003693D0 /* BaseAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAlertView.swift; sourceTree = "<group>"; };
+		E5AFDC602C787B2900BE2E54 /* NavigationControllerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerModifier.swift; sourceTree = "<group>"; };
 		E5BBA02F2C5B125F00895377 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		E5BBA0312C5B129700895377 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
 		E5C74D632C64464E005A4A81 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1162,6 +1164,7 @@
 				E5D3EF672C58BBFC00ECF9CF /* Toast.swift */,
 				E5D3EF722C58C00600ECF9CF /* ShakeEffect.swift */,
 				E5D3EF872C58D6D400ECF9CF /* ImageLoader.swift */,
+				E5AFDC602C787B2900BE2E54 /* NavigationControllerModifier.swift */,
 			);
 			path = Utillites;
 			sourceTree = "<group>";
@@ -1568,6 +1571,7 @@
 				E59D7C572C58808B007702C2 /* AuthView.swift in Sources */,
 				E59D7CA92C588110007702C2 /* ImagePicker.swift in Sources */,
 				E5D3EF792C58C4D700ECF9CF /* CreateProfileViewModel.swift in Sources */,
+				E5AFDC612C787B2900BE2E54 /* NavigationControllerModifier.swift in Sources */,
 				E59D7C6C2C5880A8007702C2 /* FeedViewModel.swift in Sources */,
 				E51F156E2C689D5800F66885 /* AuthUseCase.swift in Sources */,
 				E5D3EF712C58BFCA00ECF9CF /* FindAccountViewModel.swift in Sources */,
