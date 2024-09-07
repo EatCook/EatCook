@@ -18,11 +18,7 @@ struct HomeView: View {
     
     var body: some View {
 
-//        NavigationStack {
             VStack {
-
-
-                
                 GeometryReader { geometry in
 
                     Color.primary7.opacity(headerShow ? 1 : 0).edgesIgnoringSafeArea(.top).animation(.easeInOut , value: headerShow)
@@ -40,7 +36,6 @@ struct HomeView: View {
                                         scrollOffset = scrollViewGeometry.frame(in: .global).minY
                                     }
                                     .onChange(of: scrollViewGeometry.frame(in: .global).minY) { newValue in
-//                                        print("Updated scrollOffset: \(scrollOffset)") // 값 변경 시 출력
                                         withAnimation {
                                             scrollOffset = newValue
                                         }
@@ -70,29 +65,26 @@ struct HomeView: View {
                 }
 
             }
-            .fullScreenCover(isPresented: $homeViewModel.addSignUpNavigate){
-                CustomPopUpView(title: "잇쿡에 오신거를 환영합니다", message: "회원가입 추가 진행을 해주세요", confirmTitle: "이동") {
-                    homeViewModel.addSignUpNavigate = false
-                    naviPathFinder.addPath(.createProfile(homeViewModel.loginUserInfo.userInfo.email))
-                }
-            }
-            .fullScreenCover(isPresented: $homeViewModel.isTokenError){
-                CustomPopUpView(title: "토큰이 만료되었습니다", message: "로그인을 진행해주세요", confirmTitle: "이동") {
-                    homeViewModel.isTokenError = false
-                    DataStorage.shared.setString("", forKey: DataStorageKey.Authorization)
-                    DataStorage.shared.setString("", forKey: DataStorageKey.Authorization_REFRESH)
-                    naviPathFinder.addPath(.login)
-                }
-            }
+//            .fullScreenCover(isPresented: $homeViewModel.addSignUpNavigate){
+//                CustomPopUpView(title: "잇쿡에 오신거를 환영합니다", message: "회원가입 추가 진행을 해주세요", confirmTitle: "이동") {
+//                    homeViewModel.addSignUpNavigate = false
+//                    naviPathFinder.addPath(.createProfile(homeViewModel.loginUserInfo.userInfo.email))
+//                }
+//            }
+//            .fullScreenCover(isPresented: $homeViewModel.isTokenError){
+//                CustomPopUpView(title: "토큰이 만료되었습니다", message: "로그인을 진행해주세요", confirmTitle: "이동") {
+//                    homeViewModel.isTokenError = false
+//                    DataStorage.shared.setString("", forKey: DataStorageKey.Authorization)
+//                    DataStorage.shared.setString("", forKey: DataStorageKey.Authorization_REFRESH)
+//                    naviPathFinder.addPath(.login)
+//                }
+//            }
 
             .onAppear {
                 homeViewModel.fetchItems()
             }
             .environmentObject(homeViewModel)
             .environmentObject(naviPathFinder)
-
-//        }
-//        .toolbar(.hidden, for: .navigationBar)
     }
 }
 
@@ -170,8 +162,8 @@ struct HomeInterestingView : View {
                         HStack {
                             VStack(alignment : .leading){
                                 Text("내 취향 레시피만 보고싶다면?").bold()
-                                    .font(.system(size: 20))
-                                Text("나의 관심 요리를 설정해 보세요").foregroundColor(.gray8).font(.system(size: 16))
+                                    .font(.system(size: 16))
+                                Text("나의 관심 요리를 설정해 보세요").foregroundColor(.gray8).font(.system(size: 12))
                             }
                             
                             Spacer()
@@ -180,17 +172,17 @@ struct HomeInterestingView : View {
                             
                             
                         }
-                        
-       
                     }
+                    
                     .padding(.horizontal , 24)
-                    .padding(.vertical , 24)
+                    .padding(.vertical , 18)
                     
                     .background{
                         Color.gray10
                     }
                     .cornerRadius(10)
-                    .padding(.horizontal , 12)
+                    .padding(.top , 18)
+                    .padding(.horizontal , 16)
                     
                 }else{
                     VStack {
@@ -470,7 +462,7 @@ struct HomeRecommendView : View {
                     }
                 }
                           
-            }.padding(.horizontal, 10)
+            }.padding(.horizontal, 16)
     
 
             

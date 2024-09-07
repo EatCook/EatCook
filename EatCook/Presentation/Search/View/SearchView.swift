@@ -75,7 +75,7 @@ struct SearchView: View {
                                             .font(.system(size: 12))
                                         Spacer()
                                     }
-                                    .padding(.vertical, 20)
+                                    .padding(.bottom, 20)
                                     .padding(.horizontal, 16)
                                     
                                     LazyVStack(alignment: .leading) {
@@ -130,7 +130,6 @@ struct SearchView: View {
                         }
                         
                     }
-                    .padding(.top, 15)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .navigationBarTitle("", displayMode: .inline)
                     .background(Color.white)
