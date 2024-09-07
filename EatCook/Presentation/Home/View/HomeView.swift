@@ -65,20 +65,20 @@ struct HomeView: View {
                 }
 
             }
-//            .fullScreenCover(isPresented: $homeViewModel.addSignUpNavigate){
-//                CustomPopUpView(title: "잇쿡에 오신거를 환영합니다", message: "회원가입 추가 진행을 해주세요", confirmTitle: "이동") {
-//                    homeViewModel.addSignUpNavigate = false
-//                    naviPathFinder.addPath(.createProfile(homeViewModel.loginUserInfo.userInfo.email))
-//                }
-//            }
-//            .fullScreenCover(isPresented: $homeViewModel.isTokenError){
-//                CustomPopUpView(title: "토큰이 만료되었습니다", message: "로그인을 진행해주세요", confirmTitle: "이동") {
-//                    homeViewModel.isTokenError = false
-//                    DataStorage.shared.setString("", forKey: DataStorageKey.Authorization)
-//                    DataStorage.shared.setString("", forKey: DataStorageKey.Authorization_REFRESH)
-//                    naviPathFinder.addPath(.login)
-//                }
-//            }
+            .fullScreenCover(isPresented: $homeViewModel.addSignUpNavigate){
+                CustomPopUpView(title: "잇쿡에 오신거를 환영합니다", message: "회원가입 추가 진행을 해주세요", confirmTitle: "이동") {
+                    homeViewModel.addSignUpNavigate = false
+                    naviPathFinder.addPath(.createProfile(homeViewModel.loginUserInfo.userInfo.email))
+                }
+            }
+            .fullScreenCover(isPresented: $homeViewModel.isTokenError){
+                CustomPopUpView(title: "토큰이 만료되었습니다", message: "로그인을 진행해주세요", confirmTitle: "이동") {
+                    homeViewModel.isTokenError = false
+                    DataStorage.shared.setString("", forKey: DataStorageKey.Authorization)
+                    DataStorage.shared.setString("", forKey: DataStorageKey.Authorization_REFRESH)
+                    naviPathFinder.addPath(.login)
+                }
+            }
 
             .onAppear {
                 homeViewModel.fetchItems()
@@ -259,9 +259,6 @@ struct HomeInterestingView : View {
                 
             }.padding(.bottom, 22)
             .background(Color.white)
-            
-            
-            
         }
 
             
@@ -270,8 +267,6 @@ struct HomeInterestingView : View {
 }
 
 struct interestingRowView : View {
-    @StateObject private var mainloader = ImageLoader()
-    @StateObject private var userLoader = ImageLoader()
     
     var postId : Int
     var postImagePath : String
@@ -292,24 +287,9 @@ struct interestingRowView : View {
                 ZStack(alignment : .bottomTrailing) {
                     if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(postImagePath)") {
                         ZStack(alignment: .bottomTrailing) {
-                            AsyncImage(url: imageUrl) { phase in
-                                switch phase {
-                                case .empty:
-                                    ProgressView()
-                                        .frame(height: 165)
-                                case .success(let image):
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width : 220 , height: 165) // 원하는 높이 설정
-                                        .clipped()
-                                        .cornerRadius(10)
-                                case .failure:
-                                    LoadFailImageView(imageType: .recipeMain).frame(width : 220 , height: 165)
-                                @unknown default:
-                                    EmptyView()
-                                }
-                            }   
+                            AutoRetryImage(url: imageUrl, failImageType: .recipeStep)
+                                .frame(width : 220 , height: 165)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                     }
 
@@ -346,24 +326,9 @@ struct interestingRowView : View {
             HStack {
                 if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(profile)") {
                     ZStack(alignment: .bottomTrailing) {
-                        AsyncImage(url: imageUrl) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
-                                    .frame(width : 20 , height: 20)
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width : 20 , height: 20)
-                                    .clipped()
-                                    .cornerRadius(10)
-                            case .failure:
-                                LoadFailImageView(imageType: .userProfileSmall) .frame(width : 20 , height: 20)
-                            @unknown default:
-                                EmptyView()
-                            }
-                        }
+                        AutoRetryImage(url: imageUrl, failImageType: .recipeStep)
+                            .frame(width : 20 , height: 20)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                 }
                 Text(nickName).foregroundColor(.black)
@@ -407,7 +372,11 @@ struct HomeRecommendView : View {
                         .id(index)
                     }
                 }
-            }.padding(.bottom, 24)
+            }
+            .background{
+                Color.white
+            }
+            .padding(.bottom, 24)
                 .onChange(of: homeViewModel.recommendSelectedIndex) { index in
                     withAnimation {
                         proxy.scrollTo(index, anchor: .center)
@@ -498,8 +467,6 @@ struct RecommendColArrView : View {
 
 
 struct RecommendColView : View {
-    @StateObject private var mainloader = ImageLoader()
-    
     let postId : Int
     let postImagePath : String
     let recipeName : String
@@ -516,24 +483,9 @@ struct RecommendColView : View {
                 ZStack(alignment : .bottomTrailing){
                     if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(postImagePath)") {
                         ZStack(alignment: .bottomTrailing) {
-                            AsyncImage(url: imageUrl) { phase in
-                                switch phase {
-                                case .empty:
-                                    ProgressView()
-                                        .frame(height: 160) // 원하는 높이 설정
-                                case .success(let image):
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(height: 160) // 원하는 높이 설정
-                                        .clipped()
-                                        .cornerRadius(10)
-                                case .failure:
-                                    LoadFailImageView(imageType: .recipeMain).frame(height: 160)
-                                @unknown default:
-                                    EmptyView()
-                                }
-                            }
+                            AutoRetryImage(url: imageUrl, failImageType: .recipeMain)
+                                .frame(height: 160)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                     }
                     Image(archiveCheck ? .bookMarkChecked : .bookMark).frame(width: 18 , height:  24).padding()
