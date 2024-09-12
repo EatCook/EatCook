@@ -23,6 +23,10 @@ class EmailValidationViewModel: ObservableObject {
     
     @Published var emailTextFieldDisabled : Bool = false
     
+    //에러처리
+    @Published var showErrorAlert : Bool = false
+    @Published var baseAlertInfo = BaseAlertInfo(title: "에러", message: "")
+    
 
     private var emailValidationSubscriber: AnyCancellable?
     private var verificationSubscriber: AnyCancellable?
@@ -62,10 +66,6 @@ class EmailValidationViewModel: ObservableObject {
         
     }
     
-
-    
-
-
     // 이메일 유효성 검사 함수
     private func isValidEmail(_ email: String) -> Bool {
         // 간단한 정규식을 사용하여 이메일 형식이 맞는지 확인
@@ -99,9 +99,14 @@ extension EmailValidationViewModel {
                     switch error {
                     case .unauthorized:
                         print("EmailValidationViewModel token Error")
-                        
+                    case .customError(let message):
+                        print("Custom error message : \(message)")
+                        self.showErrorAlert = true
+                        self.baseAlertInfo.message = message
                     default:
                         print("기본 에러처리")
+                        self.showErrorAlert = true
+                        self.baseAlertInfo.message = "알수 없는 에러가 발생했습니다"
                     }
                     
                     print("EmailValidationViewModel Error: \(error)")
@@ -135,11 +140,17 @@ extension EmailValidationViewModel {
                     case .unauthorized:
                         print("EmailValidationViewModel authCode Token Error")
                         
+                    case .customError(let message):
+                        print("Custom error message : \(message)")
+                        self.showErrorAlert = true
+                        self.baseAlertInfo.message = message
+                        
                     default:
                         print("기본 에러처리")
+                        self.showErrorAlert = true
+                        self.baseAlertInfo.message = "알수 없는 에러가 발생했습니다"
                     }
-                    
-                    print("EmailValidationViewModel Error: \(error)")
+
                 }
                 
             } receiveValue: { response in

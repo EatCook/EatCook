@@ -15,8 +15,7 @@ struct LoginView: View {
     @EnvironmentObject private var naviPathFinder: NavigationPathFinder
     
     @StateObject private var viewModel = LoginViewModel(loginUseCase: LoginUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))), loginUserInfo: LoginUserInfoManager.shared)
-    
-    
+
     
     var body: some View {
 //        NavigationStack {

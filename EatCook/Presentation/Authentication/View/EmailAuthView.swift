@@ -30,6 +30,12 @@ struct EmailAuthView: View {
     @State var tag:Int? = nil
     @State var errorText : String = ""
     
+    
+    @FocusState private var emailTextFieldFocused: Bool
+    @FocusState private var validateTextFieldFocused: Bool
+    
+    
+    
     func counterToMinutesAndSeconds(_ count: Int) -> String {
         let minutes = count / 60
         let seconds = count % 60
@@ -47,14 +53,17 @@ struct EmailAuthView: View {
     }
 
     var body: some View {
-//        NavigationStack {
             VStack {
                 Text("이메일을 인증해 주세요")
                     .font(.title2)
                     .padding(.vertical, 28)
                 
                 HStack {
-                    TextField("이메일", text: $emailValViewModel.email).modifier(CustomTextFieldModifier()).disabled(emailValViewModel.emailTextFieldDisabled)
+                    TextField("이메일", text: $emailValViewModel.email)
+                        .padding()
+                        .modifier(CustomBorderModifier(isFocused: emailTextFieldFocused))
+                        .focused($emailTextFieldFocused)
+                        .disabled(emailValViewModel.emailTextFieldDisabled)
                     
                     Button(action: {
                         emailValViewModel.isLoading = true
@@ -65,14 +74,8 @@ struct EmailAuthView: View {
                         emailValViewModel.requestEmail(email: emailValViewModel.email) { resultSuccess in
                             if resultSuccess {
                                 self.startTimer()
-                            }else{
-//                                Alert
                             }
                         }
-                        
-                        
-                            
-                        
                     }, label: {
                         Text(emailText)
                             .font(.callout)
@@ -87,7 +90,10 @@ struct EmailAuthView: View {
                 
                 ZStack(alignment : .trailing) {
                     HStack {
-                        TextField("인증번호 6자리 입력", text: $emailValViewModel.authCode).modifier(CustomTextFieldModifier())
+                        TextField("인증번호 6자리 입력", text: $emailValViewModel.authCode)
+                            .padding()
+                            .focused($validateTextFieldFocused)
+                            .modifier(CustomBorderModifier(isFocused: validateTextFieldFocused))
                     }
                     
                     if isTimerRunning {
@@ -126,8 +132,6 @@ struct EmailAuthView: View {
                     emailValViewModel.emailVerify(email: emailValViewModel.email, authCode: emailValViewModel.authCode) { successResult in
                         if successResult {
                             naviPathFinder.addPath(.passwordCheck(emailValViewModel.email))
-                        }else{
-//                            Error Alert
                         }
                     }
                     
@@ -143,9 +147,6 @@ struct EmailAuthView: View {
                 })
                 .disabled(!emailValViewModel.authCodeValidation)
                 
-//                NavigationLink(destination:  PasswordCheckView(email: emailValViewModel.email).toolbarRole(.editor), tag: 1, selection: self.$tag) {
-//                    EmptyView()
-//                }
 
                 Spacer()
             }
@@ -155,7 +156,21 @@ struct EmailAuthView: View {
             .background(.bgPrimary)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("회원가입").bold()
-//        }
+            .overlay(
+                Group {
+                    if emailValViewModel.showErrorAlert {
+                        BaseAlertView(
+                            title: emailValViewModel.baseAlertInfo.title,
+                            message: emailValViewModel.baseAlertInfo.message,
+                            confirmTitle: "확인",
+                            onConfirm: {
+                                emailValViewModel.showErrorAlert = false
+                            }
+                        )
+                       
+                    }
+                }
+            )
     }
 }
 
