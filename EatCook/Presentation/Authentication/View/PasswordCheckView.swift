@@ -59,7 +59,7 @@ struct PasswordCheckView: View {
                     HStack {
                         Image(passwordCheckViewModel.isLengthValid ? .checkTwoOn : .checkTwoOff)
                             .resizable()
-                            .frame(width: 25, height: 25)
+                            .frame(width: 15, height: 15)
                         Text("8자리 이상")
                             .font(.system(size: 14))
                             .foregroundColor(passwordCheckViewModel.isLengthValid ? .success4 : .gray5)
@@ -67,15 +67,15 @@ struct PasswordCheckView: View {
                     HStack {
                         Image(passwordCheckViewModel.containsLetter ? .checkTwoOn : .checkTwoOff)
                             .resizable()
-                            .frame(width: 25, height: 25)
+                            .frame(width: 15, height: 15)
                         Text("영문 포함")
                             .font(.system(size: 14))
                             .foregroundColor(passwordCheckViewModel.containsLetter ? .success4 :  .gray5)
                     }
                     HStack {
-                        Image(passwordCheckViewModel.containsLetter ? .checkTwoOn : .checkTwoOff)
+                        Image(passwordCheckViewModel.containsNumber ? .checkTwoOn : .checkTwoOff)
                             .resizable()
-                            .frame(width: 25, height: 25)
+                            .frame(width: 15, height: 15)
                         Text("숫자 포함")
                             .font(.system(size: 14))
                             .foregroundColor(passwordCheckViewModel.containsNumber ? .success4 :  .gray5)
@@ -111,26 +111,14 @@ struct PasswordCheckView: View {
                     
                     passwordCheckViewModel.signUp(email: email, password:  passwordCheckViewModel.password) { successResult in
                         if successResult {
-                            isPresented = true
+//                            isPresented = true
+                            naviPathFinder.addPath(.createProfile(email))
                         }else{
 //                           TODO : Error Message
                         }
                     }
                     
-//                    UserService.shared.passwordCheck(parameters: ["email": email, "password" : passwordCheckViewModel.password], success: { (data) in
-//                       
-//                        print("data : " , data)
-//                        
-//                        //    성공시
-//                        isPresented = true
-//                        
-//                        
-//         
-//                        
-//                    }, failure: { (error) in
-//
-//                    })
-                    
+
                     
 
                     
@@ -142,54 +130,57 @@ struct PasswordCheckView: View {
                         .background(passwordCheckViewModel.isValidPassword && passwordCheckViewModel.password.count == passwordCheckViewModel.passwordCheck.count ? Color.primary7 : Color.bdInactive)
                         .cornerRadius(10)
                         .padding(.horizontal, 24)
-                }).fullScreenCover(isPresented: $isPresented) {
-                    VStack {
-                        VStack {
-                            Image(.check)
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .padding(.top, 40)
-                                .padding(.bottom, 25)
-                            
-                            Text("회원가입 완료")
-                                .font(.title2).bold()
-                                .padding(.bottom, 2)
-                            
-                            Text("내 냉장고 속 재료들로 요리를 하러 가볼까요?")
-                                .font(.callout)
-                                .foregroundColor(.gray)
-                            
-                            Spacer()
-                            
-                            Button {
-        //                        createProfileView
-                                naviPathFinder.addPath(.createProfile(email))
-                            } label: {
-                                Text("시작하기")
-                                    .foregroundColor(.white)
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 55)
-                                    .background(Color.bdActive)
-                                    .cornerRadius(10)
-                                    .padding(.horizontal, 24)
-                            }
-
-
-                            Spacer()
-                        }.background(.white)
-                            .cornerRadius(10)
-                            .clipped()
-                            .frame(maxHeight: 285)
-                            .padding(.horizontal, 24)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.black.opacity(0.3))
-                }
+                })
                 
                 Spacer()
             }
-            .padding(.top, 30)
+//            .fullScreenCover(isPresented: $isPresented) {
+//                VStack {
+//                    VStack {
+//                        Image(.check)
+//                            .resizable()
+//                            .frame(width: 50, height: 50)
+//                            .padding(.top, 40)
+//                            .padding(.bottom, 25)
+//                        
+//                        Text("회원가입 완료")
+//                            .font(.title2).bold()
+//                            .padding(.bottom, 2)
+//                        
+//                        Text("내 냉장고 속 재료들로 요리를 하러 가볼까요?")
+//                            .font(.callout)
+//                            .foregroundColor(.gray)
+//                        
+//                        Spacer()
+//                        
+//                        Button {
+//    //                        createProfileView
+//                            print("시작하기 CLICK")
+//                            naviPathFinder.addPath(.createProfile(email))
+////                            isPresented = false
+//                        } label: {
+//                            Text("시작하기")
+//                                .foregroundColor(.white)
+//                                .frame(maxWidth: .infinity)
+//                                .frame(height: 55)
+//                                .background(Color.bdActive)
+//                                .cornerRadius(10)
+//                                .padding(.horizontal, 24)
+//                        }
+//
+//
+//                        Spacer()
+//                    }.background(.white)
+//                        .cornerRadius(10)
+//                        .clipped()
+//                        .frame(maxHeight: 285)
+//                        .padding(.horizontal, 24)
+//                }
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .background(Color.black.opacity(0.3))
+//            }
         
+            .padding(.top, 30)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.bgPrimary)
             .navigationBarTitleDisplayMode(.inline)

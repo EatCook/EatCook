@@ -21,7 +21,6 @@ struct ChangePasswordView: View {
     
     
     var body: some View {
-//        NavigationStack {
             VStack {
                 
                 Spacer()
@@ -115,13 +114,9 @@ struct ChangePasswordView: View {
                     
                     changePasswordViewModel.changePassword { successResult in
                         if successResult {
-//                            TODO : navigation First Page
-                            naviPathFinder.addPath(.login)
                             print("비밀번호 변경 성공")
+                            changePasswordViewModel.showSuccessAlert  = true
                             
-                        }else {
-//                            TODO : Alert 처리
-                            print("비밀번호 변경 실패")
                         }
                     }
                               
@@ -134,25 +129,43 @@ struct ChangePasswordView: View {
                         .cornerRadius(10)
                         .padding(.horizontal, 24)
                 })
-//                .fullScreenCover(isPresented: $isPresented) {
-//                    StartPopupView()
-//                }
-                
-                
-                
-                
-     
-                
             }.padding(.top, 30)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.bgPrimary)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle("비밀번호 변경").bold()
+                .overlay(
+                    Group {
+                        if changePasswordViewModel.showErrorAlert {
+                            BaseAlertView(
+                                title: changePasswordViewModel.baseAlertInfo.title,
+                                message: changePasswordViewModel.baseAlertInfo.message,
+                                confirmTitle: "확인",
+                                onConfirm: {
+                                    changePasswordViewModel.showErrorAlert = false
+                                }
+                            )
+                           
+                        }
+                        
+                        if changePasswordViewModel.showSuccessAlert {
+                            BaseAlertView(
+                                title: "알림",
+                                message: "비밀번호가 변경되었습니다",
+                                confirmTitle: "확인",
+                                onConfirm: {
+                                    changePasswordViewModel.showSuccessAlert = false
+                                    // 성공 시 네비게이션 처리
+                                    naviPathFinder.addPath(.login)
+                                }
+                            )
+                        }
+                    }
+                )
             
             
             
         }
-//    }
 }
 
 #Preview {

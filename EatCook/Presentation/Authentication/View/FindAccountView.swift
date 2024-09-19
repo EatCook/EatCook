@@ -13,7 +13,9 @@ struct FindAccountView: View {
     
     @StateObject private var findAccountViewModel = FindAccountViewModel(authUseCase:  AuthUseCase(eatCookRepository: EatCookRepository(networkProvider: NetworkProviderImpl(requestManager: NetworkManager()))))
     @State private var shake = false
-    @State private var showingAlert = false
+    
+    @FocusState private var emailTextFieldFocused: Bool
+    @FocusState private var validateTextFieldFocused: Bool
     
     var body: some View {
 //        NavigationStack {
@@ -24,7 +26,10 @@ struct FindAccountView: View {
                     .padding(.vertical, 28)
                 
                 HStack {
-                    TextField("이메일", text: $findAccountViewModel.email).modifier(CustomTextFieldModifier())
+                    TextField("이메일", text: $findAccountViewModel.email)
+                        .padding()
+                        .modifier(CustomBorderModifier(isFocused: emailTextFieldFocused))
+                        .focused($emailTextFieldFocused)
                     
                     Button(action: {
                         findAccountViewModel.isLoading = true
@@ -32,7 +37,7 @@ struct FindAccountView: View {
                         findAccountViewModel.sendEmail { successResult in
                             if successResult {
                                 withAnimation {
-                                    showingAlert = true
+                                    findAccountViewModel.showErrorAlert = true
                                     findAccountViewModel.baseAlertInfo = BaseAlertInfo(title: "알림", message: "이메일에 인증코드를 발송하였습니다")
                                     findAccountViewModel.startTimer()
                                 }
@@ -71,7 +76,9 @@ struct FindAccountView: View {
                 
                 ZStack(alignment : .trailing) {
                     HStack {
-                        TextField("인증번호 6자리 입력", text: $findAccountViewModel.authCode).modifier(CustomTextFieldModifier())
+                        TextField("인증번호 6자리 입력", text: $findAccountViewModel.authCode).padding()
+                            .focused($validateTextFieldFocused)
+                            .modifier(CustomBorderModifier(isFocused: validateTextFieldFocused))
                     }
                     
                     if findAccountViewModel.isTimerRunning {
@@ -143,13 +150,13 @@ struct FindAccountView: View {
             .navigationTitle("계정찾기").bold()
             .overlay(
                 Group {
-                    if showingAlert {
+                    if  findAccountViewModel.showErrorAlert  {
                         BaseAlertView(
                             title: findAccountViewModel.baseAlertInfo.title,
                             message: findAccountViewModel.baseAlertInfo.message,
                             confirmTitle: "확인",
                             onConfirm: {
-                                showingAlert = false
+                                findAccountViewModel.showErrorAlert  = false
                             }
                         )
                        

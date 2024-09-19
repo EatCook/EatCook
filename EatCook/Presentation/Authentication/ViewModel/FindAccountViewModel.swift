@@ -24,7 +24,10 @@ class FindAccountViewModel : ObservableObject {
     @Published var isLoading: Bool = false
     
     @Published var verificationResult: Bool?
-    @Published var baseAlertInfo = BaseAlertInfo(title: "", message: "")
+    
+    //에러처리
+    @Published var showErrorAlert : Bool = false
+    @Published var baseAlertInfo = BaseAlertInfo(title: "에러", message: "")
     
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -117,6 +120,9 @@ extension FindAccountViewModel {
                     case .unauthorized:
                         print("FindAccountViewModel findPasswordRequestEmail Token Error")
                         
+                    case .customError(let message):
+                        self.baseAlertInfo.message = message
+                        self.showErrorAlert = true
                     default:
                         print("기본 에러처리")
                     }
@@ -151,6 +157,10 @@ extension FindAccountViewModel {
                     switch error {
                     case .unauthorized:
                         print("FindAccountViewModel findPasswordEmailVerify Token Error")
+                        
+                    case .customError(let message):
+                        self.baseAlertInfo.message = message
+                        self.showErrorAlert = true
                         
                     default:
                         print("기본 에러처리")

@@ -27,6 +27,11 @@ class ChangePasswordViewModel : ObservableObject {
     @Published var containsNumber = false
     @Published var isPasswordError = false
     
+    //에러처리
+    @Published var showSuccessAlert : Bool = false
+    @Published var showErrorAlert : Bool = false
+    @Published var baseAlertInfo = BaseAlertInfo(title: "에러", message: "")
+
     
     init(email : String , authUseCase: AuthUseCase){
         self.authUseCase = authUseCase
@@ -84,6 +89,9 @@ extension ChangePasswordViewModel {
                 case .failure(let error):
                     print("error:", error)
                     switch error {
+                    case .customError(let message):
+                        self.baseAlertInfo.message = message
+                        self.showErrorAlert = true
                     case .unauthorized:
                         print("ChangePasswordViewModel setNewPasswordToken Error")
                         
