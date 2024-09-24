@@ -60,7 +60,6 @@ struct EmailLoginView: View {
                             
                         }
                     }
-                   
                 }
                 
                 

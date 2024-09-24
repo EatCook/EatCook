@@ -18,6 +18,7 @@ struct RecipeCreateView: View {
     @FocusState private var recipeTextEditorFocused: Bool
     
     @State private var showTimerPicker = false
+    @State private var showLifeThemePicker = false
     @State private var showDropdownTheme = false
     @State private var showImagePicker = false
     
@@ -104,6 +105,29 @@ struct RecipeCreateView: View {
                 Text("요리 정보")
                     .font(.title2.bold())
                 
+                VStack {
+                    Button {
+                        showLifeThemePicker.toggle()
+                    } label: {
+                        HStack {
+                            Image(systemName: "carrot")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundStyle(viewModel.lifeType == "" ? .gray5 : .primary5)
+                                .fontWeight(.bold)
+                                .frame(width: 13.5)
+                            
+                            Text(viewModel.lifeType == "" ? "생활 유형" : "\(viewModel.lifeType)")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(viewModel.lifeType == "" ? .gray5 : .primary6)
+                        }
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .modifier(CustomBorderModifier())
+                }
+                
                 HStack(alignment: .top, spacing: 16) {
                     Button {
                         showTimerPicker.toggle()
@@ -180,6 +204,15 @@ struct RecipeCreateView: View {
             }
             .presentationDetents([.fraction(0.42)])
         }
+        .sheet(isPresented: $showLifeThemePicker) {
+            LifeTypePickerView(selectedLifeType: $viewModel.lifeType, doneButtonAction: { selectedType in
+                viewModel.lifeType = selectedType
+                showLifeThemePicker.toggle()
+            }, cancelButtonAction: {
+                showLifeThemePicker.toggle()
+            })
+            .presentationDetents([.fraction(0.42)])
+        }
         .onAppear {
             if let postId = postId {
                 viewModel.responseRecipeRead(postId)
@@ -190,9 +223,13 @@ struct RecipeCreateView: View {
     
 }
 
-//#Preview {
-//    NavigationStack {
-//        RecipeCreateView()
-//            .environmentObject(NavigationPathFinder.shared)
-//    }
-//}
+
+
+
+
+#Preview {
+    NavigationStack {
+        RecipeCreateView()
+            .environmentObject(NavigationPathFinder.shared)
+    }
+}

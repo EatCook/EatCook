@@ -25,6 +25,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     @Published var titleImage: UIImage?
     @Published var titleImageURL: URL?
     @Published var titleImageExtension: String = ""
+    @Published var lifeType : String = ""
     
     /// 두번째
     @Published var ingredientsInputText: String = ""
