@@ -62,6 +62,8 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     
     private func setupPreviousRecipe() {
         /// 첫번째
+        print("recipeReadResponseData" , recipeReadResponseData)
+        
         self.recipeTitle = self.recipeReadResponseData.recipeName
         self.recipeDescription = self.recipeReadResponseData.introduction
         if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(recipeReadResponseData.postImagePath)") {
@@ -71,7 +73,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
         }
         self.selectedTime = self.recipeReadResponseData.recipeTime
         self.selectedTheme = self.recipeReadResponseData.cookingType.first ?? "테마 선택"
-//        self.lifeType = self.recipeReadResponseData.lifeType
+//        self.lifeType = self.recipeReadResponseData.lifeType.first ?? ""
 
         /// 두번째
         var ingredientsTagArr: [Tag] = []
@@ -215,7 +217,7 @@ extension RecipeCreateViewModel {
             recipeProcess: recipeCreateData.recipeProcess.map { $0.toData() }
         )
         
-      
+      print("recipeCreateDTO" , recipeCreateDTO)
         
         return await withCheckedContinuation { continuation in
             cookTalkUseCase.requestRecipeCreate(recipeCreateDTO)
@@ -248,13 +250,13 @@ extension RecipeCreateViewModel {
             recipeTime: recipeCreateData.recipeTime,
             introduction: recipeCreateData.introduction,
             mainFileExtension: recipeCreateData.mainFileExtension == "" ? "default" : recipeCreateData.mainFileExtension,
-//            postId: recipeId,
             foodIngredients: recipeCreateData.foodIngredients,
             cookingType: recipeCreateData.cookingType,
             lifeType : recipeCreateData.lifeType,
             recipeProcess: recipeCreateData.recipeProcess.map { $0.toData() }
         )
         
+        print("recipeCreateData Test" , recipeCreateData)
         print("recipeUpdateDTO : " , recipeUpdateDTO)
         
         return await withCheckedContinuation { continuation in
