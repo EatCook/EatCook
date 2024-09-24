@@ -17,6 +17,7 @@ struct RecipeUpdateRequestDTO: Codable {
             "mainFileExtension": mainFileExtension,
 //            "postId": postId,
             "foodIngredients": foodIngredients,
+            "lifeType" : lifeType,
             "cookingType": cookingType,
             "recipeProcess": recipeProcess.map { $0.toDictionary }
         ]
@@ -27,7 +28,7 @@ struct RecipeUpdateRequestDTO: Codable {
     let recipeTime: Int
     let introduction, mainFileExtension: String
 //    let postId: Int
-    let foodIngredients, cookingType: [String]
+    let foodIngredients, cookingType , lifeType: [String]
     let recipeProcess: [RecipeProcessDTO]
     
     init(query: RecipeUpdateRequest) {
@@ -38,6 +39,7 @@ struct RecipeUpdateRequestDTO: Codable {
 //        self.postId = query.postId
         self.foodIngredients = query.foodIngredients
         self.cookingType = query.cookingType
+        self.lifeType = query.lifeType
         self.recipeProcess = query.recipeProcess.map { $0.toData() }
     }
     
@@ -49,6 +51,7 @@ struct RecipeUpdateRequestDTO: Codable {
 //        postId: Int,
         foodIngredients: [String],
         cookingType: [String],
+        lifeType : [String],
         recipeProcess: [RecipeProcessDTO]
     ) {
         self.recipeName = recipeName
@@ -58,6 +61,7 @@ struct RecipeUpdateRequestDTO: Codable {
 //        self.postId = postId
         self.foodIngredients = foodIngredients
         self.cookingType = cookingType
+        self.lifeType = lifeType
         self.recipeProcess = recipeProcess
     }
 }

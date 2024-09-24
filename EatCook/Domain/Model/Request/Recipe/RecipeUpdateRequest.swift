@@ -15,6 +15,7 @@ struct RecipeUpdateRequest: Codable {
 //    var postId: Int = 0
     var foodIngredients: [String] = []
     var cookingType: [String] = []
+    var lifeType : [String] = []
     var recipeProcess: [RecipeProcess] = []
 }
 
@@ -28,6 +29,7 @@ extension RecipeUpdateRequest {
 //            postId: postId,
             foodIngredients: foodIngredients,
             cookingType: cookingType,
+            lifeType : lifeType,
             recipeProcess: recipeProcess.map { $0.toData() }
         )
     }

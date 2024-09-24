@@ -14,6 +14,7 @@ struct RecipeCreateRequest: Codable {
     var mainFileExtension: String = ""
     var foodIngredients: [String] = []
     var cookingType: [String] = []
+    var lifeType : [String] = []
     var recipeProcess: [RecipeProcess] = []
 }
 
@@ -33,6 +34,7 @@ extension RecipeCreateRequest {
             mainFileExtension: mainFileExtension,
             foodIngredients: foodIngredients,
             cookingType: cookingType,
+            lifeType: lifeType,
             recipeProcess: recipeProcess.map { $0.toData() }
         )
     }

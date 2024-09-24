@@ -71,6 +71,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
         }
         self.selectedTime = self.recipeReadResponseData.recipeTime
         self.selectedTheme = self.recipeReadResponseData.cookingType.first ?? "테마 선택"
+//        self.lifeType = self.recipeReadResponseData.lifeType
 
         /// 두번째
         var ingredientsTagArr: [Tag] = []
@@ -115,7 +116,34 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
         
         $selectedTheme
             .sink { [weak self] newValue in
-                self?.recipeCreateData.cookingType = [newValue]
+                let typeValueDic: [String: String] = [
+                    "중식": "CHINESE_FOOD",
+                    "반찬": "SIDE_DISH",
+                    "디저트": "DESSERT",
+                    "한식": "KOREAN_FOOD",
+                    "분식": "BUNSIK",
+                    "양식": "WESTERN_FOOD",
+                    "일식": "JAPANESE_FOOD",
+                    "야식": "LATE_NIGHT_SNACK",
+                    "아시아" : "ASIAN_FOOD"
+                ]
+                if let type = typeValueDic[newValue] {
+                    self?.recipeCreateData.cookingType = [type]
+                }else{
+                    print("selectedTheme 변환 에러")
+                }
+            }
+            .store(in: &cancellables)
+        
+        $lifeType
+            .sink { [weak self] newValue in
+                let typeValueDic : [String : String] = ["다이어트만 n번째" : "DIET" , "건강한 식단관리" : "HEALTH_DIET" , "편의점은 내 구역" : "CONVENIENCE_STORE" , "배달음식 단골고객" : "DELIVERY_FOOD" , "밀키트 lover" : "MEAL_KIT" ]
+                if let type = typeValueDic[newValue] {
+                    self?.recipeCreateData.lifeType = [type]
+                }else{
+                    print("lifeType 변환 에러")
+                }
+               
             }
             .store(in: &cancellables)
         
@@ -183,8 +211,11 @@ extension RecipeCreateViewModel {
             mainFileExtension: recipeCreateData.mainFileExtension,
             foodIngredients: recipeCreateData.foodIngredients,
             cookingType: recipeCreateData.cookingType,
+            lifeType: recipeCreateData.lifeType,
             recipeProcess: recipeCreateData.recipeProcess.map { $0.toData() }
         )
+        
+      
         
         return await withCheckedContinuation { continuation in
             cookTalkUseCase.requestRecipeCreate(recipeCreateDTO)
@@ -211,6 +242,7 @@ extension RecipeCreateViewModel {
         isUpLoading = true
         isUpLoadingError = nil
         
+        
         let recipeUpdateDTO = RecipeUpdateRequestDTO(
             recipeName: recipeCreateData.recipeName,
             recipeTime: recipeCreateData.recipeTime,
@@ -219,9 +251,11 @@ extension RecipeCreateViewModel {
 //            postId: recipeId,
             foodIngredients: recipeCreateData.foodIngredients,
             cookingType: recipeCreateData.cookingType,
+            lifeType : recipeCreateData.lifeType,
             recipeProcess: recipeCreateData.recipeProcess.map { $0.toData() }
         )
         
+        print("recipeUpdateDTO : " , recipeUpdateDTO)
         
         return await withCheckedContinuation { continuation in
             cookTalkUseCase.requestRecipeUpdate(recipeUpdateDTO, recipeId)
