@@ -71,7 +71,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
         }
         self.selectedTime = self.recipeReadResponseData.recipeTime
         self.selectedTheme = self.recipeReadResponseData.cookingType.first ?? "테마 선택"
-        
+
         /// 두번째
         var ingredientsTagArr: [Tag] = []
         for ingredient in recipeReadResponseData.foodIngredients {

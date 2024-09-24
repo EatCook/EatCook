@@ -211,7 +211,7 @@ struct RecipeCreateView: View {
             }, cancelButtonAction: {
                 showLifeThemePicker.toggle()
             })
-            .presentationDetents([.fraction(0.42)])
+            .presentationDetents([.fraction(0.70)])
         }
         .onAppear {
             if let postId = postId {
