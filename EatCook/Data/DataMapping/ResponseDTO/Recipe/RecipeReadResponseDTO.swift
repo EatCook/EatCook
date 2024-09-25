@@ -18,7 +18,7 @@ struct RecipeReadResponseDataDTO: Codable {
     let recipeName: String
     let recipeTime: Int
     let introduction, postImagePath: String
-    let foodIngredients, cookingType: [String]
+    let foodIngredients, cookingType, lifeTypes : [String]
     let recipeProcess: [RecipeReadProcessDTO]
     let lastModifiedAt: String
     let writerUserId: Int
@@ -52,6 +52,7 @@ extension RecipeReadResponseDataDTO {
                      postImagePath: postImagePath,
                      foodIngredients: foodIngredients,
                      cookingType: cookingType,
+                     lifeTypes : lifeTypes,
                      recipeProcess: recipeProcess.map { $0.toDomain() },
                      lastModifiedAt: lastModifiedAt,
                      writerUserId: writerUserId,

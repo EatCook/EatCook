@@ -85,7 +85,7 @@ extension LifeTypePickerView {
         let title: String
         
         static let themes: [Household] = [
-            Household(img: "🔥",  title: "다이어트만 n번째"),
+            Household(img: "🔥",  title: "다이어트만 n년째"),
             Household(img : "🥦" , title: "건강한 식단관리"),
             Household(img : "🍙" ,  title: "편의점은 내 구역"),
             Household(img : "🍕" , title: "배달음식 단골고객"),

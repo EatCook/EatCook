@@ -21,6 +21,7 @@ struct RecipeReadResponseData: Codable, Identifiable, Hashable {
     var postImagePath: String = ""
     var foodIngredients: [String] = []
     var cookingType: [String] = []
+    var lifeTypes : [String] = []
     var recipeProcess: [RecipeReadProcess] = []
     var lastModifiedAt: String = ""
     var writerUserId: Int = 0

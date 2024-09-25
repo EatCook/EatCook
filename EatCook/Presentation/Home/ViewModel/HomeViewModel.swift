@@ -50,7 +50,7 @@ class HomeViewModel : ObservableObject {
     @Published var userNickName : String? = ""
     
     
-    @Published var recommendCookingTheme : [String : String] = ["DIET" : "다이어트만 n번째", "HEALTH_DIET" : "건강한 식단관리", "CONVENIENCE_STORE" : "편의점은 내 구역", "DELIVERY_FOOD" : "배달음식 단골고객", "MEAL_KIT" : "밀키트 lover"]
+    @Published var recommendCookingTheme : [String : String] = ["DIET" : "다이어트만 n년째", "HEALTH_DIET" : "건강한 식단관리", "CONVENIENCE_STORE" : "편의점은 내 구역", "DELIVERY_FOOD" : "배달음식 단골고객", "MEAL_KIT" : "밀키트 lover"]
     
     var recommendType : [String] = ["DIET", "HEALTH_DIET" , "CONVENIENCE_STORE", "DELIVERY_FOOD", "MEAL_KIT"]
     @Published var recommendFoods : [String : [RecommendFoods]] = [
@@ -72,7 +72,7 @@ class HomeViewModel : ObservableObject {
     @Published var currentTabHeight: CGFloat = 500 // 초기 높이 설정
     
     
-//    DIET("다이어트만 n번째")
+//    DIET("다이어트만 n년째")
 //    HEALTH_DIET("건강한 식단관리")
 //    CONVENIENCE_STORE("편의점은 내 구역")
 //    DELIVERY_FOOD("배달음식 단골고객")

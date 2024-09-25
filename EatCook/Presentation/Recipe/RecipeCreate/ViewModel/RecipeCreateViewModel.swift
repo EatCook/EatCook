@@ -73,7 +73,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
         }
         self.selectedTime = self.recipeReadResponseData.recipeTime
         self.selectedTheme = self.recipeReadResponseData.cookingType.first ?? "테마 선택"
-//        self.lifeType = self.recipeReadResponseData.lifeType.first ?? ""
+        self.lifeType = self.recipeReadResponseData.lifeTypes.first ?? ""
 
         /// 두번째
         var ingredientsTagArr: [Tag] = []
@@ -139,7 +139,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
         
         $lifeType
             .sink { [weak self] newValue in
-                let typeValueDic : [String : String] = ["다이어트만 n번째" : "DIET" , "건강한 식단관리" : "HEALTH_DIET" , "편의점은 내 구역" : "CONVENIENCE_STORE" , "배달음식 단골고객" : "DELIVERY_FOOD" , "밀키트 lover" : "MEAL_KIT" ]
+                let typeValueDic : [String : String] = ["다이어트만 n년째" : "DIET" , "건강한 식단관리" : "HEALTH_DIET" , "편의점은 내 구역" : "CONVENIENCE_STORE" , "배달음식 단골고객" : "DELIVERY_FOOD" , "밀키트 lover" : "MEAL_KIT" ]
                 if let type = typeValueDic[newValue] {
                     self?.recipeCreateData.lifeType = [type]
                 }else{
@@ -249,15 +249,15 @@ extension RecipeCreateViewModel {
             recipeName: recipeCreateData.recipeName,
             recipeTime: recipeCreateData.recipeTime,
             introduction: recipeCreateData.introduction,
-            mainFileExtension: recipeCreateData.mainFileExtension == "" ? "default" : recipeCreateData.mainFileExtension,
+            mainFileExtension: recipeCreateData.mainFileExtension == "" ? URL(fileURLWithPath: recipeReadResponseData.postImagePath).pathExtension  : recipeCreateData.mainFileExtension,
             foodIngredients: recipeCreateData.foodIngredients,
             cookingType: recipeCreateData.cookingType,
             lifeType : recipeCreateData.lifeType,
             recipeProcess: recipeCreateData.recipeProcess.map { $0.toData() }
         )
-        
+        print("recipeReadResponseData TEST: " , recipeReadResponseData)
         print("recipeCreateData Test" , recipeCreateData)
-        print("recipeUpdateDTO : " , recipeUpdateDTO)
+        print("recipeUpdateDTO TEST: " , recipeUpdateDTO)
         
         return await withCheckedContinuation { continuation in
             cookTalkUseCase.requestRecipeUpdate(recipeUpdateDTO, recipeId)
