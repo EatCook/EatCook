@@ -14,6 +14,7 @@ struct RecipeStep: Identifiable, Hashable {
     var imageURL: URL?
     var imageExtension: String
     var isEditing: Bool = false
+    var isUpdate : Bool = false
 }
 
 struct RecipeStepView: View {
@@ -42,7 +43,7 @@ struct RecipeStepView: View {
                                 .listRowSeparator(.hidden)
                                 .swipeActions {
                                     Button {
-                                        
+                                        viewModel.recipeStepData.remove(at: index)
                                     } label: {
                                         Image(systemName: "trash.fill")
                                             .foregroundStyle(.white)
@@ -163,25 +164,31 @@ struct StepRowView: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            if let image = viewModel.recipeStepData[index].image {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 60, height: 70)
-                    .modifier(CustomBorderModifier())
-            }
-            
-            VStack(alignment: .leading) {
-                Text("Step \(index + 1)")
-                    .font(.caption)
-                    .fontWeight(.medium)
-                    .foregroundStyle(.primary7)
+            if index < viewModel.recipeStepData.count {
+                if let image = viewModel.recipeStepData[index].image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 60, height: 70)
+                        .modifier(CustomBorderModifier())
+                }
                 
-                Text(viewModel.recipeStepData[index].description)
-                    .font(.footnote)
-                    .lineLimit(3)
+                VStack(alignment: .leading) {
+                    Text("Step \(index + 1)")
+                        .font(.caption)
+                        .fontWeight(.medium)
+                        .foregroundStyle(.primary7)
+                    
+                    Text(viewModel.recipeStepData[index].description)
+                        .font(.footnote)
+                        .lineLimit(3)
+                }
+                .padding(8)
+            } else {
+                // 배열 범위를 벗어나면 안됨
+                Text("Invalid step")
+                    .foregroundColor(.red)
             }
-            .padding(8)
             
             Spacer()
         }
@@ -321,7 +328,7 @@ struct CreateChatView: View {
         let stepData = RecipeStep(description: textEditorText,
                                   image: selectedImage,
                                   imageURL: viewModel.recipeStepImageURL,
-                                  imageExtension: viewModel.recipeStepImageExtension)
+                                  imageExtension: viewModel.recipeStepImageExtension , isUpdate: true)
         withAnimation(.easeInOut(duration: 0.3)) {
             viewModel.addStep(stepData)
             textEditorText = ""

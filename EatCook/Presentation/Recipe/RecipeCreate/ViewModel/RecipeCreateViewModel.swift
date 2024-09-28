@@ -74,6 +74,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
         self.selectedTime = self.recipeReadResponseData.recipeTime
         self.selectedTheme = self.recipeReadResponseData.cookingType.first ?? "테마 선택"
         self.lifeType = self.recipeReadResponseData.lifeTypes.first ?? ""
+        self.titleImageExtension = self.recipeReadResponseData.postImagePath
 
         /// 두번째
         var ingredientsTagArr: [Tag] = []
@@ -89,7 +90,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
             if let imageUrl = URL(string: "\(Environment.AwsBaseURL)/\(step.recipeProcessImagePath)") {
                 imageLoader.load(url: imageUrl)
                 guard let image = imageLoader.image else { return }
-                let step = RecipeStep(description: step.recipeWriting, image: image, imageExtension: "")
+                let step = RecipeStep(description: step.recipeWriting, image: image, imageExtension: step.recipeProcessImagePath)
                 recipeStepArr.append(step)
                 self.recipeStepData = recipeStepArr
             }
@@ -172,6 +173,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     
     func addStep(_ data: RecipeStep) {
         recipeStepData.append(data)
+        print("recipeStepData ::::" , recipeStepData)
     }
     
     func updateStep(_ index: Int) {
@@ -179,6 +181,7 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
             recipeStepData[index].image = image
             recipeStepData[index].imageURL = recipeStepImageURL
             recipeStepData[index].imageExtension = recipeStepImageExtension
+            recipeStepData[index].isUpdate = true
             recipeStepData[index].isEditing.toggle()
         } else {
             recipeStepData[index].isEditing.toggle()
@@ -217,7 +220,7 @@ extension RecipeCreateViewModel {
             recipeProcess: recipeCreateData.recipeProcess.map { $0.toData() }
         )
         
-      print("recipeCreateDTO" , recipeCreateDTO)
+      
         
         return await withCheckedContinuation { continuation in
             cookTalkUseCase.requestRecipeCreate(recipeCreateDTO)
@@ -244,20 +247,17 @@ extension RecipeCreateViewModel {
         isUpLoading = true
         isUpLoadingError = nil
         
-        
         let recipeUpdateDTO = RecipeUpdateRequestDTO(
             recipeName: recipeCreateData.recipeName,
             recipeTime: recipeCreateData.recipeTime,
             introduction: recipeCreateData.introduction,
-            mainFileExtension: recipeCreateData.mainFileExtension == "" ? URL(fileURLWithPath: recipeReadResponseData.postImagePath).pathExtension  : recipeCreateData.mainFileExtension,
+            mainFileExtension: recipeCreateData.mainFileExtension == "" ? ""  : recipeCreateData.mainFileExtension,
             foodIngredients: recipeCreateData.foodIngredients,
             cookingType: recipeCreateData.cookingType,
             lifeType : recipeCreateData.lifeType,
             recipeProcess: recipeCreateData.recipeProcess.map { $0.toData() }
         )
-        print("recipeReadResponseData TEST: " , recipeReadResponseData)
-        print("recipeCreateData Test" , recipeCreateData)
-        print("recipeUpdateDTO TEST: " , recipeUpdateDTO)
+
         
         return await withCheckedContinuation { continuation in
             cookTalkUseCase.requestRecipeUpdate(recipeUpdateDTO, recipeId)
@@ -303,6 +303,7 @@ extension RecipeCreateViewModel {
     
     func uploadImage() async {
         do {
+            print("UPLOAD recipeCreateResponse", recipeCreateResponse)
             try await self.uploadImages(recipeCreateResponse)
         } catch {
             self.isUpLoadingError = error.localizedDescription
@@ -311,21 +312,32 @@ extension RecipeCreateViewModel {
     
     private func uploadImages(_ responseData: ResponseData) async throws {
         do {
-            guard let mainImageURL = titleImageURL,
-                  let url = URL(string: responseData.mainPresignedUrl) else { throw UploadError.invalidURL }
+            if let mainImageURL = titleImageURL,
+               let url = URL(string: responseData.mainPresignedUrl) {
+                // 메인 이미지 업로드
+                let (data, response) = try await URLSession.shared.upload(to: url, fileURL: mainImageURL)
+                print("메인 이미지 Upload Response: \(response), \(data)")
+            }
             
-            let (data, response) = try await URLSession.shared.upload(to: url,
-                                                                      fileURL: mainImageURL)
-            
-            print("메인 이미지 Upload Response: \(response), \(data)")
             for (index, processURL) in responseData.recipeProcessPresignedUrl.enumerated() {
-                let processImageURL = recipeStepData[index].imageURL
-                guard let processURLstr = URL(string: processURL),
-                      let processImageURL = processImageURL else { throw UploadError.invalidURL }
+                var processImageURL : URL?
+                for (index , recipeStep) in recipeStepData.enumerated() {
+                    if recipeStep.isUpdate {
+                        processImageURL = recipeStep.imageURL
+                        DispatchQueue.main.async { [self] in
+                            recipeStepData[index].isUpdate = false
+                        }
+                        break
+                    }
+                }
+
+                guard let processURLstr = URL(string: processURL) else { throw UploadError.invalidURL }
+                guard let processImageURL = processImageURL  else { throw UploadError.invalidURL }
+                
                 let (data, response) = try await URLSession.shared.upload(to: processURLstr,
                                                                           fileURL: processImageURL)
-                print("스텝 이미지 Upload Response: \(response), \(data)")
             }
+                    
             self.isUpLoading = false
         } catch {
             self.isUpLoading = false
