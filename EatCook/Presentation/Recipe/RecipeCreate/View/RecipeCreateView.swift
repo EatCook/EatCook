@@ -160,7 +160,13 @@ struct RecipeCreateView: View {
                 .frame(height: showDropdownTheme ? 260 : 60)
                 
                 Button {
-                    naviPathFinder.addPath(.recipeTag(viewModel))
+                    if viewModel.validateFirstFields() {
+                        naviPathFinder.addPath(.recipeTag(viewModel))
+                    }else{
+                        viewModel.showErrorAlert = true
+                    }
+                    
+                   
                 } label: {
                     Text("다음")
                         .foregroundStyle(.white)
@@ -213,6 +219,21 @@ struct RecipeCreateView: View {
             })
             .presentationDetents([.fraction(0.70)])
         }
+        .overlay(
+            Group {
+                if viewModel.showErrorAlert {
+                    BaseAlertView(
+                        title: viewModel.baseAlertInfo.title,
+                        message: viewModel.baseAlertInfo.message,
+                        confirmTitle: "확인",
+                        onConfirm: {
+                            viewModel.showErrorAlert = false
+                        }
+                    )
+                   
+                }
+            }
+        )
         .onAppear {
             if let postId = postId {
                 viewModel.responseRecipeRead(postId)

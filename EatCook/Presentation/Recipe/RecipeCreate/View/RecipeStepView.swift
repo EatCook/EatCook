@@ -12,6 +12,8 @@ struct RecipeStep: Identifiable, Hashable {
     var description: String
     var image: UIImage?
     var imageURL: URL?
+    var updateImage : UIImage?
+    var updateImageURL : URL?
     var imageExtension: String
     var isEditing: Bool = false
     var isUpdate : Bool = false
@@ -113,19 +115,23 @@ struct RecipeStepView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     Task {
-                        if viewModel.isEditType {
-                            await viewModel.requestRecipeUpdate(viewModel.postId)
-                            await viewModel.uploadImage()
-                        } else {
-                            await viewModel.requestRecipeCreate()
-                            await viewModel.uploadImage()
-                        }
-                        
-                        if !viewModel.isUpLoading && viewModel.isUpLoadingError == nil  {
-                            naviPathFinder.popToRoot()
-                        } else if let error = viewModel.isUpLoadingError {
-                            print(error)
-                            showUploadingAlert = true
+                        if viewModel.validateThirdFields() {
+                            if viewModel.isEditType {
+                                await viewModel.requestRecipeUpdate(viewModel.postId)
+                                await viewModel.uploadImage()
+                            } else {
+                                await viewModel.requestRecipeCreate()
+                                await viewModel.uploadImage()
+                            }
+                            
+                            if !viewModel.isUpLoading && viewModel.isUpLoadingError == nil  {
+                                naviPathFinder.popToRoot()
+                            } else if let error = viewModel.isUpLoadingError {
+                                print(error)
+                                showUploadingAlert = true
+                            }
+                        }else{
+                            viewModel.showErrorAlert = true
                         }
                         
                     }
@@ -147,6 +153,22 @@ struct RecipeStepView: View {
                 .background(Color.black.opacity(0.4))
             }
         }
+        .overlay(
+            Group {
+                if viewModel.showErrorAlert {
+                    BaseAlertView(
+                        title: viewModel.baseAlertInfo.title,
+                        message: viewModel.baseAlertInfo.message,
+                        confirmTitle: "확인",
+                        onConfirm: {
+                            viewModel.showErrorAlert = false
+                        }
+                    )
+                   
+                }
+            }
+        )
+        
         .alert("업로드 실패.", isPresented: $showUploadingAlert) {
             Button("확인", role: .cancel) {
                 self.showUploadingAlert = false

@@ -85,7 +85,12 @@ struct RecipeTagView: View {
                 }
                 
                 Button {
-                    naviPathFinder.addPath(.recipeStep(viewModel))
+                    if viewModel.validateSecondFields() {
+                        naviPathFinder.addPath(.recipeStep(viewModel))
+                    }else{
+                        viewModel.showErrorAlert = true
+                    }
+                
                 } label: {
                     Text("다음")
                         .padding()
@@ -110,6 +115,21 @@ struct RecipeTagView: View {
                 }
             }
         }
+        .overlay(
+            Group {
+                if viewModel.showErrorAlert {
+                    BaseAlertView(
+                        title: viewModel.baseAlertInfo.title,
+                        message: viewModel.baseAlertInfo.message,
+                        confirmTitle: "확인",
+                        onConfirm: {
+                            viewModel.showErrorAlert = false
+                        }
+                    )
+                   
+                }
+            }
+        )
         
     }
     

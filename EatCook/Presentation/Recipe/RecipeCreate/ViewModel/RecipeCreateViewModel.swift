@@ -53,11 +53,77 @@ final class RecipeCreateViewModel: ObservableObject, Equatable, Hashable {
     @Published var isEditType: Bool = false
     @Published var postId: Int = 0
     
+    //에러처리
+    @Published var showErrorAlert : Bool = false
+    @Published var baseAlertInfo = BaseAlertInfo(title: "에러", message: "")
+    
+    
     init(
         cookTalkUseCase: RecipeUseCase
     ) {
         self.cookTalkUseCase = cookTalkUseCase
         setupBinding()
+    }
+    
+    func validateFirstFields() -> Bool {
+        guard !recipeTitle.isEmpty else {
+            print("Recipe title cannot be empty")
+            baseAlertInfo.title = "에러"
+            baseAlertInfo.message = "레시피 제목을 작성해주세요"
+            return false
+        }
+
+        guard titleImage != nil else {
+            baseAlertInfo.title = "에러"
+            baseAlertInfo.message = "레시피 이미지를 선택해주세요"
+            return false
+        }
+
+        guard !recipeDescription.isEmpty else {
+            baseAlertInfo.title = "에러"
+            baseAlertInfo.message = "레시피 소개글을 작성해주세요"
+            return false
+        }
+
+        guard selectedTime > 0 else {
+            baseAlertInfo.title = "에러"
+            baseAlertInfo.message = "조리 시간을 선택해주세요"
+            return false
+        }
+
+        guard !lifeType.isEmpty else {
+            baseAlertInfo.title = "에러"
+            baseAlertInfo.message = "생활 유형을 선택해주세요"
+            return false
+        }
+
+        guard selectedTheme != "테마 선택" else {
+            baseAlertInfo.title = "에러"
+            baseAlertInfo.message = "요리 테마를 선택해주세요"
+            return false
+        }
+
+        return true
+    }
+    
+    func validateSecondFields() -> Bool {
+        guard ingredientsTags.count > 0 else {
+            baseAlertInfo.title = "에러"
+            baseAlertInfo.message = "재료를 입력해주세요"
+            return false
+        }
+
+        return true
+    }
+    
+    func validateThirdFields() -> Bool {
+        guard recipeStepData.count > 0 else {
+            baseAlertInfo.title = "에러"
+            baseAlertInfo.message = "조리 과정을 입력해주세요"
+            return false
+        }
+
+        return true
     }
     
     private func setupPreviousRecipe() {
