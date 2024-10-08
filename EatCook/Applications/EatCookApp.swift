@@ -16,6 +16,8 @@ import FirebaseMessaging
 struct EatCookApp: App {
     @StateObject private var loginUserInfo = LoginUserInfoManager.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @State private var isSplashVisible = true
+    
     
     init() {
           // Kakao SDK 초기화
@@ -28,13 +30,26 @@ struct EatCookApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(NavigationPathFinder.shared)
-                .onOpenURL(perform: { url in
-                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
-                        AuthController.handleOpenUrl(url: url)
+            ZStack {
+                if isSplashVisible {
+                    SplashView() // Add your splash screen view here
+                } else {
+                    ContentView()
+                        .environmentObject(NavigationPathFinder.shared)
+                        .onOpenURL(perform: { url in
+                            if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                                AuthController.handleOpenUrl(url: url)
+                            }
+                        })
+                }
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    withAnimation {
+                        isSplashVisible = false
                     }
-                })
+                }
+            }
         }
     }
 }
